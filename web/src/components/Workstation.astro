@@ -1,0 +1,49 @@
+---
+import type { DashboardData, ViewId } from "../lib/data";
+import { formatDateTime } from "../lib/format";
+import DetailInspector from "./DetailInspector.astro";
+import FeedPanel from "./FeedPanel.astro";
+import KpiStrip from "./KpiStrip.astro";
+import Navigation from "./Navigation.astro";
+import ReportsView from "./ReportsView.astro";
+import RunsView from "./RunsView.astro";
+import SourcesView from "./SourcesView.astro";
+
+interface Props {
+  data: DashboardData;
+  activeView: ViewId;
+}
+
+const { data, activeView } = Astro.props;
+const selectedSignal = data.signals[0];
+const selectedReport = data.reports.find((report) => report.id === selectedSignal.reportId);
+---
+
+<div class="workstation-shell">
+  <Navigation activeView={activeView} data={data} />
+
+  <main class="main-column">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Agent Research Briefing</p>
+        <h1>Research Workstation</h1>
+        <p>{data.windowLabel}</p>
+      </div>
+      <div class="topbar-status" aria-label="Current data status">
+        <span>{data.dataMode === "fixture" ? "Fixture data" : "Mock fallback"}</span>
+        <strong>{formatDateTime(data.generatedAt)}</strong>
+        <small title={data.dataPath}>{data.dataPath}</small>
+      </div>
+    </header>
+
+    <KpiStrip metrics={data.metrics} />
+
+    {activeView === "feed" ? <FeedPanel signals={data.signals} /> : null}
+    {activeView === "sources" ? <SourcesView sources={data.sources} /> : null}
+    {activeView === "runs" ? <RunsView runs={data.runs} /> : null}
+    {activeView === "reports" ? <ReportsView reports={data.reports} /> : null}
+  </main>
+
+  <DetailInspector signal={selectedSignal} report={selectedReport} />
+  <Navigation activeView={activeView} data={data} variant="mobile" />
+</div>

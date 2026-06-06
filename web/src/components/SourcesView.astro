@@ -1,0 +1,40 @@
+---
+import type { SourceRecord } from "../lib/data";
+import { formatDateTime } from "../lib/format";
+
+interface Props {
+  sources: SourceRecord[];
+}
+
+const { sources } = Astro.props;
+---
+
+<section class="table-panel" aria-labelledby="source-registry-title">
+  <div class="section-heading">
+    <p class="eyebrow">Connectors</p>
+    <h2 id="source-registry-title">Source Registry</h2>
+  </div>
+
+  <div class="dense-table source-table">
+    <div class="table-head">
+      <span>Source</span>
+      <span>Status</span>
+      <span>Coverage</span>
+      <span>Latency</span>
+      <span>Signals</span>
+    </div>
+    {sources.map((source) => (
+      <article class="table-row">
+        <div>
+          <strong>{source.name}</strong>
+          <small>{source.type} · {formatDateTime(source.lastSeen)}</small>
+        </div>
+        <span class:list={["status-pill", `source-${source.status}`]}>{source.status}</span>
+        <span>{source.coverage}</span>
+        <span>{source.latency}</span>
+        <span>{source.signals}</span>
+        <p>{source.notes}</p>
+      </article>
+    ))}
+  </div>
+</section>

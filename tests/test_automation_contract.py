@@ -84,14 +84,9 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "sub_agent_reviews" in contract["audit_contract"]["required_fields"]
     assert "quality_gate" in contract["audit_contract"]["required_fields"]
     sub_agent_ids = [agent["id"] for agent in contract["sub_agents"]]
-    assert sub_agent_ids == [
-        "scout",
-        "deep_reader",
-        "method_or_code_analyst",
-        "skeptic",
-        "related_work",
-        "markdown_editor",
-    ]
+    assert sub_agent_ids == ["scout"]
+    assert "一次性覆盖" in contract["sub_agents"][0]["responsibility"]
+    assert "不要按方向拆成多个 Agent" in contract["sub_agents"][0]["responsibility"]
     prompt = contract["codex_prompt_zh"]
     assert prompt["role"].startswith("你是 Daily Report")
     assert len(prompt["steps"]) <= 7
@@ -122,4 +117,8 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "不要把外部图片 URL 直接放进 Markdown 图片语法" in prompt_text
     assert "不要手工展开" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])
-    assert any("优先选择 1 篇" in " ".join(step["instructions"]) for step in prompt["steps"])
+    assert any("从候选表选择 1 篇" in " ".join(step["instructions"]) for step in prompt["steps"])
+    assert "只启动一个 Scout Agent" in prompt_text
+    assert "一次性搜索三个方向" in prompt_text
+    assert "不要按方向拆成三个 Agent" in prompt_text
+    assert "主 Agent 从候选表选择" in prompt_text

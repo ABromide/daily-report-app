@@ -111,7 +111,7 @@
   },
   "analysis_requirements": {
     "mode": "depth_first",
-    "per_run_item_policy": "质量优先：默认深读 1 篇，最多 3 篇；禁止凑数量写浅分析。",
+    "per_run_item_policy": "质量优先：一个 Scout 一次性扫三类方向；主 Agent 默认深读 1 篇，最多 3 篇。",
     "style_reference": {
       "name": "MLPod 论文解读长文写法",
       "url": "https://www.mlpod.com/1548.html",
@@ -170,39 +170,14 @@
       "默认分点写，避免连续大段文本。",
       "必须包含具体细节、证据点、公式/图表/表格（按内容适用）。",
       "图片必须本地化到 public/assets 后再引用。",
-      "audit 记录 sub_agent_reviews、quality_gate、image_notes、third_party_references、skeptical_review。"
+      "audit 记录 scout 候选表、quality_gate、image_notes、third_party_references、skeptical_review。"
     ]
   },
   "sub_agents": [
     {
       "id": "scout",
       "name": "候选侦察 Agent",
-      "responsibility": "只负责找今天或本周内的候选、确认日期、来源、分类和去重键。"
-    },
-    {
-      "id": "deep_reader",
-      "name": "原文深读 Agent",
-      "responsibility": "完整阅读文章、论文、README、docs 或报告正文，输出结构化阅读笔记。"
-    },
-    {
-      "id": "method_or_code_analyst",
-      "name": "方法/代码分析 Agent",
-      "responsibility": "论文看方法和实验；代码仓库看模块、依赖、执行流程、状态管理和部署入口。"
-    },
-    {
-      "id": "skeptic",
-      "name": "审稿质疑 Agent",
-      "responsibility": "专门找证据不足、过度解释、重复内容、日期不合规和安全/隐私风险。"
-    },
-    {
-      "id": "related_work",
-      "name": "外部参考 Agent",
-      "responsibility": "按内容类型搜索第三方解读、作者补充、相关论文、官方文档、issue/discussion 或可信博客；博客类重点辅助理解原文，不把博客改写成论文审稿。"
-    },
-    {
-      "id": "markdown_editor",
-      "name": "Markdown 编辑 Agent",
-      "responsibility": "把深读笔记改写成中文长篇 Markdown，保留链接、图片、公式和清晰层级；样式交给前端渲染。"
+      "responsibility": "唯一可启动的候选发现 Agent；一次性覆盖大模型 Agent、后训练、AI 安全三个方向，输出统一候选表。不要按方向拆成多个 Agent。"
     }
   ],
   "audit_contract": {
@@ -226,11 +201,11 @@
     "remote_rule": "每次自动化写入都必须把 audit JSON 和 article Markdown 一起提交到 data 分支；远端 Pages 构建必须先 validate-public 和 secret-scan，再部署。"
   },
   "codex_prompt_zh": {
-    "role": "你是 Daily Report 的中文采集与深度分析 Agent。按本 JSON 契约调研、深读、写 Markdown，并用工具发布。",
+    "role": "你是 Daily Report 的中文采集与深度分析主 Agent。只让一个 Scout 找候选，主 Agent 负责深读、写 Markdown 和发布。",
     "scope": [
       "只处理：大模型 Agent、大模型后训练、AI 安全。",
-      "只选今天或本周内发布、更新、合并或官方标记为当前日期范围内的内容。",
-      "质量优先：默认深读 1 篇，最多 3 篇。"
+      "候选发现只启动一个 Scout；Scout 一次性查三个方向并输出统一候选表。",
+      "主 Agent 根据候选表选题，默认深读 1 篇，最多 3 篇。"
     ],
     "steps": [
       {
@@ -242,19 +217,20 @@
         ]
       },
       {
-        "name": "2. 搜索与去重",
+        "name": "2. 单 Scout 搜索与去重",
         "instructions": [
-          "搜索三个固定分类的候选，记录 canonical_url、external_id、title、published_at/updated_at。",
+          "只启动一个 Scout Agent，一次性搜索三个方向：大模型 Agent、后训练、AI 安全；不要按方向拆成三个 Agent。",
+          "Scout 输出统一候选表：category_id、canonical_url、external_id、title、published_at/updated_at、推荐理由。",
           "用 canonical_url、external_id、title_hash、content_hash 去重；data 清空时缺 known-links/latest/items 属于 bootstrap。",
           "重复候选必须换同类替代。"
         ]
       },
       {
-        "name": "3. 深读与外部参考",
+        "name": "3. 主 Agent 深读与外部参考",
         "instructions": [
-          "优先选择 1 篇最值得深读的内容。",
-          "完整阅读原文；论文读 PDF/HTML，代码项目读候选项目 README、docs/examples 和核心目录。",
-          "搜索第三方解读、作者补充、相关论文、issue/discussion 或可信博客。",
+          "Scout 完成后，主 Agent 从候选表选择 1 篇最值得深读的内容。",
+          "主 Agent 自己完整阅读原文；论文读 PDF/HTML，代码项目读候选项目 README、docs/examples 和核心目录。",
+          "主 Agent 搜索第三方解读、作者补充、相关论文、issue/discussion 或可信博客。",
           "输出 detail_inventory：方法、数据、训练、benchmark、baseline、指标、消融、失败案例、图表编号、公式变量。"
         ]
       },
@@ -267,7 +243,7 @@
         ]
       },
       {
-        "name": "5. 写 Markdown",
+        "name": "5. 主 Agent 写 Markdown",
         "instructions": [
           "写入 public/articles/YYYY/MM/DD/ITEM_ID/index.md，正文使用纯 Markdown。",
           "默认分点写；连续两段以上纯文本必须拆成 h3、列表、表格、公式解释或 Mermaid 图。",
@@ -279,7 +255,7 @@
       {
         "name": "6. Payload 与发布",
         "instructions": [
-          "准备小 payload：run_id、generated_at、items、sources、dedupe、sub_agent_reviews、quality_gate。",
+          "准备小 payload：run_id、generated_at、items、sources、dedupe、sub_agent_reviews、quality_gate；sub_agent_reviews 至少记录 Scout 候选发现结果。",
           "不要真实删除文件；不要运行 rm、find -delete、git rm；临时文件只可移入 .automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/.",
           "运行 publish-public-run；它会 finalize-public-run、validate-public、secret-scan、git commit/push 和 repository_dispatch。",
           "duplicate 时换同类候选；不要手工编辑 known-links。"

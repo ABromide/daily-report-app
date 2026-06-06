@@ -1,0 +1,34 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.pyright/
+
+# Node / Astro
+node_modules/
+web/node_modules/
+web/dist/
+web/.astro/
+web/playwright-report/
+web/test-results/
+
+# Swift
+.build/
+mac/.build/
+DerivedData/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+
+# Generated and private data
+data/
+private-runs/
+screenshots/
+tmp/
+

@@ -1,0 +1,12 @@
+{
+  "name": "daily-report-app-root",
+  "private": true,
+  "scripts": {
+    "pyright": "pyright",
+    "test": "uv run pytest && npm --prefix web run build && swift run --package-path mac DailyReportSmoke"
+  },
+  "devDependencies": {
+    "pyright": "^1.1.407"
+  }
+}
+

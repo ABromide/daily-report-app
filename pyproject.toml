@@ -1,0 +1,28 @@
+[project]
+name = "daily-report-app"
+version = "0.1.0"
+description = "Agent research briefing data contract and collector tooling"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "jsonschema>=4.25.1",
+  "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+daily-report = "collector.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=9.0.1",
+]
+
+[tool.pyright]
+include = ["collector", "tests"]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+

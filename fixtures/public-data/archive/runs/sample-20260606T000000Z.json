@@ -2,7 +2,7 @@
   "generated_at": "2026-06-06T00:00:00Z",
   "item_count": 3,
   "manifest_path": "manifests/2026/06/06/000000Z.manifest.json",
-  "manifest_sha256": "75a6f6c5105e69ecb91c363c764dda3e921ca71acb93ee1251754f89c40df57b",
+  "manifest_sha256": "a27e672581cca538db2498e85fa14a7cfaf62d500a3c3e132be8516e08e6734e",
   "mode": "deterministic-sample",
   "network": "disabled",
   "run_id": "sample-20260606T000000Z",

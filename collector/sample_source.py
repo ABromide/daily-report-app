@@ -104,21 +104,11 @@ def normalize_item(raw_item: JsonObject) -> JsonObject:
     item["fetched_at"] = str(raw_item["collected_at"])
     item["sort_at"] = str(raw_item["published_at"])
     item["summary_zh"] = f"样例摘要：{raw_item['summary']}"
-    item["analysis_zh"] = "这条 fixture 用来验证自动化写入、manifest 校验、去重表和前端展示格式。"
     item["analysis_html_path"] = article_html_path(item)
     item["language"] = "en"
     item["reading_minutes"] = 3
     item["title_hash"] = title_hash(raw_item)
     item["content_hash"] = fingerprint
-    item["visual"] = {
-        "question": "这条内容应该如何进入 AI 研究 Hub？",
-        "approach": ["识别来源", "生成摘要", "写入去重表"],
-        "takeaway": "自动化输出必须同时可读、可验证、可去重。",
-        "metrics": [
-            {"label": "格式完整度", "value": "High", "score": 88},
-            {"label": "去重可信度", "value": "Strong", "score": 84},
-        ],
-    }
     item["tags"] = sorted(set(str(tag) for tag in raw_item["tags"]))
     item["evidence"] = [
         {

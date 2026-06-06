@@ -1,9 +1,37 @@
-<!doctype html>
+import type { LocalizedCluster, LocalizedDocument } from "./showcaseContent";
+
+export function renderShowcaseArticleHtml(item: LocalizedDocument, cluster?: LocalizedCluster): string {
+  const category = cluster?.title ?? item.clusterId;
+  const flow = flowForItem(item, category);
+  const sections = sectionCards(item, category);
+  const tagHtml = item.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+  const flowHtml = flow
+    .map(
+      (step, index) => `
+        <article class="flow-step">
+          <b>${index + 1}</b>
+          <h3>${escapeHtml(step.title)}</h3>
+          <p>${escapeHtml(step.body)}</p>
+        </article>`
+    )
+    .join("");
+  const sectionHtml = sections
+    .map(
+      (section) => `
+        <section class="article-section">
+          <p class="eyebrow">${escapeHtml(section.eyebrow)}</p>
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.body)}</p>
+        </section>`
+    )
+    .join("");
+
+  return `<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Small language models gain reliable tool planning · Daily Report 深度分析</title>
+    <title>${escapeHtml(item.title)} · Daily Report 深度分析</title>
     <style>
       :root {
         --parchment: #f5f4ed;
@@ -47,7 +75,6 @@
         color: var(--warm);
         font-size: 0.72rem;
         font-weight: 900;
-        letter-spacing: 0;
         text-transform: uppercase;
       }
       h1 {
@@ -132,9 +159,7 @@
         gap: 14px;
         border-color: rgb(27 54 93 / 0.24);
       }
-      .tldr strong {
-        color: var(--ink-blue);
-      }
+      .tldr strong { color: var(--ink-blue); }
       .flow-card {
         display: grid;
         gap: 12px;
@@ -197,89 +222,35 @@
     <main data-analysis-document="html">
       <header>
         <div>
-          <p class="eyebrow">Daily Report 深度分析 · 大模型 Agent 相关</p>
-          <h1>Small language models gain reliable tool planning</h1>
-          <p class="lead">样例摘要：A deterministic duplicate variant that should collapse to the same fingerprint.</p>
+          <p class="eyebrow">Daily Report 深度分析 · ${escapeHtml(category)}</p>
+          <h1>${escapeHtml(item.title)}</h1>
+          <p class="lead">${escapeHtml(item.summary)}</p>
           <div class="meta-strip">
-            <span>Sample Research Feed</span>
-            <span>2026-06-06</span>
+            <span>${escapeHtml(item.sourceName)}</span>
+            <span>${escapeHtml(item.publishedAt.slice(0, 10))}</span>
             <span>正文由 HTML 分析稿承载</span>
           </div>
-          <div class="tag-row"><span>agents</span><span>small-models</span><span>tool-use</span></div>
+          <div class="tag-row">${tagHtml}</div>
         </div>
         <figure class="source-figure">
-          <img src="https://www.google.com/s2/favicons?domain=example.com&sz=128" alt="" />
-          <figcaption>图片可使用原文链接，也可以由自动化下载后重新上传到 public assets；fixture 使用来源图标占位。</figcaption>
+          <img src="${escapeHtml(item.faviconUrl)}" alt="" />
+          <figcaption>图片可以使用原文链接，也可以由自动化下载后重新上传到 public assets；这里展示来源图标。</figcaption>
         </figure>
       </header>
 
       <section class="tldr">
         <p class="eyebrow">TL;DR</p>
-        <p><strong>这篇内容首先回答：</strong>Small language models gain reliable tool planning 为什么值得进入今天的 AI 研究 Hub。自动化不把它压成几个 JSON 标签，而是把原文当作一篇完整文章来拆：先看问题背景，再看方法或系统流程，最后检查证据、局限和可复用判断。</p>
-        <p><strong>核心判断：</strong>样例摘要：A deterministic duplicate variant that should collapse to the same fingerprint. 这句话只是入口，完整分析会继续追问作者如何支撑它、哪些环节仍缺证据、它应该如何影响后续日报跟踪。</p>
+        <p><strong>这篇内容首先回答：</strong>${escapeHtml(item.visual.question)}。它不是一个孤立链接，而是进入「${escapeHtml(category)}」频道的一个可复用分析对象。</p>
+        <p><strong>核心判断：</strong>${escapeHtml(item.visual.takeaway)} 这句话只是入口，完整 HTML 会继续追问作者如何支撑它、哪些环节仍缺证据、它应该如何影响后续日报跟踪。</p>
       </section>
 
-
-        <section class="article-section">
-          <p class="eyebrow">1. 引言</p>
-          <h2>先说明问题为什么出现</h2>
-          <p>围绕《Small language models gain reliable tool planning》，分析稿先说明它为什么属于「大模型 Agent 相关」。这一段不急着给结论，而是把用户需要理解的背景、问题动机和当前技术脉络讲清楚。</p>
-        </section>
-
-
-        <section class="article-section">
-          <p class="eyebrow">2. 文章架构拆解</p>
-          <h2>按原文结构重建作者论证</h2>
-          <p>自动化会把原文拆成问题、方法、证据和局限四层，并记录摘要入口：样例摘要：A deterministic duplicate variant that should collapse to the same fingerprint.。如果原文有图、表或系统示意图，HTML 中应保留原始图片链接或镜像后的 public asset。</p>
-        </section>
-
-
-        <section class="article-section">
-          <p class="eyebrow">3. 逐部分细读</p>
-          <h2>每一节都要解释它承担的作用</h2>
-          <p>不是只摘关键词，而是解释每一部分在整篇文章里的职责：哪些段落定义问题，哪些段落提出方法，哪些段落验证结果，哪些段落暴露限制。当前重点标签是：agents、small-models、tool-use。</p>
-        </section>
-
-
-        <section class="article-section">
-          <p class="eyebrow">4. 讨论与局限</p>
-          <h2>把不能直接下结论的地方讲出来</h2>
-          <p>如果文章缺少公开代码、样本规模较小、评测条件与真实场景有差距，或者安全假设过窄，分析稿必须保留这些不确定性。</p>
-        </section>
-
+      ${sectionHtml}
 
       <section class="flow-card">
         <p class="eyebrow">方法或系统流程</p>
         <h2>方法或系统流程</h2>
         <p>把文章里的关键流程拆成连续步骤，方便日报、二级页面和后续追踪复用。</p>
-        <div class="flow-grid">
-        <article class="flow-step">
-          <b>1</b>
-          <h3>识别任务入口</h3>
-          <p>先判断文章里的 Agent 是解决工具调用、工作流、记忆、规划还是代码执行。</p>
-        </article>
-
-
-        <article class="flow-step">
-          <b>2</b>
-          <h3>拆解系统模块</h3>
-          <p>围绕 agents, small-models, tool-use 追踪模型、工具、状态和用户界面的关系。</p>
-        </article>
-
-
-        <article class="flow-step">
-          <b>3</b>
-          <h3>验证落地路径</h3>
-          <p>检查是否有代码、产品界面、部署方式、评测案例或真实用户场景。</p>
-        </article>
-
-
-        <article class="flow-step">
-          <b>4</b>
-          <h3>留下复用判断</h3>
-          <p>判断它是产品参考、工程组件、研究趋势，还是只适合作为背景信号。</p>
-        </article>
-        </div>
+        <div class="flow-grid">${flowHtml}</div>
       </section>
 
       <section class="article-section">
@@ -296,9 +267,50 @@
       <section class="article-section note">
         <p class="eyebrow">可复用到日报的判断</p>
         <h2>可复用到日报的判断</h2>
-        <p>它提供了一个可追踪的研究或产品信号：来源、发布时间、分类、摘要和完整 HTML 分析稿可以被首页卡片、日报页、Mac 本地缓存和后续聚类共同复用。JSON 只负责索引；真正面向用户的解释在这个 HTML 文件里。</p>
-        <a class="footer-link" href="https://example.com/research/small-model-tool-planning">打开原文</a>
+        <p>JSON 只负责索引和首页卡片；真正面向用户的解释在这个完整 HTML 文件里。后续 Mac App、网页详情页和日报归档都可以直接渲染或缓存它。</p>
+        <a class="footer-link" href="${escapeHtml(item.url)}">打开原文</a>
       </section>
     </main>
   </body>
-</html>
+</html>`;
+}
+
+function sectionCards(item: LocalizedDocument, category: string) {
+  return [
+    {
+      eyebrow: "1. 引言",
+      title: "先说明问题为什么出现",
+      body: `围绕《${item.title}》，分析稿先说明它为什么属于「${category}」。这一段不急着给结论，而是把用户需要理解的背景、问题动机和当前技术脉络讲清楚。`
+    },
+    {
+      eyebrow: "2. 文章架构拆解",
+      title: "按原文结构重建作者论证",
+      body: `自动化会把原文拆成问题、方法、证据和局限四层。当前摘要是：${item.summary}。如果原文有图、表或系统示意图，HTML 中应保留原始图片链接或镜像后的 public asset。`
+    },
+    {
+      eyebrow: "3. 逐部分细读",
+      title: "每一节都要解释它承担的作用",
+      body: `不是只摘关键词，而是解释每一部分在整篇文章里的职责：哪些段落定义问题，哪些段落提出方法，哪些段落验证结果，哪些段落暴露限制。`
+    },
+    {
+      eyebrow: "4. 讨论与局限",
+      title: "把不能直接下结论的地方讲出来",
+      body: "如果文章缺少公开代码、样本规模较小、评测条件与真实场景有差距，或者安全假设过窄，分析稿必须保留这些不确定性。"
+    }
+  ];
+}
+
+function flowForItem(item: LocalizedDocument, category: string) {
+  return item.visual.approach.map((step, index) => ({
+    title: step,
+    body: `这是《${item.title}》中第 ${index + 1} 个关键动作。分析稿需要说明它在「${category}」里的作用：是定义问题、推进方法、验证证据，还是暴露边界。`
+  }));
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}

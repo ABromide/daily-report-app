@@ -61,6 +61,7 @@ export interface LocalizedDocument {
   tags: string[];
   domain: string;
   faviconUrl: string;
+  analysisHtmlPath: string;
   searchText: string;
   visual: {
     question: string;
@@ -771,9 +772,15 @@ function localizeDocument(document: ShowcaseDocument, locale: Locale): Localized
     tags,
     domain: document.domain,
     faviconUrl: `https://www.google.com/s2/favicons?domain=${document.domain}&sz=64`,
+    analysisHtmlPath: articleHtmlPath(document),
     searchText,
     visual
   };
+}
+
+function articleHtmlPath(document: ShowcaseDocument): string {
+  const [year, month, day] = document.publishedAt.slice(0, 10).split("-");
+  return `articles/${year}/${month}/${day}/${document.id}/index.html`;
 }
 
 function visual(

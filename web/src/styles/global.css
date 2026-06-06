@@ -1541,6 +1541,43 @@ select {
   overflow-wrap: anywhere;
 }
 
+.article-html-shell {
+  gap: 14px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.article-html-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 18px 0;
+}
+
+.article-html-header h2 {
+  margin-top: 0;
+}
+
+.article-html-header a {
+  flex: none;
+  padding: 8px 11px;
+  border: 1px solid var(--ink-blue);
+  border-radius: 999px;
+  color: var(--ink-blue);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.article-html-frame {
+  display: block;
+  width: 100%;
+  min-height: 2800px;
+  border: 0;
+  background: var(--parchment);
+}
+
 .deep-prose {
   display: grid;
   gap: 12px;
@@ -1848,6 +1885,15 @@ select {
 
   .article-map {
     grid-template-columns: 1fr;
+  }
+
+  .article-html-header {
+    display: grid;
+    align-items: start;
+  }
+
+  .article-html-frame {
+    min-height: 3600px;
   }
 
   .clear-filter {

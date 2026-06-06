@@ -37,13 +37,13 @@ Codex 自动化每小时运行一次，执行顺序如下：
 4. 读取 `public/index/known-links.json` 和最新 `items.jsonl` 做去重。
 5. 如果候选的 `canonical_url`、`external_id`、`title_hash` 或 `content_hash` 已存在，丢弃该候选，并继续寻找同类替代内容。
 6. 深度阅读完整原文，分析作者的问题入口、方法组织、每个部分承担的作用、证据是否支撑结论、边界和后续追踪问题。
-7. 为每条新内容生成中文摘要、AI 解读、可视化摘要、分类字段和独立 HTML 深度分析文件。
+7. 为每条新内容生成卡片摘要、分类字段和独立 HTML 深度分析文件。
 8. 写入 JSONL、HTML 分析稿、小时报告、自动化 audit record、manifest 和 known-links。
 9. 运行校验和 secret scan，通过后提交到 `data` 分支，并触发 `repository_dispatch: data-updated`。
 
 ### Item 输出格式
 
-自动化写入的每条内容至少包含这些字段：
+自动化写入的 item JSON 只作为索引和首页卡片入口，不承载长文正文。每条内容至少包含这些字段：
 
 ```json
 {
@@ -58,17 +58,7 @@ Codex 自动化每小时运行一次，执行顺序如下：
   "published_at": "2026-06-06T00:00:00Z",
   "fetched_at": "2026-06-06T11:00:00Z",
   "summary_zh": "中文摘要，说明文章主问题和结论。",
-  "analysis_zh": "深度中文分析，说明文章架构、方法流程、证据边界和可复用判断。",
   "analysis_html_path": "articles/2026/06/06/paper-20260606-trust-region-opd/index.html",
-  "visual": {
-    "question": "这篇内容解决什么问题？",
-    "approach": ["方法步骤一", "方法步骤二", "方法步骤三"],
-    "takeaway": "AI 解读结论。",
-    "metrics": [
-      { "label": "方法新颖度", "value": "High", "score": 84 },
-      { "label": "工程风险", "value": "Medium", "score": 63 }
-    ]
-  },
   "tags": ["OPD", "SFT", "强化学习"],
   "content_hash": "sha256..."
 }
@@ -92,7 +82,7 @@ raw-public/YYYY/MM/DD/HH/
 
 ### 深度分析 HTML
 
-每篇文章必须生成一个独立 HTML 文件，路径写入 `analysis_html_path`。这个文件使用和 Web 站点一致的 parchment / ink-blue 样式，不依赖用户再打开原文才能理解内容。
+每篇文章必须生成一个独立 HTML 文件，路径写入 `analysis_html_path`。这个文件使用和 Web 站点一致的 parchment / ink-blue 样式，不依赖用户再打开原文才能理解内容。子页面正文渲染这个 HTML 文件，而不是从 `analysis_zh`、`visual` 等 JSON 字段拼接。
 
 HTML 分析稿至少包含：
 
@@ -102,6 +92,8 @@ HTML 分析稿至少包含：
 - 方法或系统流程：把文章里的关键流程拆成连续步骤。
 - 证据与边界：哪些证据支持结论，哪些地方仍需验证。
 - 可复用到日报的判断：为什么值得进入当前分类和后续追踪。
+
+如果原文有关键图片、表格、系统图或结果图，HTML 中可以直接使用原始图片链接；也可以由自动化下载后重新上传到 `public/assets/`，再引用镜像链接。所有图片都需要中文说明。
 
 ### 自动化审计记录
 
@@ -248,8 +240,9 @@ config/automation/codex-hourly.zh.json
 - 三类分类必须固定
 - 写入前必须做链接和内容去重
 - 重复候选必须换同类替代内容
-- 输出必须包含 `category_id`、`visual` 和 `analysis_html_path`
-- 每篇内容必须生成独立 HTML 深度分析文件
+- 输出必须包含 `category_id` 和 `analysis_html_path`
+- item JSON 不能承载长文正文；每篇内容必须生成独立、完整的 HTML 深度分析文件
+- 结构化提示词按读取状态、搜索候选、去重替换、深度阅读、写入 HTML、写入索引、审计 manifest、验证提交八步执行
 - 每次运行必须生成自动化 audit record，并随 public data 一起提交
 - 提交前必须运行 `validate-public` 与 `secret-scan`
 

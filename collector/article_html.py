@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from html import escape
+from urllib.parse import urlparse
 
 from collector.jsonio import JsonObject
 
@@ -12,37 +13,42 @@ def article_html_path(item: JsonObject) -> str:
 
 
 def render_article_html(item: JsonObject) -> str:
-    visual = item["visual"]
-    approach = [str(step) for step in visual["approach"]]
-    metrics = list(visual["metrics"])
     title = str(item["title"])
     summary = str(item["summary_zh"])
-    analysis = str(item["analysis_zh"])
     source_name = str(item.get("source_name", item["source_id"]))
     source_url = str(item["url"])
     category_id = str(item["category_id"])
+    published_at = str(item["published_at"])
+    tags = [str(tag) for tag in item.get("tags", [])]
+    tag_html = "".join(f"<span>{escape(tag)}</span>" for tag in tags)
+    domain = urlparse(source_url).netloc or source_name
+    favicon = f"https://www.google.com/s2/favicons?domain={escape(domain)}&sz=128"
+    topic = _category_label(category_id)
+    flow = _flow_for_category(category_id, tags)
+    section_cards = _section_cards(title, topic, summary, tags)
 
     flow_html = "\n".join(
         f"""
         <article class="flow-step">
           <b>{index}</b>
-          <h3>{escape(step)}</h3>
-          <p>自动化会检查这一环节在原文里承担的是问题设定、方法推进、证据验证，还是风险边界说明。</p>
+          <h3>{escape(step["title"])}</h3>
+          <p>{escape(step["body"])}</p>
         </article>
         """
-        for index, step in enumerate(approach, start=1)
+        for index, step in enumerate(flow, start=1)
     )
-    metric_html = "\n".join(
+    section_html = "\n".join(
         f"""
-        <div class="metric" style="--score:{int(metric["score"])}%">
-          <span>{escape(str(metric["label"]))}</span>
-          <strong>{escape(str(metric["value"]))}</strong>
-        </div>
+        <section class="article-section">
+          <p class="eyebrow">{escape(card["eyebrow"])}</p>
+          <h2>{escape(card["title"])}</h2>
+          <p>{escape(card["body"])}</p>
+        </section>
         """
-        for metric in metrics
+        for card in section_cards
     )
 
-    return f"""<!doctype html>
+    return _strip_trailing_whitespace(f"""<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -58,157 +64,299 @@ def render_article_html(item: JsonObject) -> str:
         --muted: #6f675c;
         --line: #d8d1c2;
         --warm: #a86f2d;
+        --green: #3f6d58;
         --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
         --font-serif: Charter, "Songti SC", "STSong", Georgia, serif;
       }}
       * {{ box-sizing: border-box; }}
+      html {{ background: var(--parchment); }}
       body {{
         margin: 0;
         color: var(--ink);
         background: var(--parchment);
         font-family: var(--font-sans);
       }}
+      a {{ color: var(--ink-blue); font-weight: 850; }}
       main {{
         width: min(980px, calc(100% - 28px));
         margin: 0 auto;
-        padding: 36px 0 64px;
+        padding: 36px 0 72px;
       }}
       header {{
         display: grid;
-        gap: 16px;
-        padding-bottom: 26px;
-        border-bottom: 1px solid var(--line);
+        grid-template-columns: minmax(0, 1fr) 150px;
+        gap: 24px;
+        align-items: end;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--ivory);
       }}
       .eyebrow {{
-        margin: 0;
+        margin: 0 0 8px;
         color: var(--warm);
         font-size: 0.72rem;
         font-weight: 900;
+        letter-spacing: 0;
         text-transform: uppercase;
       }}
       h1 {{
-        max-width: 16ch;
+        max-width: 18ch;
         margin: 0;
         color: var(--ink-blue);
         font-family: var(--font-serif);
-        font-size: clamp(2.2rem, 7vw, 4.1rem);
+        font-size: clamp(2.1rem, 7vw, 4.2rem);
         line-height: 1.02;
       }}
-      p {{
+      h2 {{
+        margin: 0 0 10px;
+        color: var(--ink-blue);
+        font-family: var(--font-serif);
+        font-size: clamp(1.45rem, 3.6vw, 2rem);
+        line-height: 1.14;
+      }}
+      h3 {{
+        margin: 0 0 8px;
+        color: var(--ink-blue);
+        font-size: 1rem;
+        line-height: 1.35;
+      }}
+      p, li {{
         margin: 0;
         color: var(--muted);
         font-size: 1rem;
-        line-height: 1.72;
+        line-height: 1.78;
       }}
-      section {{
+      .lead {{
+        max-width: 72ch;
+        margin-top: 16px;
+        color: var(--ink);
+        font-size: 1.05rem;
+      }}
+      .source-figure {{
         display: grid;
-        gap: 14px;
-        margin-top: 18px;
+        place-items: center;
+        gap: 12px;
+        min-height: 150px;
+        margin: 0;
         padding: 18px;
         border: 1px solid var(--line);
         border-radius: 8px;
+        background: var(--paper);
+        text-align: center;
+      }}
+      .source-figure img {{
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+      }}
+      .source-figure figcaption {{
+        color: var(--muted);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }}
+      .meta-strip, .tag-row {{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }}
+      .meta-strip span, .tag-row span {{
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--ink-blue);
+        font-size: 0.78rem;
+        font-weight: 850;
+      }}
+      .article-section, .tldr, .flow-card, .evidence-grid article {{
+        margin-top: 18px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
         background: var(--ivory);
       }}
-      h2, h3 {{
-        margin: 0;
+      .tldr {{
+        display: grid;
+        gap: 14px;
+        border-color: rgb(27 54 93 / 0.24);
+      }}
+      .tldr strong {{
         color: var(--ink-blue);
       }}
-      h2 {{
-        font-family: var(--font-serif);
-        font-size: 1.55rem;
+      .flow-card {{
+        display: grid;
+        gap: 12px;
       }}
-      .grid {{
+      .flow-grid {{
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }}
-      .card, .flow-step {{
-        min-width: 0;
-        padding: 14px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--paper);
+        gap: 12px;
       }}
       .flow-step {{
         position: relative;
-        padding-left: 54px;
-      }}
-      .flow-step b {{
-        position: absolute;
-        top: 14px;
-        left: 14px;
-        display: grid;
-        place-items: center;
-        width: 26px;
-        height: 26px;
-        border-radius: 999px;
-        background: var(--ink-blue);
-        color: var(--ivory);
-      }}
-      .metric {{
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 8px;
-        padding: 10px;
-        overflow: hidden;
+        min-width: 0;
+        min-height: 150px;
+        padding: 16px 16px 16px 58px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--paper);
       }}
-      .metric::before {{
+      .flow-step b {{
         position: absolute;
-        inset: 0 auto 0 0;
-        width: var(--score);
-        background: rgb(27 54 93 / 0.1);
-        content: "";
+        top: 16px;
+        left: 16px;
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: var(--ink-blue);
+        color: var(--ivory);
+        font-size: 0.8rem;
       }}
-      .metric span, .metric strong {{ position: relative; }}
-      a {{ color: var(--ink-blue); font-weight: 850; }}
-      @media (max-width: 720px) {{
-        .grid {{ grid-template-columns: 1fr; }}
+      .evidence-grid {{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }}
+      .evidence-grid article {{
+        margin-top: 0;
+        background: var(--paper);
+      }}
+      .note {{
+        border-left: 4px solid var(--green);
+      }}
+      .footer-link {{
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 10px 13px;
+        border: 1px solid var(--ink-blue);
+        border-radius: 999px;
+        text-decoration: none;
+      }}
+      @media (max-width: 760px) {{
+        main {{ width: min(100% - 20px, 980px); padding-top: 18px; }}
+        header, .flow-grid, .evidence-grid {{ grid-template-columns: 1fr; }}
+        header {{ padding: 18px; }}
       }}
     </style>
   </head>
   <body>
-    <main>
+    <main data-analysis-document="html">
       <header>
-        <p class="eyebrow">Daily Report 深度分析 · {escape(category_id)}</p>
-        <h1>{escape(title)}</h1>
-        <p>{escape(summary)}</p>
-        <p>来源：<a href="{escape(source_url)}">{escape(source_name)}</a></p>
+        <div>
+          <p class="eyebrow">Daily Report 深度分析 · {escape(topic)}</p>
+          <h1>{escape(title)}</h1>
+          <p class="lead">{escape(summary)}</p>
+          <div class="meta-strip">
+            <span>{escape(source_name)}</span>
+            <span>{escape(published_at[:10])}</span>
+            <span>正文由 HTML 分析稿承载</span>
+          </div>
+          <div class="tag-row">{tag_html}</div>
+        </div>
+        <figure class="source-figure">
+          <img src="{favicon}" alt="" />
+          <figcaption>图片可使用原文链接，也可以由自动化下载后重新上传到 public assets；fixture 使用来源图标占位。</figcaption>
+        </figure>
       </header>
 
-      <section>
-        <p class="eyebrow">总览</p>
-        <h2>这篇文章真正讨论什么</h2>
-        <p>{escape(analysis)}</p>
-        <p>自动化审查会把原文拆成问题入口、方法主体、证据指标和边界问题，而不是只提取标签。</p>
+      <section class="tldr">
+        <p class="eyebrow">TL;DR</p>
+        <p><strong>这篇内容首先回答：</strong>{escape(title)} 为什么值得进入今天的 AI 研究 Hub。自动化不把它压成几个 JSON 标签，而是把原文当作一篇完整文章来拆：先看问题背景，再看方法或系统流程，最后检查证据、局限和可复用判断。</p>
+        <p><strong>核心判断：</strong>{escape(summary)} 这句话只是入口，完整分析会继续追问作者如何支撑它、哪些环节仍缺证据、它应该如何影响后续日报跟踪。</p>
       </section>
 
-      <section>
-        <p class="eyebrow">文章架构</p>
-        <h2>从问题到证据的结构</h2>
-        <div class="grid">
-          <article class="card"><h3>问题入口</h3><p>{escape(str(visual["question"]))}</p></article>
-          <article class="card"><h3>核心判断</h3><p>{escape(str(visual["takeaway"]))}</p></article>
-          <article class="card"><h3>分类理由</h3><p>这条内容被归入 {escape(category_id)}，用于后续报告聚类和同类追踪。</p></article>
-          <article class="card"><h3>开放边界</h3><p>需要继续检查复现性、证据强度、真实落地条件和风险假设。</p></article>
+      {section_html}
+
+      <section class="flow-card">
+        <p class="eyebrow">方法或系统流程</p>
+        <h2>方法或系统流程</h2>
+        <p>把文章里的关键流程拆成连续步骤，方便日报、二级页面和后续追踪复用。</p>
+        <div class="flow-grid">{flow_html}</div>
+      </section>
+
+      <section class="article-section">
+        <p class="eyebrow">证据与边界</p>
+        <h2>证据与边界</h2>
+        <p>这一节检查哪些内容支撑结论，哪些地方还不能过度解释。</p>
+        <div class="evidence-grid">
+          <article><h3>证据来源</h3><p>优先使用原文、论文页、官方博客或仓库 README；引用必须保留链接，不能只写“据称”。</p></article>
+          <article><h3>边界条件</h3><p>如果原文缺少实验、复现代码、失败案例或安全假设，HTML 分析稿必须明确标出，而不是用摘要掩盖。</p></article>
+          <article><h3>后续追踪</h3><p>把可复现性、部署可行性、评测覆盖和风险外溢作为下一次自动化运行的观察项。</p></article>
         </div>
       </section>
 
-      <section>
-        <p class="eyebrow">流程拆解</p>
-        <h2>自动化读到的关键流程</h2>
-        <div class="grid">{flow_html}</div>
-      </section>
-
-      <section>
-        <p class="eyebrow">信号指标</p>
-        <h2>为什么值得进入日报</h2>
-        <div class="grid">{metric_html}</div>
+      <section class="article-section note">
+        <p class="eyebrow">可复用到日报的判断</p>
+        <h2>可复用到日报的判断</h2>
+        <p>它提供了一个可追踪的研究或产品信号：来源、发布时间、分类、摘要和完整 HTML 分析稿可以被首页卡片、日报页、Mac 本地缓存和后续聚类共同复用。JSON 只负责索引；真正面向用户的解释在这个 HTML 文件里。</p>
+        <a class="footer-link" href="{escape(source_url)}">打开原文</a>
       </section>
     </main>
   </body>
 </html>
-"""
+""")
+
+
+def _category_label(category_id: str) -> str:
+    return {
+        "llm-agent": "大模型 Agent 相关",
+        "llm-post-training": "大模型后训练相关",
+        "ai-safety": "AI 安全相关",
+    }.get(category_id, category_id)
+
+
+def _strip_trailing_whitespace(html: str) -> str:
+    return "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+
+
+def _flow_for_category(category_id: str, tags: list[str]) -> list[dict[str, str]]:
+    if category_id == "llm-post-training":
+        return [
+            {"title": "定位训练阶段", "body": "先判断文章讨论的是 SFT、强化学习、OPD、蒸馏、偏好优化还是适配器训练。"},
+            {"title": "拆开优化目标", "body": "继续追踪损失函数、采样策略、教师信号和学生模型更新之间的关系。"},
+            {"title": "检查实验设置", "body": "把数据集、基座模型、对照组、消融实验和失败样本单独列出。"},
+            {"title": "归纳工程风险", "body": "评估它在真实后训练管线里可能带来的成本、稳定性和泛化边界。"},
+        ]
+    if category_id == "ai-safety":
+        return [
+            {"title": "识别风险场景", "body": "先确认文章讨论的是网络攻防、生物安全、模型治理、越狱还是权限边界。"},
+            {"title": "追踪攻击或治理链路", "body": "把风险如何出现、被放大、被检测和被处置的过程拆开。"},
+            {"title": "检查证据强度", "body": "区分真实事件、红队实验、政策建议和推测性风险。"},
+            {"title": "形成安全观察项", "body": "把需要长期跟踪的阈值、能力边界和治理动作写入日报。"},
+        ]
+    return [
+        {"title": "识别任务入口", "body": "先判断文章里的 Agent 是解决工具调用、工作流、记忆、规划还是代码执行。"},
+        {"title": "拆解系统模块", "body": f"围绕 {', '.join(tags[:3]) or '核心标签'} 追踪模型、工具、状态和用户界面的关系。"},
+        {"title": "验证落地路径", "body": "检查是否有代码、产品界面、部署方式、评测案例或真实用户场景。"},
+        {"title": "留下复用判断", "body": "判断它是产品参考、工程组件、研究趋势，还是只适合作为背景信号。"},
+    ]
+
+
+def _section_cards(title: str, topic: str, summary: str, tags: list[str]) -> list[dict[str, str]]:
+    tag_text = "、".join(tags[:4]) if tags else "来源、方法、证据和边界"
+    return [
+        {
+            "eyebrow": "1. 引言",
+            "title": "先说明问题为什么出现",
+            "body": f"围绕《{title}》，分析稿先说明它为什么属于「{topic}」。这一段不急着给结论，而是把用户需要理解的背景、问题动机和当前技术脉络讲清楚。",
+        },
+        {
+            "eyebrow": "2. 文章架构拆解",
+            "title": "按原文结构重建作者论证",
+            "body": f"自动化会把原文拆成问题、方法、证据和局限四层，并记录摘要入口：{summary}。如果原文有图、表或系统示意图，HTML 中应保留原始图片链接或镜像后的 public asset。",
+        },
+        {
+            "eyebrow": "3. 逐部分细读",
+            "title": "每一节都要解释它承担的作用",
+            "body": f"不是只摘关键词，而是解释每一部分在整篇文章里的职责：哪些段落定义问题，哪些段落提出方法，哪些段落验证结果，哪些段落暴露限制。当前重点标签是：{tag_text}。",
+        },
+        {
+            "eyebrow": "4. 讨论与局限",
+            "title": "把不能直接下结论的地方讲出来",
+            "body": "如果文章缺少公开代码、样本规模较小、评测条件与真实场景有差距，或者安全假设过窄，分析稿必须保留这些不确定性。",
+        },
+    ]

@@ -80,9 +80,11 @@ test("Chinese visual card opens a second-level analysis page", async ({ page }, 
   await page.getByRole("link", { name: "Dify：生产级 Agentic Workflow 平台" }).first().click();
   await expect(page).toHaveURL(/\/items\/dify-agent-platform$/);
   await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "AI 深度解析" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "文章架构拆解" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "逐部分细读" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "HTML 深度分析稿" })).toBeVisible();
+  const analysisFrame = page.frameLocator(".article-html-frame");
+  await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "按原文结构重建作者论证" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "每一节都要解释它承担的作用" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
   await expect(page.getByLabel("分类位置").getByText("大模型 Agent 相关")).toBeVisible();
@@ -99,8 +101,10 @@ test("English detail page shows post-training classification", async ({ page }) 
 
   await page.goto("/en/items/trust-region-opd");
   await expect(page.getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "AI Deep Analysis" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Article Architecture" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "HTML Analysis Document" })).toBeVisible();
+  const analysisFrame = page.frameLocator(".article-html-frame");
+  await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "证据与边界" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
   await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();

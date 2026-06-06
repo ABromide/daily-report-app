@@ -1,6 +1,30 @@
 {
   "files": [
     {
+      "bytes": 6284,
+      "content_type": "text/html",
+      "path": "articles/2026/06/06/itm_3fcb6ef14e59761c/index.html",
+      "sha256": "d68b90d539fa98cb76ddd98677335dabfd6a1886b6633bac59ff044d5b7d3456"
+    },
+    {
+      "bytes": 6287,
+      "content_type": "text/html",
+      "path": "articles/2026/06/06/itm_ab7b9d44942b5524/index.html",
+      "sha256": "f4f2a52cf390a510137844634aad1cf8d970a97511bea791d5d30531f173bebd"
+    },
+    {
+      "bytes": 6287,
+      "content_type": "text/html",
+      "path": "articles/2026/06/06/itm_f4b29831fa65e61f/index.html",
+      "sha256": "e43de2c26fdb97abe37bc347d8506d8a86d2e54b36b84042b7fde52b15322af6"
+    },
+    {
+      "bytes": 955,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/sample-20260606t000000z.json",
+      "sha256": "b6a4a7a61e03b88a9671fae93815f2a8390bbedfecb020194335fd030ca09580"
+    },
+    {
       "bytes": 353,
       "content_type": "application/json",
       "path": "index/days.json",
@@ -19,10 +43,10 @@
       "sha256": "255d166ae82bf8869af65a71baeef4ed1b6bb2e6d62922b33ba6fdbd6e21f716"
     },
     {
-      "bytes": 5007,
+      "bytes": 5232,
       "content_type": "application/x-ndjson",
       "path": "items/2026/06/06/items.jsonl",
-      "sha256": "de6ca25c6d23d1ad2cb0a9f93bdb1ff3de073c862347a36761c519a02b60b482"
+      "sha256": "694bcb64ac763ba1f2334c90ec4e0437eb1e3f95a0b9686b0d34d42181a9581f"
     },
     {
       "bytes": 711,
@@ -39,7 +63,7 @@
   ],
   "generated_at": "2026-06-06T00:00:00Z",
   "root": "public",
-  "total_bytes": 8593,
-  "total_files": 6,
+  "total_bytes": 28631,
+  "total_files": 10,
   "version": 1
 }

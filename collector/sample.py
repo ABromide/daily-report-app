@@ -1,0 +1,163 @@
+from __future__ import annotations
+
+import shutil
+from dataclasses import dataclass
+from pathlib import Path
+
+from collector.archive import write_archive_record
+from collector.jsonio import JsonObject, sha256_file, write_json, write_jsonl
+from collector.manifest import build_manifest
+from collector.sample_source import (
+    SAMPLE_DATE,
+    SAMPLE_GENERATED_AT,
+    SAMPLE_PERIOD_END,
+    load_source_index,
+    sample_items,
+)
+
+
+@dataclass(frozen=True)
+class SampleGenerationResult:
+    output_root: Path
+    public_root: Path
+    latest_path: Path
+    manifest_path: Path
+    manifest_sha256: str
+    archive_record_path: Path
+
+
+def _reset_generated_dir(path: Path) -> None:
+    if path.exists():
+        shutil.rmtree(path)
+    path.mkdir(parents=True, exist_ok=True)
+
+
+def _date_parts() -> tuple[str, str, str]:
+    year, month, day = SAMPLE_DATE.split("-")
+    return year, month, day
+
+
+def _hourly_report(items: list[JsonObject]) -> JsonObject:
+    item_ids = [str(item["id"]) for item in items]
+    return {
+        "version": 1,
+        "report_id": "hourly:2026-06-06T00:00:00Z",
+        "generated_at": SAMPLE_GENERATED_AT,
+        "period": {
+            "start": SAMPLE_GENERATED_AT,
+            "end": SAMPLE_PERIOD_END,
+        },
+        "item_count": len(items),
+        "top_item_ids": item_ids,
+        "summary": "Three deterministic public research signals were collected for fixture validation.",
+        "sections": [
+            {
+                "heading": "Agent research signals",
+                "summary": "Tool planning, evidence-based evaluation, and manifest-backed sync all appear in the sample batch.",
+                "item_ids": item_ids,
+            }
+        ],
+    }
+
+
+def _daily_report(items: list[JsonObject]) -> JsonObject:
+    item_ids = [str(item["id"]) for item in items]
+    return {
+        "version": 1,
+        "date": SAMPLE_DATE,
+        "generated_at": SAMPLE_GENERATED_AT,
+        "item_count": len(items),
+        "top_item_ids": item_ids,
+        "summary": "The deterministic daily report exercises item, source, report, and manifest validation without network access.",
+        "sections": [
+            {
+                "heading": "Public data contract",
+                "summary": "The sample day covers JSONL items, hourly summaries, daily summaries, and sha256 manifest entries.",
+                "item_ids": item_ids,
+            }
+        ],
+        "source_counts": {
+            "sample-research-feed": len(items),
+        },
+    }
+
+
+def generate_sample(output_root: Path) -> SampleGenerationResult:
+    public_root = output_root / "public"
+    archive_root = output_root / "archive"
+    _reset_generated_dir(public_root)
+    _reset_generated_dir(archive_root)
+
+    year, month, day = _date_parts()
+    manifest_rel = f"manifests/{year}/{month}/{day}/000000Z.manifest.json"
+    items_rel = f"items/{year}/{month}/{day}/items.jsonl"
+    hourly_rel = f"reports/hourly/{year}/{month}/{day}/00.json"
+    daily_rel = f"reports/daily/{year}/{month}/{day}.json"
+
+    items = sample_items()
+    source_index = load_source_index()
+
+    sources_path = public_root / "index" / "sources.json"
+    items_path = public_root / items_rel
+    hourly_path = public_root / hourly_rel
+    daily_path = public_root / daily_rel
+    days_path = public_root / "index" / "days.json"
+    latest_path = public_root / "index" / "latest.json"
+    manifest_path = public_root / manifest_rel
+
+    write_json(sources_path, {**source_index, "generated_at": SAMPLE_GENERATED_AT})
+    write_jsonl(items_path, items)
+    write_json(hourly_path, _hourly_report(items))
+    write_json(daily_path, _daily_report(items))
+    write_json(
+        days_path,
+        {
+            "version": 1,
+            "generated_at": SAMPLE_GENERATED_AT,
+            "days": [
+                {
+                    "date": SAMPLE_DATE,
+                    "item_count": len(items),
+                    "hourly_report_count": 1,
+                    "items_path": items_rel,
+                    "daily_report_path": daily_rel,
+                    "manifest_path": manifest_rel,
+                }
+            ],
+        },
+    )
+
+    manifest = build_manifest(
+        public_root,
+        SAMPLE_GENERATED_AT,
+        [days_path, sources_path, items_path, hourly_path, daily_path],
+    )
+    write_json(manifest_path, manifest)
+    manifest_sha256 = sha256_file(manifest_path)
+    write_json(
+        latest_path,
+        {
+            "version": 1,
+            "generated_at": SAMPLE_GENERATED_AT,
+            "latest_day": SAMPLE_DATE,
+            "manifest_path": manifest_rel,
+            "manifest_sha256": manifest_sha256,
+        },
+    )
+
+    archive_record_path = write_archive_record(
+        archive_root,
+        run_id="sample-20260606T000000Z",
+        generated_at=SAMPLE_GENERATED_AT,
+        manifest_path=manifest_rel,
+        manifest_sha256=manifest_sha256,
+        item_count=len(items),
+    )
+    return SampleGenerationResult(
+        output_root=output_root,
+        public_root=public_root,
+        latest_path=latest_path,
+        manifest_path=manifest_path,
+        manifest_sha256=manifest_sha256,
+        archive_record_path=archive_record_path,
+    )

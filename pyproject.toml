@@ -12,10 +12,18 @@ dependencies = [
 [project.scripts]
 daily-report = "collector.cli:main"
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [dependency-groups]
 dev = [
+  "pyright>=1.1.407",
   "pytest>=9.0.1",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["collector"]
 
 [tool.pyright]
 include = ["collector", "tests"]
@@ -25,4 +33,3 @@ typeCheckingMode = "strict"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
-

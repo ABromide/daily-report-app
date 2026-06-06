@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-report.local/schemas/public/hourly-report.schema.json",
+  "title": "Hourly public report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "report_id",
+    "generated_at",
+    "period",
+    "item_count",
+    "top_item_ids",
+    "summary",
+    "sections"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "report_id": { "type": "string", "pattern": "^hourly:[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:00:00Z$" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" }
+      }
+    },
+    "item_count": { "type": "integer", "minimum": 0 },
+    "top_item_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^itm_[a-f0-9]{16}$" },
+      "uniqueItems": true
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["heading", "summary", "item_ids"],
+        "properties": {
+          "heading": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "item_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^itm_[a-f0-9]{16}$" },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-report.local/schemas/public/days.schema.json",
+  "title": "Public day index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generated_at", "days"],
+  "properties": {
+    "version": { "const": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "item_count",
+          "hourly_report_count",
+          "items_path",
+          "daily_report_path",
+          "manifest_path"
+        ],
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "item_count": { "type": "integer", "minimum": 0 },
+          "hourly_report_count": { "type": "integer", "minimum": 0 },
+          "items_path": {
+            "type": "string",
+            "pattern": "^items/[0-9]{4}/[0-9]{2}/[0-9]{2}/items\\.jsonl$"
+          },
+          "daily_report_path": {
+            "type": "string",
+            "pattern": "^reports/daily/[0-9]{4}/[0-9]{2}/[0-9]{2}\\.json$"
+          },
+          "manifest_path": {
+            "type": "string",
+            "pattern": "^manifests/[0-9]{4}/[0-9]{2}/[0-9]{2}/[0-9]{6}Z\\.manifest\\.json$"
+          }
+        }
+      }
+    }
+  }
+}

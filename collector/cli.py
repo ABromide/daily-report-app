@@ -6,6 +6,7 @@ from typing import Sequence
 
 from collector.finalize_public_run import finalize_public_run
 from collector.paths import FIXTURE_PUBLIC_ROOT
+from collector.publish_public_run import DEFAULT_REPO, PublishPublicRunError, automation_preflight, publish_public_run
 from collector.sample import generate_sample
 from collector.secrets import secret_scan
 from collector.validation import format_issues, validate_public
@@ -76,6 +77,60 @@ def _finalize_public_run_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _automation_preflight_command(args: argparse.Namespace) -> int:
+    try:
+        result = automation_preflight(
+            public_root=args.public_root,
+            data_worktree=args.data_worktree,
+            repo=args.repo,
+            remote_checks=not args.skip_remote_checks,
+        )
+    except PublishPublicRunError as exc:
+        print(str(exc))
+        return 1
+    print(f"preflight public root: {result.public_root}")
+    print(f"preflight data worktree: {result.data_worktree}")
+    for check in result.checks:
+        print(f"check: {check}")
+    return 0
+
+
+def _publish_public_run_command(args: argparse.Namespace) -> int:
+    try:
+        result = publish_public_run(
+            public_root=args.public_root,
+            data_worktree=args.data_worktree,
+            payload_path=args.payload,
+            run_id=args.run_id,
+            generated_at=args.generated_at,
+            written_item_ids=args.written_item_id,
+            repo=args.repo,
+            commit_message=args.commit_message,
+            push=not args.no_push,
+            dispatch=not args.no_dispatch,
+            remote_checks=not args.skip_remote_checks,
+            push_without_proxy=args.push_without_proxy,
+        )
+    except (PublishPublicRunError, ValueError) as exc:
+        print(str(exc))
+        return 1
+    for check in result.checks:
+        print(f"check: {check}")
+    print(f"finalized public data under {result.finalize.public_root}")
+    if result.finalize.audit_path is not None:
+        print(f"audit: {result.finalize.audit_path}")
+    print(f"manifest: {result.finalize.manifest_path} ({result.finalize.manifest_sha256})")
+    print(f"latest: {result.finalize.latest_path}")
+    print(f"items: {result.finalize.item_count}")
+    if result.committed:
+        print(f"commit: {result.commit_sha}")
+    else:
+        print(f"commit: skipped, no staged public changes ({result.commit_sha})")
+    print(f"push: {'sent' if result.pushed else 'skipped'}")
+    print(f"dispatch: {'sent' if result.dispatched else 'skipped'}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="daily-report")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -111,6 +166,32 @@ def build_parser() -> argparse.ArgumentParser:
     finalize_parser.add_argument("--validate", action="store_true")
     finalize_parser.add_argument("--secret-scan", action="store_true")
 
+    preflight_parser = subparsers.add_parser(
+        "automation-preflight",
+        help="check data worktree, public root, git remote, and GitHub CLI readiness",
+    )
+    preflight_parser.add_argument("--public-root", type=Path, required=True)
+    preflight_parser.add_argument("--data-worktree", type=Path, required=True)
+    preflight_parser.add_argument("--repo", default=DEFAULT_REPO)
+    preflight_parser.add_argument("--skip-remote-checks", action="store_true")
+
+    publish_parser = subparsers.add_parser(
+        "publish-public-run",
+        help="finalize public data, validate, secret-scan, commit data worktree, push data branch, and dispatch",
+    )
+    publish_parser.add_argument("--public-root", type=Path, required=True)
+    publish_parser.add_argument("--data-worktree", type=Path, required=True)
+    publish_parser.add_argument("--payload", type=Path)
+    publish_parser.add_argument("--run-id")
+    publish_parser.add_argument("--generated-at")
+    publish_parser.add_argument("--written-item-id", action="append", default=[])
+    publish_parser.add_argument("--repo", default=DEFAULT_REPO)
+    publish_parser.add_argument("--commit-message")
+    publish_parser.add_argument("--no-push", action="store_true")
+    publish_parser.add_argument("--no-dispatch", action="store_true")
+    publish_parser.add_argument("--skip-remote-checks", action="store_true")
+    publish_parser.add_argument("--push-without-proxy", action="store_true")
+
     return parser
 
 
@@ -135,6 +216,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _secret_scan_command(args.path)
     if command == "finalize-public-run":
         return _finalize_public_run_command(args)
+    if command == "automation-preflight":
+        return _automation_preflight_command(args)
+    if command == "publish-public-run":
+        return _publish_public_run_command(args)
     return 1
 
 

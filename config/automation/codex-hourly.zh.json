@@ -76,6 +76,26 @@
       "content_hash"
     ]
   },
+  "automation_tools": {
+    "principle": "重复、流程化、易出错的步骤必须优先交给工具执行；模型只负责调研、深读、写 Markdown 和准备小 payload。",
+    "preflight": {
+      "command": "uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data",
+      "purpose": "检查 data worktree、origin/data 和 GitHub CLI 权限，避免写入或 push 到最后才失败。"
+    },
+    "publish": {
+      "command": "scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"",
+      "purpose": "一键执行 finalize-public-run、validate-public、secret-scan、git add/commit/push 和 repository_dispatch。"
+    },
+    "local_test": {
+      "command": "scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: local publish test\" --no-push --no-dispatch --skip-remote-checks",
+      "purpose": "本地测试完整 finalize、校验和 commit 流程，不触发远端副作用。"
+    },
+    "forbidden_manual_steps": [
+      "不要手工 sed/cat 展开 latest、days、sources、known-links、audit 或 manifest 大 JSON。",
+      "不要手工逐字段维护 public/index/known-links.json、public/index/sources.json、public/index/days.json、public/index/latest.json、audit JSON 或 manifest JSON。",
+      "不要手工拼接 git add/commit/push/dispatch；除非 publish-public-run 明确失败并需要诊断，否则直接调用工具。"
+    ]
+  },
   "analysis_requirements": {
     "mode": "depth_first",
     "per_run_item_policy": "质量优先。默认每小时写入 1 到 3 篇；如果只有 1 篇真正值得深读且可验证，允许本次只提交 1 篇。禁止为了凑数量写浅分析。",
@@ -316,23 +336,23 @@
         ]
       },
       {
-        "name": "10. 调用 finalize 工具重建索引、审计与 manifest",
+        "name": "10. 调用一键发布工具重建索引、审计、manifest 并提交",
         "instructions": [
-          "运行 uv run daily-report finalize-public-run --public-root <public-root> --payload <payload.json> --validate --secret-scan。",
+          "发布前优先运行权限预检：uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data。",
+          "写完 Markdown 和 payload 后，直接运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"。",
+          "publish-public-run 会自动调用 finalize-public-run，并执行 validate-public、secret-scan、data worktree git add/commit/push 和 repository_dispatch。",
           "finalize-public-run 会合并 items，跨所有历史 items 检查 canonical_url、external_id、title_hash、content_hash 四个去重键；如果报 duplicate，必须换同类替代候选，不要手动改 known-links。",
-          "finalize-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON。",
-          "finalize-public-run 会确保每个 Markdown 文件都进入 manifest，并带 sha256、bytes 和 text/markdown content_type。",
-          "如果本轮已经手动写入 items.jsonl 而没有 payload，也可以运行 uv run daily-report finalize-public-run --public-root <public-root> --run-id <run-id> --generated-at <utc-generated-at> --written-item-id <item-id> --validate --secret-scan。"
+          "publish-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON，并确保 Markdown 文件进入 manifest。"
         ]
       },
       {
-        "name": "11. 验证和远端提交",
+        "name": "11. 发布结果记录与失败处理",
         "instructions": [
-          "如果 finalize-public-run 已经使用 --validate --secret-scan，最终报告中记录该命令即可；否则再运行 uv run daily-report validate-public <public-root> 和 uv run daily-report secret-scan <public-root>。",
-          "通过后只使用 data worktree 的绝对路径提交：git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data add -A public；git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data commit -m \"data: <本轮简短说明>\"；git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data push origin data。",
-          "不要使用临时 GIT_INDEX_FILE 伪造提交；如果普通 git -C 命令被沙箱拦住，要报告为 Codex rules 权限问题，而不是继续手工绕过 index。",
-          "如果 push 因 127.0.0.1:17891 代理不可用失败，可以先检查代理端口；必要时重试 git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data -c http.proxy= -c https.proxy= push origin data，并把 DNS 或代理错误写入最终报告。",
-          "push 成功后触发 repository_dispatch: data-updated。"
+          "最终报告记录 publish-public-run 输出的 audit、manifest、latest、items、commit、push 和 dispatch 状态。",
+          "不要使用临时 GIT_INDEX_FILE 伪造提交；如果 publish-public-run 的普通 git 命令被沙箱拦住，要报告为 Codex rules 权限问题，而不是继续手工绕过 index。",
+          "如果 push 因 127.0.0.1:17891 代理不可用失败，可用 scripts/automation/publish-public-run.sh 增加 --push-without-proxy 重试，并把 DNS 或代理错误写入最终报告。",
+          "如果只想测试本地流程，运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: local publish test\" --no-push --no-dispatch --skip-remote-checks。",
+          "如果 publish-public-run 成功且 push/dispatch 为 sent，不需要再单独运行 validate-public、secret-scan、git push 或 dispatch-data-updated.sh。"
         ]
       }
     ]

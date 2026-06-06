@@ -29,6 +29,12 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert contract["analysis_requirements"]["minimum_chinese_chars"] >= 5000
     assert contract["analysis_requirements"]["style_reference"]["url"] == "https://www.mlpod.com/1548.html"
     assert "MLPod" in contract["analysis_requirements"]["style_reference"]["name"]
+    assert "automation_tools" in contract
+    assert "publish-public-run.sh" in contract["automation_tools"]["publish"]["command"]
+    assert "automation-preflight" in contract["automation_tools"]["preflight"]["command"]
+    assert "不要手工拼接 git add/commit/push/dispatch" in " ".join(
+        contract["automation_tools"]["forbidden_manual_steps"]
+    )
     assert "required_sections" not in contract["analysis_requirements"]
     assert contract["analysis_requirements"]["suggested_section_count"] >= 8
     assert "论文或项目元信息" in contract["analysis_requirements"]["suggested_sections"]
@@ -108,6 +114,7 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "summary_zh 不是一句营销摘要" in prompt_text
     assert "需要分点的地方必须分点" in prompt_text
     assert "Mermaid 图" in prompt_text
+    assert "publish-public-run" in prompt_text
     assert "finalize-public-run" in prompt_text
     assert "不要手工读取" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])

@@ -263,6 +263,7 @@ http://127.0.0.1:4321/en
 uv run daily-report generate-sample --output fixtures/public-data
 uv run daily-report automation-dry-run --output tmp/automation-dry-run
 uv run daily-report finalize-public-run --public-root fixtures/public-data/public --generated-at 2026-06-06T00:00:00Z --run-id local-reconcile --validate --secret-scan
+uv run daily-report automation-preflight --public-root fixtures/public-data/public --data-worktree fixtures/public-data --skip-remote-checks
 uv run daily-report validate-fixtures
 uv run daily-report validate-public fixtures/public-data/public
 uv run daily-report secret-scan fixtures/public-data/public
@@ -389,29 +390,36 @@ config/automation/codex-hourly.zh.json
 }
 ```
 
-调用：
+写完 Markdown 和小 payload 后，优先调用一键发布工具。它会依次执行 `finalize-public-run`、`validate-public`、`secret-scan`、`git add/commit/push` 和 `repository_dispatch`：
 
 ```bash
-uv run daily-report finalize-public-run \
-  --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public \
+scripts/automation/publish-public-run.sh \
   --payload tmp/codex-hourly-20260606t150000z.payload.json \
-  --validate \
-  --secret-scan
+  --run-id codex-hourly-20260606t150000z \
+  --commit-message "data: add hourly analysis"
 ```
 
-如果本轮已经写好了 `items.jsonl`，也可以不传 payload：
+发布前可先做权限和远端预检。这个命令会检查 data worktree、`origin/data` 和 GitHub CLI 状态：
 
 ```bash
-uv run daily-report finalize-public-run \
+uv run daily-report automation-preflight \
   --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public \
-  --run-id codex-hourly-20260606t150000z \
-  --generated-at 2026-06-06T15:00:00Z \
-  --written-item-id itm_0123456789abcdef \
-  --validate \
-  --secret-scan
+  --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data
 ```
 
-`finalize-public-run` 会跨所有历史 items 检查 `canonical_url`、`external_id`、`title_hash` 和 `content_hash`。如果命中重复，它会直接失败；自动化应该换同类替代候选，而不是手工编辑 `known-links.json`。
+如果只想本地测试完整流程，不 push、不 dispatch：
+
+```bash
+scripts/automation/publish-public-run.sh \
+  --payload tmp/codex-hourly-20260606t150000z.payload.json \
+  --run-id codex-hourly-20260606t150000z \
+  --commit-message "data: local publish test" \
+  --no-push \
+  --no-dispatch \
+  --skip-remote-checks
+```
+
+`publish-public-run` 内部会调用 `finalize-public-run`，并跨所有历史 items 检查 `canonical_url`、`external_id`、`title_hash` 和 `content_hash`。如果命中重复，它会直接失败；自动化应该换同类替代候选，而不是手工编辑 `known-links.json`。
 
 本仓库还提供一个真实调研样例生成脚本，用来在本地复现“深度优先”的 public data：
 
@@ -431,18 +439,10 @@ uv run pytest tests/test_automation_contract.py
 实际创建定时 Codex 自动化前，建议先完成三步：
 
 1. 本地 dry run，确认新数据能写入临时目录。
-2. 将临时数据校验通过：`validate-public`、`secret-scan`。
-3. 用 dry run dispatch 检查 GitHub 事件 payload。
+2. 执行 `automation-preflight`，确认 data worktree、`origin/data` 和 `gh` 权限可用。
+3. 用 `publish-public-run --no-push --no-dispatch --skip-remote-checks` 测试本地 finalize、校验和 commit。
 
-自动化发布到 `data` 分支时应使用 data worktree 的绝对路径，避免当前工作目录漂移：
-
-```bash
-git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data add -A public
-git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data commit -m "data: add report"
-git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data push origin data
-```
-
-不要用临时 `GIT_INDEX_FILE` 作为常规发布路径。Codex 的 `workspace-write` 即使包含 data worktree，也仍会保护 `.git` 和 worktree 指向的真实 gitdir；如果 `git add` 或 `git commit` 被拦截，应补充本机 Codex rules，而不是让自动化手工维护 index。
+不要让自动化模型手工维护 `known-links/latest/days/sources/audit/manifest`，也不要让它临时拼 `git add/commit/push/dispatch`。如果 `publish-public-run` 中的普通 git 命令被拦截，应补充本机 Codex rules，而不是使用临时 `GIT_INDEX_FILE` 绕过。
 
 ## 验证标准
 

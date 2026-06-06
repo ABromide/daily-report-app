@@ -1,0 +1,12 @@
+.DS_Store
+
+# Local automation scratch space.
+tmp/
+.tmp/
+*.tmp
+*.bak
+*.swp
+
+# Soft-delete quarantine. Automation must move files here instead of deleting.
+.automation-trash/
+public/.automation-trash/

@@ -1,12 +1,12 @@
 ---
 import Layout from "../components/Layout.astro";
-import Workstation from "../components/Workstation.astro";
-import { loadDashboardData } from "../lib/data";
+import ShowcaseHome from "../components/ShowcaseHome.astro";
 import { copy } from "../lib/i18n";
+import { getShowcaseData } from "../lib/showcaseContent";
 
-const data = await loadDashboardData();
+const data = getShowcaseData("zh");
 ---
 
-<Layout title="来源 · Daily Report App" description={copy.zh.layoutDescription} locale="zh">
-  <Workstation data={data} activeView="sources" locale="zh" />
+<Layout title="AI 研究简报 · Daily Report App" description={copy.zh.layoutDescription} locale="zh">
+  <ShowcaseHome data={data} locale="zh" />
 </Layout>

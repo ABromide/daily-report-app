@@ -1,0 +1,284 @@
+---
+import type { Locale } from "../lib/i18n";
+import type { ShowcaseData } from "../lib/showcaseContent";
+import { formatDateTime } from "../lib/format";
+
+interface Props {
+  data: ShowcaseData;
+  locale: Locale;
+}
+
+const { data, locale } = Astro.props;
+const labels = {
+  zh: {
+    github: "查看 GitHub 仓库",
+    search: "搜索",
+    allTopics: "全部主题",
+    featured: "今日精选",
+    featuredHint: "优先展示最值得点开的报告、论文和代码。",
+    clusters: "主题聚类",
+    clustersHint: "Agent 已把相关论文、博客和代码合并成阅读路径。",
+    timeline: "最新更新",
+    timelineHint: "按时间倒序排列，适合快速扫一遍今日新增。",
+    open: "打开原文",
+    noResults: "没有找到匹配内容。换个关键词试试。",
+    minutes: "分钟",
+    clear: "清除筛选"
+  },
+  en: {
+    github: "Open GitHub repository",
+    search: "Search",
+    allTopics: "All topics",
+    featured: "Featured today",
+    featuredHint: "The most useful briefs, papers, and repositories to open first.",
+    clusters: "Topic clusters",
+    clustersHint: "The agent grouped related papers, blogs, and code into reading paths.",
+    timeline: "Latest updates",
+    timelineHint: "Sorted by time for a fast daily scan.",
+    open: "Open source",
+    noResults: "No matching content. Try another keyword.",
+    minutes: "min",
+    clear: "Clear filters"
+  }
+}[locale];
+
+const alternatePath = locale === "zh" ? "/en" : "/";
+const homePath = locale === "zh" ? "/" : "/en";
+const featuredDocs = data.documents.slice(0, 3);
+---
+
+<main class="showcase-page" data-locale={locale}>
+  <header class="site-header">
+    <a class="site-brand" href={homePath} aria-label={data.hero.eyebrow}>
+      <span>Daily Report</span>
+      <strong>{data.hero.eyebrow}</strong>
+    </a>
+    <nav class="site-actions" aria-label="Header actions">
+      <a class="language-link" href={alternatePath}>{locale === "zh" ? "English" : "中文"}</a>
+      <a class="github-link" href={data.repoUrl} aria-label={labels.github} title={labels.github}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.88c.51.1.7-.22.7-.49v-1.8c-2.86.62-3.46-1.22-3.46-1.22-.47-1.19-1.14-1.5-1.14-1.5-.93-.64.07-.63.07-.63 1.03.07 1.57 1.06 1.57 1.06.92 1.56 2.4 1.11 2.99.85.09-.66.36-1.11.65-1.37-2.28-.26-4.68-1.14-4.68-5.07 0-1.12.4-2.04 1.05-2.76-.11-.26-.46-1.31.1-2.72 0 0 .86-.28 2.82 1.05A9.76 9.76 0 0 1 12 6.72c.87 0 1.74.12 2.56.35 1.95-1.33 2.81-1.05 2.81-1.05.56 1.41.21 2.46.1 2.72.66.72 1.05 1.64 1.05 2.76 0 3.94-2.4 4.8-4.69 5.06.37.32.7.95.7 1.92v2.84c0 .27.18.59.71.49A10.2 10.2 0 0 0 12 1.8Z" />
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <section class="showcase-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">{data.hero.eyebrow}</p>
+      <h1>{data.hero.title}</h1>
+      <p>{data.hero.summary}</p>
+      <div class="hero-search" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m20.2 18.9-4.35-4.35a7.6 7.6 0 1 0-1.3 1.3l4.35 4.35a.92.92 0 0 0 1.3-1.3ZM5.25 10.45a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0Z" />
+        </svg>
+        <label class="sr-only" for="content-search">{labels.search}</label>
+        <input id="content-search" type="search" placeholder={data.hero.searchPlaceholder} autocomplete="off" />
+      </div>
+    </div>
+    <aside class="hero-note" aria-label={data.hero.updateLabel}>
+      <span>{data.hero.updateLabel}</span>
+      <div>
+        {data.stats.map((stat) => (
+          <p><strong>{stat.value}</strong><small>{stat.label}</small></p>
+        ))}
+      </div>
+    </aside>
+  </section>
+
+  <section class="filter-bar" aria-label="Content filters">
+    <button class="filter-chip is-active" type="button" data-filter="all">{labels.allTopics}</button>
+    {data.clusters.map((cluster) => (
+      <button class="filter-chip" type="button" data-cluster={cluster.id}>{cluster.title}</button>
+    ))}
+    {data.filters.filter((filter) => filter.id !== "all").map((filter) => (
+      <button class="filter-chip type-chip" type="button" data-type={filter.id}>{filter.label}</button>
+    ))}
+    <button class="clear-filter" type="button">{labels.clear}</button>
+  </section>
+
+  <section class="featured-section" aria-labelledby="featured-title">
+    <div class="showcase-section-heading">
+      <div>
+        <p class="eyebrow">{labels.featured}</p>
+        <h2 id="featured-title">{labels.featured}</h2>
+      </div>
+      <p>{labels.featuredHint}</p>
+    </div>
+    <div class="featured-grid">
+      {featuredDocs.map((document) => (
+        <article class="content-card content-card-featured" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
+          <div class="content-card-meta">
+            <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
+            <span>{formatDateTime(document.publishedAt, locale)}</span>
+            <span>{document.readingMinutes} {labels.minutes}</span>
+          </div>
+          <h3>{document.title}</h3>
+          <p>{document.summary}</p>
+          <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
+          <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
+          <div class="source-row">
+            <img src={document.faviconUrl} alt="" loading="lazy" />
+            <span>{document.sourceName}</span>
+            <a href={document.url}>{labels.open}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="cluster-section" aria-labelledby="clusters-title">
+    <div class="showcase-section-heading">
+      <div>
+        <p class="eyebrow">{labels.clusters}</p>
+        <h2 id="clusters-title">{labels.clusters}</h2>
+      </div>
+      <p>{labels.clustersHint}</p>
+    </div>
+    <div class="cluster-list">
+      {data.clusters.map((cluster) => (
+        <article class="cluster-panel" data-cluster-panel data-cluster={cluster.id}>
+          <div class="cluster-copy">
+            <time datetime={cluster.lastUpdatedAt}>{formatDateTime(cluster.lastUpdatedAt, locale)}</time>
+            <h3>{cluster.title}</h3>
+            <p class="cluster-thesis">{cluster.thesis}</p>
+            <p>{cluster.summary}</p>
+            <div class="tag-row">{cluster.tags.map((tag) => <span>{tag}</span>)}</div>
+          </div>
+          <div class="cluster-documents">
+            {cluster.documents.slice(0, 4).map((document) => (
+              <article class="content-card content-card-compact" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
+                <div class="content-card-meta">
+                  <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
+                  <span>{formatDateTime(document.publishedAt, locale)}</span>
+                  <span>{document.readingMinutes} {labels.minutes}</span>
+                </div>
+                <h3>{document.title}</h3>
+                <p>{document.summary}</p>
+                <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
+                <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
+                <div class="source-row">
+                  <img src={document.faviconUrl} alt="" loading="lazy" />
+                  <span>{document.sourceName}</span>
+                  <a href={document.url}>{labels.open}</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="timeline-section" aria-labelledby="timeline-title">
+    <div class="showcase-section-heading">
+      <div>
+        <p class="eyebrow">{labels.timeline}</p>
+        <h2 id="timeline-title">{labels.timeline}</h2>
+      </div>
+      <p>{labels.timelineHint}</p>
+    </div>
+    <div class="timeline-list">
+      {data.documents.map((document) => (
+        <article class="content-card content-card-timeline" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
+          <div class="content-card-meta">
+            <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
+            <span>{formatDateTime(document.publishedAt, locale)}</span>
+            <span>{document.readingMinutes} {labels.minutes}</span>
+          </div>
+          <h3>{document.title}</h3>
+          <p>{document.summary}</p>
+          <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
+          <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
+          <div class="source-row">
+            <img src={document.faviconUrl} alt="" loading="lazy" />
+            <span>{document.sourceName}</span>
+            <a href={document.url}>{labels.open}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="no-results" hidden>{labels.noResults}</p>
+  </section>
+</main>
+
+<script>
+  const searchInput = document.querySelector("#content-search");
+  const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
+  const clearButton = document.querySelector(".clear-filter");
+  const contentCards = Array.from(document.querySelectorAll("[data-document-card]"));
+  const clusterPanels = Array.from(document.querySelectorAll("[data-cluster-panel]"));
+  const noResults = document.querySelector(".no-results");
+  let activeCluster = "all";
+  let activeType = "all";
+
+  function normalize(value: unknown) {
+    return String(value ?? "").trim().toLowerCase();
+  }
+
+  function applyFilters() {
+    const query = normalize(searchInput instanceof HTMLInputElement ? searchInput.value : "");
+    let visibleCount = 0;
+
+    for (const card of contentCards) {
+      if (!(card instanceof HTMLElement)) continue;
+      const matchesQuery = !query || normalize(card.dataset.search).includes(query);
+      const matchesCluster = activeCluster === "all" || card.dataset.cluster === activeCluster;
+      const matchesType = activeType === "all" || card.dataset.type === activeType;
+      const visible = matchesQuery && matchesCluster && matchesType;
+      card.hidden = !visible;
+      if (visible) visibleCount += 1;
+    }
+
+    for (const panel of clusterPanels) {
+      if (!(panel instanceof HTMLElement)) continue;
+      const clusterCards = Array.from(panel.querySelectorAll("[data-document-card]"));
+      const hasVisibleCard = clusterCards.some((card) => card instanceof HTMLElement && !card.hidden);
+      const matchesCluster = activeCluster === "all" || panel.dataset.cluster === activeCluster;
+      panel.hidden = !matchesCluster || !hasVisibleCard;
+    }
+
+    if (noResults instanceof HTMLElement) {
+      noResults.hidden = visibleCount > 0;
+    }
+  }
+
+  function syncButtons() {
+    for (const button of filterButtons) {
+      if (!(button instanceof HTMLElement)) continue;
+      const active =
+        (button.dataset.filter === "all" && activeCluster === "all" && activeType === "all") ||
+        (button.dataset.cluster && button.dataset.cluster === activeCluster) ||
+        (button.dataset.type && button.dataset.type === activeType);
+      button.classList.toggle("is-active", Boolean(active));
+    }
+  }
+
+  searchInput?.addEventListener("input", applyFilters);
+
+  for (const button of filterButtons) {
+    if (!(button instanceof HTMLElement)) continue;
+    button.addEventListener("click", () => {
+      if (button.dataset.filter === "all") {
+        activeCluster = "all";
+        activeType = "all";
+      } else if (button.dataset.cluster) {
+        activeCluster = button.dataset.cluster;
+        activeType = "all";
+      } else if (button.dataset.type) {
+        activeType = button.dataset.type;
+        activeCluster = "all";
+      }
+      syncButtons();
+      applyFilters();
+    });
+  }
+
+  clearButton?.addEventListener("click", () => {
+    activeCluster = "all";
+    activeType = "all";
+    if (searchInput instanceof HTMLInputElement) searchInput.value = "";
+    syncButtons();
+    applyFilters();
+  });
+</script>

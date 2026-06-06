@@ -879,12 +879,6 @@ select {
     color: var(--ink-blue);
   }
 
-  .tab-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: currentColor;
-  }
 }
 
 @media (max-width: 520px) {

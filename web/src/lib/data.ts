@@ -218,7 +218,16 @@ async function normalizePublicSnapshot(raw: unknown, publicDataDir: string): Pro
 }
 
 function findManifestPath(files: Record<string, unknown>[], role: string): string | null {
-  const file = files.find((entry) => entry.role === role);
+  const file = files.find((entry) => {
+    const filePath = asString(entry.path) ?? "";
+    return (
+      entry.role === role ||
+      (role === "hourly_report" && filePath.startsWith("reports/hourly/")) ||
+      (role === "daily_report" && filePath.startsWith("reports/daily/")) ||
+      (role === "items" && filePath.startsWith("items/") && filePath.endsWith(".jsonl")) ||
+      (role === "sources" && filePath === "index/sources.json")
+    );
+  });
   return asString(file?.path);
 }
 
@@ -231,10 +240,10 @@ function normalizePublicItems(
   const topById = new Map(topItems.map((item) => [asString(item.item_id), item]));
 
   return items.map((item, index) => {
-    const itemId = asString(item.item_id) ?? `item-${index + 1}`;
+    const itemId = asString(item.item_id ?? item.id) ?? `item-${index + 1}`;
     const top = topById.get(itemId) ?? {};
     const tags = asStringArray(item.tags);
-    const score = asNumber(item.importance_score, asNumber(top.score, 70));
+    const score = asNumber(item.importance_score ?? item.score, asNumber(top.score, 70));
 
     return {
       id: itemId,
@@ -257,6 +266,7 @@ function normalizePublicItems(
 
 function normalizePublicSources(value: unknown, items: Record<string, unknown>[]): SourceRecord[] {
   const sourceIndex = isRecord(value) && Array.isArray(value.sources) ? value.sources.map(asRecord) : [];
+  const generatedAt = isRecord(value) ? asString(value.generated_at) : null;
   const signalCounts = new Map<string, number>();
   for (const item of items) {
     const sourceId = asString(item.source_id) ?? "unknown-source";
@@ -268,13 +278,13 @@ function normalizePublicSources(value: unknown, items: Record<string, unknown>[]
     return {
       id,
       name: asString(source.name) ?? id,
-      type: asString(source.type) ?? "public",
-      status: asSourceStatus(source.status),
-      lastSeen: asString(source.last_seen ?? source.updated_at) ?? new Date().toISOString(),
-      coverage: asString(source.coverage) ?? asString(source.poll_interval) ?? "hourly",
+      type: asString(source.type ?? source.kind) ?? "public",
+      status: source.enabled === false ? "paused" : asSourceStatus(source.status),
+      lastSeen: asString(source.last_seen ?? source.updated_at) ?? generatedAt ?? new Date().toISOString(),
+      coverage: asString(source.coverage) ?? asString(source.poll_interval) ?? "fixture batch",
       latency: asString(source.latency) ?? "fixture",
       signals: signalCounts.get(id) ?? 0,
-      notes: asString(source.notes) ?? asString(source.url) ?? "Public source"
+      notes: asString(source.notes ?? source.description) ?? asString(source.url ?? source.homepage_url) ?? "Public source"
     };
   });
 }
@@ -288,6 +298,7 @@ function normalizePublicReports(
     .filter((record) => Object.keys(record).length > 0)
     .map((record, index) => {
       const trends = Array.isArray(record.trends) ? record.trends.map(asRecord) : [];
+      const sections = Array.isArray(record.sections) ? record.sections.map(asRecord) : [];
       return {
         id: asString(record.report_id) ?? `report-${index + 1}`,
         title:
@@ -297,8 +308,8 @@ function normalizePublicReports(
         owner: asString(record.generated_by) ?? "research desk",
         status: index === 0 ? ("ready" as const) : ("published" as const),
         summary: asString(record.summary) ?? "Report summary pending.",
-        sections: trends
-          .map((trend) => asString(trend.topic))
+        sections: [...trends, ...sections]
+          .map((section) => asString(section.topic ?? section.heading))
           .filter((topic): topic is string => topic !== null),
         sources: new Set(signals.map((signal) => signal.source)).size,
         signals: signals.length

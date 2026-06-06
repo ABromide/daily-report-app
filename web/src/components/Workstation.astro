@@ -16,7 +16,9 @@ interface Props {
 
 const { data, activeView } = Astro.props;
 const selectedSignal = data.signals[0];
-const selectedReport = data.reports.find((report) => report.id === selectedSignal.reportId);
+const selectedReport = selectedSignal
+  ? data.reports.find((report) => report.id === selectedSignal.reportId)
+  : data.reports[0];
 ---
 
 <div class="workstation-shell">

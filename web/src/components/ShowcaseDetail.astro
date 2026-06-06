@@ -87,7 +87,8 @@ const visualLabels = {
   keySignals: labels.keySignals,
   aiTakeaway: labels.aiTakeaway
 };
-const analysisHtmlHref = localHref(`/data/${item.analysisHtmlPath}`);
+const analysisPagePath = item.analysisHtmlPath.replace(/\/index\.html$/, "");
+const analysisHtmlHref = localHref(`/data/${analysisPagePath}`);
 const analysisFrameTitle = `${item.title} ${labels.htmlArticle}`;
 const auditEntries = locale === "zh"
   ? [

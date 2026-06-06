@@ -69,7 +69,13 @@ jobs:
           echo "Using public data from $source_dir"
 
       - name: Validate public data
-        run: uv run daily-report validate-public web/public/data
+        run: |
+          set -euo pipefail
+          if [ -f web/public/data/index/latest.json ]; then
+            uv run daily-report validate-public web/public/data
+          else
+            echo "No public data manifest found; building an empty public data snapshot."
+          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

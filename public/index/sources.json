@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-06-06T16:21:13Z",
+  "sources": [
+    {
+      "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
+      "enabled": true,
+      "homepage_url": "https://red.anthropic.com/2026/attack-navigator/",
+      "id": "anthropic-red-team",
+      "kind": "manual",
+      "name": "Anthropic Frontier Red Team"
+    },
+    {
+      "description": "OpenWebRL paper, project page, code, models and datasets for visual web-agent online RL.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.02031",
+      "id": "arxiv-openwebrl",
+      "kind": "manual",
+      "name": "arXiv / OpenWebRL Project"
+    },
+    {
+      "description": "Community paper page used for publication-window confirmation, discussion and related-paper discovery.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/papers/2606.02031",
+      "id": "huggingface-papers",
+      "kind": "manual",
+      "name": "Hugging Face Papers"
+    }
+  ],
+  "version": 1
+}

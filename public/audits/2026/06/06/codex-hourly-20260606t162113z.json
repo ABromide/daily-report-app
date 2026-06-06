@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/07/paper-20260601-openwebrl/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-06T16:21:13Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 6,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260606t162113z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "确认 OpenWebRL 在 2026-06-01 发布，处于本周窗口，且不与当前 known-links/items 重复。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已读取 arXiv PDF、项目页、GitHub README、openwebrl runtime README 与 SFT README，提取方法、公式、表格、图和失败分析。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解了 live-browser harness、13 工具动作空间、MM-GRPO、judge reward、SFT 数据流和训练入口脚本。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "搜索了标题、arXiv id、analysis/review/blog 关键词；第三方主要为 HF 讨论、alphaXiv、Papers.cool、Sophon、Takara 摘要。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "列出 5 个不能从原文直接推出的结论，并记录复现成本、Browser-Use 依赖、judge 泛化、真实网页失败和安全合规边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入 6500+ 中文字符 Markdown，包含图片、公式、表格、Mermaid 和审稿式结论。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2606020310afed01"
+  ]
+}

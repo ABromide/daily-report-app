@@ -1,0 +1,57 @@
+{
+  "files": [
+    {
+      "bytes": 28336,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/03/itm_17e42b7d5e2a2c7e/index.md",
+      "sha256": "23f904fa3c6f6973669c723cc367fd172c6ec6be26ba83fb4b7d3c9a767e4f15"
+    },
+    {
+      "bytes": 2390,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-hourly-20260606t160828z.json",
+      "sha256": "234d1c7517564d3af684a26f93dce47470bd49685d7a271ee53a901c831e25dd"
+    },
+    {
+      "bytes": 353,
+      "content_type": "application/json",
+      "path": "index/days.json",
+      "sha256": "288945712a56cc679320a431558c96ebcf84633a16ed79e4bc440ec890db0410"
+    },
+    {
+      "bytes": 527,
+      "content_type": "application/json",
+      "path": "index/known-links.json",
+      "sha256": "24801a2bd436181b81e61546e9a36776cb1b589b88580f5a570617f593b7cb74"
+    },
+    {
+      "bytes": 373,
+      "content_type": "application/json",
+      "path": "index/sources.json",
+      "sha256": "8a70b609dde469d932685256ade0a86806148ab5d65422014d0efe01f8e25615"
+    },
+    {
+      "bytes": 2479,
+      "content_type": "application/x-ndjson",
+      "path": "items/2026/06/06/items.jsonl",
+      "sha256": "995e40a3340ad5e707dddf10ef7a0ff3a6e95799ef204ae2b63d135209599883"
+    },
+    {
+      "bytes": 569,
+      "content_type": "application/json",
+      "path": "reports/daily/2026/06/06.json",
+      "sha256": "0d644bae484dcbcd0b140fab99739182da00c27f74baef3da01294a2bf3f7b66"
+    },
+    {
+      "bytes": 614,
+      "content_type": "application/json",
+      "path": "reports/hourly/2026/06/06/16.json",
+      "sha256": "3445a522ffa9e3b544193cb0b4a65487e5d12384b65d3846f042862073d32191"
+    }
+  ],
+  "generated_at": "2026-06-06T16:08:28Z",
+  "root": "public",
+  "total_bytes": 35641,
+  "total_files": 8,
+  "version": 1
+}

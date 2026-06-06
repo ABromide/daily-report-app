@@ -1,0 +1,75 @@
+{
+  "files": [
+    {
+      "bytes": 28336,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/03/itm_17e42b7d5e2a2c7e/index.md",
+      "sha256": "23f904fa3c6f6973669c723cc367fd172c6ec6be26ba83fb4b7d3c9a767e4f15"
+    },
+    {
+      "bytes": 27372,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/07/itm_360c585a9772d5c6/index.md",
+      "sha256": "9a1508ed04cbd307911ae59bced6180bb53719f4b8f5eb7a020bf31b1f1221d0"
+    },
+    {
+      "bytes": 39668,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/07/paper-20260601-openwebrl/index.md",
+      "sha256": "126ccf439a489ad95f8b01e88c14c2d180dfa01ad97fa774c9703b505120b438"
+    },
+    {
+      "bytes": 2390,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-hourly-20260606t160828z.json",
+      "sha256": "234d1c7517564d3af684a26f93dce47470bd49685d7a271ee53a901c831e25dd"
+    },
+    {
+      "bytes": 2281,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-hourly-20260606t162113z.json",
+      "sha256": "3fb2e7e75006849201b85f65b8ce080bb32bcc5978bfaefecd41a7b9004bac35"
+    },
+    {
+      "bytes": 353,
+      "content_type": "application/json",
+      "path": "index/days.json",
+      "sha256": "be568d37c0df5f0d1ad4f6fb3e15f0dfe35f9fee9b85a6055200b00e80561953"
+    },
+    {
+      "bytes": 939,
+      "content_type": "application/json",
+      "path": "index/known-links.json",
+      "sha256": "8d549138c1642a822a9bc9bbebda152bce5e47f4a9fdc598bdcb9be853c49702"
+    },
+    {
+      "bytes": 1004,
+      "content_type": "application/json",
+      "path": "index/sources.json",
+      "sha256": "185d389a5e60dc6fb0444cfa154e5f4292970478395828935832c38a819552e4"
+    },
+    {
+      "bytes": 5329,
+      "content_type": "application/x-ndjson",
+      "path": "items/2026/06/06/items.jsonl",
+      "sha256": "f2a9bbf9305797dbb2a573bd2fde654c5ea2a38b72fe14d934f02c4af35e39df"
+    },
+    {
+      "bytes": 861,
+      "content_type": "application/json",
+      "path": "reports/daily/2026/06/06.json",
+      "sha256": "ae6d915d410087c1aa63e2ae70fdfd906913d9bceb3f6c3c6b3dc0d5980a781a"
+    },
+    {
+      "bytes": 880,
+      "content_type": "application/json",
+      "path": "reports/hourly/2026/06/06/16.json",
+      "sha256": "6782cdfd8917931a21413ee1838a73c4ccddb8f53c787cf654c0816d07e1ff02"
+    }
+  ],
+  "generated_at": "2026-06-06T16:21:13Z",
+  "root": "public",
+  "total_bytes": 109413,
+  "total_files": 11,
+  "version": 1
+}

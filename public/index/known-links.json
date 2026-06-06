@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "canonical_url": "https://red.anthropic.com/2026/attack-navigator/",
+      "category_id": "ai-safety",
+      "content_hash": "23f904fa3c6f6973669c723cc367fd172c6ec6be26ba83fb4b7d3c9a767e4f15",
+      "external_id": "anthropic-red:2026:llm-attack-navigator",
+      "first_seen_at": "2026-06-06T16:08:28Z",
+      "item_id": "itm_17e42b7d5e2a2c7e",
+      "title_hash": "c91373b4987a5acba50818a35edcaa96d22775c78626bce739bf4fb4a6601216"
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2606.02031",
+      "category_id": "llm-agent",
+      "content_hash": "126ccf439a489ad95f8b01e88c14c2d180dfa01ad97fa774c9703b505120b438",
+      "external_id": "arxiv:2606.02031",
+      "first_seen_at": "2026-06-06T16:21:13Z",
+      "item_id": "itm_2606020310afed01",
+      "title_hash": "7b2e0e3de1c806c8952d225c4b5273de134a9ffbe0b57d544d45388e449f21d4"
+    }
+  ],
+  "updated_at": "2026-06-06T16:21:13Z",
+  "version": 1
+}

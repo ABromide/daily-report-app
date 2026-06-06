@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/03/itm_17e42b7d5e2a2c7e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-06T16:08:28Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 5,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260606t160828z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "确认候选属于 2026-06-03 当前周公开发布内容，分类为 AI 安全，来源为 Anthropic 官方 Red Team 和新闻稿。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "阅读 Anthropic Frontier Red Team 报告、官方新闻稿、MITRE ATT&CK、Verizon DBIR 和 Anthropic 早前 cyber case，整理方法、图表与证据边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "将报告方法拆成公开事件收集、ARiES 证据整理、行为抽取、MITRE ATT&CK 映射和 Navigator 展示五步。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "搜索标题、analysis、review、AI-enabled cyber threats、LLM ATT&CK Navigator 等组合；可用第三方材料主要是 MITRE 和 Verizon 框架，转载未作为主要证据。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "标出不能直接推出 LLM 自主完成完整攻击链、不能比较具体模型风险、空白 ATT&CK 技术不等于安全等边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "生成 6697 个中文字符的独立 Markdown 长文，包含 5 张图片、2 个表格、2 个公式块和 1 个 Mermaid 流程图。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_17e42b7d5e2a2c7e"
+  ]
+}

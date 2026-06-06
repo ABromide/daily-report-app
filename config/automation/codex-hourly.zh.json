@@ -43,7 +43,12 @@
   ],
   "dedupe": {
     "ledger_path": "public/index/known-links.json",
-    "keys": ["canonical_url", "external_id", "title_hash", "content_hash"],
+    "keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
     "normalization": [
       "去除 URL fragment",
       "去除常见 tracking query 参数",
@@ -106,88 +111,66 @@
   },
   "analysis_requirements": {
     "mode": "depth_first",
-    "per_run_item_policy": "质量优先。默认每小时写入 1 到 3 篇；如果只有 1 篇真正值得深读且可验证，允许本次只提交 1 篇。禁止为了凑数量写浅分析。",
+    "per_run_item_policy": "质量优先：默认深读 1 篇，最多 3 篇；禁止凑数量写浅分析。",
     "style_reference": {
       "name": "MLPod 论文解读长文写法",
       "url": "https://www.mlpod.com/1548.html",
       "pattern": [
-        "开头先给论文或项目元信息、原始链接、核心图或题图。",
-        "TL;DR 不是一句摘要，而是能独立替代原文导读的长摘要：读者只看 TL;DR 就应大致知道文章整体在做什么、具体怎么做、用了什么数据/实验/图表、得到什么结果、有什么局限。",
-        "论文类正文必须按常规论文阅读顺序推进：背景与研究问题、方法与模型机制、训练或实验设置、主结果、消融与失败案例、最终结论和局限。",
-        "关键图、表、系统图、实验结果图要尽可能多地穿插在对应章节，并在图片下方用中文解释图想证明什么、能证明什么、不能证明什么。",
-        "公式要尽可能保留原论文中的数学表达；如果原文公式较少，可以补充解释性公式，但必须说明这是为了帮助理解变量、目标函数、奖励、约束或指标。",
-        "Markdown 排版要服务理解：需要分点的地方必须分点；需要对比的数据尽量用表格；需要展示数学关系时使用行内公式或块级公式；需要解释流程、模块依赖、训练管线或决策链时可以画 Mermaid 图。",
-        "每个小节最好有明确功能：先解释作者在这一节解决的问题，再解释方法、公式、图表或实验证据，最后给出日报编辑视角下的判断。"
+        "开头给元信息、原始链接、核心图/表。",
+        "TL;DR 自包含：问题、方法、证据、关键数字、局限。",
+        "论文按背景、方法、训练/实验、结果、消融/失败、图表、相关工作、局限推进。",
+        "默认分点写，多用表格、公式、Mermaid 和本地化图片。"
       ]
     },
-    "suggested_section_count": 12,
+    "suggested_section_count": 8,
     "minimum_chinese_chars": 5000,
     "suggested_sections": [
-      "论文或项目元信息",
-      "TL;DR",
+      "元信息与 TL;DR",
       "来源与材料地图",
-      "论文类固定正文流程",
-      "方法公式与算法步骤",
+      "背景与问题",
+      "方法、公式与流程",
+      "实验、结果与消融",
       "本地附件图片、Figure 与 Table 解读",
-      "实验设置、主结果与消融",
-      "讨论、相关工作与第三方解读",
-      "最终结论与局限性",
-      "关键论证链",
-      "证据与边界",
-      "后续追踪问题",
-      "可复用到日报的判断",
-      "审稿式结论"
+      "相关工作、证据与边界",
+      "结论与后续追踪"
     ],
-    "format": "每篇内容生成独立、完整、可直接渲染的 Markdown 文件；正文建议尽量达到 5000 中文字以上，论文类越详细越好；允许普通链接、本地附件图片链接、行内公式和块级公式。渲染层只按 Markdown 处理，不增加硬校验。item JSON 只保留索引和卡片摘要，不允许把长文分析拆成 analysis_zh 或 visual JSON 字段。",
-    "markdown_layout_rule": "Markdown 必须有良好排版。长段落不要堆成一整块：单个自然段尽量不要超过 180 到 220 个中文字符；如果一个小节需要解释多个层次，必须拆成更小的 h3 小标题、问题式小节、项目列表或表格。列举模块、步骤、贡献、实验设置、失败类型、局限和后续问题时要使用有序或无序列表；对比 benchmark、baseline、指标、数据集、模型规模和消融项时优先用 Markdown 表格；解释变量、目标函数、奖励、约束、指标和状态转移时使用行内公式或块级公式；解释系统架构、训练流程、数据流、Agent 决策链、多阶段 pipeline 或因果关系时可以使用 fenced Mermaid 图（```mermaid）。Mermaid 图必须用简单节点和清晰标签，并在图后用中文解释。",
-    "rhythm_rule": "长篇正文要有阅读节奏。每个核心段落优先按“问题是什么 / 作者怎么做 / 证据是什么 / 还有什么边界”拆开；连续三段以上的纯文本说明必须改写为列表、表格、公式解释块、Mermaid 流程图或 h3 子节。不要把方法、实验数字、局限和日报判断塞进同一个长段落。",
-    "summary_rule": "summary_zh 和 Markdown 的 TL;DR 必须自包含：直接写出文章或论文具体做了什么、核心方法由哪些模块组成、训练/实验/评测如何设置、最重要的图表和数字是什么、作者最终证明了什么、哪些地方仍有限制。不要写成“这篇文章值得看”“需要回到原文看细节”“公开页面还需继续核对”这类导读式摘要；边界可以写，但必须先把已读到的细节讲清楚。",
-    "detail_extraction_rule": "写作时要尽可能挖掘原文细节和做法：方法名、模块名、输入输出、算法步骤、数据规模、训练轮次、benchmark、指标、baseline、消融项、失败类型、图表编号、图中数字、表格列名、公式变量、项目页图片和代码/数据链接。不能只抽象概括成“提出框架”“效果更好”“有实验验证”。如果某个细节确实无法获取，要说明缺失的是哪一类细节，而不是让读者自己回原文寻找。",
-    "depth_rule": "应阅读完整原文或可访问的完整公开内容，不能只根据标题、摘要、标签、README 顶部或社媒转述生成。必须逐层说明作者如何提出问题、如何组织方法、每个部分承担什么作用、证据是否支撑结论、代码或项目结构如何支撑主张、哪些边界需要后续追踪；正文要尽量把这些细节直接写出来，让用户不打开原文也能理解整体文章。",
-    "code_rule": "如果候选是代码仓库，建议至少阅读 README、docs 或 examples、package/pyproject/Cargo/SwiftPM 等依赖入口、核心 src 目录或 release notes。Markdown 中要解释模块边界、执行流程、状态管理、可观测性、部署入口和真实工程风险。",
-    "paper_rule": "如果候选是论文，必须读取论文 PDF 或 HTML 正文，并把 Markdown 正文改成常规论文阅读流程：1. 背景与研究问题；2. 方法与模型机制；3. 训练、数据、评测和实验设置；4. 主结果与指标；5. 消融、失败案例和误差分析；6. Figure/Table 逐图逐表解读；7. 相关工作与第三方解读；8. 最终结论、局限和后续追踪。论文类不能把“为什么重要”“产品启发”“日报判断”提前放在方法和实验之前。尽可能提取论文、项目页或作者材料中的外部图片、figures/tables；涉及图片时必须先下载到本地 public/assets，再随发布工具作为附件上传，Markdown 只引用上传后的本地附件路径，并逐图说明。尽可能保留原论文公式、算法伪代码和指标定义；如果需要补充解释性公式，必须标明它是为了帮助理解，不得伪装成论文原公式。",
-    "blog_rule": "如果候选是博客或报告，不能硬套论文模板，也不能编造实验、消融或 benchmark。核心任务是尽可能详细地把博客真正讲了什么讲清楚：按作者原文结构逐段总结、解释关键概念、保留重要上下文，并用少量短摘录辅助分析。每条原文摘录必须短而克制，单条不超过 25 个中文词或 25 个英文词，必须标明摘录来自哪一段或哪个上下文；不得整段搬运原文。如果博客引用论文、报告或数据，再回到原论文或报告核对关键背景。",
+    "format": "每篇生成独立 Markdown：public/articles/YYYY/MM/DD/ITEM_ID/index.md。item JSON 只保留索引和卡片摘要，不写长文正文。",
+    "markdown_layout_rule": "默认分点写。除非一两句话就能讲清，否则使用 h3、问题式小节、列表、表格、公式解释块或 Mermaid 图；列举步骤/模块/实验/局限必须用列表；指标对比优先表格。",
+    "rhythm_rule": "单段尽量 120-180 中文字符；连续两段以上纯文本必须拆成列表、表格、公式解释块、Mermaid 或 h3 子节。",
+    "summary_rule": "summary_zh 和 TL;DR 必须自包含：写清做什么、怎么做、证据/实验、关键数字和局限。",
+    "detail_extraction_rule": "尽量提取方法名、模块、输入输出、算法步骤、数据规模、训练设置、benchmark、baseline、指标、消融、失败案例、图表编号、公式变量、代码/数据链接。",
+    "depth_rule": "必须读完整公开原文或可访问正文；不能只看标题、摘要、README 顶部或社媒转述。",
+    "code_rule": "代码项目读候选项目 README、docs/examples、依赖入口、核心目录、release notes；解释模块边界、执行流程、状态、部署和风险。",
+    "paper_rule": "论文按固定顺序写：背景与问题、方法机制、训练/数据/评测、结果、消融/失败、Figure/Table、相关工作、结论局限。尽可能保留公式、伪代码、指标定义；图片先下载到 public/assets 并作为本地附件引用。",
+    "blog_rule": "博客/报告按原文结构逐段解释；不要编造实验、消融或 benchmark；短摘录单条不超过 25 个中文词或 25 个英文词。",
     "type_guidance": {
       "paper": [
-        "1. 背景与研究问题：研究空白、问题定义、为什么现有方法不足。",
-        "2. 方法与模型机制：模型结构、训练目标、数据流、公式变量、算法步骤和伪代码。",
-        "3. 训练与实验设置：数据集、基座模型、训练设置、动作空间或任务定义、指标和评测协议。",
-        "4. 主结果与指标解读：按表格、benchmark、模型规模和指标逐项解释最终结果。",
-        "5. 消融、失败案例和误差分析：每个模块是否必要，失败样本说明什么，哪些结论不能推出。",
-        "6. Figure/Table 逐图逐表解读：尽可能引用已下载并上传的本地附件图，解释每张图和每张表的证据功能。",
-        "7. 讨论与相关工作：同类论文、作者补充、第三方解读、复现或反例。",
-        "8. 最终结论、局限性与后续追踪：计算成本、数据偏差、泛化边界、可复现性。"
+        "背景与问题：研究空白、定义和现有方法不足。",
+        "方法机制：结构、数据流、目标函数、变量和算法步骤。",
+        "训练与实验：数据集、模型、设置、指标和评测协议。",
+        "结果与消融：主表/主图、baseline、指标数字、失败案例。",
+        "图表与边界：本地附件图、证据功能、局限和后续问题。"
       ],
       "blog_or_report": [
-        "1. 博客背景与作者要回答的问题：作者为什么写这篇，读者读完应该理解什么。",
-        "2. 原文结构总览：按博客原有段落顺序说明每一部分在讲什么。",
-        "3. 逐段深度解读：尽可能详细地总结博客内容，解释关键概念、例子和作者转折。",
-        "4. 原文短摘录与分析：选取少量关键原话，每条摘录不超过 25 个中文词或 25 个英文词，并紧跟中文分析。",
-        "5. 图片、案例与上下文：解释博客中的图片、截图、图表、案例或产品细节。",
-        "6. 延伸参考与读后判断：相关论文、官方文档、作者补充或第三方解读如何帮助理解这篇博客。"
+        "按原文结构总览和逐段解读。",
+        "保留少量短摘录并紧跟分析。",
+        "解释图片、案例、上下文和延伸参考。"
       ],
       "code": [
-        "1. 项目定位与使用入口：README、示例、安装和目标用户。",
-        "2. 工程结构：核心目录、依赖入口、模块边界、配置和数据流。",
-        "3. 运行流程：命令入口、状态管理、错误处理、可观测性、权限边界。",
-        "4. 近期变化：release notes、commit、issue/discussion 和维护信号。",
-        "5. 可复用性与风险：可部署程度、测试覆盖、性能/安全边界、替代项目。",
-        "6. 后续追踪：需要试跑、读源码或等待验证的部分。"
+        "定位与入口：安装、示例、目标用户。",
+        "工程结构：核心目录、依赖、配置和数据流。",
+        "运行与风险：状态、错误处理、观测、部署和替代项目。"
       ]
     },
-    "image_rule": "如果原文、项目页、论文 PDF、作者主页、Hugging Face 页面、GitHub README 或第三方可信解读包含关键图片、表格、系统图、结果图、轨迹图或截图，应该尽可能多地本地化可用图片，但不要在 Markdown 中直接使用外部图片 URL。凡是要作为图片展示的资源，都必须先下载到 data worktree 的 public/assets/YYYY/MM/DD/ITEM_ID/ 下，尽量保留扩展名并记录原始 URL、附件路径、sha256 和下载状态；发布时通过 publish-public-run 随 public/assets 一起提交到 data 分支，相当于附件上传。Markdown 图片语法只能引用上传后的本地附件路径，例如 assets/YYYY/MM/DD/ITEM_ID/figure-1.png。如果图片无法下载或格式不适合镜像，不要用外部 URL 当 Markdown 图片，只能把原始图片页作为普通来源链接，并说明未能本地化的原因。每张图片都要配中文说明：它对应哪一节、展示什么证据、支持什么结论、有哪些局限。论文类不要只放 1 张图；能引用多张 figure/table 就尽量引用多张。",
-    "reference_search_rule": "除原文外，建议搜索第三方解读、作者补充材料、相关论文、GitHub issue/discussion、Hugging Face paper page、Twitter/X 或博客解读。搜索词可包括原始标题、标题 + 解读、标题 + analysis、标题 + review、arxiv id + blog、作者名 + paper。优先引用论文、官方页面、作者补充和可信研究博客；如果没有找到可用解读，建议在 Markdown 中写明搜索过哪些方向。",
+    "image_rule": "Markdown 不直接用外部图片 URL。要展示的图片必须先下载到 data worktree 的 public/assets/YYYY/MM/DD/ITEM_ID/，记录原图 URL、附件路径、sha256 和状态；publish-public-run 会随 data 分支上传。下载失败时只放普通来源链接并说明原因。",
+    "reference_search_rule": "搜索第三方解读、作者补充、相关论文、issue/discussion、Hugging Face paper、可信博客；无结果则说明搜索词。",
     "quality_gate": [
-      "Markdown 正文目标不少于 5000 中文字，不能只是几句话，要能让用户不打开原文也理解文章结构和关键证据。",
-      "summary_zh 与 TL;DR 必须自包含，读者只看摘要就能大概知道文章整体在做什么、怎么做、实验和结果是什么。",
-      "必须尽可能挖掘原文细节、模块做法、实验设置、图表数字、公式变量和失败案例，不能停留在抽象评价。",
-      "不要把正文拆成复杂 JSON 字段；正文只写 Markdown。",
-      "建议至少 5 条带来源链接或文件路径的证据点。",
-      "建议在 audit 中记录 image_notes；论文类应尽可能多引用已本地化并上传的附件图片、figure/table 或项目页截图，如果没有图片，说明原文或 PDF 为什么没有可下载并本地化的图片。",
-      "建议在 audit 中记录 third_party_references；如果没有找到第三方解读，说明搜索词和未找到的结果类型。",
-      "建议在 audit 中记录 skeptical_review，列出 3 个不能从原文直接推出的结论。",
-      "建议在 audit 中记录 follow_up_questions，列出下次自动化需要继续追踪的问题。",
-      "禁止出现“仅根据标题推测”“可能值得关注但缺少细节”这类浅层占位句，除非它们出现在边界说明中并给出补救动作。"
+      "正文目标不少于 5000 中文字，能让用户不打开原文也理解主线。",
+      "summary_zh 与 TL;DR 自包含。",
+      "默认分点写，避免连续大段文本。",
+      "必须包含具体细节、证据点、公式/图表/表格（按内容适用）。",
+      "图片必须本地化到 public/assets 后再引用。",
+      "audit 记录 sub_agent_reviews、quality_gate、image_notes、third_party_references、skeptical_review。"
     ]
   },
   "sub_agents": [
@@ -223,7 +206,11 @@
     }
   ],
   "audit_contract": {
-    "status_values": ["dry-run", "complete", "failed"],
+    "status_values": [
+      "dry-run",
+      "complete",
+      "failed"
+    ],
     "required_fields": [
       "run_id",
       "generated_at",
@@ -239,132 +226,69 @@
     "remote_rule": "每次自动化写入都必须把 audit JSON 和 article Markdown 一起提交到 data 分支；远端 Pages 构建必须先 validate-public 和 secret-scan，再部署。"
   },
   "codex_prompt_zh": {
-    "role": "你是 Daily Report 的中文采集与深度分析总控 Agent。你的目标不是生成链接列表，也不是把原文压成几句摘要，而是组织多个子 Agent 把今天或本周内的重要 AI 内容吃透，写成可直接发布到网页中的中文长篇 Markdown 研究稿。",
+    "role": "你是 Daily Report 的中文采集与深度分析 Agent。按本 JSON 契约调研、深读、写 Markdown，并用工具发布。",
     "scope": [
-      "只处理三类内容：大模型 Agent 相关、大模型后训练相关、AI 安全相关。",
-      "只允许采集今天或本周内发布、更新、合并或被官方页面标记为当前日期范围内的内容。",
-      "优先官方博客、论文页、GitHub 仓库、研究机构页面和作者原始页面。无法确认日期或来源的候选必须丢弃。",
-      "质量优先于数量：如果本小时只能把 1 篇内容研究透，就只提交 1 篇；不要为了覆盖三类而写浅。"
+      "只处理：大模型 Agent、大模型后训练、AI 安全。",
+      "只选今天或本周内发布、更新、合并或官方标记为当前日期范围内的内容。",
+      "质量优先：默认深读 1 篇，最多 3 篇。"
     ],
     "steps": [
       {
-        "name": "1. 读取状态",
+        "name": "1. 状态与预检",
         "instructions": [
-          "读取 public/index/known-links.json。",
-          "读取最新 items.jsonl。",
-          "确认当前运行时间、日期窗口和三个分类的最少候选数量。"
+          "只读取 config/automation/codex-hourly.zh.json；不要读取本仓库 README 作为任务说明。",
+          "运行 automation-preflight 检查 data worktree、origin/data 和 GitHub CLI。",
+          "不要手工展开 latest/days/sources/known-links/audit/manifest 大 JSON。"
         ]
       },
       {
-        "name": "2. Scout 子 Agent 搜索候选",
+        "name": "2. 搜索与去重",
         "instructions": [
-          "启动 scout 子 Agent，分别为三个固定分类搜索候选内容；如环境不支持真实子 Agent，就以 scout 角色独立写出候选表。",
-          "分别为三个固定分类搜索候选内容。",
-          "每个候选必须记录 canonical_url、external_id、title、published_at 或 updated_at。",
-          "如果日期不在今天或本周内，立即丢弃。"
+          "搜索三个固定分类的候选，记录 canonical_url、external_id、title、published_at/updated_at。",
+          "用 canonical_url、external_id、title_hash、content_hash 去重；data 清空时缺 known-links/latest/items 属于 bootstrap。",
+          "重复候选必须换同类替代。"
         ]
       },
       {
-        "name": "3. 去重替换",
+        "name": "3. 深读与外部参考",
         "instructions": [
-          "如果 known-links.json 和最新 items.jsonl 存在，用 canonical_url、external_id、title_hash、content_hash 对比；如果 data 分支刚清空导致这些文件不存在，视为 bootstrap 空账本，不要把缺文件当成 blocker。",
-          "如果发现重复，丢弃该候选，并继续寻找同类替代内容。",
-          "记录 duplicate_candidates 和 replacement_candidates。"
+          "优先选择 1 篇最值得深读的内容。",
+          "完整阅读原文；论文读 PDF/HTML，代码项目读候选项目 README、docs/examples 和核心目录。",
+          "搜索第三方解读、作者补充、相关论文、issue/discussion 或可信博客。",
+          "输出 detail_inventory：方法、数据、训练、benchmark、baseline、指标、消融、失败案例、图表编号、公式变量。"
         ]
       },
       {
-        "name": "4. Deep Reader 子 Agent 深度阅读原文",
+        "name": "4. 图片与素材",
         "instructions": [
-          "每次优先选择 1 篇最值得深读的候选；如果时间充足再扩展到第 2 或第 3 篇。",
-          "启动 deep_reader 子 Agent 完整阅读原文或可访问的完整公开内容，不能只看标题、摘要、标签或 README 顶部。",
-          "按内容类型做笔记，不要混用模板：论文必须按背景与研究问题、方法与模型机制、训练/实验设置、主结果、消融/失败案例、Figure/Table、相关工作、最终结论与局限的顺序做笔记；博客/报告按原文结构总览、逐段深度解读、关键原话短摘录、图片/案例/上下文、延伸参考；代码项目按入口、工程结构、运行流程、近期变化、可复用风险。",
-          "如果原文有关键图片、表格、系统图、结果图、轨迹图或截图，先记录原始图片 URL，但不要直接在 Markdown 使用外部图片 URL。",
-          "凡是正文要展示的图片，都必须先下载到 data worktree 的 public/assets/YYYY/MM/DD/ITEM_ID/ 下，再通过 publish-public-run 随附件上传；Markdown 只引用上传后的本地附件路径。",
-          "如果候选是论文，尽量读取 PDF、项目页、README 和作者补充材料中的 figures/tables；如果工具无法直接提取或下载图片，需要保留 PDF 或项目页普通链接，并描述对应图表编号、内容和未能本地化原因。",
-          "如果候选是论文，尽可能摘出原文公式、算法伪代码、指标定义和变量符号；每条公式笔记都要附变量解释和它在方法或实验中的作用。",
-          "输出深读笔记时必须列出 detail_inventory：方法模块、数据规模、训练阶段、benchmark、baseline、主结果数字、消融项、失败案例、figure/table 编号、原图 URL、本地附件路径和下载状态。Markdown 编辑必须优先使用这些细节。"
+          "所有用于展示的图片都必须先下载到 public/assets/YYYY/MM/DD/ITEM_ID/。",
+          "Markdown 图片语法只引用本地附件路径；不要把外部图片 URL 直接放进 Markdown 图片语法。",
+          "记录原图 URL、附件路径、sha256 和下载状态；失败时放普通来源链接并说明原因。"
         ]
       },
       {
-        "name": "5. Method/Code Analyst 子 Agent 深挖方法或代码",
+        "name": "5. 写 Markdown",
         "instructions": [
-          "如果内容是论文，启动 method_or_code_analyst 子 Agent 按论文顺序拆解：背景与研究问题、方法与模型机制、训练/数据/评测设置、主结果、消融、失败案例、图表证据、最终结论和局限。",
-          "如果内容是代码或项目，启动 method_or_code_analyst 子 Agent 阅读 README、docs/examples、依赖入口、核心 src 目录和 release notes，并解释模块边界、执行流程、状态管理、可观测性与部署入口。",
-          "建议输出 source_map、logic_chain、implementation_notes 和 evidence_points，方便 Markdown 编辑时选择合适材料。"
+          "写入 public/articles/YYYY/MM/DD/ITEM_ID/index.md，正文使用纯 Markdown。",
+          "默认分点写；连续两段以上纯文本必须拆成 h3、列表、表格、公式解释或 Mermaid 图。",
+          "TL;DR 与 summary_zh 必须自包含。",
+          "论文必须按这个正文顺序写：背景与研究问题、方法与模型机制、训练/实验设置、主结果、消融/失败、Figure/Table、相关工作、结论与局限。",
+          "必须尽可能多写公式、变量解释、表格和 Mermaid 图。"
         ]
       },
       {
-        "name": "6. Skeptic 子 Agent 审稿质疑",
+        "name": "6. Payload 与发布",
         "instructions": [
-          "启动 skeptic 子 Agent 检查：是否重复、是否超出日期窗口、是否把标题当正文、是否有未经证据支持的结论。",
-          "列出至少 3 个不能从原文直接推出的结论或仍需验证的问题。",
-          "如果 skeptic 判定分析太浅，必须回到 deep_reader 或 method_or_code_analyst 继续补充。"
+          "准备小 payload：run_id、generated_at、items、sources、dedupe、sub_agent_reviews、quality_gate。",
+          "不要真实删除文件；不要运行 rm、find -delete、git rm；临时文件只可移入 .automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/.",
+          "运行 publish-public-run；它会 finalize-public-run、validate-public、secret-scan、git commit/push 和 repository_dispatch。",
+          "duplicate 时换同类候选；不要手工编辑 known-links。"
         ]
       },
       {
-        "name": "7. Related Work 子 Agent 搜索第三方解读与相关论文",
+        "name": "7. 最终报告",
         "instructions": [
-          "启动 related_work 子 Agent 搜索第三方解读、作者补充材料、相关论文、GitHub issue/discussion、Hugging Face paper page、Twitter/X 或博客解读。",
-          "搜索词至少包括原始标题、标题 + 解读、标题 + analysis、标题 + review、arxiv id + blog、作者名 + paper。",
-          "优先引用论文、官方页面、作者补充和可信研究博客；低质量转载只能作为发现线索，不能作为主要证据。",
-          "建议输出 third_party_references：每条包含 title、url、source_type、为什么可参考、是否支持或反驳原文。找不到时建议写明搜索过哪些词。"
-        ]
-      },
-      {
-        "name": "8. Markdown Editor 子 Agent 写入长篇 Markdown 分析稿",
-        "instructions": [
-          "为每篇内容写入 public/articles/YYYY/MM/DD/ITEM_ID/index.md。",
-          "正文使用纯 Markdown，不要写完整 HTML 文档，不要内联 CSS。",
-          "Markdown 可以包含普通链接、本地附件图片链接、行内公式 `$...$`、块级公式 `$$...$$`、Markdown 表格和 fenced Mermaid 图。",
-          "正文排版要清楚：需要分点的地方必须分点；列举模块、步骤、实验设置、失败类型、局限和追踪问题时用列表；对比 benchmark、baseline、指标、模型规模和消融项时优先用表格；不要把多个层次的细节塞进超长段落。",
-          "长文必须有节奏感：单个自然段尽量控制在 180 到 220 个中文字符以内；连续三段以上纯文本说明必须拆成 h3 子节、问题式小节、列表、表格、公式解释或 Mermaid 图。",
-          "当需要解释系统架构、训练流程、数据流、Agent 决策链、多阶段 pipeline 或因果关系时，可以使用 Mermaid 图，例如 `flowchart TD`、`sequenceDiagram` 或 `graph LR`；Mermaid 图后必须紧跟中文解释。",
-          "开头 TL;DR 必须是自包含长摘要：不要只写意义和结论，要直接写清文章具体做什么、方法有哪些模块、训练/实验怎样设置、关键数字是什么、图表证明什么、局限是什么。用户只看 TL;DR 就应能大概复述整篇文章。",
-          "中文正文目标不少于 5000 字，论文类越详细越好。正文长度按中文字符估算，标题、链接 URL、代码块和 JSON 字段不计入主要分析字数。",
-          "论文必须按这个正文顺序写：1. 背景与研究问题；2. 方法与模型机制；3. 训练、数据、评测和实验设置；4. 主结果与指标解读；5. 消融、失败案例和误差分析；6. Figure/Table 逐图逐表解读；7. 相关工作与第三方解读；8. 最终结论、局限和后续追踪。",
-          "论文类必须尽可能多引用图片：论文 figure/table、项目页图、作者补充图、GitHub README 架构图、轨迹图或截图都可以。但所有用于展示的图片都必须先下载到 public/assets 并随发布工具上传；图片使用 Markdown 图片语法引用本地附件路径，并在图片后写详细中文解释，不要只贴图。",
-          "论文类必须尽可能多写公式：保留原文公式、目标函数、奖励函数、KL/损失项、指标定义、算法更新式和变量解释；没有足够原文公式时，可以写解释性公式帮助理解，但要明确这是解释性整理。",
-          "论文类正文每一节都要尽量落到具体细节：模块名、参数量、样本量、训练步数或阶段、benchmark 名称、baseline 名称、指标数字、消融结论、失败类型、图表编号、原图 URL、本地附件路径和图片下载状态。不要只写“作者提出一个框架”“实验效果很好”。",
-          "博客/报告可优先覆盖：博客背景与作者要回答的问题、原文结构总览、逐段深度解读、原文短摘录与分析、图片/案例/上下文、延伸参考与读后判断。不要给博客编造论文式实验、消融或 benchmark，也不要把博客写成审稿式证据链。",
-          "博客原文引用建议只使用短摘录：单条不超过 100 个中文词或 100 个英文词；摘录后紧跟中文分析，说明作者这句话在上下文中的作用，避免整段搬运原文。",
-          "代码项目可优先覆盖：项目定位与使用入口、工程结构、运行流程、近期变化、可复用性与风险、后续追踪。",
-          "图片建议使用 Markdown 图片语法 `![中文说明](assets/YYYY/MM/DD/ITEM_ID/figure-1.png)`，图片后紧跟一段中文解释，不要只贴图；不要把外部图片 URL 直接放进 Markdown 图片语法。",
-          "第三方解读和相关论文可放入讨论或延伸参考部分，并标明哪些支持原文、哪些只是背景、哪些可能构成反例。",
-          "正文要能独立阅读，不依赖 item JSON；不要让读者为了理解主要做法再回到原文找细节。页面样式由 Web 前端统一渲染。"
-        ]
-      },
-      {
-        "name": "9. 准备 finalize payload",
-        "instructions": [
-          "不要手工读取、sed 查看或逐字段改写 public/index/latest.json、public/index/days.json、public/index/sources.json、public/index/known-links.json、audit JSON 或 manifest JSON；这些文件由 finalize-public-run 工具统一机械生成。",
-          "写完 Markdown 后，只准备一个小 payload JSON，包含 run_id、generated_at、items、sources、dedupe、sub_agent_reviews 和 quality_gate。",
-          "payload.items 里的 item JSON 只作为索引，不写长文 analysis_zh，不写 visual 正文字段。",
-          "每个 item 必须包含 item_id、category_id、type、source_id、external_id、url、canonical_url、title、published_at、fetched_at、summary_zh、analysis_markdown_path、tags、content_hash；如果缺 title_hash 或 fingerprint，工具会补。",
-          "summary_zh 不是一句营销摘要，而是首页可扫读的自包含摘要：应压缩写出主问题、核心做法、实验或证据、关键数字和主要局限。",
-          "payload.sources 只写本轮新增或更新的来源；已有 sources、known-links、days、latest、audit 和 manifest 不需要模型展开阅读。"
-        ]
-      },
-      {
-        "name": "10. 调用一键发布工具重建索引、审计、manifest 并提交",
-        "instructions": [
-          "发布前优先运行权限预检：uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data。",
-          "如果预检输出 origin/data: reachable without git proxy，说明全局 127.0.0.1:17891 git 代理在自动化环境不可用但工具已绕过，不是文件沙箱问题。",
-          "不要运行 rm、find -delete、git rm 或任何真实删除命令；不要把已跟踪 public 数据移动到别处，也不要提交 deletion。未跟踪临时文件如需假删除，只能移动到 .automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/。",
-          "写完 Markdown 和 payload 后，直接运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"。",
-          "publish-public-run 会自动调用 finalize-public-run，并执行 validate-public、secret-scan、data worktree git add/commit/push 和 repository_dispatch。",
-          "finalize-public-run 会合并 items，跨所有历史 items 检查 canonical_url、external_id、title_hash、content_hash 四个去重键；如果报 duplicate，必须换同类替代候选，不要手动改 known-links。",
-          "publish-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON，并确保 Markdown 文件进入 manifest。",
-          "publish-public-run 会检查 public/ 下 working-tree 和 staged deletion；如果发现真实删除，会直接失败并要求改为假删除或保留原文件。"
-        ]
-      },
-      {
-        "name": "11. 发布结果记录与失败处理",
-        "instructions": [
-          "最终报告记录 publish-public-run 输出的 audit、manifest、latest、items、commit、push 和 dispatch 状态。",
-          "不要使用临时 GIT_INDEX_FILE 伪造提交；如果 publish-public-run 的普通 git 命令被沙箱拦住，要报告为 Codex rules 权限问题，而不是继续手工绕过 index。",
-          "如果 push 因 127.0.0.1:17891 代理不可用失败，可用 scripts/automation/publish-public-run.sh 增加 --push-without-proxy 重试，并把 DNS 或代理错误写入最终报告。",
-          "如果只想测试本地流程，运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: local publish test\" --no-push --no-dispatch --skip-remote-checks。",
-          "如果 publish-public-run 成功且 push/dispatch 为 sent，不需要再单独运行 validate-public、secret-scan、git push 或 dispatch-data-updated.sh。"
+          "用分点列出：写入内容、Markdown 路径、图片本地化、公式/表格/Mermaid、audit/manifest、commit SHA、push/dispatch、验证命令和失败原因。"
         ]
       }
     ]

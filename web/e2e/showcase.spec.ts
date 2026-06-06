@@ -82,11 +82,13 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   await expect(page.getByRole("heading", { name: "Markdown 深度分析稿" })).toBeVisible();
   await expect(page.getByText("TL;DR")).toBeVisible();
   await expect(page.getByRole("heading", { name: "来源与材料地图" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "文章架构拆解" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "读完原文后的主线" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "结构拆解" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "逐部分细读" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "方法或系统流程" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "代码或项目结构深挖" })).toBeVisible();
-  await expect(page.locator(".katex").first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "证据与边界" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "日报判断" })).toBeVisible();
+  await expect(page.locator(".markdown-body").getByText("6 月 5 日最新 commit 是文档翻译").first()).toBeVisible();
   await expect(page.getByRole("link", { name: "单独打开 Markdown" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
@@ -109,7 +111,6 @@ test("English detail page shows post-training classification", async ({ page }) 
   await expect(page.getByRole("heading", { name: "Source Map" }).or(page.getByRole("heading", { name: "来源与材料地图" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Method or System Flow" }).or(page.getByRole("heading", { name: "方法或系统流程" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Evidence and Boundaries" }).or(page.getByRole("heading", { name: "证据与边界" }))).toBeVisible();
-  await expect(page.locator(".katex").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
   await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();

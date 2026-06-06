@@ -37,7 +37,9 @@ def test_sample_manifest_contains_article_markdown_and_audit_record(tmp_path: Pa
     article_path = next(result.public_root.glob("articles/2026/06/06/*/index.md"))
     article_markdown = article_path.read_text(encoding="utf-8")
     assert "[打开原文]" in article_markdown
-    assert "$$" in article_markdown
     assert "来源与材料地图" in article_markdown
-    assert "代码或项目结构深挖" in article_markdown
+    assert "内容类型分析建议" in article_markdown
     assert "审稿式结论" in article_markdown
+    assert "这不是首页卡片上的一句话" not in article_markdown
+    assert "如果原文涉及优化目标" not in article_markdown
+    assert "如果这是代码项目" not in article_markdown

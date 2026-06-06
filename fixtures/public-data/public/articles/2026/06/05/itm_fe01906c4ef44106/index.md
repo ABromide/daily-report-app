@@ -9,13 +9,11 @@
 
 ## TL;DR
 
-这不是又一个泛泛的 Agent SDK，而是把多 Agent 编排、可写工作区 Sandbox、Guardrails、人类审批和可观测 tracing 直接捏成一套开发框架；最近一周的版本更新继续在补 tracing 生命周期和恢复路径。
-
-这不是首页卡片上的一句话，而是进入深读流程后的核心判断：先确认材料来源，再拆文章或项目结构，最后把能被证据支撑的结论和仍需追踪的边界分开。
+OpenAI Agents SDK JS 的 README 把它定位为 JavaScript/TypeScript 的多 Agent 工作流框架。真正值得看的不是“又一个 Agent SDK”，而是它同时把 Agent、Sandbox Agent、工具/交接、Guardrails、人类介入、Sessions、Tracing 和 Realtime Agents 放进同一套工程表面。6 月 5 日最新 commit 是文档翻译，真正的功能更新集中在 5 月 29 日 v0.11.6 和 5 月 22 日 v0.11.5：前者补 tracing span lifecycle dispatch helpers，后者连续补 trace ID、trace context、resumed runs 清理、usage restoration 等运行诊断能力。
 
 ## 来源与材料地图
 
-本次材料来自 [OpenAI Agents SDK JS](https://github.com/openai/openai-agents-js)，发布时间窗口为 2026-06-05，证据链接包括 3 条公开来源。自动化必须先读这些来源，再写判断；如果某个结论不能回到原文、README、release note、PDF 或官方页面，就只能放入边界说明。
+本次材料来自 [OpenAI Agents SDK JS](https://github.com/openai/openai-agents-js)，发布时间窗口为 2026-06-05，证据链接包括 3 条公开来源。下面的分析只使用这些公开来源能够支撑的内容；延伸判断会单独放在边界和后续追踪里。
 
 ### 证据链接
 
@@ -23,73 +21,59 @@
 - [GitHub Releases v0.11.6](https://github.com/openai/openai-agents-js/releases)
 - [OpenAI 仓库列表更新时间](https://github.com/orgs/openai/repositories)
 
-## 文章总览
+## 读完原文后的主线
 
-仓库 README 把核心概念直接列成九个模块：Agent、Sandbox Agent、Agents as tools / Handoffs、Tools、Guardrails、Human in the loop、Sessions、Tracing、Realtime Agents。这说明它不是单点能力 SDK，而是试图定义一条从短请求到长任务的统一执行面。
+README 对这个仓库的定位很清楚：它是用于 JavaScript/TypeScript 的 OpenAI Agents SDK，同时强调 provider-agnostic。这意味着它不是只给 OpenAI API 写一层薄封装，而是试图把 Agent 工作流中的角色定义、工具调用、跨 Agent 协作、文件系统执行、安全护栏、会话状态、运行追踪和语音实时 Agent 放进一套统一开发体验里。要准确理解这个项目，核心材料应该放在 README、docs、examples、release notes 和近期 commits 上，而不是只看仓库标题或标签。
 
-## 文章架构拆解
+## 结构拆解
 
-结构上分成三层。第一层是运行抽象：Agent、Sandbox Agent、Tool、Handoff。第二层是治理与状态：Guardrails、Human in the loop、Sessions。第三层是生产可观测性：Tracing 与 Realtime。最近 v0.11.5/0.11.6 的改动几乎都围绕 tracing span 生命周期、trace context 与恢复流程，说明 OpenAI 现在把“可看见 agent 在做什么”当成工程主战场。
+从 README 看，SDK 可以拆成四条主线。第一条是编排抽象：Agents、Agents as tools、Handoffs 和 Tools，负责把单个模型调用扩展为多 Agent、多工具的工作流。第二条是执行环境：Sandbox Agents 把 Agent 和 filesystem workspace/sandbox environment 绑定在一起，适合较长时间运行的代码、文档和仓库检查任务。第三条是治理与状态：Guardrails、Human in the loop、Sessions 对应输入输出检查、人工审批和跨运行历史管理。第四条是可观测性与实时交互：Tracing 让开发者查看、调试和优化 Agent run，Realtime Agents 则面向 voice agents。最近 release 的功能点集中在 tracing lifecycle、trace context、usage restoration 和 resumed runs 清理，说明这个仓库的工程重心正在从“能跑起来”推进到“运行后能解释、能恢复、能诊断”。
 
 ## 逐部分细读
 
-### README 的核心概念段
+### README 开头：轻量框架，但目标不是轻量问题
 
-这里一次性把九个概念摊开，等于直接告诉读者 SDK 的边界：不仅生成文本，还要管理工具调用、跨 Agent 委派、安全护栏、人类审批和运行时追踪。
+README 第一段把项目描述为面向 JavaScript/TypeScript 的 multi-agent workflows 框架，并说明 provider-agnostic。这个定位有两个含义：一是它要服务的不是单次聊天补全，而是多个 Agent、工具和状态共同参与的 workflow；二是它把 OpenAI API 作为核心能力来源，但接口设计并不把项目完全锁死在单一 provider 上。README 还展示了 Agents Tracing UI 的图片，这不是装饰图，而是在告诉开发者：可观测性是 SDK 的一等公民。
 
-### Sandbox Agent 示例
+### 核心概念列表：九个入口对应一套 Agent 产品栈
 
-示例不是简单聊天，而是把 repo manifest、文件系统工作区、本地 sandbox client 放进默认配置里。重点在于 Agent 可以持续查看文件、跑命令、打补丁，天然适合代码和研究工作流。
+README 的 Core concepts 列出 Agents、Sandbox Agents、Agents as tools / Handoffs、Tools、Guardrails、Human in the loop、Sessions、Tracing、Realtime Agents。这个顺序很值得注意：它先讲角色和工作流，再讲工具与交接，随后讲安全与人工参与，最后讲状态、追踪和实时 Agent。换句话说，OpenAI 并不是只在卖“让模型调用函数”的 API，而是在把 Agent 运行时拆成开发者可以组合、观察和治理的一组模块。
 
-### 非 Sandbox Agent 示例
+### Sandbox Agent 示例：从聊天补全转向带工作区的任务执行
 
-第二个例子故意保留最小形态，说明团队不想把所有使用者都推向重型执行环境，而是让同一 SDK 覆盖轻量调用与长任务编排。
+README 里的 Sandbox Agent 示例导入了 `run`、`gitRepo`、`SandboxAgent` 和 `UnixLocalSandboxClient`，并在 `defaultManifest` 里把 `openai/openai-agents-js` 仓库作为 workspace entry。随后它让 Agent 检查 `repo/README.md` 并总结项目。这个例子准确体现了 Sandbox Agent 的边界：它不是普通聊天，而是让 Agent 带着文件系统上下文、仓库内容和 sandbox client 去做长任务。README 也明确写着 Sandbox Agents 处于 beta，因此生产使用时需要把它视为仍在收敛的能力，而不是稳定承诺。
 
-### Release Notes
+### 普通 Agent 示例：保留低摩擦入口
 
-5 月 29 日的 v0.11.6 继续补 tracing span lifecycle dispatch helpers；前一版 v0.11.5 则在 tracing ID、trace context、resumed runs 清理等地方密集迭代，证明他们正在收敛一套稳定的运行诊断模型。
+README 紧接着给了一个普通 `Agent` 示例，只需要 name、instructions 和 `run`。这说明 SDK 并没有强迫所有用户进入 sandbox 或复杂多 Agent 架构；它同时保留了最小可用路径。产品上这很重要：一个团队可以先用普通 Agent 写简单工作流，再逐渐引入 tools、handoffs、sessions、guardrails 和 tracing，最后在确实需要文件系统执行时再切到 Sandbox Agent。
+
+### v0.11.6 与 v0.11.5：近期更新重点在 tracing 和恢复路径
+
+GitHub release 显示 v0.11.6 发布于 2026-05-29，主要变化包括 tracing span lifecycle dispatch helpers，以及 streaming/chat completions 的 generation span model metadata 修复。v0.11.5 发布于 2026-05-22，变化更多：可配置 tracing ID、scoped trace context helpers、resumed runs 的 RunState trace clearing、completed tracing lifecycle dispatch helpers、Usage JSON restoration helpers 等。这些变化不等于 SDK 已经在所有生产场景成熟，但它们很明确地说明维护者正在补运行诊断、恢复、上下文传播和可观测性这些工程骨架。
+
+### 6 月 5 日 commit：不是功能 release，而是文档翻译
+
+GitHub commits API 显示 2026-06-05 的最新 commit 是 `docs: translate pages`。所以这个 item 的日期窗口可以成立，但不能把它写成“6 月 5 日发布了重大功能”。准确说法应该是：本周内仓库仍有维护活动，最新 commit 是文档翻译；最近一次功能 release 是 5 月 29 日 v0.11.6，功能主线与 tracing 相关。
 
 ## 方法或系统流程
 
-1. **定义 Agent 角色**：先把指令、工具、handoff 和 guardrails 绑定到 Agent 抽象。
-2. **决定执行环境**：简单问答走普通 Agent，长任务则切到 Sandbox Agent 并带上工作区 manifest。
-3. **运行并管理状态**：Session 负责历史，Human in the loop 负责审批，Guardrails 负责输入输出边界。
-4. **收集 tracing**：Tracing 把运行与恢复过程落成 span 和 usage 轨迹，供后续调试和优化。
+1. **先定义 Agent**：用 instructions、tools、guardrails 和 handoffs 描述角色边界，让 Agent 不只是一个 prompt，而是一个可组合的执行单元。
+2. **再选择执行面**：普通 Agent 覆盖轻量请求；Sandbox Agent 在需要文件系统、仓库内容、命令执行和长任务状态时启用。
+3. **把状态和人类审批接进去**：Sessions 管理跨运行历史，Human in the loop 处理需要人工确认的关键节点，Guardrails 负责输入输出约束。
+4. **最后用 tracing 看清运行过程**：Tracing 记录 agent runs，release notes 中的 trace ID、trace context、lifecycle dispatch helpers 和 usage restoration 都指向这一层。
 
-这条流程说明 OpenAI 在把“Agent 产品”翻译成一套可以被软件工程团队接住的执行协议，而不是只卖提示词模板。
-
-如果原文涉及优化目标、损失函数或约束，Markdown 可以直接保留公式。示例：
-
-$$
-J(\theta)=\mathbb{E}_{x,y\sim\pi_\theta}[r(x,y)]-\beta\,D_{KL}(\pi_\theta\Vert\pi_0)
-$$
-
-## 代码或项目结构深挖
-
-如果这是代码项目，分析必须继续阅读 README、docs/examples、依赖入口、核心目录和 release notes，解释模块边界、执行流程、状态管理、可观测性与部署入口；如果这是论文或报告，则用同样方式拆方法、实验、政策结构和执行链条。
-
-## 关键论证链
-
-把作者论证还原成四步：它先把什么问题定义出来；接着提出什么机制、框架或系统；然后用哪些公开证据支撑；最后哪些结论仍然不能直接推出。这个链条比摘要更重要，因为它决定这篇内容能否被复用到日报。
-
-## 对照与反例
-
-本次分析不把单个信号误读成行业定论。项目活跃不等于生产成熟，论文方法新不等于真实训练稳定，政策蓝图清晰也不等于制度已经落地。需要把同类方案、缺失证据和潜在失败模式放在同一页里看。
+这条流程比“SDK 支持多 Agent”更具体：它说明 OpenAI 想把 Agent 的开发过程变成一条工程管线，覆盖角色定义、工具动作、工作区执行、状态管理、安全检查、人工审批和可观测性。
 
 ## 证据与边界
 
-强证据在于 README 的九个核心概念和 Sandbox 代码示例，以及最近两个 release 对 tracing 生命周期和恢复路径的持续修补。边界在于 release note 只能证明框架在补工程稳定性，不能直接证明它在复杂生产场景里已经足够成熟；另外 GitHub 页面没有给出真实成功率或长任务基准。
+强证据来自 README 的九个核心概念、Sandbox Agent 代码示例、Node.js 22/Deno/Bun 支持说明、package scripts 中大量 examples 入口，以及 v0.11.6/v0.11.5 release notes 对 tracing 和恢复路径的连续修补。边界也很清楚：Sandbox Agents 仍被标记为 beta；README 没有提供长任务成功率、生产稳定性 benchmark 或和其他 Agent 框架的系统对比；5 月底 release notes 证明维护者在补工程细节，但不能直接推出“已经适合所有复杂生产场景”。
 
 ## 后续追踪问题
 
-下一轮自动化需要继续追踪：是否出现代码或复现结果；release 是否修正关键模块；作者是否补充实验或政策细节；同类项目是否给出反例；今天写入的判断是否需要 correction 或 tombstone。
+下一轮自动化应该继续追踪三件事：第一，Sandbox Agents 是否从 beta 走向稳定，并出现更完整的安全边界说明；第二，tracing lifecycle helpers 是否在 docs 和 examples 中形成清晰最佳实践，尤其是 resumed runs、usage restoration、external tracing processors；第三，examples 目录里与 Codex、computer use、sandbox coding task、research bot 相关的示例是否开始展示更复杂的端到端工作流。
 
-## 可复用到日报的判断
+## 日报判断
 
-日报里值得跟踪的不是“又有一个 Agent SDK”，而是它把 sandbox、审批、trace、handoff 收成一个主干。后续可以重点盯 tracing API 是否稳定、Sandbox Agent 是否走出 beta、以及 examples 是否开始出现更强的多步骤工作流。
-
-## 审稿式结论
-
-这篇内容可以进入日报，但必须以可复查的 Markdown 研究稿形式进入：保留来源链接、结构拆解、逐部分细读、流程复原、证据边界、后续问题和审稿式结论，而不是只在首页留一个链接。
+这篇内容适合放在“大模型 Agent 相关”频道，但展示方式必须准确：它不是一篇论文，也不是 6 月 5 日的大功能公告，而是一个本周仍在维护的官方 JS/TS Agent SDK。日报里值得留下的判断是：OpenAI 正在把 Agent 能力从单次调用推向可组合、可观察、可恢复、可带工作区执行的开发框架；但生产可用性、sandbox 安全边界和长任务稳定性还需要继续看 release、examples 和真实用户反馈。
 
 [打开原文](https://github.com/openai/openai-agents-js)

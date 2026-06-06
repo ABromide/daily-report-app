@@ -32,6 +32,24 @@ def _secret_scan_command(path: Path) -> int:
     return 0
 
 
+def _automation_dry_run_command(output_root: Path) -> int:
+    result = generate_sample(output_root)
+    public_report = validate_public(result.public_root)
+    if not public_report.ok:
+        print(format_issues(public_report.issues))
+        return 1
+    findings = secret_scan(result.public_root)
+    if findings:
+        for finding in findings:
+            print(f"{finding.path}:{finding.line}: possible secret matched {finding.rule}")
+        return 1
+    print(f"automation dry run wrote public data to {result.public_root}")
+    print(f"manifest: {result.manifest_path} ({result.manifest_sha256})")
+    print("validation: passed")
+    print("secret scan: passed")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="daily-report")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -43,6 +61,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     generate_parser = subparsers.add_parser("generate-sample", help="generate deterministic sample public data")
     generate_parser.add_argument("--output", type=Path, required=True)
+
+    automation_parser = subparsers.add_parser(
+        "automation-dry-run",
+        help="generate sample automation output, article HTML, audit record, and validate it",
+    )
+    automation_parser.add_argument("--output", type=Path, required=True)
 
     secret_parser = subparsers.add_parser("secret-scan", help="scan a file or directory for secret-like values")
     secret_parser.add_argument("path", type=Path)
@@ -65,6 +89,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             f"({result.manifest_sha256})"
         )
         return 0
+    if command == "automation-dry-run":
+        return _automation_dry_run_command(args.output)
     if command == "secret-scan":
         return _secret_scan_command(args.path)
     return 1

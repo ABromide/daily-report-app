@@ -9,6 +9,7 @@ from collector.jsonio import JsonObject, read_json
 from collector.paths import SCHEMA_ROOT
 
 SCHEMA_BY_NAME = {
+    "automation-audit": "automation-audit.schema.json",
     "daily-report": "daily-report.schema.json",
     "days": "days.schema.json",
     "hourly-report": "hourly-report.schema.json",

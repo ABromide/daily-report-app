@@ -1,0 +1,38 @@
+{
+  "article_paths": [
+    "articles/2026/06/06/itm_3fcb6ef14e59761c/index.html",
+    "articles/2026/06/06/itm_f4b29831fa65e61f/index.html",
+    "articles/2026/06/06/itm_ab7b9d44942b5524/index.html"
+  ],
+  "category_counts": {
+    "ai-safety": 0,
+    "llm-agent": 3,
+    "llm-post-training": 0
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-06T00:00:00Z",
+  "run_id": "sample-20260606T000000Z",
+  "status": "dry-run",
+  "version": 1,
+  "written_item_ids": [
+    "itm_3fcb6ef14e59761c",
+    "itm_f4b29831fa65e61f",
+    "itm_ab7b9d44942b5524"
+  ]
+}

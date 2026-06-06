@@ -22,5 +22,11 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "替代" in contract["dedupe"]["rule"]
     assert "category_id" in contract["output_contract"]["required_item_fields"]
     assert "visual" in contract["output_contract"]["required_item_fields"]
+    assert "analysis_html_path" in contract["output_contract"]["required_item_fields"]
+    assert contract["analysis_requirements"]["minimum_sections"] >= 6
+    assert "逐部分细读" in contract["analysis_requirements"]["required_sections"]
+    assert "完整原文" in contract["analysis_requirements"]["depth_rule"]
+    assert "article_paths" in contract["audit_contract"]["required_fields"]
     assert "validate-public" in contract["codex_prompt_zh"]
     assert "secret-scan" in contract["codex_prompt_zh"]
+    assert "深度分析文件" in contract["codex_prompt_zh"]

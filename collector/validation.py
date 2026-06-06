@@ -56,6 +56,8 @@ def _schema_for_manifest_path(path: str) -> str | None:
         return "sources"
     if path == "index/known-links.json":
         return "known-links"
+    if path.startswith("audits/") and path.endswith(".json"):
+        return "automation-audit"
     if path.startswith("reports/hourly/") and path.endswith(".json"):
         return "hourly-report"
     if path.startswith("reports/daily/") and path.endswith(".json"):
@@ -105,6 +107,8 @@ def _validate_manifest_entry(public_root: Path, entry: JsonObject) -> list[Valid
     if expected_bytes != actual_bytes:
         issues.append(_issue(relative_path, f"byte size mismatch: expected {expected_bytes}, got {actual_bytes}"))
 
+    if relative_path.endswith(".html"):
+        return issues
     if relative_path.endswith("/items.jsonl"):
         issues.extend(_validate_items_jsonl(target))
     else:

@@ -26,7 +26,6 @@ const labels = {
     noResults: "没有找到匹配内容。换个关键词试试。",
     minutes: "分钟",
     clear: "清除筛选",
-    jump: "分类跳转",
     coreQuestion: "核心问题",
     methodPath: "方法路径",
     keySignals: "关键信号",
@@ -47,7 +46,6 @@ const labels = {
     noResults: "No matching content. Try another keyword.",
     minutes: "min",
     clear: "Clear filters",
-    jump: "Jump channels",
     coreQuestion: "Core question",
     methodPath: "Method path",
     keySignals: "Key signals",
@@ -89,18 +87,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
       </a>
     </nav>
   </header>
-
-  <nav class="jump-rail" data-jump-rail aria-label={labels.jump}>
-    <button class="jump-rail-handle" type="button" data-rail-handle aria-label={`${labels.jump} handle`}>
-      <span></span>
-    </button>
-    {data.clusters.map((cluster, index) => (
-      <a href={`#${cluster.id}`} data-jump-target={cluster.id}>
-        <b>{String(index + 1).padStart(2, "0")}</b>
-        <span>{cluster.title}</span>
-      </a>
-    ))}
-  </nav>
 
   <section class="showcase-hero">
     <div class="hero-copy">
@@ -253,13 +239,9 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
   const clearButton = document.querySelector(".clear-filter");
   const contentCards = Array.from(document.querySelectorAll("[data-document-card]"));
   const clusterPanels = Array.from(document.querySelectorAll("[data-cluster-panel]"));
-  const jumpRail = document.querySelector("[data-jump-rail]");
-  const jumpLinks = Array.from(document.querySelectorAll("[data-jump-target]"));
-  const railHandle = document.querySelector("[data-rail-handle]");
   const noResults = document.querySelector(".no-results");
   let activeCluster = "all";
   let activeType = "all";
-  let railDragging = false;
 
   function normalize(value: unknown) {
     return String(value ?? "").trim().toLowerCase();
@@ -331,33 +313,5 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
     applyFilters();
   });
 
-  for (const link of jumpLinks) {
-    if (!(link instanceof HTMLAnchorElement)) continue;
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      const target = link.dataset.jumpTarget;
-      if (!target) return;
-      document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
-
-  railHandle?.addEventListener("pointerdown", (event) => {
-    if (!(jumpRail instanceof HTMLElement)) return;
-    railDragging = true;
-    jumpRail.classList.add("is-dragging");
-    if (event instanceof PointerEvent && railHandle instanceof HTMLElement) {
-      railHandle.setPointerCapture(event.pointerId);
-    }
-  });
-
-  window.addEventListener("pointermove", (event) => {
-    if (!railDragging || !(jumpRail instanceof HTMLElement)) return;
-    const nextTop = Math.min(Math.max(event.clientY - 24, 96), window.innerHeight - 220);
-    jumpRail.style.top = `${nextTop}px`;
-  });
-
-  window.addEventListener("pointerup", () => {
-    railDragging = false;
-    if (jumpRail instanceof HTMLElement) jumpRail.classList.remove("is-dragging");
-  });
+  applyFilters();
 </script>

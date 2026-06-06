@@ -23,8 +23,7 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   await expect(page.getByRole("heading", { name: "三类频道" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最新更新" })).toBeVisible();
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
-  await expect(page.getByRole("navigation", { name: "分类跳转" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /02 大模型后训练相关/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: "大模型后训练相关" })).toBeVisible();
   await expect(page.getByText("核心问题").first()).toBeVisible();
   await expect(page.getByText("方法路径").first()).toBeVisible();
 
@@ -46,7 +45,7 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   await expect(page.getByRole("heading", { name: "Open WebUI：本地 Agent 入口的用户界面" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
-  await page.getByRole("link", { name: /03 AI 安全相关/ }).click();
+  await page.getByRole("button", { name: "AI 安全相关" }).click();
   await expect(page.locator("#ai-safety")).toBeVisible();
 
   expect(errors).toEqual([]);
@@ -61,7 +60,7 @@ test("English content hub remains available under /en", async ({ page }, testInf
   await expect(page.getByRole("heading", { name: "Featured today" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Three channels" })).toBeVisible();
   await expect(page.getByLabel("Open GitHub repository")).toBeVisible();
-  await expect(page.getByRole("navigation", { name: "Jump channels" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "LLM Post-Training" })).toBeVisible();
   await expect(page.getByText("Core question").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
@@ -82,8 +81,11 @@ test("Chinese visual card opens a second-level analysis page", async ({ page }, 
   await expect(page).toHaveURL(/\/items\/dify-agent-platform$/);
   await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "AI 深度解析" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "文章架构拆解" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "逐部分细读" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
-  await expect(page.getByText("大模型 Agent 相关")).toBeVisible();
+  await expect(page.getByLabel("分类位置").getByText("大模型 Agent 相关")).toBeVisible();
   await expect(page.getByRole("link", { name: "打开原文" })).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
@@ -98,8 +100,10 @@ test("English detail page shows post-training classification", async ({ page }) 
   await page.goto("/en/items/trust-region-opd");
   await expect(page.getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "AI Deep Analysis" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Article Architecture" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
-  await expect(page.getByText("LLM Post-Training")).toBeVisible();
+  await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();
   await expect(page.getByRole("link", { name: "Open source" })).toBeVisible();
 
   expect(errors).toEqual([]);

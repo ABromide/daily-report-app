@@ -863,87 +863,6 @@ select {
   fill: currentColor;
 }
 
-.jump-rail {
-  position: fixed;
-  top: 168px;
-  left: max(14px, calc((100vw - 1180px) / 2 - 124px));
-  z-index: 25;
-  display: grid;
-  gap: 8px;
-  width: 132px;
-  padding: 8px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgb(250 249 245 / 0.94);
-  box-shadow: 0 16px 40px rgb(55 44 30 / 0.1);
-  backdrop-filter: blur(12px);
-}
-
-.jump-rail.is-dragging {
-  box-shadow: 0 20px 46px rgb(27 54 93 / 0.18);
-}
-
-.jump-rail-handle {
-  display: grid;
-  place-items: center;
-  height: 24px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--paper);
-  cursor: grab;
-}
-
-.jump-rail.is-dragging .jump-rail-handle {
-  cursor: grabbing;
-}
-
-.jump-rail-handle span,
-.jump-rail-handle span::before,
-.jump-rail-handle span::after {
-  display: block;
-  width: 34px;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--line-strong);
-  content: "";
-}
-
-.jump-rail-handle span::before {
-  transform: translateY(-6px);
-}
-
-.jump-rail-handle span::after {
-  transform: translateY(4px);
-}
-
-.jump-rail a {
-  display: grid;
-  gap: 5px;
-  min-height: 66px;
-  padding: 9px;
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: var(--paper);
-  color: var(--ink-blue);
-}
-
-.jump-rail a:hover,
-.jump-rail a:focus-visible {
-  border-color: var(--ink-blue);
-  background: #eef2f7;
-}
-
-.jump-rail b {
-  color: var(--warm);
-  font-size: 0.68rem;
-}
-
-.jump-rail span {
-  font-size: 0.78rem;
-  font-weight: 850;
-  line-height: 1.25;
-}
-
 .showcase-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
@@ -1582,6 +1501,22 @@ select {
   background: var(--ivory);
 }
 
+.detail-section {
+  animation: detail-rise 420ms ease;
+}
+
+@keyframes detail-rise {
+  from {
+    transform: translateY(10px);
+    box-shadow: 0 14px 34px rgba(27, 54, 93, 0.08);
+  }
+
+  to {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
 .detail-section h2 {
   margin: 0;
   color: var(--ink-blue);
@@ -1604,6 +1539,80 @@ select {
   font-size: 0.92rem;
   line-height: 1.62;
   overflow-wrap: anywhere;
+}
+
+.deep-prose {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.deep-prose p {
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+.article-map,
+.deep-flow,
+.section-reading-list {
+  display: grid;
+  gap: 10px;
+}
+
+.article-map {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.article-map article,
+.deep-flow article,
+.section-reading-list article {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.article-map article {
+  min-height: 150px;
+}
+
+.article-map h3,
+.deep-flow h3,
+.section-reading-list h3 {
+  margin: 0 0 8px;
+  color: var(--ink-blue);
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.deep-flow {
+  counter-reset: deep-flow;
+}
+
+.deep-flow article {
+  position: relative;
+  padding-left: 54px;
+}
+
+.deep-flow article::before {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  background: var(--ink-blue);
+  color: var(--ivory);
+  font-size: 0.72rem;
+  font-weight: 900;
+  content: counter(deep-flow);
+  counter-increment: deep-flow;
 }
 
 .analysis-grid {
@@ -1732,15 +1741,6 @@ select {
 }
 
 @media (max-width: 1320px) {
-  .jump-rail {
-    left: 10px;
-    width: 112px;
-  }
-
-  .showcase-page {
-    padding-left: 72px;
-  }
-
   .topbar {
     grid-template-columns: 1fr;
     align-items: start;
@@ -1758,29 +1758,6 @@ select {
 }
 
 @media (max-width: 980px) {
-  .jump-rail {
-    position: sticky;
-    top: 58px;
-    left: auto;
-    display: flex;
-    width: auto;
-    margin: 0 0 12px;
-    overflow-x: auto;
-  }
-
-  .jump-rail-handle {
-    display: none;
-  }
-
-  .jump-rail a {
-    min-width: 154px;
-    min-height: 58px;
-  }
-
-  .showcase-page {
-    padding-left: 0;
-  }
-
   .showcase-hero,
   .cluster-panel,
   .content-card-timeline,
@@ -1866,6 +1843,10 @@ select {
   }
 
   .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-map {
     grid-template-columns: 1fr;
   }
 

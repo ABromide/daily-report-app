@@ -55,6 +55,8 @@
   "output_contract": {
     "branch": "data",
     "item_path": "public/items/YYYY/MM/DD/items.jsonl",
+    "analysis_html_path": "public/articles/YYYY/MM/DD/ITEM_ID/index.html",
+    "audit_path": "public/audits/YYYY/MM/DD/RUN_ID.json",
     "report_path": "public/reports/hourly/YYYY/MM/DD/HH.json",
     "manifest_path": "public/manifests/YYYY/MM/DD/HH.manifest.json",
     "required_item_fields": [
@@ -70,10 +72,38 @@
       "fetched_at",
       "summary_zh",
       "analysis_zh",
+      "analysis_html_path",
       "visual",
       "tags",
       "content_hash"
     ]
   },
-  "codex_prompt_zh": "你是 Daily Report 的中文采集 Agent。每小时只寻找今天或本周内的大模型 Agent、大模型后训练、AI 安全内容。优先官方博客、论文页、GitHub 仓库和研究机构页面。写入前读取 public/index/known-links.json 与最新 items.jsonl 做去重；重复则丢弃并寻找同类替代。每条内容必须输出中文摘要、AI 解读、可视化摘要字段、来源链接、发布日期和 category_id。完成后生成 manifest，运行 validate-public 与 secret-scan，通过后提交到 data 分支并触发 data-updated。"
+  "analysis_requirements": {
+    "minimum_sections": 6,
+    "required_sections": [
+      "文章总览",
+      "文章架构拆解",
+      "逐部分细读",
+      "方法或系统流程",
+      "证据与边界",
+      "可复用到日报的判断"
+    ],
+    "format": "每篇内容必须生成独立 HTML 深度分析文件，使用 Daily Report 的 parchment/ink-blue 样式；首页卡片只做入口，详细分析必须在二级 HTML 文件中展开。",
+    "depth_rule": "必须阅读完整原文或可访问的完整公开内容，不能只根据标题、摘要或标签生成。需要说明作者如何提出问题、如何组织方法、每个部分承担什么作用、证据是否支撑结论，以及哪些边界需要后续追踪。"
+  },
+  "audit_contract": {
+    "status_values": ["dry-run", "complete", "failed"],
+    "required_fields": [
+      "run_id",
+      "generated_at",
+      "status",
+      "date_window",
+      "category_counts",
+      "dedupe",
+      "written_item_ids",
+      "article_paths"
+    ],
+    "remote_rule": "每次自动化写入都必须把 audit JSON 和 article HTML 一起提交到 data 分支；远端 Pages 构建必须先 validate-public 和 secret-scan，再部署。"
+  },
+  "codex_prompt_zh": "你是 Daily Report 的中文采集 Agent。每小时只寻找今天或本周内的大模型 Agent、大模型后训练、AI 安全内容。优先官方博客、论文页、GitHub 仓库和研究机构页面。写入前读取 public/index/known-links.json 与最新 items.jsonl 做去重；重复则丢弃并寻找同类替代。每条内容必须深度阅读完整原文，输出中文摘要、AI 解读、可视化摘要字段、来源链接、发布日期、category_id，并额外生成 public/articles/YYYY/MM/DD/ITEM_ID/index.html 深度分析文件。HTML 分析稿必须包含文章总览、文章架构拆解、逐部分细读、方法或系统流程、证据与边界、可复用判断。完成后生成 audit JSON 与 manifest，运行 validate-public 与 secret-scan，通过后提交到 data 分支并触发 data-updated。"
 }

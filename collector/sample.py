@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from collector.archive import write_archive_record
+from collector.article_html import render_article_html
 from collector.jsonio import JsonObject, sha256_file, write_json, write_jsonl
 from collector.manifest import build_manifest
 from collector.sample_source import (
@@ -94,6 +95,7 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     items_rel = f"items/{year}/{month}/{day}/items.jsonl"
     hourly_rel = f"reports/hourly/{year}/{month}/{day}/00.json"
     daily_rel = f"reports/daily/{year}/{month}/{day}.json"
+    audit_rel = f"audits/{year}/{month}/{day}/sample-20260606t000000z.json"
 
     items = sample_items()
     source_index = load_source_index()
@@ -103,6 +105,7 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     items_path = public_root / items_rel
     hourly_path = public_root / hourly_rel
     daily_path = public_root / daily_rel
+    audit_path = public_root / audit_rel
     days_path = public_root / "index" / "days.json"
     latest_path = public_root / "index" / "latest.json"
     manifest_path = public_root / manifest_rel
@@ -117,8 +120,42 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
         },
     )
     write_jsonl(items_path, items)
+    article_paths: list[Path] = []
+    for item in items:
+        article_path = public_root / str(item["analysis_html_path"])
+        article_path.parent.mkdir(parents=True, exist_ok=True)
+        article_path.write_text(render_article_html(item), encoding="utf-8")
+        article_paths.append(article_path)
     write_json(hourly_path, _hourly_report(items))
     write_json(daily_path, _daily_report(items))
+    write_json(
+        audit_path,
+        {
+            "version": 1,
+            "run_id": "sample-20260606T000000Z",
+            "generated_at": SAMPLE_GENERATED_AT,
+            "status": "dry-run",
+            "config_path": "config/automation/codex-hourly.zh.json",
+            "date_window": {
+                "mode": "today_or_current_week",
+                "max_age_days": 7,
+                "timezone": "Asia/Shanghai",
+            },
+            "category_counts": {
+                "llm-agent": len(items),
+                "llm-post-training": 0,
+                "ai-safety": 0,
+            },
+            "dedupe": {
+                "ledger_path": "public/index/known-links.json",
+                "checked_keys": ["canonical_url", "external_id", "title_hash", "content_hash"],
+                "duplicate_candidates": 1,
+                "replacement_candidates": 1,
+            },
+            "written_item_ids": [str(item["item_id"]) for item in items],
+            "article_paths": [str(item["analysis_html_path"]) for item in items],
+        },
+    )
     write_json(
         days_path,
         {
@@ -140,7 +177,16 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     manifest = build_manifest(
         public_root,
         SAMPLE_GENERATED_AT,
-        [days_path, known_links_path, sources_path, items_path, hourly_path, daily_path],
+        [
+            days_path,
+            known_links_path,
+            sources_path,
+            items_path,
+            hourly_path,
+            daily_path,
+            audit_path,
+            *article_paths,
+        ],
     )
     write_json(manifest_path, manifest)
     manifest_sha256 = sha256_file(manifest_path)

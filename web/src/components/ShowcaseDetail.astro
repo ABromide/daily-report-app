@@ -26,6 +26,10 @@ const labels = {
     problem: "它解决什么问题",
     path: "方法路径",
     why: "为什么值得看",
+    architecture: "文章架构拆解",
+    sectionReading: "逐部分细读",
+    flowReading: "流程化理解",
+    audit: "自动化审查记录",
     sourceInfo: "来源信息",
     related: "同类继续看",
     published: "发布时间",
@@ -47,6 +51,10 @@ const labels = {
     problem: "Problem It Addresses",
     path: "Method Path",
     why: "Why It Matters",
+    architecture: "Article Architecture",
+    sectionReading: "Section-by-Section Reading",
+    flowReading: "Workflow Interpretation",
+    audit: "Automation Audit",
     sourceInfo: "Source",
     related: "Related Reads",
     published: "Published",
@@ -75,6 +83,112 @@ const visualLabels = {
   keySignals: labels.keySignals,
   aiTakeaway: labels.aiTakeaway
 };
+
+const deepDive = buildDeepDive(item, cluster?.title ?? "", cluster?.thesis ?? "", locale);
+
+function buildDeepDive(item: LocalizedDocument, clusterTitle: string, clusterThesis: string, locale: Locale) {
+  if (locale === "zh") {
+    return {
+      overview: [
+        `这篇内容的主问题不是“它属于什么标签”，而是：${item.visual.question}。自动化分析会先把原文拆成问题提出、方法展开、证据呈现和边界讨论四个层次，再判断它为什么应该进入「${clusterTitle}」。`,
+        `站在读者角度，最有价值的读法是先看作者如何建立问题，再看 ${item.visual.approach.join("、")} 这条链路是否真的支撑了结论。${item.analysis}`,
+        `分类理由是：${clusterThesis} 这篇内容提供的不是孤立信息，而是能被后续报告复用的研究流程、产品判断或安全审计线索。`
+      ],
+      architecture: [
+        {
+          title: "1. 问题入口",
+          body: `原文首先需要回答「${item.visual.question}」。这一部分决定读者是否应该继续投入时间：如果问题只停留在概念层，就只能作为资讯；如果问题能连接到真实流程，它就值得进入日报。`
+        },
+        {
+          title: "2. 方法主体",
+          body: `方法主体可以被压缩成 ${item.visual.approach.length} 个连续动作：${item.visual.approach.join(" → ")}。自动化会检查这些动作之间是否存在因果关系，而不是只把关键词摘出来。`
+        },
+        {
+          title: "3. 证据和指标",
+          body: `当前卡片记录了 ${item.visual.metrics.map((metric) => `${metric.label}=${metric.value}`).join("，")}。这些指标不是评分装饰，而是帮助读者判断这篇内容更偏理论、工程、治理还是产品。`
+        },
+        {
+          title: "4. 边界与后续问题",
+          body: `最后要看作者没有解决什么：数据是否足够、实验是否可复现、产品是否可落地、安全假设是否过窄。日报会把这些边界保留下来，方便下一次自动化更新继续追踪。`
+        }
+      ],
+      flow: item.visual.approach.map((step, index) => ({
+        title: `${index + 1}. ${step}`,
+        body: `这一环节用于解释原文的第 ${index + 1} 个关键动作。自动化会把它和前后步骤连接起来，判断它是在定义问题、提出方法、验证效果，还是暴露风险边界。`
+      })),
+      sectionReading: [
+        {
+          title: "核心论点",
+          body: `核心论点可以概括为：${item.visual.takeaway} 这句话需要和原文证据一起看，不能只当作摘要结论。`
+        },
+        {
+          title: "读者应该抓住的结构",
+          body: `读这篇内容时，先追踪作者如何从问题过渡到方法，再看方法如何被实验、案例或产品部署支撑。这个结构比单个结论更重要。`
+        },
+        {
+          title: "可以复用到报告里的信息",
+          body: `可复用信息包括来源、发布时间、分类、方法路径、指标和开放问题。它们会进入 public data，并在详情页、日报和未来 Mac 端缓存里复用。`
+        }
+      ],
+      audit: [
+        { label: "时间窗口", value: "今天或本周内" },
+        { label: "分类", value: clusterTitle },
+        { label: "来源", value: item.sourceName },
+        { label: "去重依据", value: "canonical_url / title_hash / content_hash" }
+      ]
+    };
+  }
+
+  return {
+    overview: [
+      `The core question is not which tag the item receives, but: ${item.visual.question}. The automation reads the source as a sequence of problem framing, method development, evidence, and limitations before placing it in ${clusterTitle}.`,
+      `The most useful reading path is to inspect how ${item.visual.approach.join(", ")} supports the conclusion. ${item.analysis}`,
+      `The category fit is: ${clusterThesis} This item is treated as reusable research workflow, product judgment, or safety-audit evidence rather than a loose link.`
+    ],
+    architecture: [
+      {
+        title: "1. Problem Frame",
+        body: `The source must answer: ${item.visual.question}. This frame decides whether the item is a casual signal or something worth preserving in the daily report.`
+      },
+      {
+        title: "2. Method Body",
+        body: `The method path becomes ${item.visual.approach.join(" -> ")}. The automation checks whether these steps form an argument instead of a keyword list.`
+      },
+      {
+        title: "3. Evidence And Metrics",
+        body: `The card records ${item.visual.metrics.map((metric) => `${metric.label}=${metric.value}`).join(", ")}. These metrics tell readers whether the piece is theoretical, engineering-heavy, governance-oriented, or product-relevant.`
+      },
+      {
+        title: "4. Limits And Follow-Up",
+        body: "The final pass keeps track of what remains unresolved: reproducibility, deployment fit, evaluation coverage, or safety assumptions."
+      }
+    ],
+    flow: item.visual.approach.map((step, index) => ({
+      title: `${index + 1}. ${step}`,
+      body: `This step explains the ${index + 1} part of the article's argument and connects it to the neighboring steps.`
+    })),
+    sectionReading: [
+      {
+        title: "Main Claim",
+        body: `The main claim is: ${item.visual.takeaway} It should be read together with the source evidence, not as a standalone summary.`
+      },
+      {
+        title: "Reading Structure",
+        body: "Read from problem framing to method, then from method to evidence and limitations. The structure matters more than any single extracted sentence."
+      },
+      {
+        title: "Reusable Report Material",
+        body: "Reusable fields include source, date, category, method path, evidence metrics, and open questions. They are carried into public data and future local caches."
+      }
+    ],
+    audit: [
+      { label: "Date Window", value: "Today or current week" },
+      { label: "Category", value: clusterTitle },
+      { label: "Source", value: item.sourceName },
+      { label: "Dedupe Keys", value: "canonical_url / title_hash / content_hash" }
+    ]
+  };
+}
 ---
 
 <main class="detail-page" data-locale={locale}>
@@ -123,24 +237,48 @@ const visualLabels = {
       <section class="detail-section" aria-labelledby="analysis-title">
         <p class="eyebrow">{labels.detail}</p>
         <h2 id="analysis-title">{labels.detail}</h2>
-        <div class="analysis-grid">
-          <div>
-            <span>{labels.problem}</span>
-            <p>{item.visual.question}</p>
-          </div>
-          <div>
-            <span>{labels.why}</span>
-            <p>{item.analysis}</p>
-          </div>
+        <div class="deep-prose">
+          {deepDive.overview.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="architecture-title">
+        <p class="eyebrow">{labels.architecture}</p>
+        <h2 id="architecture-title">{labels.architecture}</h2>
+        <div class="article-map">
+          {deepDive.architecture.map((block) => (
+            <article>
+              <h3>{block.title}</h3>
+              <p>{block.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section class="detail-section" aria-labelledby="path-title">
-        <p class="eyebrow">{labels.path}</p>
-        <h2 id="path-title">{labels.path}</h2>
-        <ol class="method-steps">
-          {item.visual.approach.map((step) => <li>{step}</li>)}
-        </ol>
+        <p class="eyebrow">{labels.flowReading}</p>
+        <h2 id="path-title">{labels.flowReading}</h2>
+        <div class="deep-flow">
+          {deepDive.flow.map((step) => (
+            <article>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="section-reading-title">
+        <p class="eyebrow">{labels.sectionReading}</p>
+        <h2 id="section-reading-title">{labels.sectionReading}</h2>
+        <div class="section-reading-list">
+          {deepDive.sectionReading.map((block) => (
+            <article>
+              <h3>{block.title}</h3>
+              <p>{block.body}</p>
+            </article>
+          ))}
+        </div>
       </section>
     </div>
 
@@ -165,6 +303,19 @@ const visualLabels = {
             <dt>{labels.reading}</dt>
             <dd>{item.readingMinutes} {labels.minutes}</dd>
           </div>
+        </dl>
+      </section>
+
+      <section class="detail-section" aria-labelledby="audit-title">
+        <p class="eyebrow">{labels.audit}</p>
+        <h2 id="audit-title">{labels.audit}</h2>
+        <dl class="detail-facts">
+          {deepDive.audit.map((entry) => (
+            <div>
+              <dt>{entry.label}</dt>
+              <dd>{entry.value}</dd>
+            </div>
+          ))}
         </dl>
       </section>
 

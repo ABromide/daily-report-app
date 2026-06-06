@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Evaluation harnesses move toward evidence bundles · Daily Report 深度分析</title>
+    <style>
+      :root {
+        --parchment: #f5f4ed;
+        --ivory: #faf9f5;
+        --paper: #fffdfa;
+        --ink: #1f252d;
+        --ink-blue: #1b365d;
+        --muted: #6f675c;
+        --line: #d8d1c2;
+        --warm: #a86f2d;
+        --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        --font-serif: Charter, "Songti SC", "STSong", Georgia, serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--parchment);
+        font-family: var(--font-sans);
+      }
+      main {
+        width: min(980px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 36px 0 64px;
+      }
+      header {
+        display: grid;
+        gap: 16px;
+        padding-bottom: 26px;
+        border-bottom: 1px solid var(--line);
+      }
+      .eyebrow {
+        margin: 0;
+        color: var(--warm);
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 16ch;
+        margin: 0;
+        color: var(--ink-blue);
+        font-family: var(--font-serif);
+        font-size: clamp(2.2rem, 7vw, 4.1rem);
+        line-height: 1.02;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+      section {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--ivory);
+      }
+      h2, h3 {
+        margin: 0;
+        color: var(--ink-blue);
+      }
+      h2 {
+        font-family: var(--font-serif);
+        font-size: 1.55rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .card, .flow-step {
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+      }
+      .flow-step {
+        position: relative;
+        padding-left: 54px;
+      }
+      .flow-step b {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: var(--ink-blue);
+        color: var(--ivory);
+      }
+      .metric {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        padding: 10px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+      }
+      .metric::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: var(--score);
+        background: rgb(27 54 93 / 0.1);
+        content: "";
+      }
+      .metric span, .metric strong { position: relative; }
+      a { color: var(--ink-blue); font-weight: 850; }
+      @media (max-width: 720px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Daily Report 深度分析 · llm-agent</p>
+        <h1>Evaluation harnesses move toward evidence bundles</h1>
+        <p>样例摘要：A deterministic sample signal about evaluation reports carrying reproducible evidence.</p>
+        <p>来源：<a href="https://example.com/research/evidence-bundle-evals">Sample Research Feed</a></p>
+      </header>
+
+      <section>
+        <p class="eyebrow">总览</p>
+        <h2>这篇文章真正讨论什么</h2>
+        <p>这条 fixture 用来验证自动化写入、manifest 校验、去重表和前端展示格式。</p>
+        <p>自动化审查会把原文拆成问题入口、方法主体、证据指标和边界问题，而不是只提取标签。</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">文章架构</p>
+        <h2>从问题到证据的结构</h2>
+        <div class="grid">
+          <article class="card"><h3>问题入口</h3><p>这条内容应该如何进入 AI 研究 Hub？</p></article>
+          <article class="card"><h3>核心判断</h3><p>自动化输出必须同时可读、可验证、可去重。</p></article>
+          <article class="card"><h3>分类理由</h3><p>这条内容被归入 llm-agent，用于后续报告聚类和同类追踪。</p></article>
+          <article class="card"><h3>开放边界</h3><p>需要继续检查复现性、证据强度、真实落地条件和风险假设。</p></article>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">流程拆解</p>
+        <h2>自动化读到的关键流程</h2>
+        <div class="grid">
+        <article class="flow-step">
+          <b>1</b>
+          <h3>识别来源</h3>
+          <p>自动化会检查这一环节在原文里承担的是问题设定、方法推进、证据验证，还是风险边界说明。</p>
+        </article>
+        
+
+        <article class="flow-step">
+          <b>2</b>
+          <h3>生成摘要</h3>
+          <p>自动化会检查这一环节在原文里承担的是问题设定、方法推进、证据验证，还是风险边界说明。</p>
+        </article>
+        
+
+        <article class="flow-step">
+          <b>3</b>
+          <h3>写入去重表</h3>
+          <p>自动化会检查这一环节在原文里承担的是问题设定、方法推进、证据验证，还是风险边界说明。</p>
+        </article>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">信号指标</p>
+        <h2>为什么值得进入日报</h2>
+        <div class="grid">
+        <div class="metric" style="--score:88%">
+          <span>格式完整度</span>
+          <strong>High</strong>
+        </div>
+        
+
+        <div class="metric" style="--score:84%">
+          <span>去重可信度</span>
+          <strong>Strong</strong>
+        </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

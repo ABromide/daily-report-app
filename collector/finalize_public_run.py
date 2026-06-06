@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path, PurePosixPath
-from typing import Any, Iterable, cast
+from typing import Iterable, cast
 
 from collector.jsonio import JsonObject, canonical_json_bytes, read_json, read_jsonl, sha256_bytes, sha256_file, write_json, write_jsonl
 from collector.manifest import build_manifest
@@ -88,8 +88,9 @@ def _payload_list(payload: JsonObject, key: str) -> list[JsonObject]:
     if not isinstance(value, list):
         msg = f"payload.{key} must be a list"
         raise ValueError(msg)
+    values = cast(list[object], value)
     rows: list[JsonObject] = []
-    for index, item in enumerate(value, start=1):
+    for index, item in enumerate(values, start=1):
         if not isinstance(item, dict):
             msg = f"payload.{key}[{index}] must be an object"
             raise ValueError(msg)
@@ -253,8 +254,11 @@ def _rebuild_sources(public_root: Path, payload_sources: list[JsonObject], all_i
     existing_doc = _read_json_if_exists(sources_path) or {"sources": []}
     by_id: dict[str, JsonObject] = {}
     for source in cast(list[object], existing_doc.get("sources", [])):
-        if isinstance(source, dict) and source.get("id"):
-            by_id[str(source["id"])] = cast(JsonObject, source)
+        if isinstance(source, dict):
+            source_obj = cast(JsonObject, source)
+            source_id = str(source_obj.get("id", "")).strip()
+            if source_id:
+                by_id[source_id] = source_obj
     for item in all_items:
         source_id = str(item.get("source_id", "")).strip()
         if source_id and source_id not in by_id:
@@ -478,7 +482,7 @@ def _default_quality_gate(items: list[JsonObject]) -> JsonObject:
     for item in items:
         evidence = item.get("evidence", [])
         if isinstance(evidence, list):
-            evidence_points += len(evidence)
+            evidence_points += len(cast(list[object], evidence))
     return {
         "minimum_chinese_chars": 5000,
         "evidence_points": evidence_points,
@@ -509,8 +513,10 @@ def _write_audit(
     for item in written_items:
         category_id = str(item.get("category_id", ""))
         category_counts[category_id] = category_counts.get(category_id, 0) + 1
-    dedupe_payload = payload.get("dedupe") if isinstance(payload.get("dedupe"), dict) else {}
-    quality_gate = payload.get("quality_gate") if isinstance(payload.get("quality_gate"), dict) else None
+    dedupe_value = payload.get("dedupe")
+    dedupe_payload: JsonObject = cast(JsonObject, dedupe_value) if isinstance(dedupe_value, dict) else {}
+    quality_gate_value = payload.get("quality_gate")
+    quality_gate = cast(JsonObject, quality_gate_value) if isinstance(quality_gate_value, dict) else None
     reviews = _payload_list(payload, "sub_agent_reviews") if "sub_agent_reviews" in payload else _default_reviews()
     write_json(
         audit_path,
@@ -535,7 +541,7 @@ def _write_audit(
             "written_item_ids": [str(item["item_id"]) for item in written_items],
             "article_paths": [str(item["analysis_markdown_path"]) for item in written_items],
             "sub_agent_reviews": reviews,
-            "quality_gate": cast(JsonObject, quality_gate) if quality_gate is not None else _default_quality_gate(written_items),
+            "quality_gate": quality_gate if quality_gate is not None else _default_quality_gate(written_items),
         },
     )
     return audit_path

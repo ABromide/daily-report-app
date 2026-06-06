@@ -31,6 +31,31 @@ const markdownRenderer = new MarkdownIt({
 
 const defaultHeadingOpenRenderer = markdownRenderer.renderer.rules.heading_open;
 const defaultFenceRenderer = markdownRenderer.renderer.rules.fence;
+const defaultImageRenderer = markdownRenderer.renderer.rules.image;
+
+const siteBasePath = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+function localHref(path: string): string {
+  if (path === "/") return siteBasePath;
+  return `${siteBasePath}${path.replace(/^\/+/, "")}`;
+}
+
+function isExternalOrSpecialUrl(value: string): boolean {
+  return /^[a-z][a-z0-9+.-]*:/i.test(value) || value.startsWith("//") || value.startsWith("#");
+}
+
+function normalizeMarkdownImageSrc(value: string): string {
+  const src = value.trim();
+  if (!src || isExternalOrSpecialUrl(src)) return value;
+  if (siteBasePath !== "/" && src.startsWith(siteBasePath)) return src;
+  if (src.startsWith("/assets/")) return localHref(`/data${src}`);
+  if (src.startsWith("/")) return localHref(src);
+  if (src.startsWith("assets/")) return localHref(`/data/${src}`);
+  if (src.startsWith("public/assets/")) return localHref(`/data/${src.slice("public/".length)}`);
+  return value;
+}
 
 function plainHeadingText(value: string): string {
   return value
@@ -80,6 +105,17 @@ markdownRenderer.renderer.rules.fence = (tokens, index, options, env, self) => {
   }
   return defaultFenceRenderer
     ? defaultFenceRenderer(tokens, index, options, env, self)
+    : self.renderToken(tokens, index, options);
+};
+
+markdownRenderer.renderer.rules.image = (tokens, index, options, env, self) => {
+  const token = tokens[index];
+  const src = token.attrGet("src");
+  if (src !== null) {
+    token.attrSet("src", normalizeMarkdownImageSrc(src));
+  }
+  return defaultImageRenderer
+    ? defaultImageRenderer(tokens, index, options, env, self)
     : self.renderToken(tokens, index, options);
 };
 

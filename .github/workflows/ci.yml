@@ -31,19 +31,6 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Install root npm tools
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-
       - name: Run Python tests
         run: uv run pytest
 
@@ -53,7 +40,7 @@ jobs:
           uv run daily-report validate-public fixtures/public-data/public
 
       - name: Run pyright
-        run: npm run pyright
+        run: uv run pyright
 
   web:
     name: Web build and e2e

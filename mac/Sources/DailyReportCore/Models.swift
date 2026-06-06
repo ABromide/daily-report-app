@@ -40,122 +40,323 @@ public enum SyncStatus: String, Codable, CaseIterable, Identifiable, Sendable {
     }
 }
 
-public enum ReportImportance: String, Codable, CaseIterable, Identifiable, Sendable {
-    case low
-    case medium
-    case high
-    case critical
+public enum DataMode: String, Codable, CaseIterable, Identifiable, Sendable {
+    case fixture
+    case remote
+    case bundled
+    case mock
 
     public var id: String { rawValue }
 
     public var displayName: String {
         switch self {
-        case .low:
-            return "低 / Low"
-        case .medium:
-            return "中 / Medium"
-        case .high:
-            return "高 / High"
-        case .critical:
-            return "关键 / Critical"
+        case .fixture:
+            return "公开数据 / Public data"
+        case .remote:
+            return "远端同步 / Remote sync"
+        case .bundled:
+            return "内置样例 / Bundled sample"
+        case .mock:
+            return "模拟数据 / Mock"
         }
     }
 }
 
-public enum SourceRunStatus: String, Codable, CaseIterable, Identifiable, Sendable {
-    case healthy
-    case degraded
-    case failed
-    case unknown
+public enum ContentClusterID: String, Codable, CaseIterable, Identifiable, Sendable {
+    case llmAgent = "llm-agent"
+    case llmPostTraining = "llm-post-training"
+    case aiSafety = "ai-safety"
+
+    public var id: String { rawValue }
+
+    public var title: String {
+        switch self {
+        case .llmAgent:
+            return "大模型 Agent 相关"
+        case .llmPostTraining:
+            return "大模型后训练相关"
+        case .aiSafety:
+            return "AI 安全相关"
+        }
+    }
+
+    public var thesis: String {
+        switch self {
+        case .llmAgent:
+            return "关注大模型从回答问题走向调用工具、执行任务、进入真实开发流的能力变化。"
+        case .llmPostTraining:
+            return "覆盖 SFT、强化学习、OPD、适配器和蒸馏等前沿工作。"
+        case .aiSafety:
+            return "关注前沿模型治理、攻防风险、能力阈值、权限边界和安全部署。"
+        }
+    }
+
+    public var summary: String {
+        switch self {
+        case .llmAgent:
+            return "这一组聚焦 Agent 平台、长期任务、代码工作流和本地 AI 界面。"
+        case .llmPostTraining:
+            return "这一组把后训练当作独立频道，而不是泛泛的模型研究。"
+        case .aiSafety:
+            return "这一组看 AI 进入真实系统后如何改变攻击面、研发流程和治理结构。"
+        }
+    }
+
+    public var tags: [String] {
+        switch self {
+        case .llmAgent:
+            return ["Agent 平台", "工具调用", "代码工作流"]
+        case .llmPostTraining:
+            return ["SFT", "强化学习", "OPD"]
+        case .aiSafety:
+            return ["Frontier Safety", "网络攻防", "权限边界"]
+        }
+    }
+
+    public var systemImageName: String {
+        switch self {
+        case .llmAgent:
+            return "command"
+        case .llmPostTraining:
+            return "slider.horizontal.3"
+        case .aiSafety:
+            return "shield.lefthalf.filled"
+        }
+    }
+}
+
+public enum ContentType: String, Codable, CaseIterable, Identifiable, Sendable {
+    case paper
+    case blog
+    case code
+    case report
 
     public var id: String { rawValue }
 
     public var displayName: String {
         switch self {
-        case .healthy:
-            return "健康 / Healthy"
-        case .degraded:
-            return "降级 / Degraded"
-        case .failed:
-            return "失败 / Failed"
-        case .unknown:
-            return "未知 / Unknown"
+        case .paper:
+            return "论文"
+        case .blog:
+            return "博客"
+        case .code:
+            return "代码"
+        case .report:
+            return "AI 报告"
         }
+    }
+
+    public var systemImageName: String {
+        switch self {
+        case .paper:
+            return "doc.text"
+        case .blog:
+            return "text.quote"
+        case .code:
+            return "chevron.left.forwardslash.chevron.right"
+        case .report:
+            return "doc.richtext"
+        }
+    }
+}
+
+public struct ShowcaseStat: Codable, Equatable, Identifiable, Sendable {
+    public var id: String
+    public var label: String
+    public var value: String
+
+    public init(id: String, label: String, value: String) {
+        self.id = id
+        self.label = label
+        self.value = value
+    }
+}
+
+public struct ShowcaseCluster: Codable, Equatable, Identifiable, Sendable {
+    public var id: ContentClusterID
+    public var title: String
+    public var thesis: String
+    public var summary: String
+    public var tags: [String]
+    public var documentCount: Int
+    public var lastUpdatedAt: Date
+
+    public init(
+        id: ContentClusterID,
+        title: String,
+        thesis: String,
+        summary: String,
+        tags: [String],
+        documentCount: Int,
+        lastUpdatedAt: Date
+    ) {
+        self.id = id
+        self.title = title
+        self.thesis = thesis
+        self.summary = summary
+        self.tags = tags
+        self.documentCount = documentCount
+        self.lastUpdatedAt = lastUpdatedAt
+    }
+}
+
+public struct ShowcaseSource: Codable, Equatable, Identifiable, Sendable {
+    public var id: String
+    public var name: String
+    public var kind: String
+    public var homepageURL: URL?
+    public var note: String
+    public var enabled: Bool
+    public var itemCount: Int
+
+    public init(
+        id: String,
+        name: String,
+        kind: String,
+        homepageURL: URL? = nil,
+        note: String,
+        enabled: Bool,
+        itemCount: Int
+    ) {
+        self.id = id
+        self.name = name
+        self.kind = kind
+        self.homepageURL = homepageURL
+        self.note = note
+        self.enabled = enabled
+        self.itemCount = itemCount
+    }
+}
+
+public struct ShowcaseDocument: Codable, Equatable, Identifiable, Sendable {
+    public var id: String
+    public var clusterID: ContentClusterID
+    public var type: ContentType
+    public var typeLabel: String
+    public var title: String
+    public var summary: String
+    public var analysis: String
+    public var sourceName: String
+    public var url: URL
+    public var publishedAt: Date
+    public var readingMinutes: Int
+    public var score: Int
+    public var tags: [String]
+    public var domain: String
+    public var analysisMarkdownPath: String
+    public var analysisMarkdown: String?
+    public var searchText: String
+    public var evidence: [EvidenceSource]
+
+    public init(
+        id: String,
+        clusterID: ContentClusterID,
+        type: ContentType,
+        typeLabel: String,
+        title: String,
+        summary: String,
+        analysis: String,
+        sourceName: String,
+        url: URL,
+        publishedAt: Date,
+        readingMinutes: Int,
+        score: Int,
+        tags: [String],
+        domain: String,
+        analysisMarkdownPath: String,
+        analysisMarkdown: String?,
+        searchText: String,
+        evidence: [EvidenceSource]
+    ) {
+        self.id = id
+        self.clusterID = clusterID
+        self.type = type
+        self.typeLabel = typeLabel
+        self.title = title
+        self.summary = summary
+        self.analysis = analysis
+        self.sourceName = sourceName
+        self.url = url
+        self.publishedAt = publishedAt
+        self.readingMinutes = readingMinutes
+        self.score = score
+        self.tags = tags
+        self.domain = domain
+        self.analysisMarkdownPath = analysisMarkdownPath
+        self.analysisMarkdown = analysisMarkdown
+        self.searchText = searchText
+        self.evidence = evidence
     }
 }
 
 public struct DailyReportPayload: Codable, Equatable, Sendable {
     public var manifest: PublicDataManifest
-    public var reports: [ReportItem]
-    public var sourceHealth: [SourceHealth]
+    public var generatedAt: Date
+    public var dataMode: DataMode
+    public var dataPath: String
+    public var repoURL: URL?
+    public var stats: [ShowcaseStat]
+    public var clusters: [ShowcaseCluster]
+    public var documents: [ShowcaseDocument]
+    public var sources: [ShowcaseSource]
 
     public init(
         manifest: PublicDataManifest,
-        reports: [ReportItem],
-        sourceHealth: [SourceHealth]
+        generatedAt: Date,
+        dataMode: DataMode,
+        dataPath: String,
+        repoURL: URL? = nil,
+        stats: [ShowcaseStat],
+        clusters: [ShowcaseCluster],
+        documents: [ShowcaseDocument],
+        sources: [ShowcaseSource]
     ) {
         self.manifest = manifest
-        self.reports = reports
-        self.sourceHealth = sourceHealth
+        self.generatedAt = generatedAt
+        self.dataMode = dataMode
+        self.dataPath = dataPath
+        self.repoURL = repoURL
+        self.stats = stats
+        self.clusters = clusters
+        self.documents = documents
+        self.sources = sources
     }
 }
 
 public struct PublicDataManifest: Codable, Equatable, Sendable {
-    public var schemaVersion: String
+    public var version: Int
     public var generatedAt: Date
-    public var runID: String
+    public var latestDay: String?
+    public var manifestPath: String?
+    public var manifestSHA256: String?
+    public var root: String?
+    public var totalFiles: Int
+    public var totalBytes: Int
     public var dataBranchRef: String
     public var publicBaseURL: URL?
 
     public init(
-        schemaVersion: String,
+        version: Int,
         generatedAt: Date,
-        runID: String,
-        dataBranchRef: String,
+        latestDay: String? = nil,
+        manifestPath: String? = nil,
+        manifestSHA256: String? = nil,
+        root: String? = nil,
+        totalFiles: Int = 0,
+        totalBytes: Int = 0,
+        dataBranchRef: String = "public-data",
         publicBaseURL: URL? = nil
     ) {
-        self.schemaVersion = schemaVersion
+        self.version = version
         self.generatedAt = generatedAt
-        self.runID = runID
+        self.latestDay = latestDay
+        self.manifestPath = manifestPath
+        self.manifestSHA256 = manifestSHA256
+        self.root = root
+        self.totalFiles = totalFiles
+        self.totalBytes = totalBytes
         self.dataBranchRef = dataBranchRef
         self.publicBaseURL = publicBaseURL
-    }
-}
-
-public struct ReportItem: Codable, Equatable, Identifiable, Sendable {
-    public var id: String
-    public var title: String
-    public var summary: String
-    public var bodyMarkdown: String
-    public var publishedAt: Date
-    public var updatedAt: Date?
-    public var tags: [String]
-    public var readingTimeMinutes: Int
-    public var importance: ReportImportance
-    public var sources: [EvidenceSource]
-
-    public init(
-        id: String,
-        title: String,
-        summary: String,
-        bodyMarkdown: String,
-        publishedAt: Date,
-        updatedAt: Date? = nil,
-        tags: [String],
-        readingTimeMinutes: Int,
-        importance: ReportImportance,
-        sources: [EvidenceSource]
-    ) {
-        self.id = id
-        self.title = title
-        self.summary = summary
-        self.bodyMarkdown = bodyMarkdown
-        self.publishedAt = publishedAt
-        self.updatedAt = updatedAt
-        self.tags = tags
-        self.readingTimeMinutes = readingTimeMinutes
-        self.importance = importance
-        self.sources = sources
     }
 }
 
@@ -181,31 +382,6 @@ public struct EvidenceSource: Codable, Equatable, Identifiable, Sendable {
         self.host = host
         self.capturedAt = capturedAt
         self.checksumSHA256 = checksumSHA256
-    }
-}
-
-public struct SourceHealth: Codable, Equatable, Identifiable, Sendable {
-    public var id: String
-    public var name: String
-    public var status: SourceRunStatus
-    public var lastSeenAt: Date?
-    public var itemCount: Int
-    public var note: String?
-
-    public init(
-        id: String,
-        name: String,
-        status: SourceRunStatus,
-        lastSeenAt: Date? = nil,
-        itemCount: Int,
-        note: String? = nil
-    ) {
-        self.id = id
-        self.name = name
-        self.status = status
-        self.lastSeenAt = lastSeenAt
-        self.itemCount = itemCount
-        self.note = note
     }
 }
 
@@ -240,19 +416,59 @@ public struct CachedSummary: Codable, Equatable, Sendable {
 }
 
 public struct ImportResult: Equatable, Sendable {
-    public var summary: CachedSummary
-    public var importedReportCount: Int
+    public let summary: CachedSummary
+    public let importedDocumentCount: Int
 
-    public init(summary: CachedSummary, importedReportCount: Int) {
+    public init(summary: CachedSummary, importedDocumentCount: Int) {
         self.summary = summary
-        self.importedReportCount = importedReportCount
+        self.importedDocumentCount = importedDocumentCount
+    }
+}
+
+public enum DailyReportDateParser {
+    private static let internetFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+
+    private static let standardFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime]
+        return formatter
+    }()
+
+    private static let dayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    public static func parse(_ value: String) -> Date? {
+        internetFormatter.date(from: value)
+            ?? standardFormatter.date(from: value)
+            ?? dayFormatter.date(from: value)
     }
 }
 
 public enum DailyReportJSON {
     public static var decoder: JSONDecoder {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let value = try container.decode(String.self)
+            if let date = DailyReportDateParser.parse(value) {
+                return date
+            }
+
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Expected ISO-8601 date string, got \(value)."
+            )
+        }
         return decoder
     }
 

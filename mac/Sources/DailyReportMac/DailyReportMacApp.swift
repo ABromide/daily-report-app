@@ -14,13 +14,13 @@ struct DailyReportMacApp: App {
                 }
         }
         .commands {
-            CommandMenu("报告 / Reports") {
+            CommandMenu("日报 / Daily Report") {
                 Button("打开命令面板 / Command Panel") {
                     model.isCommandPanelPresented = true
                 }
                 .keyboardShortcut("k", modifiers: [.command, .shift])
 
-                Button("刷新样例缓存 / Refresh Fixture Cache") {
+                Button("刷新公开数据 / Refresh Public Data") {
                     Task {
                         await model.refreshIgnoringErrors()
                     }
@@ -33,7 +33,7 @@ struct DailyReportMacApp: App {
             MenuBarReportView()
                 .environmentObject(model)
         } label: {
-            Label("日报情报 / Daily Report", systemImage: model.syncStatus.systemImageName)
+            Label("AI 研究日报 / Daily Report", systemImage: model.syncStatus.systemImageName)
         }
         .menuBarExtraStyle(.menu)
     }
@@ -45,8 +45,9 @@ final class ReportAppModel: ObservableObject {
     @Published private(set) var syncStatus: SyncStatus = .localOnly
     @Published private(set) var errorMessage: String?
     @Published var columnVisibility: NavigationSplitViewVisibility = .all
-    @Published var selectedScope: ReportScope? = .all
-    @Published var selectedReportID: ReportItem.ID?
+    @Published var selectedFilterID: String? = ShowcaseFilterID.all
+    @Published var selectedDocumentID: ShowcaseDocument.ID?
+    @Published var searchText = ""
     @Published var isCommandPanelPresented = false
 
     private let store: SummaryCacheStore
@@ -66,38 +67,71 @@ final class ReportAppModel: ObservableObject {
         backgroundTask?.cancel()
     }
 
-    var reports: [ReportItem] {
-        summary?.payload.reports.sorted { lhs, rhs in
+    var payload: DailyReportPayload? {
+        summary?.payload
+    }
+
+    var documents: [ShowcaseDocument] {
+        payload?.documents.sorted { lhs, rhs in
             lhs.publishedAt > rhs.publishedAt
         } ?? []
     }
 
-    var visibleReports: [ReportItem] {
-        switch selectedScope ?? .all {
-        case .all:
-            return reports
-        case .highSignal:
-            return reports.filter { [.high, .critical].contains($0.importance) }
-        case .stale:
-            return syncStatus == .stale ? reports : []
-        case .sources:
-            return reports.filter { !$0.sources.isEmpty }
-        case .local:
-            return reports
+    var clusters: [ShowcaseCluster] {
+        payload?.clusters ?? []
+    }
+
+    var sources: [ShowcaseSource] {
+        payload?.sources ?? []
+    }
+
+    var stats: [ShowcaseStat] {
+        payload?.stats ?? []
+    }
+
+    var visibleDocuments: [ShowcaseDocument] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        return documents.filter { document in
+            matchesSelectedFilter(document) && (query.isEmpty || document.searchText.contains(query))
         }
     }
 
-    var selectedReport: ReportItem? {
-        if let selectedReportID,
-           let report = reports.first(where: { $0.id == selectedReportID }) {
-            return report
+    var selectedDocument: ShowcaseDocument? {
+        if let selectedDocumentID,
+           let document = documents.first(where: { $0.id == selectedDocumentID }),
+           visibleDocuments.contains(where: { $0.id == document.id }) {
+            return document
         }
 
-        return visibleReports.first
+        return visibleDocuments.first
     }
 
-    var sourceHealth: [SourceHealth] {
-        summary?.payload.sourceHealth ?? []
+    var activeFilterTitle: String {
+        guard let selectedFilterID else {
+            return "全部更新 / All Updates"
+        }
+
+        if selectedFilterID == ShowcaseFilterID.all {
+            return "全部更新 / All Updates"
+        }
+
+        if let clusterID = ShowcaseFilterID.clusterID(from: selectedFilterID) {
+            return clusterID.title
+        }
+
+        if let type = ShowcaseFilterID.contentType(from: selectedFilterID) {
+            return type.displayName
+        }
+
+        return "全部更新 / All Updates"
+    }
+
+    var dataStatusLine: String {
+        guard let payload else {
+            return "等待同步 / Waiting for sync"
+        }
+
+        return "\(payload.dataMode.displayName) · \(payload.dataPath)"
     }
 
     func boot() async {
@@ -110,12 +144,11 @@ final class ReportAppModel: ObservableObject {
             if let cached = try await store.load() {
                 apply(summary: cached)
             } else {
-                syncStatus = .syncing
                 try await refresh()
             }
         } catch {
-            syncStatus = .failed
-            errorMessage = error.localizedDescription
+            errorMessage = "缓存不可用，正在重新同步。/ Cache could not be loaded; refreshing."
+            try? await refresh()
         }
 
         startBackgroundImport()
@@ -124,7 +157,9 @@ final class ReportAppModel: ObservableObject {
     func refresh() async throws {
         syncStatus = .syncing
         do {
-            let result = try await importer.importPayload(from: .bundledFixture)
+            let source = ImportService.defaultPublicDataSource()
+            let status: SyncStatus = source == .bundledFixture ? .localOnly : .cached
+            let result = try await importer.importPayload(from: source, status: status)
             apply(summary: result.summary)
         } catch {
             syncStatus = .failed
@@ -137,8 +172,19 @@ final class ReportAppModel: ObservableObject {
         try? await refresh()
     }
 
-    func selectFirstVisibleReport() {
-        selectedReportID = visibleReports.first?.id
+    func selectFilter(_ id: String) {
+        selectedFilterID = id
+        selectFirstVisibleDocument()
+    }
+
+    func selectFirstVisibleDocument() {
+        selectedDocumentID = visibleDocuments.first?.id
+    }
+
+    func count(for filterID: String) -> Int {
+        documents.filter { document in
+            matches(document, filterID: filterID)
+        }.count
     }
 
     private func apply(summary: CachedSummary) {
@@ -146,8 +192,8 @@ final class ReportAppModel: ObservableObject {
         syncStatus = summary.effectiveStatus
         errorMessage = summary.errorMessage
 
-        if selectedReportID == nil || !reports.contains(where: { $0.id == selectedReportID }) {
-            selectedReportID = reports.first?.id
+        if selectedDocumentID == nil || !documents.contains(where: { $0.id == selectedDocumentID }) {
+            selectedDocumentID = documents.first?.id
         }
     }
 
@@ -160,45 +206,51 @@ final class ReportAppModel: ObservableObject {
             }
         }
     }
-}
 
-enum ReportScope: String, CaseIterable, Identifiable {
-    case all
-    case highSignal
-    case stale
-    case sources
-    case local
-
-    var id: String { rawValue }
-
-    var title: String {
-        switch self {
-        case .all:
-            return "全部报告 / All Reports"
-        case .highSignal:
-            return "高信号 / High Signal"
-        case .stale:
-            return "过期 / Stale"
-        case .sources:
-            return "来源 / Sources"
-        case .local:
-            return "本地缓存 / Local"
-        }
+    private func matchesSelectedFilter(_ document: ShowcaseDocument) -> Bool {
+        matches(document, filterID: selectedFilterID ?? ShowcaseFilterID.all)
     }
 
-    var systemImageName: String {
-        switch self {
-        case .all:
-            return "tray.full"
-        case .highSignal:
-            return "bolt.horizontal"
-        case .stale:
-            return "clock.badge.exclamationmark"
-        case .sources:
-            return "link"
-        case .local:
-            return "externaldrive"
+    private func matches(_ document: ShowcaseDocument, filterID: String) -> Bool {
+        if filterID == ShowcaseFilterID.all {
+            return true
         }
+
+        if let clusterID = ShowcaseFilterID.clusterID(from: filterID) {
+            return document.clusterID == clusterID
+        }
+
+        if let type = ShowcaseFilterID.contentType(from: filterID) {
+            return document.type == type
+        }
+
+        return true
+    }
+}
+
+enum ShowcaseFilterID {
+    static let all = "all"
+
+    static func cluster(_ id: ContentClusterID) -> String {
+        "cluster:\(id.rawValue)"
+    }
+
+    static func type(_ type: ContentType) -> String {
+        "type:\(type.rawValue)"
+    }
+
+    static func clusterID(from value: String) -> ContentClusterID? {
+        guard value.hasPrefix("cluster:") else {
+            return nil
+        }
+        return ContentClusterID(rawValue: String(value.dropFirst("cluster:".count)))
+    }
+
+    static func contentType(from value: String) -> ContentType? {
+        guard value.hasPrefix("type:") else {
+            return nil
+        }
+        return ContentType(rawValue: String(value.dropFirst("type:".count)))
     }
 }
 
@@ -206,14 +258,18 @@ struct DailyReportRootView: View {
     @EnvironmentObject private var model: ReportAppModel
 
     var body: some View {
-        NavigationSplitView(columnVisibility: $model.columnVisibility) {
+        HSplitView {
             SidebarView()
-        } content: {
-            ReportFeedView()
-        } detail: {
-            ReaderDetailView(report: model.selectedReport)
+                .frame(minWidth: 220, idealWidth: 240, maxWidth: 300)
+
+            TimelineView()
+                .frame(minWidth: 420, idealWidth: 500, maxWidth: 620)
+
+            DocumentDetailView(document: model.selectedDocument)
+                .frame(minWidth: 640, maxWidth: .infinity)
         }
-        .frame(minWidth: 1080, minHeight: 720)
+        .background(KamiTokens.parchment)
+        .frame(minWidth: 1280, minHeight: 760)
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 SyncStatusBadge(status: model.syncStatus)
@@ -225,7 +281,7 @@ struct DailyReportRootView: View {
                 } label: {
                     Label("刷新 / Refresh", systemImage: "arrow.clockwise")
                 }
-                .help("刷新样例缓存")
+                .help("刷新公开数据")
 
                 Button {
                     model.isCommandPanelPresented = true
@@ -246,159 +302,473 @@ struct SidebarView: View {
     @EnvironmentObject private var model: ReportAppModel
 
     var body: some View {
-        List(selection: $model.selectedScope) {
-            Section("研究视图 / Research") {
-                ForEach(ReportScope.allCases) { scope in
-                    Label(scope.title, systemImage: scope.systemImageName)
-                        .tag(Optional(scope))
+        List(selection: $model.selectedFilterID) {
+            Section("时间线 / Timeline") {
+                Label("全部更新 / All Updates", systemImage: "clock")
+                    .badge(model.documents.count)
+                    .tag(Optional(ShowcaseFilterID.all))
+            }
+
+            Section("固定频道 / Channels") {
+                ForEach(model.clusters) { cluster in
+                    Label(cluster.title, systemImage: cluster.id.systemImageName)
+                        .badge(cluster.documentCount)
+                        .tag(Optional(ShowcaseFilterID.cluster(cluster.id)))
                 }
             }
 
-            Section("同步状态 / Sync") {
-                Label(model.syncStatus.displayName, systemImage: model.syncStatus.systemImageName)
-                if let generatedAt = model.summary?.payload.manifest.generatedAt {
-                    Label(generatedAt.formatted(date: .abbreviated, time: .shortened), systemImage: "calendar")
+            Section("内容类型 / Types") {
+                ForEach(ContentType.allCases) { type in
+                    Label(type.displayName, systemImage: type.systemImageName)
+                        .badge(model.count(for: ShowcaseFilterID.type(type)))
+                        .tag(Optional(ShowcaseFilterID.type(type)))
                 }
             }
+
+            Section("同步 / Sync") {
+                Label(model.syncStatus.displayName, systemImage: model.syncStatus.systemImageName)
+
+                if let generatedAt = model.payload?.generatedAt {
+                    Label(generatedAt.formatted(date: .abbreviated, time: .shortened), systemImage: "calendar")
+                }
+
+                Text(model.dataStatusLine)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(3)
+            }
         }
-        .navigationTitle("日报情报")
+        .navigationTitle("AI 研究日报")
+        .listStyle(.sidebar)
+        .onChange(of: model.selectedFilterID) { _ in
+            model.selectFirstVisibleDocument()
+        }
     }
 }
 
-struct ReportFeedView: View {
+struct TimelineView: View {
     @EnvironmentObject private var model: ReportAppModel
 
     var body: some View {
-        List(selection: $model.selectedReportID) {
-            ForEach(model.visibleReports) { report in
-                ReportRow(report: report)
-                    .tag(Optional(report.id))
+        VStack(alignment: .leading, spacing: 0) {
+            TimelineHeader()
+                .padding([.horizontal, .top], 20)
+                .padding(.bottom, 12)
+
+            if !model.stats.isEmpty {
+                StatStrip(stats: model.stats)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 14)
+            }
+
+            List(selection: $model.selectedDocumentID) {
+                ForEach(model.visibleDocuments) { document in
+                    DocumentRow(document: document)
+                        .tag(Optional(document.id))
+                }
+            }
+            .listStyle(.inset)
+            .overlay {
+                if model.visibleDocuments.isEmpty {
+                    EmptyStateView(
+                        title: "没有找到匹配内容 / No Matches",
+                        systemImageName: "magnifyingglass",
+                        description: "换个关键词，或者回到全部更新。"
+                    )
+                }
             }
         }
-        .navigationTitle(model.selectedScope?.title ?? "报告 / Reports")
-        .overlay {
-            if model.visibleReports.isEmpty {
-                EmptyStateView(
-                    title: "暂无报告 / No Reports",
-                    systemImageName: "tray",
-                    description: "当前范围还没有缓存报告。"
-                )
-            }
-        }
-        .onChange(of: model.selectedScope) { _ in
-            model.selectFirstVisibleReport()
+        .background(Color(nsColor: .windowBackgroundColor))
+        .navigationTitle(model.activeFilterTitle)
+        .onChange(of: model.searchText) { _ in
+            model.selectFirstVisibleDocument()
         }
     }
 }
 
-struct ReportRow: View {
-    let report: ReportItem
+struct TimelineHeader: View {
+    @EnvironmentObject private var model: ReportAppModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(report.title)
-                    .font(.headline)
-                    .lineLimit(2)
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("AI 研究日报")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(KamiTokens.inkBlue)
+                    .textCase(.uppercase)
 
-                Spacer()
+                Text("三类 AI 前沿内容：Agent、后训练、安全")
+                    .font(.system(.title2, design: .serif, weight: .semibold))
+                    .foregroundStyle(KamiTokens.inkBlue)
 
-                Text(report.importance.displayName)
+                Text("按发布时间倒序展示公开论文、博客、代码和 AI 报告；选择任意内容后，在右侧检查 Markdown 深度稿和证据链。")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            HStack(spacing: 10) {
+                Label(model.payload?.dataMode.displayName ?? "未同步", systemImage: model.syncStatus.systemImageName)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(KamiTokens.inkBlue)
+
+                if let generatedAt = model.payload?.generatedAt {
+                    Text(generatedAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            HStack(spacing: 8) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField("搜索 Agent、SFT、AI 安全、论文或代码", text: $model.searchText)
+                    .textFieldStyle(.plain)
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
+            .background(KamiTokens.ivory)
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(KamiTokens.warmBorder)
+            }
+        }
+    }
+}
+
+struct StatStrip: View {
+    let stats: [ShowcaseStat]
+
+    var body: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 128), spacing: 8)], spacing: 8) {
+            ForEach(stats) { stat in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(stat.label)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(stat.value)
+                        .font(.headline)
+                        .foregroundStyle(KamiTokens.inkBlue)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+                .padding(10)
+                .background(KamiTokens.ivory)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(KamiTokens.warmBorder)
+                }
+            }
+        }
+    }
+}
+
+struct DocumentRow: View {
+    let document: ShowcaseDocument
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .center, spacing: 8) {
+                Text("\(document.score)")
+                    .font(.caption.weight(.bold).monospacedDigit())
+                    .foregroundStyle(KamiTokens.inkBlue)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(KamiTokens.ivory)
+                    .clipShape(Capsule())
+
+                Text(document.typeLabel)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(KamiTokens.inkBlue)
+
+                Text(document.clusterID.title)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+
+                Spacer(minLength: 8)
+
+                Text(document.publishedAt.formatted(date: .abbreviated, time: .omitted))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
-            Text(report.summary)
+            Text(document.title)
+                .font(.headline)
+                .lineLimit(3)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Text(document.summary)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-                .lineLimit(3)
+                .lineLimit(4)
+                .fixedSize(horizontal: false, vertical: true)
 
-            HStack(spacing: 6) {
-                Label("\(report.readingTimeMinutes) 分钟", systemImage: "timer")
-                Label(report.publishedAt.formatted(date: .abbreviated, time: .shortened), systemImage: "clock")
+            HStack(spacing: 10) {
+                Label(document.sourceName, systemImage: "link")
+                    .lineLimit(1)
+                Label("\(document.readingMinutes) 分钟", systemImage: "timer")
             }
             .font(.caption)
             .foregroundStyle(.secondary)
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, 10)
     }
 }
 
-struct ReaderDetailView: View {
-    @EnvironmentObject private var model: ReportAppModel
-    let report: ReportItem?
+struct DocumentDetailView: View {
+    let document: ShowcaseDocument?
 
     var body: some View {
         ZStack {
             KamiTokens.parchment.ignoresSafeArea()
 
-            if let report {
+            if let document {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 22) {
-                        HStack(alignment: .firstTextBaseline) {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(report.title)
-                                    .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                                    .foregroundStyle(KamiTokens.inkBlue)
+                    HStack(alignment: .top) {
+                        Spacer(minLength: 24)
 
-                                Text(report.summary)
+                        VStack(alignment: .leading, spacing: 24) {
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack(spacing: 8) {
+                                    Text(document.typeLabel)
+                                        .font(.caption.weight(.medium))
+                                        .foregroundStyle(KamiTokens.inkBlue)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(KamiTokens.ivory)
+                                        .clipShape(Capsule())
+
+                                    Text(document.clusterID.title)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+
+                                Text(document.title)
+                                    .font(.system(.title, design: .serif, weight: .semibold))
+                                    .foregroundStyle(KamiTokens.inkBlue)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                Text(document.summary)
                                     .font(.title3)
                                     .foregroundStyle(KamiTokens.bodyText)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
 
-                            Spacer()
+                            MetadataStrip(document: document)
+                            TagCloud(tags: document.tags)
 
-                            SyncStatusBadge(status: model.syncStatus)
-                        }
+                            Divider()
+                                .overlay(KamiTokens.warmBorder)
 
-                        HStack(spacing: 8) {
-                            ForEach(report.tags, id: \.self) { tag in
-                                Text(tag)
-                                    .font(.caption)
+                            MarkdownBody(markdown: document.analysisMarkdown ?? document.analysis.ifEmpty(document.summary))
+
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("证据 / Evidence")
+                                    .font(.headline)
                                     .foregroundStyle(KamiTokens.inkBlue)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(KamiTokens.ivory)
-                                    .clipShape(Capsule())
+
+                                ForEach(document.evidence) { source in
+                                    EvidenceSourceRow(source: source)
+                                }
                             }
-                        }
 
-                        Divider()
-                            .overlay(KamiTokens.warmBorder)
-
-                        Text(report.bodyMarkdown)
-                            .font(.system(.body, design: .serif))
-                            .lineSpacing(5)
-                            .foregroundStyle(KamiTokens.bodyText)
-                            .fixedSize(horizontal: false, vertical: true)
-
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("证据 / Evidence")
-                                .font(.headline)
-                                .foregroundStyle(KamiTokens.inkBlue)
-
-                            ForEach(report.sources) { source in
-                                EvidenceSourceRow(source: source)
+                            Link(destination: document.url) {
+                                Label("打开原文 / Open source", systemImage: "arrow.up.right.square")
                             }
+                            .buttonStyle(.bordered)
                         }
+                        .frame(maxWidth: 760, alignment: .leading)
+                        .padding(.vertical, 34)
 
-                        if !model.sourceHealth.isEmpty {
-                            SourceHealthStrip(sources: model.sourceHealth)
-                        }
+                        Spacer(minLength: 24)
                     }
-                    .padding(32)
-                    .frame(maxWidth: 820, alignment: .leading)
                 }
             } else {
                 EmptyStateView(
-                    title: "选择一份报告 / Select a Report",
+                    title: "选择一条内容 / Select an Item",
                     systemImageName: "doc.text.magnifyingglass",
-                    description: "缓存后的研究内容会出现在阅读器中。"
+                    description: "同步后的 Markdown 深度稿会出现在这里。"
                 )
             }
         }
-        .navigationTitle("阅读器 / Reader")
+        .navigationTitle("深度解析 / Analysis")
+    }
+}
+
+struct MetadataStrip: View {
+    let document: ShowcaseDocument
+
+    var body: some View {
+        Grid(alignment: .leading, horizontalSpacing: 18, verticalSpacing: 8) {
+            GridRow {
+                Label(document.publishedAt.formatted(date: .abbreviated, time: .omitted), systemImage: "calendar")
+                Label(document.sourceName, systemImage: "building.2")
+            }
+
+            GridRow {
+                Label(document.domain, systemImage: "network")
+                Label("\(document.readingMinutes) 分钟", systemImage: "timer")
+            }
+        }
+        .font(.caption)
+        .foregroundStyle(.secondary)
+    }
+}
+
+struct TagCloud: View {
+    let tags: [String]
+
+    var body: some View {
+        FlowLayout(alignment: .leading, spacing: 8) {
+            ForEach(tags, id: \.self) { tag in
+                Text(tag)
+                    .font(.caption)
+                    .foregroundStyle(KamiTokens.inkBlue)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(KamiTokens.ivory)
+                    .clipShape(Capsule())
+            }
+        }
+    }
+}
+
+struct MarkdownBody: View {
+    let markdown: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
+                MarkdownBlockView(block: block)
+            }
+        }
+        .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private var blocks: [MarkdownBlock] {
+        MarkdownBlock.parse(markdown)
+    }
+}
+
+struct MarkdownBlockView: View {
+    let block: MarkdownBlock
+
+    var body: some View {
+        switch block.kind {
+        case .heading1:
+            Text(block.text)
+                .font(.system(.title2, design: .serif, weight: .semibold))
+                .foregroundStyle(KamiTokens.inkBlue)
+                .padding(.top, 8)
+        case .heading2:
+            Text(block.text)
+                .font(.system(.title3, design: .serif, weight: .semibold))
+                .foregroundStyle(KamiTokens.inkBlue)
+                .padding(.top, 6)
+        case .heading3:
+            Text(block.text)
+                .font(.headline)
+                .foregroundStyle(KamiTokens.inkBlue)
+                .padding(.top, 4)
+        case .code:
+            Text(block.text)
+                .font(.system(.caption, design: .monospaced))
+                .foregroundStyle(KamiTokens.bodyText)
+                .padding(12)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(KamiTokens.ivory)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(KamiTokens.warmBorder)
+                }
+        case .paragraph:
+            Text(renderedMarkdown)
+                .font(.system(.body, design: .serif))
+                .lineSpacing(7)
+                .foregroundStyle(KamiTokens.bodyText)
+        }
+    }
+
+    private var renderedMarkdown: AttributedString {
+        (try? AttributedString(markdown: block.text)) ?? AttributedString(block.text)
+    }
+}
+
+struct MarkdownBlock {
+    enum Kind {
+        case heading1
+        case heading2
+        case heading3
+        case paragraph
+        case code
+    }
+
+    var kind: Kind
+    var text: String
+
+    static func parse(_ markdown: String) -> [MarkdownBlock] {
+        var blocks: [MarkdownBlock] = []
+        var paragraph: [String] = []
+        var codeLines: [String] = []
+        var inCodeBlock = false
+
+        func flushParagraph() {
+            let text = paragraph
+                .joined(separator: "\n")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if !text.isEmpty {
+                blocks.append(MarkdownBlock(kind: .paragraph, text: text))
+            }
+            paragraph.removeAll()
+        }
+
+        for rawLine in markdown.components(separatedBy: .newlines) {
+            let line = rawLine.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            if line.hasPrefix("```") {
+                if inCodeBlock {
+                    blocks.append(MarkdownBlock(kind: .code, text: codeLines.joined(separator: "\n")))
+                    codeLines.removeAll()
+                    inCodeBlock = false
+                } else {
+                    flushParagraph()
+                    inCodeBlock = true
+                }
+                continue
+            }
+
+            if inCodeBlock {
+                codeLines.append(rawLine)
+                continue
+            }
+
+            guard !line.isEmpty else {
+                flushParagraph()
+                continue
+            }
+
+            if line.hasPrefix("### ") {
+                flushParagraph()
+                blocks.append(MarkdownBlock(kind: .heading3, text: String(line.dropFirst(4))))
+            } else if line.hasPrefix("## ") {
+                flushParagraph()
+                blocks.append(MarkdownBlock(kind: .heading2, text: String(line.dropFirst(3))))
+            } else if line.hasPrefix("# ") {
+                flushParagraph()
+                blocks.append(MarkdownBlock(kind: .heading1, text: String(line.dropFirst(2))))
+            } else {
+                paragraph.append(rawLine)
+            }
+        }
+
+        if inCodeBlock {
+            blocks.append(MarkdownBlock(kind: .code, text: codeLines.joined(separator: "\n")))
+        }
+        flushParagraph()
+
+        return blocks.isEmpty ? [MarkdownBlock(kind: .paragraph, text: markdown)] : blocks
     }
 }
 
@@ -456,47 +826,19 @@ struct EvidenceSourceRow: View {
     }
 }
 
-struct SourceHealthStrip: View {
-    let sources: [SourceHealth]
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("来源健康 / Source Health")
-                .font(.headline)
-                .foregroundStyle(KamiTokens.inkBlue)
-
-            Grid(alignment: .leading, horizontalSpacing: 14, verticalSpacing: 8) {
-                ForEach(sources) { source in
-                    GridRow {
-                        Text(source.name)
-                            .foregroundStyle(KamiTokens.bodyText)
-                        Text(source.status.displayName)
-                            .foregroundStyle(.secondary)
-                        Text("\(source.itemCount)")
-                            .foregroundStyle(.secondary)
-                    }
-                    .font(.caption)
-                }
-            }
-        }
-        .padding(12)
-        .background(KamiTokens.ivory)
-        .overlay {
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(KamiTokens.warmBorder)
-        }
-    }
-}
-
 struct CommandPanelShell: View {
     @EnvironmentObject private var model: ReportAppModel
     @Environment(\.dismiss) private var dismiss
-    @State private var query = ""
+    @State private var command = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            TextField("输入命令 / Command", text: $query)
+            TextField("输入命令或搜索词 / Command or search", text: $command)
                 .textFieldStyle(.roundedBorder)
+                .onSubmit {
+                    model.searchText = command
+                    dismiss()
+                }
 
             List {
                 Button {
@@ -505,29 +847,37 @@ struct CommandPanelShell: View {
                     }
                     dismiss()
                 } label: {
-                    Label("刷新样例缓存 / Refresh fixture cache", systemImage: "arrow.clockwise")
+                    Label("刷新公开数据 / Refresh public data", systemImage: "arrow.clockwise")
                 }
 
                 Button {
-                    model.selectedScope = .highSignal
-                    model.selectFirstVisibleReport()
+                    model.searchText = command
                     dismiss()
                 } label: {
-                    Label("显示高信号报告 / Show high signal reports", systemImage: "bolt.horizontal")
+                    Label("使用搜索词 / Apply search text", systemImage: "magnifyingglass")
                 }
 
                 Button {
-                    model.selectedScope = .sources
-                    model.selectFirstVisibleReport()
+                    model.selectFilter(ShowcaseFilterID.all)
+                    model.searchText = ""
                     dismiss()
                 } label: {
-                    Label("检查来源 / Inspect sources", systemImage: "link")
+                    Label("回到全部更新 / Show all updates", systemImage: "clock")
+                }
+
+                ForEach(ContentClusterID.allCases) { cluster in
+                    Button {
+                        model.selectFilter(ShowcaseFilterID.cluster(cluster))
+                        dismiss()
+                    } label: {
+                        Label(cluster.title, systemImage: cluster.systemImageName)
+                    }
                 }
             }
             .listStyle(.inset)
         }
         .padding(18)
-        .frame(width: 460, height: 260)
+        .frame(width: 500, height: 360)
     }
 }
 
@@ -540,17 +890,17 @@ struct MenuBarReportView: View {
                 await model.refreshIgnoringErrors()
             }
         } label: {
-            Label("刷新样例缓存 / Refresh Fixture Cache", systemImage: "arrow.clockwise")
+            Label("刷新公开数据 / Refresh Public Data", systemImage: "arrow.clockwise")
         }
 
         Divider()
 
         Label(model.syncStatus.displayName, systemImage: model.syncStatus.systemImageName)
 
-        if let report = model.reports.first {
+        if let document = model.documents.first {
             Divider()
-            Text(report.title)
-            Text(report.summary)
+            Text(document.title)
+            Text(document.summary)
                 .foregroundStyle(.secondary)
         }
     }
@@ -583,10 +933,97 @@ struct SyncStatusBadge: View {
     }
 }
 
+struct FlowLayout: Layout {
+    var alignment: HorizontalAlignment = .leading
+    var spacing: CGFloat = 8
+
+    func sizeThatFits(
+        proposal: ProposedViewSize,
+        subviews: Subviews,
+        cache: inout ()
+    ) -> CGSize {
+        layout(in: proposal.replacingUnspecifiedDimensions().width, subviews: subviews).size
+    }
+
+    func placeSubviews(
+        in bounds: CGRect,
+        proposal: ProposedViewSize,
+        subviews: Subviews,
+        cache: inout ()
+    ) {
+        let result = layout(in: bounds.width, subviews: subviews)
+        for row in result.rows {
+            let rowWidth = row.items.reduce(CGFloat.zero) { $0 + $1.size.width } + CGFloat(max(row.items.count - 1, 0)) * spacing
+            let xOffset: CGFloat
+            switch alignment {
+            case .center:
+                xOffset = max((bounds.width - rowWidth) / 2, 0)
+            case .trailing:
+                xOffset = max(bounds.width - rowWidth, 0)
+            default:
+                xOffset = 0
+            }
+
+            var x = bounds.minX + xOffset
+            for item in row.items {
+                subviews[item.index].place(
+                    at: CGPoint(x: x, y: bounds.minY + row.y),
+                    proposal: ProposedViewSize(item.size)
+                )
+                x += item.size.width + spacing
+            }
+        }
+    }
+
+    private func layout(in maxWidth: CGFloat, subviews: Subviews) -> (rows: [FlowRow], size: CGSize) {
+        var rows: [FlowRow] = []
+        var current = FlowRow(y: 0, height: 0, items: [])
+        var x: CGFloat = 0
+        let width = max(maxWidth, 1)
+
+        for index in subviews.indices {
+            let size = subviews[index].sizeThatFits(.unspecified)
+            if x > 0, x + size.width > width {
+                rows.append(current)
+                current = FlowRow(y: current.y + current.height + spacing, height: 0, items: [])
+                x = 0
+            }
+
+            current.items.append(FlowItem(index: index, size: size))
+            current.height = max(current.height, size.height)
+            x += size.width + spacing
+        }
+
+        if !current.items.isEmpty {
+            rows.append(current)
+        }
+
+        let height = rows.last.map { $0.y + $0.height } ?? 0
+        return (rows, CGSize(width: width, height: height))
+    }
+
+    private struct FlowRow {
+        var y: CGFloat
+        var height: CGFloat
+        var items: [FlowItem]
+    }
+
+    private struct FlowItem {
+        var index: Int
+        var size: CGSize
+    }
+}
+
 enum KamiTokens {
     static let parchment = Color(red: 0.961, green: 0.957, blue: 0.929)
     static let ivory = Color(red: 0.980, green: 0.976, blue: 0.961)
     static let inkBlue = Color(red: 0.106, green: 0.212, blue: 0.365)
     static let bodyText = Color(red: 0.173, green: 0.153, blue: 0.125)
     static let warmBorder = Color(red: 0.784, green: 0.733, blue: 0.627)
+}
+
+private extension String {
+    func ifEmpty(_ fallback: String) -> String {
+        isEmpty ? fallback : self
+    }
 }

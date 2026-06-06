@@ -327,42 +327,35 @@ function localizePublicItem(
 function buildHeroCopy(locale: Locale, generatedAt: string): ShowcaseData["hero"] {
   const updateLabel =
     locale === "zh"
-      ? `更新于 ${formatShortDate(generatedAt, "zh")}`
-      : `Updated ${formatShortDate(generatedAt, "en")}`;
+      ? formatShortDate(generatedAt, "zh")
+      : formatShortDate(generatedAt, "en");
 
   return locale === "zh"
     ? {
         eyebrow: "AI 研究日报",
-        title: "三类 AI 前沿内容：Agent、后训练、安全",
-        summary:
-          "自动化 Agent 将公开论文、博客和代码整理为可筛选的固定频道；首页默认按发布时间倒序展示全部内容，点击后进入同一套样式渲染的 Markdown 深度分析稿。",
+        title: "AI 研究日报",
+        summary: "固定分类与 Markdown 深度稿统计。",
         updateLabel,
         searchPlaceholder: "搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码"
       }
     : {
         eyebrow: "AI Research Daily",
-        title: "Three Frontiers: Agents, Post-Training, Safety",
-        summary:
-          "The automation pipeline keeps fixed channel metadata for public papers, blogs, and code, while the homepage lists everything newest first. Open any card to read the Markdown deep dive.",
+        title: "AI Research Daily",
+        summary: "Fixed-channel and Markdown brief statistics.",
         updateLabel,
         searchPlaceholder: "Search agents, SFT, RL, OPD, AI safety, papers, or code"
       };
 }
 
 function buildStats(locale: Locale, documents: LocalizedDocument[]): ShowcaseData["stats"] {
-  const topicTags = Array.from(new Set(documents.flatMap((document) => document.tags))).slice(0, 5);
-  const topicValue = topicTags.length > 0 ? topicTags.join(" / ") : "Agent / SFT / RL / OPD / Safety";
-
   return locale === "zh"
     ? [
         { label: "固定分类", value: "3" },
-        { label: "Markdown 深度稿", value: String(documents.length) },
-        { label: "重点方法", value: topicValue }
+        { label: "Markdown 深度稿", value: String(documents.length) }
       ]
     : [
         { label: "Fixed channels", value: "3" },
-        { label: "Markdown briefs", value: String(documents.length) },
-        { label: "Tracked topics", value: topicValue }
+        { label: "Markdown briefs", value: String(documents.length) }
       ];
 }
 
@@ -449,6 +442,7 @@ function formatShortDate(value: string, locale: Locale): string {
   }
 
   return new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : "en", {
+    timeZone: "Asia/Shanghai",
     month: "short",
     day: "numeric",
     hour: "2-digit",

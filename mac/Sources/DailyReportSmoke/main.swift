@@ -4,23 +4,59 @@ import Foundation
 let sampleJSONString = """
 {
   "manifest": {
-    "schemaVersion": "0.1.0",
+    "version": 1,
     "generatedAt": "2026-06-06T02:00:00Z",
-    "runID": "smoke-inline",
+    "latestDay": "2026-06-06",
+    "manifestPath": "manifests/smoke.manifest.json",
+    "manifestSHA256": "smoke",
+    "root": "public",
+    "totalFiles": 3,
+    "totalBytes": 1024,
     "dataBranchRef": "data@smoke",
-    "publicBaseURL": "https://example.com/daily-report/public"
+    "publicBaseURL": "https://example.com/daily-report/public/"
   },
-  "reports": [
+  "generatedAt": "2026-06-06T02:00:00Z",
+  "dataMode": "fixture",
+  "dataPath": "inline smoke",
+  "repoURL": "https://github.com/ABromide/daily-report-app",
+  "stats": [
     {
-      "id": "smoke-report",
+      "id": "fixed-channels",
+      "label": "固定分类",
+      "value": "3"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "llm-agent",
+      "title": "大模型 Agent 相关",
+      "thesis": "Tracks tool use.",
+      "summary": "Smoke cluster.",
+      "tags": ["Agent"],
+      "documentCount": 1,
+      "lastUpdatedAt": "2026-06-06T01:59:00Z"
+    }
+  ],
+  "documents": [
+    {
+      "id": "smoke-document",
+      "clusterID": "llm-agent",
+      "type": "code",
+      "typeLabel": "代码",
       "title": "Smoke model decode",
       "summary": "Inline JSON should decode into the public DailyReportPayload contract.",
-      "bodyMarkdown": "The smoke executable checks Codable models, cache replacement, and importer behavior without needing xcodebuild.",
+      "analysis": "",
+      "sourceName": "Inline fixture",
+      "url": "https://example.com/smoke",
       "publishedAt": "2026-06-06T01:59:00Z",
+      "readingMinutes": 1,
+      "score": 80,
       "tags": ["smoke", "swift"],
-      "readingTimeMinutes": 1,
-      "importance": "medium",
-      "sources": [
+      "domain": "example.com",
+      "analysisMarkdownPath": "articles/smoke/index.md",
+      "analysisMarkdown": "# Smoke\\n\\nThe smoke executable checks Codable models, cache replacement, and public-data import behavior.",
+      "searchText": "smoke swift agent code",
+      "evidence": [
         {
           "id": "smoke-source",
           "title": "Inline fixture",
@@ -32,14 +68,15 @@ let sampleJSONString = """
       ]
     }
   ],
-  "sourceHealth": [
+  "sources": [
     {
-      "id": "smoke-source-health",
+      "id": "smoke-source",
       "name": "Smoke fixture",
-      "status": "healthy",
-      "lastSeenAt": "2026-06-06T01:58:00Z",
-      "itemCount": 1,
-      "note": "Inline smoke data."
+      "kind": "manual",
+      "homepageURL": "https://example.com/smoke",
+      "note": "Inline smoke data.",
+      "enabled": true,
+      "itemCount": 1
     }
   ]
 }
@@ -49,18 +86,12 @@ let sampleJSONString = """
 struct DailyReportSmoke {
     static func main() async throws {
         let sampleData = Data(sampleJSONString.utf8)
-        let payload: DailyReportPayload
+        let payload = try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: sampleData)
 
-        do {
-            payload = try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: sampleData)
-        } catch {
-            let fallback = try ImportService.bundledFixtureData()
-            payload = try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: fallback)
-        }
-
-        precondition(payload.manifest.schemaVersion == "0.1.0")
-        precondition(!payload.reports.isEmpty)
-        precondition(payload.reports[0].sources.count == 1)
+        precondition(payload.manifest.version == 1)
+        precondition(payload.clusters.first?.id == .llmAgent)
+        precondition(payload.documents.count == 1)
+        precondition(payload.documents[0].evidence.count == 1)
 
         let cacheDirectory = FileManager.default.temporaryDirectory
             .appendingPathComponent("DailyReportSmoke-\(UUID().uuidString)", isDirectory: true)
@@ -71,17 +102,33 @@ struct DailyReportSmoke {
             from: .data(sampleData),
             status: .localOnly
         )
-        precondition(localResult.importedReportCount == 1)
+        precondition(localResult.importedDocumentCount == 1)
         precondition(localResult.summary.status == .localOnly)
 
         let cached = try await store.load()
-        precondition(cached?.payload.reports.first?.id == "smoke-report")
+        precondition(cached?.payload.documents.first?.id == "smoke-document")
         precondition(cached?.status == .localOnly)
 
-        let fixtureResult = try await importer.importPayload(from: .bundledFixture)
-        precondition(fixtureResult.summary.status == .cached)
-        precondition(fixtureResult.importedReportCount >= 2)
+        let bundledPayload = try DailyReportJSON.decoder.decode(
+            DailyReportPayload.self,
+            from: ImportService.bundledFixtureData()
+        )
+        precondition(bundledPayload.documents.count >= 3)
+        precondition(bundledPayload.clusters.count == 3)
 
-        print("DailyReportSmoke passed: decoded \(payload.reports.count) inline report, imported \(fixtureResult.importedReportCount) fixture reports.")
+        if let publicDataDirectory = PublicDataLoader.discoverLocalPublicDataDirectory() {
+            let fixtureResult = try await importer.importPayload(from: .publicDataDirectory(publicDataDirectory))
+            precondition(fixtureResult.summary.status == .cached)
+            precondition(fixtureResult.importedDocumentCount >= 3)
+            precondition(fixtureResult.summary.payload.documents.first?.analysisMarkdown != nil)
+
+            print("DailyReportSmoke passed: decoded inline payload, bundled sample, and public-data fixture with \(fixtureResult.importedDocumentCount) documents.")
+        } else {
+            let fixtureResult = try await importer.importPayload(from: .bundledFixture)
+            precondition(fixtureResult.summary.status == .cached)
+            precondition(fixtureResult.importedDocumentCount >= 3)
+
+            print("DailyReportSmoke passed: decoded inline payload and bundled sample with \(fixtureResult.importedDocumentCount) documents.")
+        }
     }
 }

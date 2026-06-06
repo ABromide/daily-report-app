@@ -59,6 +59,20 @@ http://127.0.0.1:4321/en
 npm --prefix web run build
 ```
 
+构建和验证 macOS 本地端：
+
+```bash
+swift build --package-path mac
+swift run --package-path mac DailyReportSmoke
+```
+
+macOS 端会优先读取与 Web 相同的公开数据目录：`index/latest.json` 指向 manifest，再由 manifest 定位 items、sources 和 Markdown 深度稿。本地开发时会自动发现 `fixtures/public-data/public`；也可以显式指定数据源：
+
+```bash
+PUBLIC_DATA_DIR=/path/to/public swift run --package-path mac DailyReportMac
+PUBLIC_DATA_BASE_URL=https://example.com/daily-report-app/data/ swift run --package-path mac DailyReportMac
+```
+
 GitHub Pages 构建时需要带上仓库路径：
 
 ```bash

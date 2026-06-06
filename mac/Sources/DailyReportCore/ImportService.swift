@@ -4,6 +4,7 @@ public enum ImportSource: Equatable, Sendable {
     case bundledFixture
     case data(Data)
     case localFile(URL)
+    case publicDataDirectory(URL)
     case remote(URL)
 }
 
@@ -26,9 +27,14 @@ public enum ImportServiceError: Error, Equatable, LocalizedError, Sendable {
 
 public actor ImportService {
     private let store: SummaryCacheStore
+    private let loader: PublicDataLoader
 
-    public init(store: SummaryCacheStore = SummaryCacheStore()) {
+    public init(
+        store: SummaryCacheStore = SummaryCacheStore(),
+        loader: PublicDataLoader = PublicDataLoader()
+    ) {
         self.store = store
+        self.loader = loader
     }
 
     @discardableResult
@@ -39,8 +45,7 @@ public actor ImportService {
         _ = try? await store.mark(status: .syncing)
 
         do {
-            let data = try await loadData(from: source)
-            let payload = try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: data)
+            let payload = try await loadPayload(from: source)
             let importedAt = Date()
             let summary = try await store.replace(
                 with: payload,
@@ -49,7 +54,7 @@ public actor ImportService {
             )
             return ImportResult(
                 summary: summary,
-                importedReportCount: payload.reports.count
+                importedDocumentCount: payload.documents.count
             )
         } catch {
             _ = try? await store.mark(
@@ -90,27 +95,44 @@ public actor ImportService {
         return try Data(contentsOf: url)
     }
 
-    private func loadData(from source: ImportSource) async throws -> Data {
+    public static func defaultPublicDataSource() -> ImportSource {
+        let environment = ProcessInfo.processInfo.environment
+        if let publicDataDir = environment["PUBLIC_DATA_DIR"], !publicDataDir.isEmpty {
+            return .publicDataDirectory(URL(fileURLWithPath: publicDataDir, isDirectory: true))
+        }
+
+        if let publicDataBase = environment["PUBLIC_DATA_BASE_URL"],
+           let url = URL(string: publicDataBase) {
+            return .remote(url)
+        }
+
+        if let discovered = PublicDataLoader.discoverLocalPublicDataDirectory() {
+            return .publicDataDirectory(discovered)
+        }
+
+        return .bundledFixture
+    }
+
+    private func loadPayload(from source: ImportSource) async throws -> DailyReportPayload {
         switch source {
         case .bundledFixture:
-            return try Self.bundledFixtureData()
+            let data = try Self.bundledFixtureData()
+            return try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: data)
         case .data(let data):
-            return data
+            return try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: data)
         case .localFile(let url):
-            return try Data(contentsOf: url)
-        case .remote(let url):
-            do {
-                let (data, response) = try await URLSession.shared.data(from: url)
-                if let httpResponse = response as? HTTPURLResponse,
-                   !(200..<300).contains(httpResponse.statusCode) {
-                    throw ImportServiceError.failedToLoadRemote(url)
-                }
-                return data
-            } catch let error as ImportServiceError {
-                throw error
-            } catch {
-                throw ImportServiceError.failed(error.localizedDescription)
+            var isDirectory: ObjCBool = false
+            if FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory),
+               isDirectory.boolValue {
+                return try loader.load(fromDirectory: url)
             }
+
+            let data = try Data(contentsOf: url)
+            return try DailyReportJSON.decoder.decode(DailyReportPayload.self, from: data)
+        case .publicDataDirectory(let url):
+            return try loader.load(fromDirectory: url)
+        case .remote(let url):
+            return try await loader.load(fromBaseURL: url)
         }
     }
 }

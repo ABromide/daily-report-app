@@ -1,70 +1,182 @@
 {
   "manifest": {
-    "schemaVersion": "0.1.0",
-    "generatedAt": "2026-06-06T01:17:00Z",
-    "runID": "fixture-2026-06-06T01-17Z",
-    "dataBranchRef": "data@fixture",
-    "publicBaseURL": "https://example.com/daily-report/public"
+    "version": 1,
+    "generatedAt": "2026-06-06T12:32:34Z",
+    "latestDay": "2026-06-06",
+    "manifestPath": "manifests/2026/06/06/123234Z.manifest.json",
+    "manifestSHA256": "sample",
+    "root": "public",
+    "totalFiles": 6,
+    "totalBytes": 12000,
+    "dataBranchRef": "bundled-public-data",
+    "publicBaseURL": "https://example.com/daily-report/public/"
   },
-  "reports": [
+  "generatedAt": "2026-06-06T12:32:34Z",
+  "dataMode": "bundled",
+  "dataPath": "bundled public-data sample",
+  "repoURL": "https://github.com/ABromide/daily-report-app",
+  "stats": [
     {
-      "id": "runtime-sca-2026-06-06",
-      "title": "运行时感知 SCA 正在成为务实的安全产品切入口 / Runtime-aware SCA",
-      "summary": "把漏洞公告库和真实运行行为结合起来，能帮助应用团队减少嘈杂的漏洞队列。",
-      "bodyMarkdown": "静态扫描器依然有价值，但团队真正想知道的是：哪些有漏洞的包正在被加载、可达，或者会在类生产运行里暴露出来。近期的产品机会，是做一个本地优先的分诊层，把证据留在开发者工作流附近。\n\nEnglish note: runtime evidence turns advisory noise into actionable security work.",
-      "publishedAt": "2026-06-06T01:10:00Z",
-      "updatedAt": "2026-06-06T01:14:00Z",
-      "tags": ["安全", "运行时", "开发者工具"],
-      "readingTimeMinutes": 4,
-      "importance": "high",
-      "sources": [
+      "id": "fixed-channels",
+      "label": "固定分类",
+      "value": "3"
+    },
+    {
+      "id": "markdown-briefs",
+      "label": "Markdown 深度稿",
+      "value": "3"
+    },
+    {
+      "id": "tracked-topics",
+      "label": "重点方法",
+      "value": "Agent / SFT / AI Safety"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "llm-agent",
+      "title": "大模型 Agent 相关",
+      "thesis": "关注大模型从回答问题走向调用工具、执行任务、进入真实开发流的能力变化。",
+      "summary": "这一组聚焦 Agent 平台、长期任务、代码工作流和本地 AI 界面。",
+      "tags": ["Agent 平台", "工具调用", "代码工作流"],
+      "documentCount": 1,
+      "lastUpdatedAt": "2026-06-05T00:00:00Z"
+    },
+    {
+      "id": "llm-post-training",
+      "title": "大模型后训练相关",
+      "thesis": "覆盖 SFT、强化学习、OPD、适配器和蒸馏等前沿工作。",
+      "summary": "这一组把后训练当作独立频道，而不是泛泛的模型研究。",
+      "tags": ["SFT", "强化学习", "OPD"],
+      "documentCount": 1,
+      "lastUpdatedAt": "2026-06-05T00:00:00Z"
+    },
+    {
+      "id": "ai-safety",
+      "title": "AI 安全相关",
+      "thesis": "关注前沿模型治理、攻防风险、能力阈值、权限边界和安全部署。",
+      "summary": "这一组看 AI 进入真实系统后如何改变攻击面、研发流程和治理结构。",
+      "tags": ["Frontier Safety", "网络攻防", "权限边界"],
+      "documentCount": 1,
+      "lastUpdatedAt": "2026-06-03T00:00:00Z"
+    }
+  ],
+  "documents": [
+    {
+      "id": "itm_fe01906c4ef44106",
+      "clusterID": "llm-agent",
+      "type": "code",
+      "typeLabel": "代码",
+      "title": "OpenAI Agents SDK JS 把多 Agent、Sandbox 和 Tracing 收成同一条工程主线",
+      "summary": "它把 Agent、工具交接、Guardrails、人类介入、Sessions、Tracing 和 Realtime Agents 放进同一套工程表面。",
+      "analysis": "",
+      "sourceName": "OpenAI Agents SDK JS",
+      "url": "https://github.com/openai/openai-agents-js",
+      "publishedAt": "2026-06-05T00:00:00Z",
+      "readingMinutes": 8,
+      "score": 92,
+      "tags": ["Agent", "Sandbox", "Tracing", "Guardrails", "TypeScript"],
+      "domain": "github.com",
+      "analysisMarkdownPath": "articles/2026/06/05/itm_fe01906c4ef44106/index.md",
+      "analysisMarkdown": "# 工程主线\n\nOpenAI Agents SDK JS 的重点不是“又一个 Agent SDK”，而是把运行、交接、可观测性和安全边界收进同一条开发者主线。\n\n这和 HTML 首页一致：先在时间线做筛选，再进入 Markdown 深度稿检查证据。",
+      "searchText": "openai agents sdk js agent sandbox tracing guardrails typescript github.com 大模型 agent 相关 code",
+      "evidence": [
         {
-          "id": "src-trivy-runtime",
-          "title": "Trivy 项目研究笔记 / Trivy project research note",
-          "url": "https://github.com/aquasecurity/trivy",
+          "id": "itm_fe01906c4ef44106-evidence-1",
+          "title": "GitHub 仓库",
+          "url": "https://github.com/openai/openai-agents-js",
           "host": "github.com",
-          "capturedAt": "2026-06-06T00:58:00Z",
-          "checksumSHA256": "fixture-runtime-sca"
+          "capturedAt": "2026-06-06T12:32:34Z",
+          "checksumSHA256": "sample"
         }
       ]
     },
     {
-      "id": "agent-workstation-2026-06-06",
-      "title": "Agent 研究工作台需要来源健康度，而不只是卡片",
-      "summary": "密集阅读器应该先展示运行新鲜度、过期数据、来源置信度和缓存状态，再要求用户信任摘要。",
-      "bodyMarkdown": "有用的模式是三栏复核循环：左侧导航，中间压缩队列，右侧是证据密度更高的阅读器。macOS 原生 chrome 应保持安静克制，让内容区承载 kami 风格的编辑质感。\n\nEnglish note: source health belongs in the main review loop, not hidden inside settings.",
-      "publishedAt": "2026-06-06T00:45:00Z",
-      "tags": ["产品", "macOS", "研究"],
-      "readingTimeMinutes": 3,
-      "importance": "medium",
-      "sources": [
+      "id": "itm_d0ccf7dfcec35db8",
+      "clusterID": "llm-post-training",
+      "type": "code",
+      "typeLabel": "代码",
+      "title": "LlamaFactory 继续把后训练工程压成统一入口",
+      "summary": "README 把 CLI、Web UI、训练方式、部署、日志和文档连成一条从 SFT 到 RLHF 再到服务化的后训练生产线。",
+      "analysis": "",
+      "sourceName": "LlamaFactory",
+      "url": "https://github.com/hiyouga/LlamaFactory",
+      "publishedAt": "2026-06-05T00:00:00Z",
+      "readingMinutes": 8,
+      "score": 89,
+      "tags": ["Post-Training", "SFT", "RLHF", "LoRA", "WebUI"],
+      "domain": "github.com",
+      "analysisMarkdownPath": "articles/2026/06/05/itm_d0ccf7dfcec35db8/index.md",
+      "analysisMarkdown": "# 后训练生产线\n\nLlamaFactory 的看点是把分散脚本变成统一入口：数据、训练、评估、Web UI 和部署链路被放在同一套操作面里。",
+      "searchText": "llamafactory post-training sft rlhf lora webui github.com 大模型后训练相关 code",
+      "evidence": [
         {
-          "id": "src-architecture",
-          "title": "Daily Report 架构说明 / Daily Report architecture",
-          "url": "https://example.com/docs/architecture",
-          "host": "example.com",
-          "capturedAt": "2026-06-06T00:40:00Z",
-          "checksumSHA256": "fixture-agent-workstation"
+          "id": "itm_d0ccf7dfcec35db8-evidence-1",
+          "title": "GitHub 仓库",
+          "url": "https://github.com/hiyouga/LlamaFactory",
+          "host": "github.com",
+          "capturedAt": "2026-06-06T12:32:34Z",
+          "checksumSHA256": "sample"
+        }
+      ]
+    },
+    {
+      "id": "itm_b5ea5cc9786d34d1",
+      "clusterID": "ai-safety",
+      "type": "report",
+      "typeLabel": "AI 报告",
+      "title": "OpenAI 的 Frontier Safety Blueprint 把安全讨论推向联邦制度设计",
+      "summary": "这份 blueprint 把前沿 AI 安全拆成联邦框架、CAISI 机构能力、以及跨政府韧性计划。",
+      "analysis": "",
+      "sourceName": "OpenAI Global Affairs",
+      "url": "https://openai.com/index/frontier-safety-blueprint/",
+      "publishedAt": "2026-06-03T00:00:00Z",
+      "readingMinutes": 9,
+      "score": 90,
+      "tags": ["AI Safety", "Governance", "CAISI", "RSI", "Policy"],
+      "domain": "openai.com",
+      "analysisMarkdownPath": "articles/2026/06/03/itm_b5ea5cc9786d34d1/index.md",
+      "analysisMarkdown": "# 制度工程\n\n这篇内容值得进入 AI 安全频道，因为它把能力评估、监管机构能力和跨政府韧性计划放在同一个制度框架里讨论。",
+      "searchText": "frontier safety blueprint ai safety governance caisi rsi policy openai.com ai 安全相关 report",
+      "evidence": [
+        {
+          "id": "itm_b5ea5cc9786d34d1-evidence-1",
+          "title": "OpenAI 文章页",
+          "url": "https://openai.com/index/frontier-safety-blueprint/",
+          "host": "openai.com",
+          "capturedAt": "2026-06-06T12:32:34Z",
+          "checksumSHA256": "sample"
         }
       ]
     }
   ],
-  "sourceHealth": [
+  "sources": [
     {
-      "id": "github-trending",
-      "name": "GitHub Trending",
-      "status": "healthy",
-      "lastSeenAt": "2026-06-06T00:59:00Z",
-      "itemCount": 12,
-      "note": "仅样例数据。/ Fixture data only."
+      "id": "openai-agents-js",
+      "name": "OpenAI Agents SDK JS",
+      "kind": "manual",
+      "homepageURL": "https://github.com/openai/openai-agents-js",
+      "note": "OpenAI 官方 JavaScript/TypeScript Agent SDK 仓库。",
+      "enabled": true,
+      "itemCount": 1
     },
     {
-      "id": "public-pages",
-      "name": "公开 Pages 清单 / Public Pages manifest",
-      "status": "unknown",
-      "lastSeenAt": "2026-06-06T00:59:00Z",
-      "itemCount": 1,
-      "note": "骨架版本尚未启用远端同步。/ Remote sync is not enabled in the skeleton."
+      "id": "llamafactory",
+      "name": "LlamaFactory",
+      "kind": "manual",
+      "homepageURL": "https://github.com/hiyouga/LlamaFactory",
+      "note": "统一后训练工作流的开源项目。",
+      "enabled": true,
+      "itemCount": 1
+    },
+    {
+      "id": "openai-frontier-safety-blueprint",
+      "name": "OpenAI Frontier Safety Blueprint",
+      "kind": "manual",
+      "homepageURL": "https://openai.com/index/frontier-safety-blueprint/",
+      "note": "OpenAI 发布的前沿 AI 联邦治理蓝图与 PDF 正文。",
+      "enabled": true,
+      "itemCount": 1
     }
   ]
 }

@@ -93,6 +93,10 @@ def _git_optional(data_worktree: Path, *args: str) -> CommandResult:
     return _run_optional(["git", "-C", str(data_worktree), *args])
 
 
+def _git_without_proxy(data_worktree: Path, *args: str) -> CommandResult:
+    return _run(["git", "-C", str(data_worktree), "-c", "http.proxy=", "-c", "https.proxy=", *args])
+
+
 def _repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
@@ -103,6 +107,35 @@ def _is_relative_to(path: Path, parent: Path) -> bool:
     except ValueError:
         return False
     return True
+
+
+def _is_local_proxy_failure(result: CommandResult) -> bool:
+    output = result.output.casefold()
+    return "127.0.0.1" in output and (
+        "proxy" in output
+        or "failed to connect" in output
+        or "couldn't connect" in output
+        or "connection refused" in output
+    )
+
+
+def _raise_command_failure(result: CommandResult) -> None:
+    rendered = " ".join(result.command)
+    msg = f"command failed ({result.returncode}): {rendered}"
+    if result.output:
+        msg = f"{msg}\n{result.output}"
+    raise PublishPublicRunError(msg)
+
+
+def _check_remote(data_worktree: Path) -> str:
+    result = _git_optional(data_worktree, "ls-remote", "--heads", "origin", DEFAULT_BRANCH)
+    if result.returncode == 0:
+        return f"origin/{DEFAULT_BRANCH}: reachable"
+    if _is_local_proxy_failure(result):
+        _git_without_proxy(data_worktree, "ls-remote", "--heads", "origin", DEFAULT_BRANCH)
+        return f"origin/{DEFAULT_BRANCH}: reachable without git proxy"
+    _raise_command_failure(result)
+    return f"origin/{DEFAULT_BRANCH}: unreachable"
 
 
 def automation_preflight(
@@ -136,8 +169,7 @@ def automation_preflight(
     checks.append(f"status: {'dirty' if status else 'clean'}")
 
     if remote_checks:
-        _git(data_worktree, "ls-remote", "--heads", "origin", DEFAULT_BRANCH)
-        checks.append(f"origin/{DEFAULT_BRANCH}: reachable")
+        checks.append(_check_remote(data_worktree))
         if shutil.which("gh") is not None:
             gh_status = _run_optional(["gh", "auth", "status"])
             checks.append("gh auth: ok" if gh_status.returncode == 0 else "gh auth: unavailable")
@@ -177,6 +209,21 @@ def _push_command(data_worktree: Path, *, without_proxy: bool) -> list[str]:
     return command
 
 
+def _push_with_fallback(data_worktree: Path, *, without_proxy: bool) -> str:
+    if without_proxy:
+        _run(_push_command(data_worktree, without_proxy=True))
+        return "push: sent without git proxy"
+
+    result = _run_optional(_push_command(data_worktree, without_proxy=False))
+    if result.returncode == 0:
+        return "push: sent"
+    if _is_local_proxy_failure(result):
+        _run(_push_command(data_worktree, without_proxy=True))
+        return "push: sent without git proxy fallback"
+    _raise_command_failure(result)
+    return "push: failed"
+
+
 def _dispatch(repo: str, commit_sha: str, run_id: str | None) -> None:
     script = _repo_root() / "scripts" / "automation" / "dispatch-data-updated.sh"
     command = [str(script), "--repo", repo, "--data-sha", commit_sha]
@@ -207,6 +254,7 @@ def publish_public_run(
         repo=repo,
         remote_checks=remote_checks,
     )
+    checks = list(preflight.checks)
     finalized = finalize_public_run(
         public_root,
         payload_path=payload_path,
@@ -235,7 +283,7 @@ def publish_public_run(
     pushed = False
     dispatched = False
     if push:
-        _run(_push_command(data_worktree, without_proxy=push_without_proxy))
+        checks.append(_push_with_fallback(data_worktree, without_proxy=push_without_proxy))
         pushed = True
     if push and dispatch:
         _dispatch(repo, commit_sha, run_id)
@@ -247,5 +295,5 @@ def publish_public_run(
         commit_sha=commit_sha,
         pushed=pushed,
         dispatched=dispatched,
-        checks=preflight.checks,
+        checks=tuple(checks),
     )

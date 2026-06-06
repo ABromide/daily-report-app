@@ -407,6 +407,10 @@ uv run daily-report automation-preflight \
   --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data
 ```
 
+如果本机全局 Git 配了 `http.proxy=http://127.0.0.1:17891`，而自动化运行环境里这个本地代理端口不可用，`automation-preflight` 和 `publish-public-run` 会自动用 `git -c http.proxy= -c https.proxy=` 绕过 Git 代理重试。看到 `origin/data: reachable without git proxy` 不代表文件沙箱失败，只代表 Git 远端检查走了直连 fallback。
+
+如果 `data` 分支刚被清空，`public/index/known-links.json`、`public/index/latest.json` 或 `items.jsonl` 不存在是正常的 bootstrap 空账本状态。不要让模型为此展开历史读取或手工补索引；写 Markdown 和 payload 后直接调用 `publish-public-run`，它会重建索引、audit 和 manifest。
+
 如果只想本地测试完整流程，不 push、不 dispatch：
 
 ```bash

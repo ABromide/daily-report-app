@@ -50,7 +50,7 @@
       "域名转小写",
       "标题大小写折叠并压缩空白"
     ],
-    "rule": "每次写入前必须读取 known-links.json 和最新 items.jsonl；如果候选 canonical_url、external_id、title_hash 或 content_hash 已存在，视为重复内容，必须丢弃该候选并继续寻找同类替代内容。"
+    "rule": "如果 public/index/known-links.json 和最新 items.jsonl 存在，写入前必须用它们做去重；如果 data 分支刚清空导致这些文件不存在，视为 bootstrap 空账本，不要把缺文件当成 blocker。payload 内部仍要避免重复；publish-public-run/finalize-public-run 会在发布阶段跨所有可用历史 items 检查 canonical_url、external_id、title_hash 和 content_hash。若确认重复，必须丢弃该候选并寻找同类替代候选。"
   },
   "output_contract": {
     "branch": "data",
@@ -80,7 +80,7 @@
     "principle": "重复、流程化、易出错的步骤必须优先交给工具执行；模型只负责调研、深读、写 Markdown 和准备小 payload。",
     "preflight": {
       "command": "uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data",
-      "purpose": "检查 data worktree、origin/data 和 GitHub CLI 权限，避免写入或 push 到最后才失败。"
+      "purpose": "检查 data worktree、origin/data 和 GitHub CLI 权限；如果全局 git 代理 127.0.0.1:17891 不可用，工具会自动绕过 git proxy 直连重试。"
     },
     "publish": {
       "command": "scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"",
@@ -92,6 +92,7 @@
     },
     "forbidden_manual_steps": [
       "不要手工 sed/cat 展开 latest、days、sources、known-links、audit 或 manifest 大 JSON。",
+      "如果 data 分支刚清空，public/index/known-links.json、public/index/latest.json 或 items.jsonl 不存在是正常空账本状态。",
       "不要手工逐字段维护 public/index/known-links.json、public/index/sources.json、public/index/days.json、public/index/latest.json、audit JSON 或 manifest JSON。",
       "不要手工拼接 git add/commit/push/dispatch；除非 publish-public-run 明确失败并需要诊断，否则直接调用工具。"
     ]
@@ -259,7 +260,7 @@
       {
         "name": "3. 去重替换",
         "instructions": [
-          "用 canonical_url、external_id、title_hash、content_hash 与 known-links.json 和最新 items.jsonl 对比。",
+          "如果 known-links.json 和最新 items.jsonl 存在，用 canonical_url、external_id、title_hash、content_hash 对比；如果 data 分支刚清空导致这些文件不存在，视为 bootstrap 空账本，不要把缺文件当成 blocker。",
           "如果发现重复，丢弃该候选，并继续寻找同类替代内容。",
           "记录 duplicate_candidates 和 replacement_candidates。"
         ]
@@ -339,6 +340,7 @@
         "name": "10. 调用一键发布工具重建索引、审计、manifest 并提交",
         "instructions": [
           "发布前优先运行权限预检：uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data。",
+          "如果预检输出 origin/data: reachable without git proxy，说明全局 127.0.0.1:17891 git 代理在自动化环境不可用但工具已绕过，不是文件沙箱问题。",
           "写完 Markdown 和 payload 后，直接运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"。",
           "publish-public-run 会自动调用 finalize-public-run，并执行 validate-public、secret-scan、data worktree git add/commit/push 和 repository_dispatch。",
           "finalize-public-run 会合并 items，跨所有历史 items 检查 canonical_url、external_id、title_hash、content_hash 四个去重键；如果报 duplicate，必须换同类替代候选，不要手动改 known-links。",

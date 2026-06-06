@@ -20,6 +20,7 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "canonical_url" in contract["dedupe"]["keys"]
     assert "重复" in contract["dedupe"]["rule"]
     assert "替代" in contract["dedupe"]["rule"]
+    assert "bootstrap 空账本" in contract["dedupe"]["rule"]
     required_item_fields = contract["output_contract"]["required_item_fields"]
     assert "category_id" in required_item_fields
     assert "analysis_markdown_path" in required_item_fields
@@ -32,9 +33,11 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "automation_tools" in contract
     assert "publish-public-run.sh" in contract["automation_tools"]["publish"]["command"]
     assert "automation-preflight" in contract["automation_tools"]["preflight"]["command"]
+    assert "127.0.0.1:17891" in contract["automation_tools"]["preflight"]["purpose"]
     assert "不要手工拼接 git add/commit/push/dispatch" in " ".join(
         contract["automation_tools"]["forbidden_manual_steps"]
     )
+    assert "public/index/known-links.json" in " ".join(contract["automation_tools"]["forbidden_manual_steps"])
     assert "required_sections" not in contract["analysis_requirements"]
     assert contract["analysis_requirements"]["suggested_section_count"] >= 8
     assert "论文或项目元信息" in contract["analysis_requirements"]["suggested_sections"]

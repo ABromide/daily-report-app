@@ -2,10 +2,18 @@ from __future__ import annotations
 
 import subprocess
 from pathlib import Path
+from typing import Callable, Protocol, Sequence, cast
 
+import pytest
+
+import collector.publish_public_run as publish_module
 from collector.jsonio import read_json, sha256_file, write_json
-from collector.publish_public_run import automation_preflight, publish_public_run
+from collector.publish_public_run import CommandResult, automation_preflight, publish_public_run
 from collector.sample import generate_sample
+
+
+class RunCommand(Protocol):
+    def __call__(self, command: Sequence[str], *, input_text: str | None = None) -> CommandResult: ...
 
 
 def _git(worktree: Path, *args: str) -> str:
@@ -126,3 +134,45 @@ def test_publish_public_run_finalizes_and_commits_without_remote_side_effects(tm
     assert _git(data_worktree, "status", "--short") == ""
     audit = read_json(sample.public_root / "audits/2026/06/06/codex-hourly-20260606t030000z.json")
     assert audit["written_item_ids"] == ["itm_0011223344556677"]
+
+
+def test_automation_preflight_retries_remote_check_without_dead_local_proxy(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sample = generate_sample(tmp_path / "data")
+    data_worktree = sample.public_root.parent
+    _git(data_worktree, "init", "-b", "data")
+    _git(data_worktree, "config", "user.email", "test@example.com")
+    _git(data_worktree, "config", "user.name", "Daily Report Test")
+    _git(data_worktree, "add", "-A")
+    _git(data_worktree, "commit", "-m", "data: initial")
+    real_run = cast(RunCommand, getattr(publish_module, "_run"))
+    real_run_optional = cast(Callable[[Sequence[str]], CommandResult], getattr(publish_module, "_run_optional"))
+
+    def fake_run(command: Sequence[str], *, input_text: str | None = None) -> CommandResult:
+        if "ls-remote" in command and "http.proxy=" in command:
+            return CommandResult(tuple(command), 0, "deadbeef\trefs/heads/data\n", "")
+        return real_run(command, input_text=input_text)
+
+    def fake_run_optional(command: Sequence[str]) -> CommandResult:
+        if "ls-remote" in command and "http.proxy=" not in command:
+            return CommandResult(
+                tuple(command),
+                128,
+                "",
+                "fatal: unable to access 'https://github.com/example/repo.git/': "
+                "Failed to connect to 127.0.0.1 port 17891",
+            )
+        return real_run_optional(command)
+
+    monkeypatch.setattr(publish_module, "_run", fake_run)
+    monkeypatch.setattr(publish_module, "_run_optional", fake_run_optional)
+
+    result = automation_preflight(
+        public_root=sample.public_root,
+        data_worktree=data_worktree,
+        remote_checks=True,
+    )
+
+    assert "origin/data: reachable without git proxy" in result.checks

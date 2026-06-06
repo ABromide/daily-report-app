@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -26,6 +27,13 @@ def _reset_dir(path: Path) -> None:
     if path.exists():
         shutil.rmtree(path)
     path.mkdir(parents=True, exist_ok=True)
+
+
+def _safe_run_id(value: str) -> str:
+    normalized = re.sub(r"[^a-z0-9:_-]+", "-", value.casefold()).strip("-")
+    if not normalized:
+        raise ValueError("run id must contain at least one schema-safe character")
+    return normalized
 
 
 def _title_hash(title: str) -> str:
@@ -337,6 +345,7 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
 def main() -> int:
     args = _parse_args()
     generated_at = _parse_generated_at(args.generated_at)
+    run_id = _safe_run_id(args.run_id)
     output_root = args.output
     public_root = output_root / "public"
     _reset_dir(public_root)
@@ -350,7 +359,7 @@ def main() -> int:
     item_path = public_root / "items" / day / "items.jsonl"
     hourly_path = public_root / "reports" / "hourly" / day / f"{hour}.json"
     daily_path = public_root / "reports" / "daily" / generated_at.strftime("%Y/%m/%d.json")
-    audit_path = public_root / "audits" / day / f"{args.run_id}.json"
+    audit_path = public_root / "audits" / day / f"{run_id}.json"
     manifest_path = public_root / "manifests" / day / f"{manifest_stamp}.manifest.json"
     latest_path = public_root / "index" / "latest.json"
     days_path = public_root / "index" / "days.json"
@@ -490,7 +499,7 @@ def main() -> int:
         audit_path,
         {
             "version": 1,
-            "run_id": args.run_id,
+            "run_id": run_id,
             "generated_at": args.generated_at,
             "status": "complete",
             "config_path": "config/automation/codex-hourly.zh.json",

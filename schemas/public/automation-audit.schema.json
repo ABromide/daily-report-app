@@ -74,7 +74,14 @@
         "properties": {
           "agent_id": {
             "type": "string",
-            "enum": ["scout", "deep_reader", "method_or_code_analyst", "skeptic", "markdown_editor"]
+            "enum": [
+              "scout",
+              "deep_reader",
+              "method_or_code_analyst",
+              "skeptic",
+              "related_work",
+              "markdown_editor"
+            ]
           },
           "status": { "type": "string", "enum": ["passed", "needs_revision", "failed"] },
           "summary": { "type": "string", "minLength": 1 }
@@ -87,12 +94,16 @@
       "required": [
         "minimum_chinese_chars",
         "evidence_points",
+        "image_notes",
+        "third_party_references",
         "skeptical_review",
         "passed"
       ],
       "properties": {
         "minimum_chinese_chars": { "type": "integer", "minimum": 1 },
         "evidence_points": { "type": "integer", "minimum": 0 },
+        "image_notes": { "type": "integer", "minimum": 0 },
+        "third_party_references": { "type": "integer", "minimum": 0 },
         "skeptical_review": { "type": "integer", "minimum": 0 },
         "passed": { "type": "boolean" }
       }

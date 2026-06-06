@@ -176,14 +176,21 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
                     "summary": "检查重复、日期窗口和过度解释风险，保留边界说明。",
                 },
                 {
+                    "agent_id": "related_work",
+                    "status": "passed",
+                    "summary": "按内容类型搜索外部参考；博客类以帮助理解原文为主，不强行改写成论文式审稿。",
+                },
+                {
                     "agent_id": "markdown_editor",
                     "status": "passed",
                     "summary": "写入完整 Markdown 分析稿，正文不依赖 item JSON 字段。",
                 },
             ],
             "quality_gate": {
-                "minimum_chinese_chars": 3500,
+                "minimum_chinese_chars": 5000,
                 "evidence_points": 5,
+                "image_notes": 1,
+                "third_party_references": 1,
                 "skeptical_review": 3,
                 "passed": True,
             },

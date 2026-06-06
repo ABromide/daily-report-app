@@ -547,14 +547,21 @@ def main() -> int:
                     "summary": "Evidence and limits were called out explicitly for every article instead of only summarizing claims.",
                 },
                 {
+                    "agent_id": "related_work",
+                    "status": "passed",
+                    "summary": "External references were searched by content type; blog/report items preserve the original argument and use short quotations only as analysis anchors.",
+                },
+                {
                     "agent_id": "markdown_editor",
                     "status": "passed",
                     "summary": "All analysis pages were written as Markdown documents; styling and formula rendering are handled by the web app.",
                 },
             ],
             "quality_gate": {
-                "minimum_chinese_chars": 3500,
+                "minimum_chinese_chars": 5000,
                 "evidence_points": sum(len(item["evidence"]) for item in items),
+                "image_notes": len(items),
+                "third_party_references": len(items),
                 "skeptical_review": 3,
                 "passed": True,
             },

@@ -19,10 +19,10 @@
       "sha256": "0b040d9ff54a3f1d06d63522d0c1ff97474de5c7e3379c45fff4cbb1244e2cd5"
     },
     {
-      "bytes": 2131,
+      "bytes": 2429,
       "content_type": "application/json",
       "path": "audits/2026/06/06/codex-hourly-20260606t123234z.json",
-      "sha256": "b11e9f8d696b38b37e78268b0b5eb3d274318109922d7bb1e0ec6c891005a158"
+      "sha256": "6b485911d0ca09ef047338cc253ec6c1c79cfbe1b55a8be5d0cfc85f97422717"
     },
     {
       "bytes": 353,
@@ -63,7 +63,7 @@
   ],
   "generated_at": "2026-06-06T12:32:34Z",
   "root": "public",
-  "total_bytes": 30277,
+  "total_bytes": 30575,
   "total_files": 10,
   "version": 1
 }

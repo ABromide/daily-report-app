@@ -75,7 +75,7 @@ export interface ShowcaseData {
 
 const webRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const repoRoot = path.resolve(webRoot, "..");
-const defaultPublicDataDir = path.resolve(repoRoot, "fixtures/public-data/public");
+const fallbackPublicDataDir = path.resolve(repoRoot, "fixtures/public-data/public");
 const repoUrl = "https://github.com/ABromide/daily-report-app";
 const clusterOrder: ClusterId[] = ["llm-agent", "llm-post-training", "ai-safety"];
 
@@ -207,9 +207,7 @@ export function getShowcaseData(locale: Locale): ShowcaseData {
 }
 
 function loadPublicSnapshot(): PublicSnapshot {
-  const publicDataDir = process.env.PUBLIC_DATA_DIR
-    ? path.resolve(process.env.PUBLIC_DATA_DIR)
-    : defaultPublicDataDir;
+  const publicDataDir = resolvePublicDataDir();
   const latestPath = path.join(publicDataDir, "index/latest.json");
 
   if (!existsSync(latestPath)) {
@@ -249,6 +247,21 @@ function loadPublicSnapshot(): PublicSnapshot {
     sourcesById,
     publicDataDir
   };
+}
+
+function resolvePublicDataDir(): string {
+  if (process.env.PUBLIC_DATA_DIR) {
+    return path.resolve(process.env.PUBLIC_DATA_DIR);
+  }
+
+  const cwd = process.cwd();
+  const candidates = [
+    path.resolve(cwd, "fixtures/public-data/public"),
+    path.resolve(cwd, "../fixtures/public-data/public"),
+    fallbackPublicDataDir
+  ];
+
+  return candidates.find((candidate) => existsSync(path.join(candidate, "index/latest.json"))) ?? candidates[0];
 }
 
 function localizePublicItem(

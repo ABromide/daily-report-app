@@ -29,9 +29,11 @@
   "generated_at": "2026-06-06T12:32:34Z",
   "quality_gate": {
     "evidence_points": 8,
-    "minimum_chinese_chars": 3500,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
     "passed": true,
-    "skeptical_review": 3
+    "skeptical_review": 3,
+    "third_party_references": 3
   },
   "run_id": "codex-hourly-20260606t123234z",
   "status": "complete",
@@ -55,6 +57,11 @@
       "agent_id": "skeptic",
       "status": "passed",
       "summary": "Evidence and limits were called out explicitly for every article instead of only summarizing claims."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External references were searched by content type; blog/report items preserve the original argument and use short quotations only as analysis anchors."
     },
     {
       "agent_id": "markdown_editor",

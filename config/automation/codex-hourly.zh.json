@@ -303,30 +303,34 @@
         ]
       },
       {
-        "name": "9. 写入索引 JSON",
+        "name": "9. 准备 finalize payload",
         "instructions": [
-          "item JSON 只作为索引，不写长文 analysis_zh，不写 visual 正文字段。",
-          "必须包含 item_id、category_id、type、source_id、external_id、url、canonical_url、title、published_at、fetched_at、summary_zh、analysis_markdown_path、tags、content_hash。",
+          "不要手工读取、sed 查看或逐字段改写 public/index/latest.json、public/index/days.json、public/index/sources.json、public/index/known-links.json、audit JSON 或 manifest JSON；这些文件由 finalize-public-run 工具统一机械生成。",
+          "写完 Markdown 后，只准备一个小 payload JSON，包含 run_id、generated_at、items、sources、dedupe、sub_agent_reviews 和 quality_gate。",
+          "payload.items 里的 item JSON 只作为索引，不写长文 analysis_zh，不写 visual 正文字段。",
+          "每个 item 必须包含 item_id、category_id、type、source_id、external_id、url、canonical_url、title、published_at、fetched_at、summary_zh、analysis_markdown_path、tags、content_hash；如果缺 title_hash 或 fingerprint，工具会补。",
           "summary_zh 不是一句营销摘要，而是首页可扫读的自包含摘要：应压缩写出主问题、核心做法、实验或证据、关键数字和主要局限。",
-          "更新 public/index/known-links.json。"
+          "payload.sources 只写本轮新增或更新的来源；已有 sources、known-links、days、latest、audit 和 manifest 不需要模型展开阅读。"
         ]
       },
       {
-        "name": "10. 写入审计与 manifest",
+        "name": "10. 调用 finalize 工具重建索引、审计与 manifest",
         "instructions": [
-          "写入 public/audits/YYYY/MM/DD/RUN_ID.json。",
-          "审计记录必须包含 run_id、generated_at、status、date_window、category_counts、dedupe、written_item_ids、article_paths、sub_agent_reviews、quality_gate。",
-          "quality_gate 记录 minimum_chinese_chars=5000、image_notes、third_party_references、skeptical_review 和 follow_up_questions，作为质量审计信号，不作为前端 Markdown 章节校验。",
-          "更新 manifest，确保每个 Markdown 文件都带 sha256、bytes 和 text/markdown content_type。"
+          "运行 uv run daily-report finalize-public-run --public-root <public-root> --payload <payload.json> --validate --secret-scan。",
+          "finalize-public-run 会合并 items，跨所有历史 items 检查 canonical_url、external_id、title_hash、content_hash 四个去重键；如果报 duplicate，必须换同类替代候选，不要手动改 known-links。",
+          "finalize-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON。",
+          "finalize-public-run 会确保每个 Markdown 文件都进入 manifest，并带 sha256、bytes 和 text/markdown content_type。",
+          "如果本轮已经手动写入 items.jsonl 而没有 payload，也可以运行 uv run daily-report finalize-public-run --public-root <public-root> --run-id <run-id> --generated-at <utc-generated-at> --written-item-id <item-id> --validate --secret-scan。"
         ]
       },
       {
         "name": "11. 验证和远端提交",
         "instructions": [
-          "运行 uv run daily-report validate-public <public-root>。",
-          "运行 uv run daily-report secret-scan <public-root>。",
-          "通过后提交并 push 到 data 分支。",
-          "触发 repository_dispatch: data-updated。"
+          "如果 finalize-public-run 已经使用 --validate --secret-scan，最终报告中记录该命令即可；否则再运行 uv run daily-report validate-public <public-root> 和 uv run daily-report secret-scan <public-root>。",
+          "通过后只使用 data worktree 的绝对路径提交：git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data add -A public；git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data commit -m \"data: <本轮简短说明>\"；git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data push origin data。",
+          "不要使用临时 GIT_INDEX_FILE 伪造提交；如果普通 git -C 命令被沙箱拦住，要报告为 Codex rules 权限问题，而不是继续手工绕过 index。",
+          "如果 push 因 127.0.0.1:17891 代理不可用失败，可以先检查代理端口；必要时重试 git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data -c http.proxy= -c https.proxy= push origin data，并把 DNS 或代理错误写入最终报告。",
+          "push 成功后触发 repository_dispatch: data-updated。"
         ]
       }
     ]

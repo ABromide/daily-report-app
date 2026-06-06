@@ -261,6 +261,7 @@ http://127.0.0.1:4321/en
 ```bash
 uv run daily-report generate-sample --output fixtures/public-data
 uv run daily-report automation-dry-run --output tmp/automation-dry-run
+uv run daily-report finalize-public-run --public-root fixtures/public-data/public --generated-at 2026-06-06T00:00:00Z --run-id local-reconcile --validate --secret-scan
 uv run daily-report validate-fixtures
 uv run daily-report validate-public fixtures/public-data/public
 uv run daily-report secret-scan fixtures/public-data/public
@@ -321,11 +322,95 @@ config/automation/codex-hourly.zh.json
 - 论文类应尽可能保留原文公式、算法伪代码、指标定义和变量解释；原文公式不足时可以补充解释性公式，但必须标明其用途
 - `summary_zh` 和 Markdown `TL;DR` 都必须自包含，直接压缩写出文章具体做什么、怎么做、实验/证据、关键数字和局限
 - 自动化写作要尽可能挖掘方法模块、数据规模、训练设置、benchmark、baseline、消融项、失败案例、图表编号、图片 URL 和公式变量
-- 结构化提示词按读取状态、候选侦察、去重替换、深度阅读、方法/代码分析、审稿质疑、第三方参考搜索、写入 Markdown、写入索引、审计 manifest、验证提交执行
+- 结构化提示词按读取状态、候选侦察、去重替换、深度阅读、方法/代码分析、审稿质疑、第三方参考搜索、写入 Markdown、准备 finalize payload、调用工具重建索引/审计/manifest、验证提交执行
+- 自动化不要手工 `sed` 或展开读取 `latest/days/sources/known-links/audit/manifest` 这类大 JSON；写完 Markdown 后调用 `finalize-public-run` 机械重建
 - 自动化可以一次只研究 1 篇文章或项目，但要研究透
 - 审计记录必须包含 `sub_agent_reviews` 和 `quality_gate`
 - 每次运行必须生成自动化 audit record，并随 public data 一起提交
 - 提交前必须运行 `validate-public` 与 `secret-scan`
+
+### 机械重建 public data 索引
+
+后期 public data 文件会越来越大，自动化不应该靠 `sed`、`cat` 或逐字段阅读来更新索引。推荐流程是：
+
+1. 自动化只写长篇 Markdown：`public/articles/YYYY/MM/DD/ITEM_ID/index.md`
+2. 自动化写一个很小的 payload JSON，描述本轮新增 items、sources、dedupe、sub_agent_reviews 和 quality_gate
+3. 调用 `finalize-public-run` 统一合并 items，并重建 `known-links`、`sources`、hourly/daily reports、`days`、`latest`、audit 和 manifest
+
+示例 payload：
+
+```json
+{
+  "run_id": "codex-hourly-20260606t150000z",
+  "generated_at": "2026-06-06T15:00:00Z",
+  "items": [
+    {
+      "item_id": "itm_0123456789abcdef",
+      "category_id": "llm-agent",
+      "type": "paper",
+      "source_id": "example-source",
+      "source_name": "Example Source",
+      "source_type": "manual",
+      "external_id": "example:paper",
+      "title": "Example Paper",
+      "url": "https://example.com/paper",
+      "canonical_url": "https://example.com/paper",
+      "published_at": "2026-06-06T00:00:00Z",
+      "fetched_at": "2026-06-06T15:00:00Z",
+      "summary_zh": "首页卡片使用的自包含中文摘要。",
+      "analysis_markdown_path": "articles/2026/06/06/itm_0123456789abcdef/index.md",
+      "tags": ["Agent", "RL"],
+      "content_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    }
+  ],
+  "sources": [
+    {
+      "id": "example-source",
+      "name": "Example Source",
+      "kind": "manual",
+      "homepage_url": "https://example.com/paper",
+      "enabled": true,
+      "description": "本轮自动化新增来源。"
+    }
+  ],
+  "dedupe": {
+    "duplicate_candidates": 0,
+    "replacement_candidates": 0
+  },
+  "quality_gate": {
+    "minimum_chinese_chars": 5000,
+    "evidence_points": 5,
+    "image_notes": 2,
+    "third_party_references": 2,
+    "skeptical_review": 3,
+    "passed": true
+  }
+}
+```
+
+调用：
+
+```bash
+uv run daily-report finalize-public-run \
+  --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public \
+  --payload tmp/codex-hourly-20260606t150000z.payload.json \
+  --validate \
+  --secret-scan
+```
+
+如果本轮已经写好了 `items.jsonl`，也可以不传 payload：
+
+```bash
+uv run daily-report finalize-public-run \
+  --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public \
+  --run-id codex-hourly-20260606t150000z \
+  --generated-at 2026-06-06T15:00:00Z \
+  --written-item-id itm_0123456789abcdef \
+  --validate \
+  --secret-scan
+```
+
+`finalize-public-run` 会跨所有历史 items 检查 `canonical_url`、`external_id`、`title_hash` 和 `content_hash`。如果命中重复，它会直接失败；自动化应该换同类替代候选，而不是手工编辑 `known-links.json`。
 
 本仓库还提供一个真实调研样例生成脚本，用来在本地复现“深度优先”的 public data：
 
@@ -347,6 +432,16 @@ uv run pytest tests/test_automation_contract.py
 1. 本地 dry run，确认新数据能写入临时目录。
 2. 将临时数据校验通过：`validate-public`、`secret-scan`。
 3. 用 dry run dispatch 检查 GitHub 事件 payload。
+
+自动化发布到 `data` 分支时应使用 data worktree 的绝对路径，避免当前工作目录漂移：
+
+```bash
+git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data add -A public
+git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data commit -m "data: add report"
+git -C /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data push origin data
+```
+
+不要用临时 `GIT_INDEX_FILE` 作为常规发布路径。Codex 的 `workspace-write` 即使包含 data worktree，也仍会保护 `.git` 和 worktree 指向的真实 gitdir；如果 `git add` 或 `git commit` 被拦截，应补充本机 Codex rules，而不是让自动化手工维护 index。
 
 ## 验证标准
 

@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 from typing import Sequence
 
+from collector.finalize_public_run import finalize_public_run
 from collector.paths import FIXTURE_PUBLIC_ROOT
 from collector.sample import generate_sample
 from collector.secrets import secret_scan
@@ -50,6 +51,31 @@ def _automation_dry_run_command(output_root: Path) -> int:
     return 0
 
 
+def _finalize_public_run_command(args: argparse.Namespace) -> int:
+    try:
+        result = finalize_public_run(
+            args.public_root,
+            payload_path=args.payload,
+            run_id=args.run_id,
+            generated_at=args.generated_at,
+            written_item_ids=args.written_item_id,
+            duplicate_candidates=args.duplicate_candidates,
+            replacement_candidates=args.replacement_candidates,
+            validate=args.validate,
+            scan_secrets=args.secret_scan,
+        )
+    except ValueError as exc:
+        print(str(exc))
+        return 1
+    print(f"finalized public data under {result.public_root}")
+    if result.audit_path is not None:
+        print(f"audit: {result.audit_path}")
+    print(f"manifest: {result.manifest_path} ({result.manifest_sha256})")
+    print(f"latest: {result.latest_path}")
+    print(f"items: {result.item_count}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="daily-report")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -70,6 +96,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     secret_parser = subparsers.add_parser("secret-scan", help="scan a file or directory for secret-like values")
     secret_parser.add_argument("path", type=Path)
+
+    finalize_parser = subparsers.add_parser(
+        "finalize-public-run",
+        help="mechanically merge items and rebuild known-links, reports, days/latest indexes, audit, and manifest",
+    )
+    finalize_parser.add_argument("--public-root", type=Path, required=True)
+    finalize_parser.add_argument("--payload", type=Path)
+    finalize_parser.add_argument("--run-id")
+    finalize_parser.add_argument("--generated-at")
+    finalize_parser.add_argument("--written-item-id", action="append", default=[])
+    finalize_parser.add_argument("--duplicate-candidates", type=int, default=0)
+    finalize_parser.add_argument("--replacement-candidates", type=int, default=0)
+    finalize_parser.add_argument("--validate", action="store_true")
+    finalize_parser.add_argument("--secret-scan", action="store_true")
 
     return parser
 
@@ -93,6 +133,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _automation_dry_run_command(args.output)
     if command == "secret-scan":
         return _secret_scan_command(args.path)
+    if command == "finalize-public-run":
+        return _finalize_public_run_command(args)
     return 1
 
 

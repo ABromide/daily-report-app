@@ -108,6 +108,8 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "summary_zh 不是一句营销摘要" in prompt_text
     assert "需要分点的地方必须分点" in prompt_text
     assert "Mermaid 图" in prompt_text
+    assert "finalize-public-run" in prompt_text
+    assert "不要手工读取" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("子 Agent" in step["name"] for step in prompt["steps"])
     assert any("优先选择 1 篇" in " ".join(step["instructions"]) for step in prompt["steps"])

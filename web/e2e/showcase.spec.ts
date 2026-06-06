@@ -13,30 +13,32 @@ function watchConsole(page: Page): string[] {
   return errors;
 }
 
-test("Chinese content hub renders clusters, search, filters, and GitHub entry", async ({ page }, testInfo) => {
+test("Chinese content hub renders chronological feed, search, filters, and GitHub entry", async ({ page }, testInfo) => {
   const errors = watchConsole(page);
 
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "三类 AI 前沿内容：Agent、后训练、安全" })).toBeVisible();
   await expect(page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "今日精选" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "三类频道" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "最新更新" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "全部更新" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "今日精选" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "三类频道" })).toHaveCount(0);
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
   await expect(page.getByRole("button", { name: "大模型后训练相关" })).toBeVisible();
   await expect(page.getByText("Markdown 深度稿").first()).toBeVisible();
   await expect(page.locator(".ai-note")).toHaveCount(0);
+  const publishedTimes = await page.locator("[data-document-card]").evaluateAll((cards) =>
+    cards.map((card) => Date.parse((card as HTMLElement).dataset.publishedAt ?? ""))
+  );
+  expect(publishedTimes).toEqual([...publishedTimes].sort((left, right) => right - left));
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-zh.png`, fullPage: true });
 
   await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("SFT");
-  await expect(page.getByRole("heading", { name: "大模型后训练相关" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("安全");
-  await expect(page.getByRole("heading", { name: "AI 安全相关" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "OpenAI 的 Frontier Safety Blueprint 把安全讨论从公司自律推向联邦制度设计" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
@@ -46,7 +48,10 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByRole("button", { name: "AI 安全相关" }).click();
-  await expect(page.locator("#ai-safety")).toBeVisible();
+  const visibleClusters = await page.locator("[data-document-card]:visible").evaluateAll((cards) => [
+    ...new Set(cards.map((card) => (card as HTMLElement).dataset.cluster))
+  ]);
+  expect(visibleClusters).toEqual(["ai-safety"]);
 
   expect(errors).toEqual([]);
 });
@@ -57,8 +62,9 @@ test("English content hub remains available under /en", async ({ page }, testInf
   await page.goto("/en");
   await expect(page.getByRole("heading", { name: "Three Frontiers: Agents, Post-Training, Safety" })).toBeVisible();
   await expect(page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Featured today" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Three channels" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "All updates" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Featured today" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Three channels" })).toHaveCount(0);
   await expect(page.getByLabel("Open GitHub repository")).toBeVisible();
   await expect(page.getByRole("button", { name: "LLM Post-Training" })).toBeVisible();
   await expect(page.getByText("Markdown briefs").first()).toBeVisible();
@@ -67,7 +73,6 @@ test("English content hub remains available under /en", async ({ page }, testInf
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-en.png`, fullPage: true });
 
   await page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code").fill("post-training");
-  await expect(page.getByRole("heading", { name: "LLM Post-Training", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" }).first()).toBeVisible();
 
   expect(errors).toEqual([]);

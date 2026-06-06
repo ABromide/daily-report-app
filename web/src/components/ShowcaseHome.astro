@@ -14,12 +14,8 @@ const labels = {
     github: "查看 GitHub 仓库",
     search: "搜索",
     allTopics: "全部主题",
-    featured: "今日精选",
-    featuredHint: "每个分类选出一张代表卡，先看摘要，再进入 Markdown 深度分析稿。",
-    clusters: "三类频道",
-    clustersHint: "固定分为大模型 Agent、大模型后训练、AI 安全。",
-    timeline: "最新更新",
-    timelineHint: "按时间倒序排列，适合快速扫一遍今日新增。",
+    timeline: "全部更新",
+    timelineHint: "按发布时间倒序排列，最新内容在最前，仍可用上方按钮按固定频道或内容类型筛选。",
     detail: "查看解析",
     open: "打开原文",
     noResults: "没有找到匹配内容。换个关键词试试。",
@@ -31,12 +27,8 @@ const labels = {
     github: "Open GitHub repository",
     search: "Search",
     allTopics: "All topics",
-    featured: "Featured today",
-    featuredHint: "One representative card per channel before opening the Markdown deep dive.",
-    clusters: "Three channels",
-    clustersHint: "Fixed channels: LLM Agents, LLM Post-Training, and AI Safety.",
-    timeline: "Latest updates",
-    timelineHint: "Sorted by time for a fast daily scan.",
+    timeline: "All updates",
+    timelineHint: "Newest first, oldest last. Use the filters above to narrow by fixed channel or content type.",
     detail: "Read analysis",
     open: "Open source",
     noResults: "No matching content. Try another keyword.",
@@ -56,7 +48,7 @@ const localHref = (path: string) => {
   return `${basePath}${path.replace(/^\//, "")}`;
 };
 const detailHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
-const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter(Boolean);
+const clusterTitleById = new Map(data.clusters.map((cluster) => [cluster.id, cluster.title]));
 ---
 
 <main class="showcase-page" data-locale={locale}>
@@ -109,79 +101,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
     <button class="clear-filter" type="button">{labels.clear}</button>
   </section>
 
-  <section class="featured-section" aria-labelledby="featured-title">
-    <div class="showcase-section-heading">
-      <div>
-        <p class="eyebrow">{labels.featured}</p>
-        <h2 id="featured-title">{labels.featured}</h2>
-      </div>
-      <p>{labels.featuredHint}</p>
-    </div>
-    <div class="featured-grid">
-      {featuredDocs.map((document) => (
-        <article class="content-card content-card-featured" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
-          <div class="content-card-meta">
-            <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
-            <span>{formatDateTime(document.publishedAt, locale)}</span>
-            <span>{document.readingMinutes} {labels.minutes}</span>
-          </div>
-          <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
-          <p>{document.summary}</p>
-          <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
-          <div class="source-row">
-            <img src={document.faviconUrl} alt="" loading="lazy" />
-            <span>{document.sourceName}</span>
-            <a class="detail-link" href={detailHref(document.id)}>{labels.detail}</a>
-            <a href={document.url}>{labels.open}</a>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="cluster-section" aria-labelledby="clusters-title">
-    <div class="showcase-section-heading">
-      <div>
-        <p class="eyebrow">{labels.clusters}</p>
-        <h2 id="clusters-title">{labels.clusters}</h2>
-      </div>
-      <p>{labels.clustersHint}</p>
-    </div>
-    <div class="cluster-list">
-      {data.clusters.map((cluster) => (
-        <article id={cluster.id} class="cluster-panel" data-cluster-panel data-cluster={cluster.id}>
-          <div class="cluster-copy">
-            <time datetime={cluster.lastUpdatedAt}>{formatDateTime(cluster.lastUpdatedAt, locale)}</time>
-            <h3>{cluster.title}</h3>
-            <p class="cluster-thesis">{cluster.thesis}</p>
-            <p>{cluster.summary}</p>
-            <div class="tag-row">{cluster.tags.map((tag) => <span>{tag}</span>)}</div>
-          </div>
-          <div class="cluster-documents">
-            {cluster.documents.map((document) => (
-              <article class="content-card content-card-compact" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
-                <div class="content-card-meta">
-                  <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
-                  <span>{formatDateTime(document.publishedAt, locale)}</span>
-                  <span>{document.readingMinutes} {labels.minutes}</span>
-                </div>
-                <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
-                <p>{document.summary}</p>
-                <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
-                <div class="source-row">
-                  <img src={document.faviconUrl} alt="" loading="lazy" />
-                  <span>{document.sourceName}</span>
-                  <a class="detail-link" href={detailHref(document.id)}>{labels.detail}</a>
-                  <a href={document.url}>{labels.open}</a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
-
   <section class="timeline-section" aria-labelledby="timeline-title">
     <div class="showcase-section-heading">
       <div>
@@ -192,9 +111,17 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
     </div>
     <div class="timeline-list">
       {data.documents.map((document) => (
-        <article class="content-card content-card-timeline" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
+        <article
+          class="content-card content-card-timeline"
+          data-document-card
+          data-cluster={document.clusterId}
+          data-type={document.type}
+          data-published-at={document.publishedAt}
+          data-search={document.searchText}
+        >
           <div class="content-card-meta">
             <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
+            <span class="channel-pill">{clusterTitleById.get(document.clusterId)}</span>
             <span>{formatDateTime(document.publishedAt, locale)}</span>
             <span>{document.readingMinutes} {labels.minutes}</span>
           </div>
@@ -219,7 +146,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
   const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
   const clearButton = document.querySelector(".clear-filter");
   const contentCards = Array.from(document.querySelectorAll("[data-document-card]"));
-  const clusterPanels = Array.from(document.querySelectorAll("[data-cluster-panel]"));
   const noResults = document.querySelector(".no-results");
   let activeCluster = "all";
   let activeType = "all";
@@ -240,14 +166,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
       const visible = matchesQuery && matchesCluster && matchesType;
       card.hidden = !visible;
       if (visible) visibleCount += 1;
-    }
-
-    for (const panel of clusterPanels) {
-      if (!(panel instanceof HTMLElement)) continue;
-      const clusterCards = Array.from(panel.querySelectorAll("[data-document-card]"));
-      const hasVisibleCard = clusterCards.some((card) => card instanceof HTMLElement && !card.hidden);
-      const matchesCluster = activeCluster === "all" || panel.dataset.cluster === activeCluster;
-      panel.hidden = !matchesCluster || !hasVisibleCard;
     }
 
     if (noResults instanceof HTMLElement) {

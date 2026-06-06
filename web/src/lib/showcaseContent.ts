@@ -335,7 +335,7 @@ function buildHeroCopy(locale: Locale, generatedAt: string): ShowcaseData["hero"
         eyebrow: "AI 研究日报",
         title: "三类 AI 前沿内容：Agent、后训练、安全",
         summary:
-          "自动化 Agent 将公开论文、博客和代码整理为三个固定频道。首页只保留判断入口，点击后进入同一套样式渲染的 Markdown 深度分析稿。",
+          "自动化 Agent 将公开论文、博客和代码整理为可筛选的固定频道；首页默认按发布时间倒序展示全部内容，点击后进入同一套样式渲染的 Markdown 深度分析稿。",
         updateLabel,
         searchPlaceholder: "搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码"
       }
@@ -343,7 +343,7 @@ function buildHeroCopy(locale: Locale, generatedAt: string): ShowcaseData["hero"
         eyebrow: "AI Research Daily",
         title: "Three Frontiers: Agents, Post-Training, Safety",
         summary:
-          "The automation pipeline groups public papers, blogs, and code into three fixed channels. Open any card to read the Markdown deep dive.",
+          "The automation pipeline keeps fixed channel metadata for public papers, blogs, and code, while the homepage lists everything newest first. Open any card to read the Markdown deep dive.",
         updateLabel,
         searchPlaceholder: "Search agents, SFT, RL, OPD, AI safety, papers, or code"
       };

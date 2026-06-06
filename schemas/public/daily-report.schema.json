@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-report.local/schemas/public/daily-report.schema.json",
+  "title": "Daily public report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "date",
+    "generated_at",
+    "item_count",
+    "top_item_ids",
+    "summary",
+    "sections",
+    "source_counts"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "date": { "type": "string", "format": "date" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "item_count": { "type": "integer", "minimum": 0 },
+    "top_item_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^itm_[a-f0-9]{16}$" },
+      "uniqueItems": true
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["heading", "summary", "item_ids"],
+        "properties": {
+          "heading": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "item_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^itm_[a-f0-9]{16}$" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "source_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

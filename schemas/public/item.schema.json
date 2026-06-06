@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-report.local/schemas/public/item.schema.json",
+  "title": "Public research signal item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "fingerprint",
+    "source_id",
+    "title",
+    "url",
+    "published_at",
+    "collected_at",
+    "summary",
+    "tags",
+    "score",
+    "evidence"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^itm_[a-f0-9]{16}$" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "collected_at": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string", "minLength": 1 },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,31}$" },
+      "uniqueItems": true
+    },
+    "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "label", "url"],
+        "properties": {
+          "type": { "type": "string", "enum": ["url"] },
+          "label": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ swift run --package-path mac DailyReportSmoke
 uv run daily-report validate-fixtures
 uv run daily-report generate-sample --output fixtures/public-data
 uv run daily-report validate-public fixtures/public-data/public
+uv run daily-report secret-scan fixtures/public-data/public
 ```
 
 ## Deployment
@@ -28,4 +29,3 @@ uploads the Pages artifact, and deploys with the official Pages action.
 
 The scheduled reconcile workflow runs hourly around minute 17 to avoid peak
 cron contention. It rebuilds Pages from the newest available public manifest.
-

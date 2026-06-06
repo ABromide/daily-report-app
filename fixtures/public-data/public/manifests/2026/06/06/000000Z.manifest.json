@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "bytes": 353,
+      "content_type": "application/json",
+      "path": "index/days.json",
+      "sha256": "47150ad1b7269fe5eaf8e661b0860a39dd901c952646f166abe9b172ea7e5ce4"
+    },
+    {
+      "bytes": 392,
+      "content_type": "application/json",
+      "path": "index/sources.json",
+      "sha256": "255d166ae82bf8869af65a71baeef4ed1b6bb2e6d62922b33ba6fdbd6e21f716"
+    },
+    {
+      "bytes": 1801,
+      "content_type": "application/x-ndjson",
+      "path": "items/2026/06/06/items.jsonl",
+      "sha256": "bd288911638afd784f443cfac38b551316bdfafda756321b5ba4ae0d99768dc4"
+    },
+    {
+      "bytes": 711,
+      "content_type": "application/json",
+      "path": "reports/daily/2026/06/06.json",
+      "sha256": "6968eaca7f3b5f1e117a1a7c2f8fdf9089273a6d2f276e34f4cf02d13aa79b40"
+    },
+    {
+      "bytes": 741,
+      "content_type": "application/json",
+      "path": "reports/hourly/2026/06/06/00.json",
+      "sha256": "47928b634d303e6f2d66b2ba4b60e55fc1548ee6f3ed67775f11799f73ebb3bb"
+    }
+  ],
+  "generated_at": "2026-06-06T00:00:00Z",
+  "root": "public",
+  "total_bytes": 3998,
+  "total_files": 5,
+  "version": 1
+}

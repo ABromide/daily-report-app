@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "sample-research-feed",
+      "name": "Deterministic Research Signals",
+      "kind": "sample",
+      "homepage_url": "https://example.com/daily-report/sample",
+      "enabled": true,
+      "description": "A deterministic local-only source used for schema fixtures and collector tests."
+    }
+  ]
+}

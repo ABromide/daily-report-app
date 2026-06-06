@@ -1,29 +1,13 @@
 {
-  "generated_at": "2026-06-06T13:43:34Z",
+  "generated_at": "2026-06-06T14:03:15Z",
   "sources": [
     {
-      "description": "OpenAI 官方 JavaScript/TypeScript Agent SDK 仓库。",
-      "enabled": true,
-      "homepage_url": "https://github.com/openai/openai-agents-js",
-      "id": "openai-agents-js",
+      "description": "公开 data 分支已清空；后续自动化会重新填充最近文章。",
+      "enabled": false,
+      "homepage_url": "https://github.com/ABromide/daily-report-app",
+      "id": "empty-data",
       "kind": "manual",
-      "name": "OpenAI Agents SDK JS"
-    },
-    {
-      "description": "统一后训练工作流的开源项目，覆盖 CLI、Web UI、训练方法和部署链路。",
-      "enabled": true,
-      "homepage_url": "https://github.com/hiyouga/LlamaFactory",
-      "id": "llamafactory",
-      "kind": "manual",
-      "name": "LlamaFactory"
-    },
-    {
-      "description": "OpenAI 发布的前沿 AI 联邦治理蓝图与 PDF 正文。",
-      "enabled": true,
-      "homepage_url": "https://openai.com/index/frontier-safety-blueprint/",
-      "id": "openai-frontier-safety-blueprint",
-      "kind": "manual",
-      "name": "OpenAI Frontier Safety Blueprint"
+      "name": "空数据占位"
     }
   ],
   "version": 1

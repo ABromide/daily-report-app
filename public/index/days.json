@@ -3,12 +3,12 @@
     {
       "daily_report_path": "reports/daily/2026/06/06.json",
       "date": "2026-06-06",
-      "hourly_report_count": 1,
-      "item_count": 5,
+      "hourly_report_count": 2,
+      "item_count": 6,
       "items_path": "items/2026/06/06/items.jsonl",
-      "manifest_path": "manifests/2026/06/06/165051Z.manifest.json"
+      "manifest_path": "manifests/2026/06/06/234358Z.manifest.json"
     }
   ],
-  "generated_at": "2026-06-06T16:50:51Z",
+  "generated_at": "2026-06-06T23:43:58Z",
   "version": 1
 }

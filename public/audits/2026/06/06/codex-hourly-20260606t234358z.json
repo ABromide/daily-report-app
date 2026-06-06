@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/07/itm_2f45d1dee0503570/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-06T23:43:58Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260606t234358z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单 Scout 一次性覆盖 Agent、后训练、AI 安全三类；SABER 命中 known-links/items 重复后，改选未收录的 AURA。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv PDF、项目页、GitHub README、AURA/README 和 EVAL/README，正文超过 14000 字符。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "梳理 Phase 0/1/2、candidate selection 公式、utility-grid 公式、代码入口和评测 harness。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "标注 27 条样本、LLM judge utility proxy、经验攻击评测非形式化保证、re-id traces 敏感等局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 LLM attribute inference、agentic deanonymization、Presidio、prior anonymizer 与 DP-MLM 的定位差异。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文采用分点、表格、公式、Mermaid 和 3 张本地化图片；没有外链图片引用。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2f45d1dee0503570"
+  ]
+}

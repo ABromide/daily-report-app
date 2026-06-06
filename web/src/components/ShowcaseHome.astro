@@ -127,7 +127,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
           </div>
           <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
-          <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">
             <img src={document.faviconUrl} alt="" loading="lazy" />
@@ -168,7 +167,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
                 </div>
                 <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
                 <p>{document.summary}</p>
-                <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
                 <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
                 <div class="source-row">
                   <img src={document.faviconUrl} alt="" loading="lazy" />
@@ -202,7 +200,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
           </div>
           <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
-          <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">
             <img src={document.faviconUrl} alt="" loading="lazy" />

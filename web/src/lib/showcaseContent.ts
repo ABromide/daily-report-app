@@ -287,12 +287,12 @@ function localizePublicItem(
   const clusterTitle = clusterCopy[clusterId].title[locale];
   const localizedTitle = title;
   const localizedSummary = summary;
-  const analysis = buildCardAnalysis(locale, clusterId, localizedSummary);
+  const analysis = asString(item.analysis ?? item.analysis_zh) ?? "";
 
   const searchText = [
     localizedTitle,
     localizedSummary,
-    analysis,
+    ...(analysis ? [analysis] : []),
     sourceName,
     domain,
     clusterTitle,
@@ -364,18 +364,6 @@ function buildStats(locale: Locale, documents: LocalizedDocument[]): ShowcaseDat
         { label: "Markdown briefs", value: String(documents.length) },
         { label: "Tracked topics", value: topicValue }
       ];
-}
-
-function buildCardAnalysis(locale: Locale, clusterId: ClusterId, summary: string): string {
-  if (locale === "en") {
-    return `This item is assigned to ${clusterCopy[clusterId].title.en}. The card is only the entry point; the Markdown document carries the evidence and section-by-section analysis.`;
-  }
-
-  if (summary.length <= 72) {
-    return "这张卡只是入口判断；完整证据、结构拆解和边界条件都在 Markdown 深度稿里。";
-  }
-
-  return "这张卡保留用户快速判断所需的信息；完整证据、结构拆解和边界条件都在 Markdown 深度稿里。";
 }
 
 function buildFallbackVisual(locale: Locale, clusterId: ClusterId, tags: string[]): LocalizedDocument["visual"] {

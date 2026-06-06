@@ -1,15 +1,22 @@
 import MarkdownIt from "markdown-it";
-import markdownItKatex from "markdown-it-katex";
+import katex, { type KatexOptions } from "katex";
+
+import type StateBlock from "markdown-it/lib/rules_block/state_block.mjs";
+import type StateInline from "markdown-it/lib/rules_inline/state_inline.mjs";
+import type Token from "markdown-it/lib/token.mjs";
 
 import type { LocalizedCluster, LocalizedDocument } from "./showcaseContent";
+
+const mathOptions: KatexOptions = {
+  throwOnError: false,
+  errorColor: "#9a493e",
+  strict: "ignore"
+};
 
 const markdownRenderer = new MarkdownIt({
   html: false,
   linkify: true,
   typographer: true
-}).use(markdownItKatex, {
-  throwOnError: false,
-  errorColor: "#9a493e"
 });
 
 const defaultFenceRenderer = markdownRenderer.renderer.rules.fence;
@@ -24,6 +31,103 @@ markdownRenderer.renderer.rules.fence = (tokens, index, options, env, self) => {
     ? defaultFenceRenderer(tokens, index, options, env, self)
     : self.renderToken(tokens, index, options);
 };
+
+function renderMath(content: string, displayMode: boolean): string {
+  return katex.renderToString(content.trim(), {
+    ...mathOptions,
+    displayMode
+  });
+}
+
+function findInlineMathEnd(source: string, start: number, max: number): number {
+  for (let position = start + 1; position < max; position += 1) {
+    if (source.charCodeAt(position) !== 0x24 /* $ */) continue;
+    if (source.charCodeAt(position - 1) === 0x5C /* \ */) continue;
+    if (source.charCodeAt(position + 1) === 0x24 /* $ */) continue;
+    return position;
+  }
+  return -1;
+}
+
+function inlineMathRule(state: StateInline, silent: boolean): boolean {
+  const start = state.pos;
+  if (state.src.charCodeAt(start) !== 0x24 /* $ */) return false;
+  if (state.src.charCodeAt(start + 1) === 0x24 /* $ */) return false;
+  if (start > 0 && state.src.charCodeAt(start - 1) === 0x5C /* \ */) return false;
+
+  const end = findInlineMathEnd(state.src, start, state.posMax);
+  if (end < 0) return false;
+
+  const content = state.src.slice(start + 1, end).trim();
+  if (!content) return false;
+  if (silent) return true;
+
+  const token = state.push("math_inline", "math", 0);
+  token.markup = "$";
+  token.content = content;
+  state.pos = end + 1;
+  return true;
+}
+
+function blockMathRule(state: StateBlock, startLine: number, endLine: number, silent: boolean): boolean {
+  let position = state.bMarks[startLine] + state.tShift[startLine];
+  const max = state.eMarks[startLine];
+
+  if (state.sCount[startLine] - state.blkIndent >= 4) return false;
+  if (position + 2 > max) return false;
+  if (state.src.slice(position, position + 2) !== "$$") return false;
+
+  const firstLine = state.src.slice(position + 2, max);
+  const trimmedFirstLine = firstLine.trim();
+  if (trimmedFirstLine.length > 0 && trimmedFirstLine.endsWith("$$")) {
+    const content = trimmedFirstLine.slice(0, -2).trim();
+    if (!content) return false;
+    if (silent) return true;
+    const token = state.push("math_block", "math", 0);
+    token.block = true;
+    token.markup = "$$";
+    token.content = content;
+    token.map = [startLine, startLine + 1];
+    state.line = startLine + 1;
+    return true;
+  }
+
+  let nextLine = startLine;
+  let foundEndMarker = false;
+  for (;;) {
+    nextLine += 1;
+    if (nextLine >= endLine) break;
+    position = state.bMarks[nextLine] + state.tShift[nextLine];
+    const lineMax = state.eMarks[nextLine];
+    const line = state.src.slice(position, lineMax).trim();
+    if (line === "$$") {
+      foundEndMarker = true;
+      break;
+    }
+  }
+
+  if (!foundEndMarker) return false;
+  if (silent) return true;
+
+  const token = state.push("math_block", "math", 0);
+  token.block = true;
+  token.markup = "$$";
+  token.content = state.getLines(startLine + 1, nextLine, 0, false);
+  token.map = [startLine, nextLine + 1];
+  state.line = nextLine + 1;
+  return true;
+}
+
+function useKatexRenderer(md: MarkdownIt): void {
+  md.inline.ruler.before("escape", "math_inline", inlineMathRule);
+  md.block.ruler.before("fence", "math_block", blockMathRule);
+
+  md.renderer.rules.math_inline = (tokens: Token[], index: number) => renderMath(tokens[index].content, false);
+  md.renderer.rules.math_block = (tokens: Token[], index: number) =>
+    `<div class="math-display">${renderMath(tokens[index].content, true)}</div>\n`;
+}
+
+useKatexRenderer(markdownRenderer);
 
 export function renderMarkdownToHtml(markdown: string): string {
   return markdownRenderer.render(markdown);
@@ -72,7 +176,7 @@ flowchart TD
 
 ## 文章总览
 
-${item.analysis}
+${item.summary}
 
 更完整地说，这篇内容首先给出一个问题入口，然后用方法、工程结构、实验或制度设计来回答它。论文类不要把“为什么重要”写成主体，而要先讲清背景与问题，再讲方法、公式、实验设置、主结果、消融失败案例和最终结论。
 

@@ -25,6 +25,7 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
   await expect(page.getByRole("button", { name: "大模型后训练相关" })).toBeVisible();
   await expect(page.getByText("Markdown 深度稿").first()).toBeVisible();
+  await expect(page.locator(".ai-note")).toHaveCount(0);
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-zh.png`, fullPage: true });
@@ -88,6 +89,7 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   await expect(page.getByRole("heading", { name: "方法或系统流程" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "证据与边界" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "日报判断" })).toBeVisible();
+  await expect(page.locator(".markdown-body .katex-error")).toHaveCount(0);
   await expect(page.locator(".markdown-body").getByText("6 月 5 日最新 commit 是文档翻译").first()).toBeVisible();
   await expect(page.getByRole("link", { name: "单独打开 Markdown" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();

@@ -1582,15 +1582,26 @@ select {
   border: 1px solid var(--line);
 }
 
-.markdown-body .katex-display {
+.markdown-body .math-display {
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 8px 0;
+  overflow-y: visible;
+  margin: 18px 0;
+  padding: 10px 2px;
+}
+
+.markdown-body .math-display .katex-display {
+  overflow: visible;
+  margin: 0;
 }
 
 .markdown-body .katex {
+  line-height: normal;
   overflow-wrap: normal;
   white-space: nowrap;
+}
+
+.markdown-body .katex * {
+  overflow-wrap: normal;
 }
 
 .deep-prose {

@@ -26,14 +26,16 @@
     "ledger_path": "public/index/known-links.json",
     "replacement_candidates": 0
   },
-  "generated_at": "2026-06-06T13:22:51Z",
+  "generated_at": "2026-06-06T13:43:34Z",
   "quality_gate": {
     "evidence_points": 8,
-    "minimum_chinese_chars": 3500,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
     "passed": true,
-    "skeptical_review": 3
+    "skeptical_review": 3,
+    "third_party_references": 3
   },
-  "run_id": "codex-hourly-20260606t13221780752171z",
+  "run_id": "codex-hourly-20260606t134334z",
   "status": "complete",
   "sub_agent_reviews": [
     {
@@ -55,6 +57,11 @@
       "agent_id": "skeptic",
       "status": "passed",
       "summary": "Evidence and limits were called out explicitly for every article instead of only summarizing claims."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External references were searched by content type; blog/report items preserve the original argument and use short quotations only as analysis anchors."
     },
     {
       "agent_id": "markdown_editor",

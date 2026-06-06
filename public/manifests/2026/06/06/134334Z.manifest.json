@@ -19,51 +19,51 @@
       "sha256": "0b040d9ff54a3f1d06d63522d0c1ff97474de5c7e3379c45fff4cbb1244e2cd5"
     },
     {
-      "bytes": 2139,
+      "bytes": 2429,
       "content_type": "application/json",
-      "path": "audits/2026/06/06/codex-hourly-20260606t13221780752171z.json",
-      "sha256": "4ec41ce3d06dd8bafb1a428e6e8bbf748ee3888b1ffc799058643bb949b343b0"
+      "path": "audits/2026/06/06/codex-hourly-20260606t134334z.json",
+      "sha256": "38cc033faa3d7184bb9807b5ddab305e34f722e34a53438bcd321a2c9e595cf9"
     },
     {
       "bytes": 353,
       "content_type": "application/json",
       "path": "index/days.json",
-      "sha256": "d2ee18ac3e27c6a4271ad617c5e2473e76788768138e217db1ecc23de0412266"
+      "sha256": "a2df986abffd1d5245b810cce48243e6ff993894c3ee3502fc71312b3d18ca52"
     },
     {
       "bytes": 1369,
       "content_type": "application/json",
       "path": "index/known-links.json",
-      "sha256": "b108124aa5c8ea2845b116490a35a4bf2225ee1f6e1ff491e250c2f5f99a02a6"
+      "sha256": "9f432be7db7a272bff8f00cfa92f459de21f5b7720628c7a306a9b1e45c8e57b"
     },
     {
       "bytes": 978,
       "content_type": "application/json",
       "path": "index/sources.json",
-      "sha256": "daf900e1ac72fa6f6fb707cf64d7136cd680ce8837b277f2f416035854baadcf"
+      "sha256": "314ca9787a5cda6e5bb2899b0f15980f1d2ee530b2fe68ba74be1b918c4a15f9"
     },
     {
       "bytes": 4890,
       "content_type": "application/x-ndjson",
       "path": "items/2026/06/06/items.jsonl",
-      "sha256": "b2f70701fadefd62a0b6ff22344cee281617d99c1ce62df588f727e0f69891f2"
+      "sha256": "46f6195aa4bdb7be3cf5e5cdbd67f5cc7dae9df6153567c16563b83911a316c2"
     },
     {
       "bytes": 1101,
       "content_type": "application/json",
       "path": "reports/daily/2026/06/06.json",
-      "sha256": "d284e9e17a8f030a8802546010b7bbdf81dca30c6bdb6106058e2322bf3e35a1"
+      "sha256": "3fd6390d6d76d2c6390cef8f8cb1304bf95be586b72709673ba1fd3d7f415bee"
     },
     {
       "bytes": 1157,
       "content_type": "application/json",
       "path": "reports/hourly/2026/06/06/13.json",
-      "sha256": "dca286b2b4a150c984736bb7396793d724eb1a723bcb90d54ddee3e53d2c8d19"
+      "sha256": "4bb6bd87e1af8723b3240e246017ebf19aefb01a9c5a25f213d0899cc93ef379"
     }
   ],
-  "generated_at": "2026-06-06T13:22:51Z",
+  "generated_at": "2026-06-06T13:43:34Z",
   "root": "public",
-  "total_bytes": 30285,
+  "total_bytes": 30575,
   "total_files": 10,
   "version": 1
 }

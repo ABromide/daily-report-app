@@ -1,0 +1,70 @@
+{
+  "manifest": {
+    "schemaVersion": "0.1.0",
+    "generatedAt": "2026-06-06T01:17:00Z",
+    "runID": "fixture-2026-06-06T01-17Z",
+    "dataBranchRef": "data@fixture",
+    "publicBaseURL": "https://example.com/daily-report/public"
+  },
+  "reports": [
+    {
+      "id": "runtime-sca-2026-06-06",
+      "title": "Runtime-aware SCA is becoming a practical wedge",
+      "summary": "Security tools that join advisory databases with observed runtime behavior can reduce noisy vulnerability queues for application teams.",
+      "bodyMarkdown": "Static scanners are still useful, but teams are asking which vulnerable packages are actually loaded, reachable, or exposed in production-like runs. The near-term product opportunity is a local-first triage layer that keeps evidence close to the developer workflow.",
+      "publishedAt": "2026-06-06T01:10:00Z",
+      "updatedAt": "2026-06-06T01:14:00Z",
+      "tags": ["security", "runtime", "developer-tools"],
+      "readingTimeMinutes": 4,
+      "importance": "high",
+      "sources": [
+        {
+          "id": "src-trivy-runtime",
+          "title": "Trivy project research note",
+          "url": "https://github.com/aquasecurity/trivy",
+          "host": "github.com",
+          "capturedAt": "2026-06-06T00:58:00Z",
+          "checksumSHA256": "fixture-runtime-sca"
+        }
+      ]
+    },
+    {
+      "id": "agent-workstation-2026-06-06",
+      "title": "Agent research workstations need source health, not just cards",
+      "summary": "A dense reader should surface run recency, stale data, source confidence, and cache state before asking users to trust a summary.",
+      "bodyMarkdown": "The useful pattern is a three-pane review loop: navigation on the left, a compressed queue in the center, and an evidence-heavy reader on the right. Native macOS chrome should stay calm while the content carries the editorial texture.",
+      "publishedAt": "2026-06-06T00:45:00Z",
+      "tags": ["product", "macos", "research"],
+      "readingTimeMinutes": 3,
+      "importance": "medium",
+      "sources": [
+        {
+          "id": "src-architecture",
+          "title": "Daily Report architecture",
+          "url": "https://example.com/docs/architecture",
+          "host": "example.com",
+          "capturedAt": "2026-06-06T00:40:00Z",
+          "checksumSHA256": "fixture-agent-workstation"
+        }
+      ]
+    }
+  ],
+  "sourceHealth": [
+    {
+      "id": "github-trending",
+      "name": "GitHub Trending",
+      "status": "healthy",
+      "lastSeenAt": "2026-06-06T00:59:00Z",
+      "itemCount": 12,
+      "note": "Fixture data only."
+    },
+    {
+      "id": "public-pages",
+      "name": "Public Pages manifest",
+      "status": "unknown",
+      "lastSeenAt": "2026-06-06T00:59:00Z",
+      "itemCount": 1,
+      "note": "Remote sync is not enabled in the skeleton."
+    }
+  ]
+}

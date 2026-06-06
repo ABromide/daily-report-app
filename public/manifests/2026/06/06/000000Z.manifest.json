@@ -7,16 +7,22 @@
       "sha256": "47150ad1b7269fe5eaf8e661b0860a39dd901c952646f166abe9b172ea7e5ce4"
     },
     {
+      "bytes": 1389,
+      "content_type": "application/json",
+      "path": "index/known-links.json",
+      "sha256": "7e3a6c9446f53033b6e208ca5d9c9ae8644b162764927bbbf9dcd0b4fb3116ed"
+    },
+    {
       "bytes": 392,
       "content_type": "application/json",
       "path": "index/sources.json",
       "sha256": "255d166ae82bf8869af65a71baeef4ed1b6bb2e6d62922b33ba6fdbd6e21f716"
     },
     {
-      "bytes": 1801,
+      "bytes": 5007,
       "content_type": "application/x-ndjson",
       "path": "items/2026/06/06/items.jsonl",
-      "sha256": "bd288911638afd784f443cfac38b551316bdfafda756321b5ba4ae0d99768dc4"
+      "sha256": "de6ca25c6d23d1ad2cb0a9f93bdb1ff3de073c862347a36761c519a02b60b482"
     },
     {
       "bytes": 711,
@@ -33,7 +39,7 @@
   ],
   "generated_at": "2026-06-06T00:00:00Z",
   "root": "public",
-  "total_bytes": 3998,
-  "total_files": 5,
+  "total_bytes": 8593,
+  "total_files": 6,
   "version": 1
 }

@@ -1,0 +1,33 @@
+{
+  "links": [
+    {
+      "canonical_url": "https://example.com/research/evidence-bundle-evals",
+      "category_id": "llm-agent",
+      "content_hash": "f4b29831fa65e61fca9b4fe363a6fb6e3bbe6faf3846af7885ee750e60bc07d2",
+      "external_id": "evidence-bundle-evals",
+      "first_seen_at": "2026-06-06T00:00:00Z",
+      "item_id": "itm_f4b29831fa65e61f",
+      "title_hash": "164906ce6d7a993b5515576e1325d4d1cf34dfd2b7bdf4eb650477265f0fb450"
+    },
+    {
+      "canonical_url": "https://example.com/research/local-first-manifests",
+      "category_id": "llm-agent",
+      "content_hash": "ab7b9d44942b55240d3c286a1694290c31adc755ebb9ab21ac0c75d9c43435c7",
+      "external_id": "local-first-manifests",
+      "first_seen_at": "2026-06-06T00:00:00Z",
+      "item_id": "itm_ab7b9d44942b5524",
+      "title_hash": "82df359650d8444c4ce1cb0bdf42f8adbaa303c59ae89d1b286c7eaa61a6abb5"
+    },
+    {
+      "canonical_url": "https://example.com/research/small-model-tool-planning",
+      "category_id": "llm-agent",
+      "content_hash": "3fcb6ef14e59761c231ddc598838040899e10f371b532b3362568b1138f25b31",
+      "external_id": "small-model-tool-planning",
+      "first_seen_at": "2026-06-06T00:00:00Z",
+      "item_id": "itm_3fcb6ef14e59761c",
+      "title_hash": "8017b90b4c368e1aaa3e0ee3e024661a1930f426d26065f699da00e3f725d404"
+    }
+  ],
+  "updated_at": "2026-06-06T00:00:00Z",
+  "version": 1
+}

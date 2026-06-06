@@ -1,0 +1,69 @@
+{
+  "files": [
+    {
+      "bytes": 6200,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/03/itm_b5ea5cc9786d34d1/index.md",
+      "sha256": "c23caae8020f4989cf6dcb646e8ab12ca9a19e6aefe6d79ea9ab5f7c6ca81206"
+    },
+    {
+      "bytes": 5904,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/05/itm_d0ccf7dfcec35db8/index.md",
+      "sha256": "78d7da3331b1a4322b69f4d70bb51c258a9eac99c53daf44ea19e4337fbfbe80"
+    },
+    {
+      "bytes": 6194,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/05/itm_fe01906c4ef44106/index.md",
+      "sha256": "0b040d9ff54a3f1d06d63522d0c1ff97474de5c7e3379c45fff4cbb1244e2cd5"
+    },
+    {
+      "bytes": 2139,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-hourly-20260606t13221780752171z.json",
+      "sha256": "4ec41ce3d06dd8bafb1a428e6e8bbf748ee3888b1ffc799058643bb949b343b0"
+    },
+    {
+      "bytes": 353,
+      "content_type": "application/json",
+      "path": "index/days.json",
+      "sha256": "d2ee18ac3e27c6a4271ad617c5e2473e76788768138e217db1ecc23de0412266"
+    },
+    {
+      "bytes": 1369,
+      "content_type": "application/json",
+      "path": "index/known-links.json",
+      "sha256": "b108124aa5c8ea2845b116490a35a4bf2225ee1f6e1ff491e250c2f5f99a02a6"
+    },
+    {
+      "bytes": 978,
+      "content_type": "application/json",
+      "path": "index/sources.json",
+      "sha256": "daf900e1ac72fa6f6fb707cf64d7136cd680ce8837b277f2f416035854baadcf"
+    },
+    {
+      "bytes": 4890,
+      "content_type": "application/x-ndjson",
+      "path": "items/2026/06/06/items.jsonl",
+      "sha256": "b2f70701fadefd62a0b6ff22344cee281617d99c1ce62df588f727e0f69891f2"
+    },
+    {
+      "bytes": 1101,
+      "content_type": "application/json",
+      "path": "reports/daily/2026/06/06.json",
+      "sha256": "d284e9e17a8f030a8802546010b7bbdf81dca30c6bdb6106058e2322bf3e35a1"
+    },
+    {
+      "bytes": 1157,
+      "content_type": "application/json",
+      "path": "reports/hourly/2026/06/06/13.json",
+      "sha256": "dca286b2b4a150c984736bb7396793d724eb1a723bcb90d54ddee3e53d2c8d19"
+    }
+  ],
+  "generated_at": "2026-06-06T13:22:51Z",
+  "root": "public",
+  "total_bytes": 30285,
+  "total_files": 10,
+  "version": 1
+}

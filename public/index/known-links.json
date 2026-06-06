@@ -19,6 +19,15 @@
       "title_hash": "7b2e0e3de1c806c8952d225c4b5273de134a9ffbe0b57d544d45388e449f21d4"
     },
     {
+      "canonical_url": "https://www.sysdig.com/blog/agentic-threat-actor-hits-the-orchestration-plane-ai-agent-driven-container-escape",
+      "category_id": "ai-safety",
+      "content_hash": "92b15d57a89c24bea90ad0619a90980767dd56721b7206824f3a1dc17e2dd999",
+      "external_id": "sysdig:2026-06-04:agentic-container-escape",
+      "first_seen_at": "2026-06-06T16:42:44Z",
+      "item_id": "itm_2d8c44d450c8f427",
+      "title_hash": "2e00a9541e4685c7d8e67e0ee2bff483d00a3436a543969810c6795b7779fb9f"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.01317",
       "category_id": "ai-safety",
       "content_hash": "9a1508ed04cbd307911ae59bced6180bb53719f4b8f5eb7a020bf31b1f1221d0",
@@ -28,6 +37,6 @@
       "title_hash": "b3df1a10ea4e7af03918fd043cf7b9ef70323de20bb7c5a5d324931679c7a6ae"
     }
   ],
-  "updated_at": "2026-06-06T16:21:09Z",
+  "updated_at": "2026-06-06T16:42:44Z",
   "version": 1
 }

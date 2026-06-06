@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T16:21:09Z",
+  "generated_at": "2026-06-06T16:42:44Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -40,6 +40,14 @@
       "id": "huggingface-papers",
       "kind": "manual",
       "name": "Hugging Face Papers"
+    },
+    {
+      "description": "Sysdig Threat Research Team 的云原生威胁研究与 AI-enabled cyber threat 分析。",
+      "enabled": true,
+      "homepage_url": "https://www.sysdig.com/blog/agentic-threat-actor-hits-the-orchestration-plane-ai-agent-driven-container-escape",
+      "id": "sysdig-threat-research",
+      "kind": "manual",
+      "name": "Sysdig Threat Research Team"
     }
   ],
   "version": 1

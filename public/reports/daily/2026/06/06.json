@@ -1,26 +1,40 @@
 {
   "date": "2026-06-06",
-  "generated_at": "2026-06-06T00:00:00Z",
+  "generated_at": "2026-06-06T12:32:34Z",
   "item_count": 3,
   "sections": [
     {
-      "heading": "Public data contract",
+      "heading": "Agent",
       "item_ids": [
-        "itm_3fcb6ef14e59761c",
-        "itm_f4b29831fa65e61f",
-        "itm_ab7b9d44942b5524"
+        "itm_fe01906c4ef44106"
       ],
-      "summary": "The sample day covers JSONL items, hourly summaries, daily summaries, and sha256 manifest entries."
+      "summary": "多 Agent、Sandbox 和 tracing 正在被统一为单一工程主线。"
+    },
+    {
+      "heading": "Post-Training",
+      "item_ids": [
+        "itm_d0ccf7dfcec35db8"
+      ],
+      "summary": "后训练基础设施的竞争点越来越偏向统一操作面与部署闭环。"
+    },
+    {
+      "heading": "AI Safety",
+      "item_ids": [
+        "itm_b5ea5cc9786d34d1"
+      ],
+      "summary": "安全讨论正从实验室自律延展到联邦机构和韧性体系设计。"
     }
   ],
   "source_counts": {
-    "sample-research-feed": 3
+    "llamafactory": 1,
+    "openai-agents-js": 1,
+    "openai-frontier-safety-blueprint": 1
   },
-  "summary": "The deterministic daily report exercises item, source, report, and manifest validation without network access.",
+  "summary": "今日公开数据以三个固定频道各 1 条精选内容组成，强调深度分析稿和可复用判断，而不是链接罗列。",
   "top_item_ids": [
-    "itm_3fcb6ef14e59761c",
-    "itm_f4b29831fa65e61f",
-    "itm_ab7b9d44942b5524"
+    "itm_fe01906c4ef44106",
+    "itm_d0ccf7dfcec35db8",
+    "itm_b5ea5cc9786d34d1"
   ],
   "version": 1
 }

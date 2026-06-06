@@ -1,13 +1,29 @@
 {
-  "generated_at": "2026-06-06T00:00:00Z",
+  "generated_at": "2026-06-06T12:32:34Z",
   "sources": [
     {
-      "description": "A deterministic local-only source used for schema fixtures and collector tests.",
+      "description": "OpenAI 官方 JavaScript/TypeScript Agent SDK 仓库。",
       "enabled": true,
-      "homepage_url": "https://example.com/daily-report/sample",
-      "id": "sample-research-feed",
-      "kind": "sample",
-      "name": "Deterministic Research Signals"
+      "homepage_url": "https://github.com/openai/openai-agents-js",
+      "id": "openai-agents-js",
+      "kind": "manual",
+      "name": "OpenAI Agents SDK JS"
+    },
+    {
+      "description": "统一后训练工作流的开源项目，覆盖 CLI、Web UI、训练方法和部署链路。",
+      "enabled": true,
+      "homepage_url": "https://github.com/hiyouga/LlamaFactory",
+      "id": "llamafactory",
+      "kind": "manual",
+      "name": "LlamaFactory"
+    },
+    {
+      "description": "OpenAI 发布的前沿 AI 联邦治理蓝图与 PDF 正文。",
+      "enabled": true,
+      "homepage_url": "https://openai.com/index/frontier-safety-blueprint/",
+      "id": "openai-frontier-safety-blueprint",
+      "kind": "manual",
+      "name": "OpenAI Frontier Safety Blueprint"
     }
   ],
   "version": 1

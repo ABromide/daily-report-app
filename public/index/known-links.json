@@ -1,33 +1,33 @@
 {
   "links": [
     {
-      "canonical_url": "https://example.com/research/evidence-bundle-evals",
+      "canonical_url": "https://github.com/openai/openai-agents-js",
       "category_id": "llm-agent",
-      "content_hash": "f4b29831fa65e61fca9b4fe363a6fb6e3bbe6faf3846af7885ee750e60bc07d2",
-      "external_id": "evidence-bundle-evals",
-      "first_seen_at": "2026-06-06T00:00:00Z",
-      "item_id": "itm_f4b29831fa65e61f",
-      "title_hash": "164906ce6d7a993b5515576e1325d4d1cf34dfd2b7bdf4eb650477265f0fb450"
+      "content_hash": "fe01906c4ef441068eb1d9a3aa9c35c583822663740127385ffb6877ea4f31c4",
+      "external_id": "openai-agents-js",
+      "first_seen_at": "2026-06-06T12:32:34Z",
+      "item_id": "itm_fe01906c4ef44106",
+      "title_hash": "aa346f611d2301ec821444b64934893300b38ea4dec4e36b6ec2ebd46f50d525"
     },
     {
-      "canonical_url": "https://example.com/research/local-first-manifests",
-      "category_id": "llm-agent",
-      "content_hash": "ab7b9d44942b55240d3c286a1694290c31adc755ebb9ab21ac0c75d9c43435c7",
-      "external_id": "local-first-manifests",
-      "first_seen_at": "2026-06-06T00:00:00Z",
-      "item_id": "itm_ab7b9d44942b5524",
-      "title_hash": "82df359650d8444c4ce1cb0bdf42f8adbaa303c59ae89d1b286c7eaa61a6abb5"
+      "canonical_url": "https://github.com/hiyouga/LlamaFactory",
+      "category_id": "llm-post-training",
+      "content_hash": "d0ccf7dfcec35db87f7f69dc2ba8930c6864a92cf11067bb1a05c0fe73a82f6d",
+      "external_id": "hiyouga-llamafactory",
+      "first_seen_at": "2026-06-06T12:32:34Z",
+      "item_id": "itm_d0ccf7dfcec35db8",
+      "title_hash": "1e1a68e6d7b444f6249f96ca87d5fd9f8767dec04eebc83c77ec14aad636dc0c"
     },
     {
-      "canonical_url": "https://example.com/research/small-model-tool-planning",
-      "category_id": "llm-agent",
-      "content_hash": "3fcb6ef14e59761c231ddc598838040899e10f371b532b3362568b1138f25b31",
-      "external_id": "small-model-tool-planning",
-      "first_seen_at": "2026-06-06T00:00:00Z",
-      "item_id": "itm_3fcb6ef14e59761c",
-      "title_hash": "8017b90b4c368e1aaa3e0ee3e024661a1930f426d26065f699da00e3f725d404"
+      "canonical_url": "https://openai.com/index/frontier-safety-blueprint/",
+      "category_id": "ai-safety",
+      "content_hash": "b5ea5cc9786d34d1c7943b84467b4ef0868ce01c8246661f806dfb1b92bb5642",
+      "external_id": "frontier-safety-blueprint",
+      "first_seen_at": "2026-06-06T12:32:34Z",
+      "item_id": "itm_b5ea5cc9786d34d1",
+      "title_hash": "2fba1fc234bf2817072f702c413de66b16bd4f3eb2e32b612ba4b0149e852e6c"
     }
   ],
-  "updated_at": "2026-06-06T00:00:00Z",
+  "updated_at": "2026-06-06T12:32:34Z",
   "version": 1
 }

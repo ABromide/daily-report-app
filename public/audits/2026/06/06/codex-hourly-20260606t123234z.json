@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/05/itm_fe01906c4ef44106/index.html",
+    "articles/2026/06/05/itm_d0ccf7dfcec35db8/index.html",
+    "articles/2026/06/03/itm_b5ea5cc9786d34d1/index.html"
+  ],
+  "category_counts": {
+    "ai-safety": 1,
+    "llm-agent": 1,
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-06T12:32:34Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "minimum_chinese_chars": 3500,
+    "minimum_sections": 10,
+    "passed": true,
+    "skeptical_review": 3
+  },
+  "run_id": "codex-hourly-20260606t123234z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Only sources with dates inside 2026-05-31 to 2026-06-06 were kept."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Each selected source was expanded into a standalone HTML analysis page with deep reading notes, section-by-section interpretation, and follow-up questions."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Agent SDK, post-training infra, and safety blueprint were each mapped to a reusable workflow or system view."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Evidence and limits were called out explicitly for every article instead of only summarizing claims."
+    },
+    {
+      "agent_id": "html_editor",
+      "status": "passed",
+      "summary": "All analysis pages were rendered as complete HTML documents with Daily Report styling."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_fe01906c4ef44106",
+    "itm_d0ccf7dfcec35db8",
+    "itm_b5ea5cc9786d34d1"
+  ]
+}

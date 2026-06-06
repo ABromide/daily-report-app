@@ -1,14 +1,25 @@
 ---
 import type { DashboardData, ViewId } from "../lib/data";
+import {
+  defaultLocale,
+  getCopy,
+  getLocalePath,
+  getViewPath,
+  localeMeta,
+  type Locale,
+  viewOrder
+} from "../lib/i18n";
 import { formatDateTime } from "../lib/format";
 
 interface Props {
   activeView: ViewId;
   data: DashboardData;
+  locale?: Locale;
   variant?: "sidebar" | "mobile";
 }
 
-const { activeView, data, variant = "sidebar" } = Astro.props;
+const { activeView, data, locale = defaultLocale, variant = "sidebar" } = Astro.props;
+const ui = getCopy(locale);
 const basePath = import.meta.env.BASE_URL;
 const normalizedBasePath = basePath.endsWith("/") ? basePath : `${basePath}/`;
 const hrefFor = (href: string) => {
@@ -18,23 +29,30 @@ const hrefFor = (href: string) => {
   return `${normalizedBasePath}${href.replace(/^\//, "")}`;
 };
 
-const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }> = [
-  { id: "feed", href: "/", label: "Feed", meta: `${data.signals.length} signals` },
-  { id: "sources", href: "/sources", label: "Sources", meta: `${data.sources.length} connectors` },
-  { id: "runs", href: "/runs", label: "Runs", meta: `${data.runs.length} recent` },
-  { id: "reports", href: "/reports", label: "Reports", meta: `${data.reports.length} artifacts` }
-];
+const counts: Record<ViewId, number> = {
+  feed: data.signals.length,
+  sources: data.sources.length,
+  runs: data.runs.length,
+  reports: data.reports.length
+};
+const navItems = viewOrder.map((id) => ({
+  id,
+  href: getViewPath(id, locale),
+  label: ui.views[id],
+  meta: ui.viewMeta[id](counts[id])
+}));
+const alternateLocale: Locale = locale === "zh" ? "en" : "zh";
 ---
 
 {
   variant === "sidebar" ? (
-    <aside class="sidebar" aria-label="Workspace views">
+    <aside class="sidebar" aria-label={ui.workspaceViews}>
       <div class="brand-block">
-        <p class="eyebrow">Daily Report App</p>
-        <a class="brand-title" href={hrefFor("/")}>Research Workstation</a>
+        <p class="eyebrow">{ui.appName}</p>
+        <a class="brand-title" href={hrefFor(getViewPath("feed", locale))}>{ui.appTitle}</a>
       </div>
 
-      <nav class="nav-list" aria-label="Workspace views">
+      <nav class="nav-list" aria-label={ui.workspaceViews}>
         {navItems.map((item) => (
           <a class:list={["nav-item", { "is-active": item.id === activeView }]} href={hrefFor(item.href)} aria-current={item.id === activeView ? "page" : undefined}>
             <span>{item.label}</span>
@@ -43,14 +61,22 @@ const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }>
         ))}
       </nav>
 
-      <div class="sync-card" aria-label="Data source status">
-        <p class="eyebrow">Data Source</p>
-        <strong>{data.dataMode === "fixture" ? "Fixture manifest" : "Mock fallback"}</strong>
-        <span>{formatDateTime(data.generatedAt)}</span>
+      <div class="language-card" aria-label={ui.switchLanguage}>
+        <p class="eyebrow">{ui.language}</p>
+        <a href={hrefFor(getLocalePath(alternateLocale, activeView))}>
+          {localeMeta[locale].label}
+          <span>{localeMeta[alternateLocale].label}</span>
+        </a>
+      </div>
+
+      <div class="sync-card" aria-label={ui.dataSource}>
+        <p class="eyebrow">{ui.dataSource}</p>
+        <strong>{data.dataMode === "fixture" ? ui.fixtureManifest : ui.mockFallback}</strong>
+        <span>{formatDateTime(data.generatedAt, locale)}</span>
       </div>
     </aside>
   ) : (
-    <nav class="mobile-tabs" aria-label="Mobile views">
+    <nav class="mobile-tabs" aria-label={ui.mobileViews}>
       {navItems.map((item) => (
         <a class:list={["mobile-tab", { "is-active": item.id === activeView }]} href={hrefFor(item.href)} aria-current={item.id === activeView ? "page" : undefined}>
           <span>{item.label}</span>

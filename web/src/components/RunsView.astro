@@ -1,18 +1,21 @@
 ---
 import type { RunRecord } from "../lib/data";
 import { formatDateTime } from "../lib/format";
+import { defaultLocale, getCopy, runStatusLabel, type Locale } from "../lib/i18n";
 
 interface Props {
   runs: RunRecord[];
+  locale?: Locale;
 }
 
-const { runs } = Astro.props;
+const { runs, locale = defaultLocale } = Astro.props;
+const ui = getCopy(locale);
 ---
 
 <section class="table-panel" aria-labelledby="run-ledger-title">
   <div class="section-heading">
-    <p class="eyebrow">Automation</p>
-    <h2 id="run-ledger-title">Run Ledger</h2>
+    <p class="eyebrow">{ui.automation}</p>
+    <h2 id="run-ledger-title">{ui.runLedger}</h2>
   </div>
 
   <div class="run-stack">
@@ -22,24 +25,24 @@ const { runs } = Astro.props;
         <div class="run-main">
           <div class="run-title">
             <strong>{run.id}</strong>
-            <span class:list={["status-pill", `run-${run.status}`]}>{run.status}</span>
+            <span class:list={["status-pill", `run-${run.status}`]}>{runStatusLabel(run.status, locale)}</span>
           </div>
           <p>{run.agent}</p>
           <dl>
             <div>
-              <dt>Started</dt>
-              <dd>{formatDateTime(run.startedAt)}</dd>
+              <dt>{ui.started}</dt>
+              <dd>{formatDateTime(run.startedAt, locale)}</dd>
             </div>
             <div>
-              <dt>Duration</dt>
+              <dt>{ui.duration}</dt>
               <dd>{run.duration}</dd>
             </div>
             <div>
-              <dt>Validated</dt>
+              <dt>{ui.validated}</dt>
               <dd>{run.signalsValidated}</dd>
             </div>
             <div>
-              <dt>Errors</dt>
+              <dt>{ui.errors}</dt>
               <dd>{run.errors}</dd>
             </div>
           </dl>

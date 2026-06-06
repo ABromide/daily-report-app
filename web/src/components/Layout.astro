@@ -1,19 +1,22 @@
 ---
 import "../styles/global.css";
+import { defaultLocale, localeMeta, type Locale } from "../lib/i18n";
 
 interface Props {
   title?: string;
   description?: string;
+  locale?: Locale;
 }
 
 const {
   title = "Daily Report Workstation",
-  description = "A dense local-first research workstation for Daily Report App."
+  description = "A dense local-first research workstation for Daily Report App.",
+  locale = defaultLocale
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={localeMeta[locale].htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />

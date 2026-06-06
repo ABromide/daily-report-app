@@ -1,26 +1,29 @@
 ---
 import type { ReportRecord, Signal } from "../lib/data";
 import { formatDateTime, formatPercent } from "../lib/format";
+import { defaultLocale, getCopy, type Locale } from "../lib/i18n";
 
 interface Props {
   signal?: Signal;
   report?: ReportRecord;
+  locale?: Locale;
 }
 
-const { signal, report } = Astro.props;
+const { signal, report, locale = defaultLocale } = Astro.props;
+const ui = getCopy(locale);
 ---
 
 <aside class="inspector" aria-labelledby="detail-inspector-title">
   <div class="inspector-header">
-    <p class="eyebrow">Selected Signal</p>
-    <h2 id="detail-inspector-title">Detail Inspector</h2>
+    <p class="eyebrow">{ui.selectedSignal}</p>
+    <h2 id="detail-inspector-title">{ui.detailInspector}</h2>
   </div>
 
   {signal ? (
     <>
       <article class="inspector-card">
         <div class="inspector-score">
-          <span>Priority</span>
+          <span>{ui.priority}</span>
           <strong>{signal.score}</strong>
         </div>
         <h3>{signal.title}</h3>
@@ -29,46 +32,46 @@ const { signal, report } = Astro.props;
 
       <dl class="detail-grid">
         <div>
-          <dt>Source</dt>
+          <dt>{ui.source}</dt>
           <dd>{signal.source}</dd>
         </div>
         <div>
-          <dt>Type</dt>
+          <dt>{ui.type}</dt>
           <dd>{signal.sourceType}</dd>
         </div>
         <div>
-          <dt>Published</dt>
-          <dd>{formatDateTime(signal.publishedAt)}</dd>
+          <dt>{ui.published}</dt>
+          <dd>{formatDateTime(signal.publishedAt, locale)}</dd>
         </div>
         <div>
-          <dt>Confidence</dt>
+          <dt>{ui.confidence}</dt>
           <dd>{formatPercent(signal.confidence)}</dd>
         </div>
         <div>
-          <dt>Run</dt>
+          <dt>{ui.run}</dt>
           <dd>{signal.runId}</dd>
         </div>
         <div>
-          <dt>Report</dt>
+          <dt>{ui.report}</dt>
           <dd>{report?.title ?? signal.reportId}</dd>
         </div>
       </dl>
 
       <section class="evidence-block" aria-labelledby="evidence-title">
-        <h3 id="evidence-title">Evidence Notes</h3>
+        <h3 id="evidence-title">{ui.evidenceNotes}</h3>
         <p>{signal.summary}</p>
         <div class="label-row">
           {signal.labels.map((label) => (
             <span>{label}</span>
           ))}
         </div>
-        {signal.url ? <a class="text-link" href={signal.url}>Open source</a> : null}
+        {signal.url ? <a class="text-link" href={signal.url}>{ui.openSource}</a> : null}
       </section>
     </>
   ) : (
     <article class="inspector-card">
-      <h3>No signal selected</h3>
-      <p>Public data loaded, but this view has no signal to inspect yet.</p>
+      <h3>{ui.noSignalTitle}</h3>
+      <p>{ui.noSignalDescription}</p>
     </article>
   )}
 </aside>

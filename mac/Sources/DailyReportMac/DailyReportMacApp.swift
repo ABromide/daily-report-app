@@ -14,13 +14,13 @@ struct DailyReportMacApp: App {
                 }
         }
         .commands {
-            CommandMenu("Reports") {
-                Button("Open Command Panel") {
+            CommandMenu("报告 / Reports") {
+                Button("打开命令面板 / Command Panel") {
                     model.isCommandPanelPresented = true
                 }
                 .keyboardShortcut("k", modifiers: [.command, .shift])
 
-                Button("Refresh Fixture Cache") {
+                Button("刷新样例缓存 / Refresh Fixture Cache") {
                     Task {
                         await model.refreshIgnoringErrors()
                     }
@@ -33,7 +33,7 @@ struct DailyReportMacApp: App {
             MenuBarReportView()
                 .environmentObject(model)
         } label: {
-            Label("Daily Report", systemImage: model.syncStatus.systemImageName)
+            Label("日报情报 / Daily Report", systemImage: model.syncStatus.systemImageName)
         }
         .menuBarExtraStyle(.menu)
     }
@@ -174,15 +174,15 @@ enum ReportScope: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .all:
-            return "All Reports"
+            return "全部报告 / All Reports"
         case .highSignal:
-            return "High Signal"
+            return "高信号 / High Signal"
         case .stale:
-            return "Stale"
+            return "过期 / Stale"
         case .sources:
-            return "Sources"
+            return "来源 / Sources"
         case .local:
-            return "Local"
+            return "本地缓存 / Local"
         }
     }
 
@@ -223,16 +223,16 @@ struct DailyReportRootView: View {
                         await model.refreshIgnoringErrors()
                     }
                 } label: {
-                    Label("Refresh", systemImage: "arrow.clockwise")
+                    Label("刷新 / Refresh", systemImage: "arrow.clockwise")
                 }
-                .help("Refresh fixture cache")
+                .help("刷新样例缓存")
 
                 Button {
                     model.isCommandPanelPresented = true
                 } label: {
-                    Label("Commands", systemImage: "command")
+                    Label("命令 / Commands", systemImage: "command")
                 }
-                .help("Open command panel")
+                .help("打开命令面板")
             }
         }
         .sheet(isPresented: $model.isCommandPanelPresented) {
@@ -247,21 +247,21 @@ struct SidebarView: View {
 
     var body: some View {
         List(selection: $model.selectedScope) {
-            Section("Research") {
+            Section("研究视图 / Research") {
                 ForEach(ReportScope.allCases) { scope in
                     Label(scope.title, systemImage: scope.systemImageName)
                         .tag(Optional(scope))
                 }
             }
 
-            Section("Sync") {
+            Section("同步状态 / Sync") {
                 Label(model.syncStatus.displayName, systemImage: model.syncStatus.systemImageName)
                 if let generatedAt = model.summary?.payload.manifest.generatedAt {
                     Label(generatedAt.formatted(date: .abbreviated, time: .shortened), systemImage: "calendar")
                 }
             }
         }
-        .navigationTitle("Daily Report")
+        .navigationTitle("日报情报")
     }
 }
 
@@ -275,13 +275,13 @@ struct ReportFeedView: View {
                     .tag(Optional(report.id))
             }
         }
-        .navigationTitle(model.selectedScope?.title ?? "Reports")
+        .navigationTitle(model.selectedScope?.title ?? "报告 / Reports")
         .overlay {
             if model.visibleReports.isEmpty {
                 EmptyStateView(
-                    title: "No Reports",
+                    title: "暂无报告 / No Reports",
                     systemImageName: "tray",
-                    description: "The current scope has no cached reports."
+                    description: "当前范围还没有缓存报告。"
                 )
             }
         }
@@ -314,7 +314,7 @@ struct ReportRow: View {
                 .lineLimit(3)
 
             HStack(spacing: 6) {
-                Label("\(report.readingTimeMinutes)m", systemImage: "timer")
+                Label("\(report.readingTimeMinutes) 分钟", systemImage: "timer")
                 Label(report.publishedAt.formatted(date: .abbreviated, time: .shortened), systemImage: "clock")
             }
             .font(.caption)
@@ -374,7 +374,7 @@ struct ReaderDetailView: View {
                             .fixedSize(horizontal: false, vertical: true)
 
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Evidence")
+                            Text("证据 / Evidence")
                                 .font(.headline)
                                 .foregroundStyle(KamiTokens.inkBlue)
 
@@ -392,13 +392,13 @@ struct ReaderDetailView: View {
                 }
             } else {
                 EmptyStateView(
-                    title: "Select a Report",
+                    title: "选择一份报告 / Select a Report",
                     systemImageName: "doc.text.magnifyingglass",
-                    description: "Cached research will appear in the reader."
+                    description: "缓存后的研究内容会出现在阅读器中。"
                 )
             }
         }
-        .navigationTitle("Reader")
+        .navigationTitle("阅读器 / Reader")
     }
 }
 
@@ -461,7 +461,7 @@ struct SourceHealthStrip: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Source Health")
+            Text("来源健康 / Source Health")
                 .font(.headline)
                 .foregroundStyle(KamiTokens.inkBlue)
 
@@ -495,7 +495,7 @@ struct CommandPanelShell: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            TextField("Command", text: $query)
+            TextField("输入命令 / Command", text: $query)
                 .textFieldStyle(.roundedBorder)
 
             List {
@@ -505,7 +505,7 @@ struct CommandPanelShell: View {
                     }
                     dismiss()
                 } label: {
-                    Label("Refresh fixture cache", systemImage: "arrow.clockwise")
+                    Label("刷新样例缓存 / Refresh fixture cache", systemImage: "arrow.clockwise")
                 }
 
                 Button {
@@ -513,7 +513,7 @@ struct CommandPanelShell: View {
                     model.selectFirstVisibleReport()
                     dismiss()
                 } label: {
-                    Label("Show high signal reports", systemImage: "bolt.horizontal")
+                    Label("显示高信号报告 / Show high signal reports", systemImage: "bolt.horizontal")
                 }
 
                 Button {
@@ -521,7 +521,7 @@ struct CommandPanelShell: View {
                     model.selectFirstVisibleReport()
                     dismiss()
                 } label: {
-                    Label("Inspect sources", systemImage: "link")
+                    Label("检查来源 / Inspect sources", systemImage: "link")
                 }
             }
             .listStyle(.inset)
@@ -540,7 +540,7 @@ struct MenuBarReportView: View {
                 await model.refreshIgnoringErrors()
             }
         } label: {
-            Label("Refresh Fixture Cache", systemImage: "arrow.clockwise")
+            Label("刷新样例缓存 / Refresh Fixture Cache", systemImage: "arrow.clockwise")
         }
 
         Divider()

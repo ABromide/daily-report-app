@@ -1,0 +1,12 @@
+---
+import Layout from "../../components/Layout.astro";
+import Workstation from "../../components/Workstation.astro";
+import { loadDashboardData } from "../../lib/data";
+import { copy } from "../../lib/i18n";
+
+const data = await loadDashboardData();
+---
+
+<Layout title="Sources · Daily Report App" description={copy.en.layoutDescription} locale="en">
+  <Workstation data={data} activeView="sources" locale="en" />
+</Layout>

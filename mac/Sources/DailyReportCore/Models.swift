@@ -12,15 +12,15 @@ public enum SyncStatus: String, Codable, CaseIterable, Identifiable, Sendable {
     public var displayName: String {
         switch self {
         case .cached:
-            return "Cached"
+            return "已缓存 / Cached"
         case .stale:
-            return "Stale"
+            return "已过期 / Stale"
         case .syncing:
-            return "Syncing"
+            return "同步中 / Syncing"
         case .failed:
-            return "Failed"
+            return "同步失败 / Failed"
         case .localOnly:
-            return "Local only"
+            return "仅本地 / Local only"
         }
     }
 
@@ -49,7 +49,16 @@ public enum ReportImportance: String, Codable, CaseIterable, Identifiable, Senda
     public var id: String { rawValue }
 
     public var displayName: String {
-        rawValue.prefix(1).uppercased() + rawValue.dropFirst()
+        switch self {
+        case .low:
+            return "低 / Low"
+        case .medium:
+            return "中 / Medium"
+        case .high:
+            return "高 / High"
+        case .critical:
+            return "关键 / Critical"
+        }
     }
 }
 
@@ -62,7 +71,16 @@ public enum SourceRunStatus: String, Codable, CaseIterable, Identifiable, Sendab
     public var id: String { rawValue }
 
     public var displayName: String {
-        rawValue.prefix(1).uppercased() + rawValue.dropFirst()
+        switch self {
+        case .healthy:
+            return "健康 / Healthy"
+        case .degraded:
+            return "降级 / Degraded"
+        case .failed:
+            return "失败 / Failed"
+        case .unknown:
+            return "未知 / Unknown"
+        }
     }
 }
 

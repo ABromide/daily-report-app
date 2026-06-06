@@ -1,17 +1,20 @@
 ---
 import type { Metric } from "../lib/data";
+import { defaultLocale, getCopy, type Locale } from "../lib/i18n";
 
 interface Props {
   metrics: Metric[];
+  locale?: Locale;
 }
 
-const { metrics } = Astro.props;
+const { metrics, locale = defaultLocale } = Astro.props;
+const ui = getCopy(locale);
 ---
 
 <section class="kpi-section" aria-labelledby="kpi-strip-title">
   <div class="section-heading">
-    <p class="eyebrow">Operating Snapshot</p>
-    <h2 id="kpi-strip-title">KPI Strip</h2>
+    <p class="eyebrow">{ui.kpiEyebrow}</p>
+    <h2 id="kpi-strip-title">{ui.kpiTitle}</h2>
   </div>
 
   <div class="kpi-grid">

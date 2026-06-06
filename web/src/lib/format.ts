@@ -1,24 +1,30 @@
-const dateTimeFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "2-digit",
-  minute: "2-digit"
-});
+import type { Locale } from "./i18n";
 
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric"
-});
-
-export function formatDateTime(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? value : dateTimeFormatter.format(date);
+function localeCode(locale: Locale): string {
+  return locale === "zh" ? "zh-CN" : "en-US";
 }
 
-export function formatDate(value: string): string {
+export function formatDateTime(value: string, locale: Locale = "en"): string {
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? value : dateFormatter.format(date);
+  const formatter = new Intl.DateTimeFormat(localeCode(locale), {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+  return Number.isNaN(date.getTime()) ? value : formatter.format(date);
+}
+
+export function formatDate(value: string, locale: Locale = "en"): string {
+  const date = new Date(value);
+  const formatter = new Intl.DateTimeFormat(localeCode(locale), {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  });
+
+  return Number.isNaN(date.getTime()) ? value : formatter.format(date);
 }
 
 export function formatPercent(value: number): string {

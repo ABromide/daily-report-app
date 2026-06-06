@@ -1,6 +1,7 @@
 ---
 import type { DashboardData, ViewId } from "../lib/data";
 import { formatDateTime } from "../lib/format";
+import { defaultLocale, getCopy, localizeDashboardData, type Locale } from "../lib/i18n";
 import DetailInspector from "./DetailInspector.astro";
 import FeedPanel from "./FeedPanel.astro";
 import KpiStrip from "./KpiStrip.astro";
@@ -12,9 +13,12 @@ import SourcesView from "./SourcesView.astro";
 interface Props {
   data: DashboardData;
   activeView: ViewId;
+  locale?: Locale;
 }
 
-const { data, activeView } = Astro.props;
+const { data: rawData, activeView, locale = defaultLocale } = Astro.props;
+const data = localizeDashboardData(rawData, locale);
+const ui = getCopy(locale);
 const selectedSignal = data.signals[0];
 const selectedReport = selectedSignal
   ? data.reports.find((report) => report.id === selectedSignal.reportId)
@@ -22,30 +26,30 @@ const selectedReport = selectedSignal
 ---
 
 <div class="workstation-shell">
-  <Navigation activeView={activeView} data={data} />
+  <Navigation activeView={activeView} data={data} locale={locale} />
 
   <main class="main-column">
     <header class="topbar">
       <div>
-        <p class="eyebrow">Agent Research Briefing</p>
-        <h1>Research Workstation</h1>
+        <p class="eyebrow">{ui.eyebrow}</p>
+        <h1>{ui.workstationTitle}</h1>
         <p>{data.windowLabel}</p>
       </div>
-      <div class="topbar-status" aria-label="Current data status">
-        <span>{data.dataMode === "fixture" ? "Fixture data" : "Mock fallback"}</span>
-        <strong>{formatDateTime(data.generatedAt)}</strong>
+      <div class="topbar-status" aria-label={ui.currentDataStatus}>
+        <span>{data.dataMode === "fixture" ? ui.fixtureData : ui.mockFallback}</span>
+        <strong>{formatDateTime(data.generatedAt, locale)}</strong>
         <small title={data.dataPath}>{data.dataPath}</small>
       </div>
     </header>
 
-    <KpiStrip metrics={data.metrics} />
+    <KpiStrip metrics={data.metrics} locale={locale} />
 
-    {activeView === "feed" ? <FeedPanel signals={data.signals} /> : null}
-    {activeView === "sources" ? <SourcesView sources={data.sources} /> : null}
-    {activeView === "runs" ? <RunsView runs={data.runs} /> : null}
-    {activeView === "reports" ? <ReportsView reports={data.reports} /> : null}
+    {activeView === "feed" ? <FeedPanel signals={data.signals} locale={locale} /> : null}
+    {activeView === "sources" ? <SourcesView sources={data.sources} locale={locale} /> : null}
+    {activeView === "runs" ? <RunsView runs={data.runs} locale={locale} /> : null}
+    {activeView === "reports" ? <ReportsView reports={data.reports} locale={locale} /> : null}
   </main>
 
-  <DetailInspector signal={selectedSignal} report={selectedReport} />
-  <Navigation activeView={activeView} data={data} variant="mobile" />
+  <DetailInspector signal={selectedSignal} report={selectedReport} locale={locale} />
+  <Navigation activeView={activeView} data={data} locale={locale} variant="mobile" />
 </div>

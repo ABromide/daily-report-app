@@ -1,35 +1,38 @@
 ---
 import type { SourceRecord } from "../lib/data";
 import { formatDateTime } from "../lib/format";
+import { defaultLocale, getCopy, sourceStatusLabel, type Locale } from "../lib/i18n";
 
 interface Props {
   sources: SourceRecord[];
+  locale?: Locale;
 }
 
-const { sources } = Astro.props;
+const { sources, locale = defaultLocale } = Astro.props;
+const ui = getCopy(locale);
 ---
 
 <section class="table-panel" aria-labelledby="source-registry-title">
   <div class="section-heading">
-    <p class="eyebrow">Connectors</p>
-    <h2 id="source-registry-title">Source Registry</h2>
+    <p class="eyebrow">{ui.connectors}</p>
+    <h2 id="source-registry-title">{ui.sourceRegistry}</h2>
   </div>
 
   <div class="dense-table source-table">
     <div class="table-head">
-      <span>Source</span>
-      <span>Status</span>
-      <span>Coverage</span>
-      <span>Latency</span>
-      <span>Signals</span>
+      <span>{ui.source}</span>
+      <span>{ui.status}</span>
+      <span>{ui.coverage}</span>
+      <span>{ui.latency}</span>
+      <span>{ui.signals}</span>
     </div>
     {sources.map((source) => (
       <article class="table-row">
         <div>
           <strong>{source.name}</strong>
-          <small>{source.type} · {formatDateTime(source.lastSeen)}</small>
+          <small>{source.type} · {formatDateTime(source.lastSeen, locale)}</small>
         </div>
-        <span class:list={["status-pill", `source-${source.status}`]}>{source.status}</span>
+        <span class:list={["status-pill", `source-${source.status}`]}>{sourceStatusLabel(source.status, locale)}</span>
         <span>{source.coverage}</span>
         <span>{source.latency}</span>
         <span>{source.signals}</span>

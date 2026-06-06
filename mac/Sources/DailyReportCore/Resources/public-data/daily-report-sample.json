@@ -9,18 +9,18 @@
   "reports": [
     {
       "id": "runtime-sca-2026-06-06",
-      "title": "Runtime-aware SCA is becoming a practical wedge",
-      "summary": "Security tools that join advisory databases with observed runtime behavior can reduce noisy vulnerability queues for application teams.",
-      "bodyMarkdown": "Static scanners are still useful, but teams are asking which vulnerable packages are actually loaded, reachable, or exposed in production-like runs. The near-term product opportunity is a local-first triage layer that keeps evidence close to the developer workflow.",
+      "title": "运行时感知 SCA 正在成为务实的安全产品切入口 / Runtime-aware SCA",
+      "summary": "把漏洞公告库和真实运行行为结合起来，能帮助应用团队减少嘈杂的漏洞队列。",
+      "bodyMarkdown": "静态扫描器依然有价值，但团队真正想知道的是：哪些有漏洞的包正在被加载、可达，或者会在类生产运行里暴露出来。近期的产品机会，是做一个本地优先的分诊层，把证据留在开发者工作流附近。\n\nEnglish note: runtime evidence turns advisory noise into actionable security work.",
       "publishedAt": "2026-06-06T01:10:00Z",
       "updatedAt": "2026-06-06T01:14:00Z",
-      "tags": ["security", "runtime", "developer-tools"],
+      "tags": ["安全", "运行时", "开发者工具"],
       "readingTimeMinutes": 4,
       "importance": "high",
       "sources": [
         {
           "id": "src-trivy-runtime",
-          "title": "Trivy project research note",
+          "title": "Trivy 项目研究笔记 / Trivy project research note",
           "url": "https://github.com/aquasecurity/trivy",
           "host": "github.com",
           "capturedAt": "2026-06-06T00:58:00Z",
@@ -30,17 +30,17 @@
     },
     {
       "id": "agent-workstation-2026-06-06",
-      "title": "Agent research workstations need source health, not just cards",
-      "summary": "A dense reader should surface run recency, stale data, source confidence, and cache state before asking users to trust a summary.",
-      "bodyMarkdown": "The useful pattern is a three-pane review loop: navigation on the left, a compressed queue in the center, and an evidence-heavy reader on the right. Native macOS chrome should stay calm while the content carries the editorial texture.",
+      "title": "Agent 研究工作台需要来源健康度，而不只是卡片",
+      "summary": "密集阅读器应该先展示运行新鲜度、过期数据、来源置信度和缓存状态，再要求用户信任摘要。",
+      "bodyMarkdown": "有用的模式是三栏复核循环：左侧导航，中间压缩队列，右侧是证据密度更高的阅读器。macOS 原生 chrome 应保持安静克制，让内容区承载 kami 风格的编辑质感。\n\nEnglish note: source health belongs in the main review loop, not hidden inside settings.",
       "publishedAt": "2026-06-06T00:45:00Z",
-      "tags": ["product", "macos", "research"],
+      "tags": ["产品", "macOS", "研究"],
       "readingTimeMinutes": 3,
       "importance": "medium",
       "sources": [
         {
           "id": "src-architecture",
-          "title": "Daily Report architecture",
+          "title": "Daily Report 架构说明 / Daily Report architecture",
           "url": "https://example.com/docs/architecture",
           "host": "example.com",
           "capturedAt": "2026-06-06T00:40:00Z",
@@ -56,15 +56,15 @@
       "status": "healthy",
       "lastSeenAt": "2026-06-06T00:59:00Z",
       "itemCount": 12,
-      "note": "Fixture data only."
+      "note": "仅样例数据。/ Fixture data only."
     },
     {
       "id": "public-pages",
-      "name": "Public Pages manifest",
+      "name": "公开 Pages 清单 / Public Pages manifest",
       "status": "unknown",
       "lastSeenAt": "2026-06-06T00:59:00Z",
       "itemCount": 1,
-      "note": "Remote sync is not enabled in the skeleton."
+      "note": "骨架版本尚未启用远端同步。/ Remote sync is not enabled in the skeleton."
     }
   ]
 }

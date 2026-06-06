@@ -2,10 +2,11 @@
 import Layout from "../components/Layout.astro";
 import Workstation from "../components/Workstation.astro";
 import { loadDashboardData } from "../lib/data";
+import { copy } from "../lib/i18n";
 
 const data = await loadDashboardData();
 ---
 
-<Layout title="Runs · Daily Report App">
-  <Workstation data={data} activeView="runs" />
+<Layout title="运行 · Daily Report App" description={copy.zh.layoutDescription} locale="zh">
+  <Workstation data={data} activeView="runs" locale="zh" />
 </Layout>

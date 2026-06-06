@@ -15,9 +15,9 @@ public enum ImportServiceError: Error, Equatable, LocalizedError, Sendable {
     public var errorDescription: String? {
         switch self {
         case .missingBundledFixture:
-            return "Bundled public-data fixture is missing."
+            return "内置 public-data 样例缺失。/ Bundled public-data fixture is missing."
         case .failedToLoadRemote(let url):
-            return "Failed to load remote public data from \(url.absoluteString)."
+            return "无法加载远端公开数据：\(url.absoluteString)。/ Failed to load remote public data."
         case .failed(let message):
             return message
         }

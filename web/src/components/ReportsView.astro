@@ -1,18 +1,21 @@
 ---
 import type { ReportRecord } from "../lib/data";
 import { formatDate } from "../lib/format";
+import { defaultLocale, getCopy, reportStatusLabel, type Locale } from "../lib/i18n";
 
 interface Props {
   reports: ReportRecord[];
+  locale?: Locale;
 }
 
-const { reports } = Astro.props;
+const { reports, locale = defaultLocale } = Astro.props;
+const ui = getCopy(locale);
 ---
 
 <section class="reports-panel" aria-labelledby="report-archive-title">
   <div class="section-heading">
-    <p class="eyebrow">Artifacts</p>
-    <h2 id="report-archive-title">Report Archive</h2>
+    <p class="eyebrow">{ui.artifacts}</p>
+    <h2 id="report-archive-title">{ui.reportArchive}</h2>
   </div>
 
   <div class="report-list">
@@ -21,14 +24,14 @@ const { reports } = Astro.props;
         <div class="report-heading">
           <div>
             <strong>{report.title}</strong>
-            <small>{formatDate(report.date)} · {report.owner}</small>
+            <small>{formatDate(report.date, locale)} · {report.owner}</small>
           </div>
-          <span class:list={["status-pill", `report-${report.status}`]}>{report.status}</span>
+          <span class:list={["status-pill", `report-${report.status}`]}>{reportStatusLabel(report.status, locale)}</span>
         </div>
         <p>{report.summary}</p>
         <div class="report-meta">
-          <span>{report.sources} sources</span>
-          <span>{report.signals} signals</span>
+          <span>{report.sources} {ui.sources}</span>
+          <span>{report.signals} {ui.signals}</span>
           <span>{report.sections.join(" / ")}</span>
         </div>
       </article>

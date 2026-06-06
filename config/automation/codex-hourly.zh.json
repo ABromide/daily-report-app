@@ -84,16 +84,23 @@
     },
     "publish": {
       "command": "scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"",
-      "purpose": "一键执行 finalize-public-run、validate-public、secret-scan、git add/commit/push 和 repository_dispatch。"
+      "purpose": "一键执行 finalize-public-run、validate-public、secret-scan、git add/commit/push 和 repository_dispatch；如果 public/ 下出现真实删除，工具会拒绝发布。"
     },
     "local_test": {
       "command": "scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: local publish test\" --no-push --no-dispatch --skip-remote-checks",
       "purpose": "本地测试完整 finalize、校验和 commit 流程，不触发远端副作用。"
     },
+    "delete_policy": {
+      "rule": "自动化不允许真实删除任何文件；不要运行 rm、find -delete、git rm 或提交 deletion。",
+      "soft_delete_dir": ".automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/",
+      "scope": "只有未跟踪的临时文件可以被移动到 soft-delete 目录做假删除；已跟踪 public 数据不允许删除、移动或提交删除。",
+      "publish_guard": "publish-public-run 会检查 public/ 下 working-tree 与 staged deletion，发现真实删除会直接失败。"
+    },
     "forbidden_manual_steps": [
       "不要手工 sed/cat 展开 latest、days、sources、known-links、audit 或 manifest 大 JSON。",
       "如果 data 分支刚清空，public/index/known-links.json、public/index/latest.json 或 items.jsonl 不存在是正常空账本状态。",
       "不要手工逐字段维护 public/index/known-links.json、public/index/sources.json、public/index/days.json、public/index/latest.json、audit JSON 或 manifest JSON。",
+      "不要真实删除任何文件；未跟踪临时文件如需假删除，只能移动到 .automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/，不要删除或移动已跟踪 public 数据。",
       "不要手工拼接 git add/commit/push/dispatch；除非 publish-public-run 明确失败并需要诊断，否则直接调用工具。"
     ]
   },
@@ -341,10 +348,12 @@
         "instructions": [
           "发布前优先运行权限预检：uv run daily-report automation-preflight --public-root /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data/public --data-worktree /Users/lizewei/Documents/projects/personal/daily-report-app-worktrees/data。",
           "如果预检输出 origin/data: reachable without git proxy，说明全局 127.0.0.1:17891 git 代理在自动化环境不可用但工具已绕过，不是文件沙箱问题。",
+          "不要运行 rm、find -delete、git rm 或任何真实删除命令；不要把已跟踪 public 数据移动到别处，也不要提交 deletion。未跟踪临时文件如需假删除，只能移动到 .automation-trash/<run-id>/ 或 public/.automation-trash/<run-id>/。",
           "写完 Markdown 和 payload 后，直接运行 scripts/automation/publish-public-run.sh --payload <payload.json> --run-id <utc-run-id> --commit-message \"data: <本轮简短说明>\"。",
           "publish-public-run 会自动调用 finalize-public-run，并执行 validate-public、secret-scan、data worktree git add/commit/push 和 repository_dispatch。",
           "finalize-public-run 会合并 items，跨所有历史 items 检查 canonical_url、external_id、title_hash、content_hash 四个去重键；如果报 duplicate，必须换同类替代候选，不要手动改 known-links。",
-          "publish-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON，并确保 Markdown 文件进入 manifest。"
+          "publish-public-run 会重建 public/index/known-links.json、public/index/sources.json、reports、public/index/days.json、public/index/latest.json、audit JSON 和 manifest JSON，并确保 Markdown 文件进入 manifest。",
+          "publish-public-run 会检查 public/ 下 working-tree 和 staged deletion；如果发现真实删除，会直接失败并要求改为假删除或保留原文件。"
         ]
       },
       {

@@ -201,6 +201,37 @@ def _has_staged_public_changes(data_worktree: Path) -> bool:
     raise PublishPublicRunError(msg)
 
 
+def _public_deletion_paths(data_worktree: Path) -> tuple[str, ...]:
+    paths: list[str] = []
+    seen: set[str] = set()
+    for args in (
+        ("ls-files", "--deleted", "--", "public"),
+        ("diff", "--cached", "--diff-filter=D", "--name-only", "--", "public"),
+    ):
+        result = _git(data_worktree, *args)
+        for line in result.stdout.splitlines():
+            path = line.strip()
+            if path and path not in seen:
+                paths.append(path)
+                seen.add(path)
+    return tuple(paths)
+
+
+def _assert_no_public_deletions(data_worktree: Path) -> None:
+    deletions = _public_deletion_paths(data_worktree)
+    if not deletions:
+        return
+    formatted = "\n".join(f"- {path}" for path in deletions)
+    msg = (
+        "publish-public-run refuses to publish real deletions under public/.\n"
+        "Automation must not delete tracked public data. For untracked scratch files, move them to "
+        ".automation-trash/<run-id>/ or public/.automation-trash/<run-id>/ instead; those paths are ignored "
+        "by the data branch .gitignore.\n"
+        f"Working-tree or staged deletions:\n{formatted}"
+    )
+    raise PublishPublicRunError(msg)
+
+
 def _push_command(data_worktree: Path, *, without_proxy: bool) -> list[str]:
     command = ["git", "-C", str(data_worktree)]
     if without_proxy:
@@ -265,7 +296,9 @@ def publish_public_run(
         scan_secrets=True,
     )
 
+    _assert_no_public_deletions(data_worktree)
     _git(data_worktree, "add", "-A", "public")
+    _assert_no_public_deletions(data_worktree)
     if not _has_staged_public_changes(data_worktree):
         commit_sha = _git(data_worktree, "rev-parse", "HEAD").stdout.strip()
         return PublishPublicRunResult(

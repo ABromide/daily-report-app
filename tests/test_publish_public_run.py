@@ -8,7 +8,7 @@ import pytest
 
 import collector.publish_public_run as publish_module
 from collector.jsonio import read_json, sha256_file, write_json
-from collector.publish_public_run import CommandResult, automation_preflight, publish_public_run
+from collector.publish_public_run import CommandResult, PublishPublicRunError, automation_preflight, publish_public_run
 from collector.sample import generate_sample
 
 
@@ -134,6 +134,33 @@ def test_publish_public_run_finalizes_and_commits_without_remote_side_effects(tm
     assert _git(data_worktree, "status", "--short") == ""
     audit = read_json(sample.public_root / "audits/2026/06/06/codex-hourly-20260606t030000z.json")
     assert audit["written_item_ids"] == ["itm_0011223344556677"]
+
+
+def test_publish_public_run_rejects_public_deletions(tmp_path: Path) -> None:
+    sample = generate_sample(tmp_path / "data")
+    data_worktree = sample.public_root.parent
+    _git(data_worktree, "init", "-b", "data")
+    _git(data_worktree, "config", "user.email", "test@example.com")
+    _git(data_worktree, "config", "user.name", "Daily Report Test")
+    _git(data_worktree, "add", "-A")
+    _git(data_worktree, "commit", "-m", "data: initial")
+    deleted_article = next(sample.public_root.glob("articles/????/??/??/*/index.md"))
+    deleted_article.unlink()
+    payload_path = _write_payload(sample.public_root, tmp_path / "publish-payload.json")
+
+    with pytest.raises(PublishPublicRunError, match="refuses to publish real deletions"):
+        publish_public_run(
+            public_root=sample.public_root,
+            data_worktree=data_worktree,
+            payload_path=payload_path,
+            run_id="codex-hourly-20260606t030000z",
+            commit_message="data: publish test item",
+            push=False,
+            dispatch=False,
+            remote_checks=False,
+        )
+
+    assert _git(data_worktree, "diff", "--cached", "--diff-filter=D", "--name-only", "--", "public") == ""
 
 
 def test_automation_preflight_retries_remote_check_without_dead_local_proxy(

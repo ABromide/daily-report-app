@@ -326,6 +326,7 @@ config/automation/codex-hourly.zh.json
 - 自动化写作要尽可能挖掘方法模块、数据规模、训练设置、benchmark、baseline、消融项、失败案例、图表编号、图片 URL 和公式变量
 - 结构化提示词按读取状态、候选侦察、去重替换、深度阅读、方法/代码分析、审稿质疑、第三方参考搜索、写入 Markdown、准备 finalize payload、调用工具重建索引/审计/manifest、验证提交执行
 - 自动化不要手工 `sed` 或展开读取 `latest/days/sources/known-links/audit/manifest` 这类大 JSON；写完 Markdown 后调用 `finalize-public-run` 机械重建
+- 自动化不允许真实删除任何文件；未跟踪临时文件如需“假删除”，只能移动到 `.automation-trash/<run-id>/` 或 `public/.automation-trash/<run-id>/`
 - 自动化可以一次只研究 1 篇文章或项目，但要研究透
 - 审计记录必须包含 `sub_agent_reviews` 和 `quality_gate`
 - 每次运行必须生成自动化 audit record，并随 public data 一起提交
@@ -410,6 +411,8 @@ uv run daily-report automation-preflight \
 如果本机全局 Git 配了 `http.proxy=http://127.0.0.1:17891`，而自动化运行环境里这个本地代理端口不可用，`automation-preflight` 和 `publish-public-run` 会自动用 `git -c http.proxy= -c https.proxy=` 绕过 Git 代理重试。看到 `origin/data: reachable without git proxy` 不代表文件沙箱失败，只代表 Git 远端检查走了直连 fallback。
 
 如果 `data` 分支刚被清空，`public/index/known-links.json`、`public/index/latest.json` 或 `items.jsonl` 不存在是正常的 bootstrap 空账本状态。不要让模型为此展开历史读取或手工补索引；写 Markdown 和 payload 后直接调用 `publish-public-run`，它会重建索引、audit 和 manifest。
+
+自动化不允许真实删除任何文件。data 分支的 `.gitignore` 已忽略本地 scratch 和 soft-delete quarantine：`tmp/`、`.tmp/`、`.automation-trash/`、`public/.automation-trash/`。如果只是要移开未跟踪的临时文件，可以移动到 `.automation-trash/<run-id>/` 或 `public/.automation-trash/<run-id>/` 做“假删除”；对已经被 Git 跟踪的 `public/` 数据，不要删除、移动或提交 deletion。`publish-public-run` 会检查 `public/` 下 working-tree 和 staged deletion，发现真实删除会直接失败。
 
 如果只想本地测试完整流程，不 push、不 dispatch：
 

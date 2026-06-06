@@ -32,12 +32,17 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "MLPod" in contract["analysis_requirements"]["style_reference"]["name"]
     assert "automation_tools" in contract
     assert "publish-public-run.sh" in contract["automation_tools"]["publish"]["command"]
+    assert "真实删除" in contract["automation_tools"]["publish"]["purpose"]
     assert "automation-preflight" in contract["automation_tools"]["preflight"]["command"]
     assert "127.0.0.1:17891" in contract["automation_tools"]["preflight"]["purpose"]
+    assert contract["automation_tools"]["delete_policy"]["soft_delete_dir"].startswith(".automation-trash")
+    assert "不允许真实删除" in contract["automation_tools"]["delete_policy"]["rule"]
+    assert "staged deletion" in contract["automation_tools"]["delete_policy"]["publish_guard"]
     assert "不要手工拼接 git add/commit/push/dispatch" in " ".join(
         contract["automation_tools"]["forbidden_manual_steps"]
     )
     assert "public/index/known-links.json" in " ".join(contract["automation_tools"]["forbidden_manual_steps"])
+    assert ".automation-trash" in " ".join(contract["automation_tools"]["forbidden_manual_steps"])
     assert "required_sections" not in contract["analysis_requirements"]
     assert contract["analysis_requirements"]["suggested_section_count"] >= 8
     assert "论文或项目元信息" in contract["analysis_requirements"]["suggested_sections"]
@@ -119,6 +124,8 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "Mermaid 图" in prompt_text
     assert "publish-public-run" in prompt_text
     assert "finalize-public-run" in prompt_text
+    assert "不要运行 rm" in prompt_text
+    assert "public/.automation-trash" in prompt_text
     assert "不要手工读取" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("子 Agent" in step["name"] for step in prompt["steps"])

@@ -24,6 +24,13 @@ export default defineConfig({
       }
     },
     {
+      name: "laptop",
+      use: {
+        browserName: "chromium",
+        viewport: { width: 1280, height: 720 }
+      }
+    },
+    {
       name: "mobile",
       use: {
         browserName: "chromium",

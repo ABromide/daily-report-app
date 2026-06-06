@@ -1548,6 +1548,19 @@ select {
   background: transparent;
 }
 
+.markdown-body pre.mermaid {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 18px;
+  background: var(--ivory);
+}
+
+.markdown-body .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .markdown-body img {
   max-width: 100%;
   height: auto;

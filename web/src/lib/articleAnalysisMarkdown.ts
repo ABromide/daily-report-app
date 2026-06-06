@@ -12,6 +12,19 @@ const markdownRenderer = new MarkdownIt({
   errorColor: "#9a493e"
 });
 
+const defaultFenceRenderer = markdownRenderer.renderer.rules.fence;
+
+markdownRenderer.renderer.rules.fence = (tokens, index, options, env, self) => {
+  const token = tokens[index];
+  const language = token.info.trim().split(/\s+/)[0]?.toLowerCase();
+  if (language === "mermaid") {
+    return `<pre class="mermaid">${markdownRenderer.utils.escapeHtml(token.content)}</pre>`;
+  }
+  return defaultFenceRenderer
+    ? defaultFenceRenderer(tokens, index, options, env, self)
+    : self.renderToken(tokens, index, options);
+};
+
 export function renderMarkdownToHtml(markdown: string): string {
   return markdownRenderer.render(markdown);
 }
@@ -34,46 +47,58 @@ export function renderShowcaseArticleMarkdown(item: LocalizedDocument, cluster?:
 
 ${item.summary}
 
-这篇内容被放入「${category}」不是因为它有一个响亮标题，而是因为它提供了一个可以继续追踪的技术或治理信号。首页卡片只保留入口判断，下面的 Markdown 正文负责把文章结构、证据链和边界条件讲完整。
+这篇内容被放入「${category}」不是因为它有一个响亮标题，而是因为它提供了一个可以继续追踪的技术或治理信号。真实自动化里的摘要和 TL;DR 应该自包含：直接说明文章在做什么、具体怎么做、实验和证据怎么组织、关键数字是什么、局限在哪里。首页卡片只保留入口判断，下面的 Markdown 正文负责把原文结构、方法证据、实验结果、图表公式和边界条件讲完整。论文类应按背景、方法、实验、结果、消融、图表、相关工作和局限推进。
 
 ## 来源与材料地图
 
-本次材料来自 [${item.sourceName}](${item.url})，来源域名是 \`${item.domain}\`。自动化写入时应该优先阅读原文、论文页、官方博客、README、docs、examples、release notes 或报告 PDF，而不是只根据标题和标签生成摘要。
+本次材料来自 [${item.sourceName}](${item.url})，来源域名是 \`${item.domain}\`。自动化写入时应该优先阅读原文、论文页、官方博客、README、docs、examples、release notes 或报告 PDF，而不是只根据标题和标签生成摘要。写作时要尽可能挖掘模块名、数据规模、训练阶段、benchmark、baseline、指标数字、消融项、失败类型、figure/table 编号和图片 URL。
 
-如果原文包含关键图表，可以直接写成 Markdown 图片：
+如果原文、论文 PDF、项目页、Hugging Face 页面或 GitHub README 包含关键图表、系统图、轨迹图、截图或表格图片，可以直接写成 Markdown 图片：
 
 ![来源示意图](https://www.google.com/s2/favicons?domain=${item.domain}&sz=128)
 
-这类图片不承担装饰作用，只用于保留原文证据或帮助读者定位材料来源。
+这类图片不承担装饰作用，只用于保留原文证据或帮助读者定位材料来源。真实自动化应尽可能多引用论文 figure/table、项目页图片和作者补充图，并逐图解释。
+
+## Markdown 排版要求
+
+真实自动化写稿时要让正文容易扫读：方法模块、实验设置、贡献、失败类型和局限应该分点；benchmark、baseline、模型规模、指标数字和消融项适合用表格；数学关系用行内公式或块级公式；系统架构、训练流程、数据流、Agent 决策链或多阶段 pipeline 可以用 Mermaid 图。
+
+~~~mermaid
+flowchart TD
+  A["读取原文材料"] --> B["提取方法、数据、公式、图表"]
+  B --> C["按论文或原文结构写作"]
+  C --> D["用列表、表格、公式和 Mermaid 排版"]
+~~~
 
 ## 文章总览
 
 ${item.analysis}
 
-更完整地说，这篇内容首先给出一个问题入口，然后用方法、工程结构、实验或制度设计来回答它。阅读时不要只看“它是不是新”，而要看它改变了哪一段真实工作流：Agent 的任务执行、后训练的优化信号，还是 AI 安全里的治理与评估能力。
+更完整地说，这篇内容首先给出一个问题入口，然后用方法、工程结构、实验或制度设计来回答它。论文类不要把“为什么重要”写成主体，而要先讲清背景与问题，再讲方法、公式、实验设置、主结果、消融失败案例和最终结论。
 
-## 文章架构拆解
+## 论文或文章架构拆解
 
-1. **问题入口**：作者试图解决什么现象，或者把哪个工程/治理空白摆到了台面上。
-2. **方法主体**：它提出的是算法、系统、平台、评测、政策框架，还是代码实现。
-3. **证据材料**：有没有论文实验、仓库代码、release note、产品文档、案例或政策文件。
-4. **边界条件**：哪些结论仍然不能直接推出，哪些地方需要下一轮自动化继续跟踪。
+1. **背景与研究问题**：作者试图解决什么现象，或者把哪个工程/治理空白摆到了台面上。
+2. **方法与模型机制**：它提出的是算法、系统、平台、评测、政策框架，还是代码实现。
+3. **训练与实验设置**：数据集、基座模型、训练策略、指标、评测协议和对照组分别是什么。
+4. **主结果与消融**：最终结果证明了什么，哪些模块确实必要，失败案例暴露了什么。
+5. **图表、公式与局限**：哪些 figure/table/公式支撑结论，哪些结论仍然不能直接推出。
 
 ## 逐部分细读
 
-第一部分先看作者如何定义问题。如果问题定义含糊，后面的技术路线就很容易变成泛泛叙述。第二部分看方法或系统如何组织：它是把多个模块接成生产流程，还是只提出单点技巧。第三部分看证据是否支撑主张：实验、代码、用户场景、政策文本和失败案例的权重不同。第四部分看作者有没有承认限制；没有限制的文章反而更需要谨慎。
+第一部分先看作者如何定义问题。如果问题定义含糊，后面的技术路线就很容易变成泛泛叙述。第二部分看方法或系统如何组织：输入、状态、模型、目标函数和输出如何连接，并尽量写出每个模块的做法。第三部分看实验设置和主结果：数据、指标、baseline、消融和失败案例是否支撑主张，凡是原文给了数字都要尽量写进来。第四部分逐图逐表看证据：图片、表格和公式分别证明什么，又不能证明什么。最后才写日报判断和后续追踪。
 
 ## 方法或系统流程
 
 ${flowMarkdown}
 
-如果内容涉及后训练目标、奖励建模或约束优化，Markdown 可以直接保留公式。比如：
+如果内容涉及后训练目标、奖励建模、约束优化、Agent 状态转移或评测指标，Markdown 应尽可能保留公式。比如：
 
 $$
 J(\\theta)=\\mathbb{E}_{x,y\\sim\\pi_\\theta}[r(x,y)]-\\beta D_{KL}(\\pi_\\theta\\Vert\\pi_0)
 $$
 
-行内公式也可以保留，例如 $\\pi_\\theta(y|x)$、$D_{KL}$ 或 $L_{SFT}$。前端只负责渲染 Markdown，不再要求自动化输出完整 HTML。
+行内公式也可以保留，例如 $\\pi_\\theta(y|x)$、$D_{KL}$、$L_{SFT}$、$s_{t+1}=T(s_t,a_t)$ 或 $\\text{Success Rate}$。前端只负责渲染 Markdown，不再要求自动化输出完整 HTML。
 
 ## 代码或项目结构深挖
 
@@ -81,7 +106,7 @@ $$
 
 ## 关键论证链
 
-一个合格的日报分析必须能回答四个问题：作者先把什么现象定义成问题；接着提出了什么机制或系统来处理它；然后用什么证据证明这个机制有效；最后承认了哪些仍未解决的边界。缺任何一环，都不能把摘要写成确定结论。
+一个合格的日报分析必须能回答四个问题：作者先把什么现象定义成问题；接着提出了什么机制或系统来处理它；然后用什么证据证明这个机制有效；最后承认了哪些仍未解决的边界。缺任何一环，都不能把摘要写成确定结论。摘要也不能只是导读，它必须压缩写出主要做法和关键证据。
 
 ## 对照与反例
 

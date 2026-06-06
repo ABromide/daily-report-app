@@ -196,3 +196,33 @@ const auditEntries = locale === "zh"
     </aside>
   </div>
 </main>
+
+<script>
+  import mermaid from "mermaid";
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: "strict",
+    theme: "base",
+    themeVariables: {
+      background: "#fffdfa",
+      primaryColor: "#fff8ee",
+      primaryTextColor: "#243048",
+      primaryBorderColor: "#d9c9ad",
+      lineColor: "#56617a",
+      secondaryColor: "#e8f0f7",
+      tertiaryColor: "#f7f1e6",
+      fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
+    }
+  });
+
+  const renderMermaid = async () => {
+    const diagrams = document.querySelectorAll<HTMLElement>(".markdown-body .mermaid");
+    if (diagrams.length === 0) return;
+    await mermaid.run({ nodes: Array.from(diagrams) });
+  };
+
+  renderMermaid().catch((error) => {
+    console.error("Mermaid render failed", error);
+  });
+</script>

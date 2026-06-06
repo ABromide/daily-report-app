@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/07/itm_360c585a9772d5c6/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-06T16:21:09Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260606t162109z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "确认 SABER 于 2026-05-31 提交，GitHub 仓库本周仍更新；known-links 与最新 items 未出现 arxiv:2606.01317。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "读取 arXiv PDF 全文、Figure/Table、附录指标定义、GitHub README 与 RUNNING.md。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 716 个 Docker sandbox 任务、三类场景、六类 outcome、HSR/SRR/IR/LRR/PHR/CPR 指标和代码复现入口。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 AgentDojo、RedCode、ToolEmu 与同周 What Breaks When LLMs Code，确认 SABER 的状态化工作区增量。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "列出不能推出商业 Agent 端到端事故率、不能简单归因开闭源差异、不能用提高拒答率替代安全完成。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入 5000 字以上中文 Markdown，包含 TL;DR、表格、公式、Mermaid、3 张图表页图片和审稿式结论。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_360c585a9772d5c6"
+  ]
+}

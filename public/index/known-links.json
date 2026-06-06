@@ -1,13 +1,13 @@
 {
   "links": [
     {
-      "canonical_url": "https://openai.com/index/frontier-safety-blueprint/",
+      "canonical_url": "https://arxiv.org/abs/2606.01166",
       "category_id": "ai-safety",
-      "content_hash": "b316b81f75a42ed11e75bced71fb319d63a130bcea6f59bf9b3281ba3f69d611",
-      "external_id": "openai-frontier-safety-blueprint-2026-06-03",
-      "first_seen_at": "2026-06-06T14:15:18Z",
-      "item_id": "itm_7eed37bd41712388",
-      "title_hash": "5ec1df1fe2ce0213f6b1fb6311cd2accff7ece99679211b165a271ff2897c17b"
+      "content_hash": "48b99b297970dd3ddc7e9a7f6e26f5dd553cb57d355577046af107b94ebd0822",
+      "external_id": "arxiv:2606.01166",
+      "first_seen_at": "2026-06-06T15:09:37Z",
+      "item_id": "itm_cad15834c2296176",
+      "title_hash": "225597914a29788e031e18be5f217dcac6ec3d6097c91da377c1752426b0f708"
     },
     {
       "canonical_url": "https://arxiv.org/abs/2606.01249",
@@ -26,8 +26,35 @@
       "first_seen_at": "2026-06-06T14:15:18Z",
       "item_id": "itm_2d450e628d639adc",
       "title_hash": "3e6071d665b2408a44ae9f44e73ba84e921a1e8de698951ceccb5131084450fb"
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2606.02398",
+      "category_id": "llm-post-training",
+      "content_hash": "402d37405631916c9a3aca391395bedf693c54ced93655f12783ce60b7106378",
+      "external_id": "arxiv:2606.02398",
+      "first_seen_at": "2026-06-06T14:53:28Z",
+      "item_id": "itm_f9e47b7d4ea512dc",
+      "title_hash": "7f1a09583f9d2c5ddcb39054c368316538c826a473f584596e139c324578272f"
+    },
+    {
+      "canonical_url": "https://openai.com/index/frontier-safety-blueprint/",
+      "category_id": "ai-safety",
+      "content_hash": "b316b81f75a42ed11e75bced71fb319d63a130bcea6f59bf9b3281ba3f69d611",
+      "external_id": "openai-frontier-safety-blueprint-2026-06-03",
+      "first_seen_at": "2026-06-06T14:15:18Z",
+      "item_id": "itm_7eed37bd41712388",
+      "title_hash": "5ec1df1fe2ce0213f6b1fb6311cd2accff7ece99679211b165a271ff2897c17b"
+    },
+    {
+      "canonical_url": "https://www.anthropic.com/news/expanding-project-glasswing",
+      "category_id": "ai-safety",
+      "content_hash": "12fff97bc82d2e96cceb32bcfc56b29fd50fd6c02de6b66229ddd4937b555ce6",
+      "external_id": "anthropic-expanding-project-glasswing-2026-06-02",
+      "first_seen_at": "2026-06-06T15:02:28Z",
+      "item_id": "itm_fd9b87df1fe1b911",
+      "title_hash": "68958518357099abe99e120d2e5f3c0613949afd4e3bf3ab09444a1c6e74196f"
     }
   ],
-  "updated_at": "2026-06-06T14:15:18Z",
+  "updated_at": "2026-06-06T15:09:37Z",
   "version": 1
 }

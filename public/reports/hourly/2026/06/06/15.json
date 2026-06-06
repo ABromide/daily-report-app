@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-06-06T15:09:37Z",
+  "item_count": 6,
+  "period": {
+    "start": "2026-06-06T15:00:00Z",
+    "end": "2026-06-06T16:00:00Z"
+  },
+  "report_id": "hourly:2026-06-06T15:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型 Agent 相关",
+      "item_ids": [
+        "itm_2d450e628d639adc"
+      ],
+      "summary": "OpenWebRL 继续代表本日 Agent 频道的核心线索：真实网页环境中的在线多轮 RL。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_52fe6ed46b3dab0e",
+        "itm_f9e47b7d4ea512dc"
+      ],
+      "summary": "后训练频道同时覆盖 OPD 分布错配与多领域 RL 能力干扰，均强调训练分布与目标能力之间的局部错位。"
+    },
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_7eed37bd41712388",
+        "itm_cad15834c2296176",
+        "itm_fd9b87df1fe1b911"
+      ],
+      "summary": "本小时新增 BraveGuard，把 AI 安全频道从政策制度与 frontier framework 扩展到 computer-use agent 的轨迹级 guard model。"
+    }
+  ],
+  "summary": "本次自动化新增 1 篇 AI 安全深读：BraveGuard 将 computer-use agent 安全检测从 prompt/response 级别推进到 trajectory-level，通过开放威胁挖掘、可执行任务合成、OpenClaw 轨迹采集和 guard model 训练，在 AgentHazard-Strongest 上报告显著提升。",
+  "top_item_ids": [
+    "itm_52fe6ed46b3dab0e",
+    "itm_7eed37bd41712388",
+    "itm_cad15834c2296176",
+    "itm_2d450e628d639adc",
+    "itm_fd9b87df1fe1b911"
+  ],
+  "version": 1
+}

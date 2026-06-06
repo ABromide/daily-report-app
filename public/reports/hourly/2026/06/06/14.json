@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-06T14:15:18Z",
-  "item_count": 3,
+  "generated_at": "2026-06-06T14:53:28Z",
+  "item_count": 4,
   "period": {
     "end": "2026-06-06T15:00:00Z",
     "start": "2026-06-06T14:00:00Z"
@@ -17,9 +17,10 @@
     {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_52fe6ed46b3dab0e"
+        "itm_52fe6ed46b3dab0e",
+        "itm_f9e47b7d4ea512dc"
       ],
-      "summary": "Trust Region OPD 关注 OPD 中教师和学生分布错配导致的可靠监督问题。"
+      "summary": "本小时新增多领域 RL 局部扰动理论，与 Trust Region OPD 一起覆盖后训练稳定性、分布错配和领域干扰问题。"
     },
     {
       "heading": "AI 安全相关",
@@ -29,8 +30,9 @@
       "summary": "OpenAI Frontier Safety Blueprint 把安全讨论推进到联邦框架、CAISI 与 whole-of-government resilience。"
     }
   ],
-  "summary": "本次真实自动化验证写入 3 条本周公开内容：OpenWebRL 代表 Agent 在线 RL 训练，Trust Region OPD 代表后训练稳定性，OpenAI Frontier Safety Blueprint 代表前沿 AI 安全制度化。",
+  "summary": "本次自动化新增 1 篇本周 LLM 后训练论文深读：多领域 RL 的能力干扰被解释为共享活跃冲突子空间上的二阶局部损伤，并通过短 Re-Math refresh 从 57.66 恢复到 66.04。",
   "top_item_ids": [
+    "itm_f9e47b7d4ea512dc",
     "itm_7eed37bd41712388",
     "itm_52fe6ed46b3dab0e",
     "itm_2d450e628d639adc"

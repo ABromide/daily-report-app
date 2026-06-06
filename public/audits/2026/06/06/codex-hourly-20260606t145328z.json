@@ -1,0 +1,74 @@
+{
+  "article_paths": [
+    "articles/2026/06/01/itm_f9e47b7d4ea512dc/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 0,
+    "llm-agent": 0,
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-06T14:53:28Z",
+  "quality_gate": {
+    "evidence_points": 7,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260606t145328z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "候选表记录了 TrOPD、OpenWebRL、OpenAI Blueprint 为重复候选，并选择 2026-06-01 提交的 arXiv:2606.02398 作为后训练替代内容。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "读取 arXiv 元数据、Hugging Face 论文页、HyperAI PDF 提取页和第三方周报，提取数据规模、公式、指标和恢复数字。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "按论文流程拆解稀疏更新、共享冲突子空间、二阶损伤项、短 refresh 和 rollback 证据。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "标注了 PDF 图片不可稳定引用、完整超参缺失、样本级失败案例缺失和跨模型泛化仍需验证。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "补充 Hugging Face Daily Papers、Wolf Digest 与 Hyperion Consulting，低质量转述未作为核心证据。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入纯 Markdown 长文，包含自包含 TL;DR、表格、公式、Mermaid、证据边界和 detail inventory。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f9e47b7d4ea512dc"
+  ]
+}

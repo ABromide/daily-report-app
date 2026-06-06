@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "bytes": 10818,
+      "content_type": "text/markdown",
+      "path": "articles/2026/05/31/itm_52fe6ed46b3dab0e/index.md",
+      "sha256": "93e1c29e5b53363a72d45127e8937f68c02f36dd1de68bf685ae064086415a18"
+    },
+    {
+      "bytes": 11838,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/01/itm_2d450e628d639adc/index.md",
+      "sha256": "196b74b7bfcecf8343440000aadce467cd67599c252793f870d087b91bf04309"
+    },
+    {
+      "bytes": 26289,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/01/itm_f9e47b7d4ea512dc/index.md",
+      "sha256": "402d37405631916c9a3aca391395bedf693c54ced93655f12783ce60b7106378"
+    },
+    {
+      "bytes": 12439,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/03/itm_7eed37bd41712388/index.md",
+      "sha256": "b316b81f75a42ed11e75bced71fb319d63a130bcea6f59bf9b3281ba3f69d611"
+    },
+    {
+      "bytes": 2319,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-hourly-20260606t145328z.json",
+      "sha256": "78206d517b4efcdcea75464e7451efa9bff25a2f7f148c5d6b62e2b62f9fb58f"
+    },
+    {
+      "bytes": 2408,
+      "content_type": "application/json",
+      "path": "audits/2026/06/06/codex-real-automation-20260606t141518z.json",
+      "sha256": "9dce127c211cd4c04442477a3006a0bdbd7b97f5239070acee7e35fa06d3e033"
+    },
+    {
+      "bytes": 353,
+      "content_type": "application/json",
+      "path": "index/days.json",
+      "sha256": "0ecc7cdb1ab2390248f720d714c74ae5b0ed45f246140e483280ec904be2eed9"
+    },
+    {
+      "bytes": 1786,
+      "content_type": "application/json",
+      "path": "index/known-links.json",
+      "sha256": "0269bdff4627b685146154e753cced8dc43cb21c5a0569892dbb88c5e1bac713"
+    },
+    {
+      "bytes": 1484,
+      "content_type": "application/json",
+      "path": "index/sources.json",
+      "sha256": "79f6b0e18fe37a85811affb2b1e6a5069a649f4fff0bce184e76d9afd14a2118"
+    },
+    {
+      "bytes": 8204,
+      "content_type": "application/x-ndjson",
+      "path": "items/2026/06/06/items.jsonl",
+      "sha256": "5b6e777b7fd4063b6be966283ebffe75d9cafa579ecd4f86b63fe4f503d695af"
+    },
+    {
+      "bytes": 1432,
+      "content_type": "application/json",
+      "path": "reports/daily/2026/06/06.json",
+      "sha256": "228024e7a33b61aa5439443c7d91d5575ba2138eaf5ab82b4130f78dd1442328"
+    },
+    {
+      "bytes": 1389,
+      "content_type": "application/json",
+      "path": "reports/hourly/2026/06/06/14.json",
+      "sha256": "9d9298ea6c16f3e83d564da9aba7d3e837f2068aad3bcd1633cb0b379b252e80"
+    }
+  ],
+  "generated_at": "2026-06-06T14:53:28Z",
+  "root": "public",
+  "total_bytes": 80759,
+  "total_files": 12,
+  "version": 1
+}

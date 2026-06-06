@@ -47,7 +47,7 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert contract["analysis_requirements"]["suggested_section_count"] >= 8
     assert "论文或项目元信息" in contract["analysis_requirements"]["suggested_sections"]
     assert "论文类固定正文流程" in contract["analysis_requirements"]["suggested_sections"]
-    assert "外部图片、Figure 与 Table 解读" in contract["analysis_requirements"]["suggested_sections"]
+    assert "本地附件图片、Figure 与 Table 解读" in contract["analysis_requirements"]["suggested_sections"]
     assert "实验设置、主结果与消融" in contract["analysis_requirements"]["suggested_sections"]
     assert "审稿式结论" in contract["analysis_requirements"]["suggested_sections"]
     assert "完整原文" in contract["analysis_requirements"]["depth_rule"]
@@ -79,7 +79,9 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "paper" in contract["analysis_requirements"]["type_guidance"]
     assert "blog_or_report" in contract["analysis_requirements"]["type_guidance"]
     assert "code" in contract["analysis_requirements"]["type_guidance"]
-    assert "原始图片链接" in contract["analysis_requirements"]["image_rule"]
+    assert "不要在 Markdown 中直接使用外部图片 URL" in contract["analysis_requirements"]["image_rule"]
+    assert "public/assets/YYYY/MM/DD/ITEM_ID/" in contract["analysis_requirements"]["image_rule"]
+    assert "相当于附件上传" in contract["analysis_requirements"]["image_rule"]
     assert "尽可能多" in contract["analysis_requirements"]["image_rule"]
     assert "第三方解读" in contract["analysis_requirements"]["reference_search_rule"]
     assert "Markdown" in contract["analysis_requirements"]["format"]
@@ -126,6 +128,8 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert "finalize-public-run" in prompt_text
     assert "不要运行 rm" in prompt_text
     assert "public/.automation-trash" in prompt_text
+    assert "所有用于展示的图片都必须先下载到 public/assets" in prompt_text
+    assert "不要把外部图片 URL 直接放进 Markdown 图片语法" in prompt_text
     assert "不要手工读取" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("子 Agent" in step["name"] for step in prompt["steps"])

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T16:42:44Z",
+  "generated_at": "2026-06-06T16:50:51Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -10,7 +10,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Open-access research paper source used for this hourly AI safety deep read.",
+      "description": "arXiv official abstract, HTML and PDF pages used for paper deep reads.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

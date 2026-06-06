@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/06/07/itm_5bee1372117e3472/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-06T16:50:51Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5013,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260606t165051z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "候选侦察覆盖 Agent、后训练、安全三类，排除 OpenWebRL 与 SABER 重复；TrOPD 属本周 v2 修订后训练候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整核对 arXiv abs/html/PDF、Hugging Face paper 页和项目 README，提取公式、训练设置、benchmark、结果、消融与局限。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "指出 v1 2026-05-31、v2 2026-06-03 的日期边界，并限制 trust region、baseline 和可复现性解读。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 Hugging Face 相关 OPD 论文，补充 behavior blending、control variate、AOPD 等同类线索。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文超过 5000 中文字符，包含表格、公式、Mermaid、4 张本地化图片和审稿式边界说明。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5bee1372117e3472"
+  ]
+}

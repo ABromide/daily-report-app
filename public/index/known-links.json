@@ -35,8 +35,17 @@
       "first_seen_at": "2026-06-06T16:21:09Z",
       "item_id": "itm_360c585a9772d5c6",
       "title_hash": "b3df1a10ea4e7af03918fd043cf7b9ef70323de20bb7c5a5d324931679c7a6ae"
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2606.01249",
+      "category_id": "llm-post-training",
+      "content_hash": "17e8c67d1f5921e8249def5ca47f5a7c7f462cdb02d02ec4c97f13eb6365884e",
+      "external_id": "arxiv:2606.01249v2",
+      "first_seen_at": "2026-06-06T16:50:51Z",
+      "item_id": "itm_5bee1372117e3472",
+      "title_hash": "36e89d0fc74fe4b08f4cab19d0c23555d9991e6c971b24cb6ef1bbfc0413e13f"
     }
   ],
-  "updated_at": "2026-06-06T16:42:44Z",
+  "updated_at": "2026-06-06T16:50:51Z",
   "version": 1
 }

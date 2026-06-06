@@ -576,12 +576,12 @@ const heroCopy: Record<Locale, ShowcaseData["hero"]> = {
 const statCopy: Record<Locale, Array<{ label: string; value: string }>> = {
   zh: [
     { label: "主题聚类", value: "4" },
-    { label: "精选文档", value: "13" },
+    { label: "精选文档", value: "14" },
     { label: "来源类型", value: "论文 / 博客 / 代码" }
   ],
   en: [
     { label: "Topic clusters", value: "4" },
-    { label: "Curated documents", value: "13" },
+    { label: "Curated documents", value: "14" },
     { label: "Source types", value: "Papers / Blogs / Code" }
   ]
 };

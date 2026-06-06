@@ -9,6 +9,13 @@ interface Props {
 }
 
 const { activeView, data, variant = "sidebar" } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+const hrefFor = (href: string) => {
+  if (href === "/") {
+    return basePath;
+  }
+  return `${basePath}${href.replace(/^\//, "")}`;
+};
 
 const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }> = [
   { id: "feed", href: "/", label: "Feed", meta: `${data.signals.length} signals` },
@@ -23,12 +30,12 @@ const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }>
     <aside class="sidebar" aria-label="Workspace views">
       <div class="brand-block">
         <p class="eyebrow">Daily Report App</p>
-        <a class="brand-title" href="/">Research Workstation</a>
+        <a class="brand-title" href={hrefFor("/")}>Research Workstation</a>
       </div>
 
       <nav class="nav-list" aria-label="Workspace views">
         {navItems.map((item) => (
-          <a class:list={["nav-item", { "is-active": item.id === activeView }]} href={item.href} aria-current={item.id === activeView ? "page" : undefined}>
+          <a class:list={["nav-item", { "is-active": item.id === activeView }]} href={hrefFor(item.href)} aria-current={item.id === activeView ? "page" : undefined}>
             <span>{item.label}</span>
             <small>{item.meta}</small>
           </a>
@@ -44,7 +51,7 @@ const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }>
   ) : (
     <nav class="mobile-tabs" aria-label="Mobile views">
       {navItems.map((item) => (
-        <a class:list={["mobile-tab", { "is-active": item.id === activeView }]} href={item.href} aria-current={item.id === activeView ? "page" : undefined}>
+        <a class:list={["mobile-tab", { "is-active": item.id === activeView }]} href={hrefFor(item.href)} aria-current={item.id === activeView ? "page" : undefined}>
           <span>{item.label}</span>
         </a>
       ))}

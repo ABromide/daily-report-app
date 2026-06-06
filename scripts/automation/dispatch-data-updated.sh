@@ -13,7 +13,8 @@ Options:
   --send       Send the repository_dispatch request. Without this flag, print a dry run.
 
 Environment:
-  GITHUB_TOKEN must be set when --send is used.
+  GITHUB_TOKEN is used when set. Otherwise the script falls back to an
+  authenticated GitHub CLI session when --send is used.
 USAGE
 }
 
@@ -78,15 +79,21 @@ if [ "$send" != "1" ]; then
   exit 0
 fi
 
-if [ -z "${GITHUB_TOKEN:-}" ]; then
-  echo "GITHUB_TOKEN is required when --send is used." >&2
-  exit 2
+if [ -n "${GITHUB_TOKEN:-}" ]; then
+  curl -fsSL \
+    -X POST \
+    -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "$api_url" \
+    -d "$payload"
+  exit 0
 fi
 
-curl -fsSL \
-  -X POST \
-  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  "$api_url" \
-  -d "$payload"
+if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  printf '%s' "$payload" | gh api "repos/${repo}/dispatches" --method POST --input -
+  exit 0
+fi
+
+echo "GITHUB_TOKEN or an authenticated gh CLI session is required when --send is used." >&2
+exit 2

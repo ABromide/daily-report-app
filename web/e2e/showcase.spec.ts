@@ -29,19 +29,19 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-zh.png`, fullPage: true });
 
-  await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("OPD");
+  await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("SFT");
   await expect(page.getByRole("heading", { name: "大模型后训练相关" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Trust Region OPD：用可信区域稳定 On-Policy Distillation" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("安全");
   await expect(page.getByRole("heading", { name: "AI 安全相关" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "一年 AI 网络威胁映射：攻击者正在把 AI 用到更深阶段" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "OpenAI 的 Frontier Safety Blueprint 把安全讨论从公司自律推向联邦制度设计" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByRole("button", { name: "代码" }).click();
-  await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" }).first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Open WebUI：本地 Agent 入口的用户界面" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "OpenAI Agents SDK JS 把多 Agent、Sandbox 和 Tracing 收成同一条工程主线" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByRole("button", { name: "AI 安全相关" }).click();
@@ -67,7 +67,7 @@ test("English content hub remains available under /en", async ({ page }, testInf
 
   await page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code").fill("post-training");
   await expect(page.getByRole("heading", { name: "LLM Post-Training", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "FiRe-OPD: Filter, Then Reweight On-Policy Distillation" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" }).first()).toBeVisible();
 
   expect(errors).toEqual([]);
 });
@@ -76,9 +76,9 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   const errors = watchConsole(page);
 
   await page.goto("/");
-  await page.getByRole("link", { name: "Dify：生产级 Agentic Workflow 平台" }).first().click();
-  await expect(page).toHaveURL(/\/items\/dify-agent-platform$/);
-  await expect(page.locator(".detail-hero").getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
+  await page.getByRole("link", { name: "OpenAI Agents SDK JS 把多 Agent、Sandbox 和 Tracing 收成同一条工程主线" }).first().click();
+  await expect(page).toHaveURL(/\/items\/itm_fe01906c4ef44106$/);
+  await expect(page.locator(".detail-hero").getByRole("heading", { name: "OpenAI Agents SDK JS 把多 Agent、Sandbox 和 Tracing 收成同一条工程主线" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Markdown 深度分析稿" })).toBeVisible();
   await expect(page.getByText("TL;DR")).toBeVisible();
   await expect(page.getByRole("heading", { name: "来源与材料地图" })).toBeVisible();
@@ -102,8 +102,8 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
 test("English detail page shows post-training classification", async ({ page }) => {
   const errors = watchConsole(page);
 
-  await page.goto("/en/items/trust-region-opd");
-  await expect(page.locator(".detail-hero").getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
+  await page.goto("/en/items/itm_d0ccf7dfcec35db8");
+  await expect(page.locator(".detail-hero").getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Markdown Analysis Document" })).toBeVisible();
   await expect(page.getByText("TL;DR")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Source Map" }).or(page.getByRole("heading", { name: "来源与材料地图" }))).toBeVisible();

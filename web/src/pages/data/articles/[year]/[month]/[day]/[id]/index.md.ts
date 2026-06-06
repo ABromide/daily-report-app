@@ -22,7 +22,7 @@ export function getStaticPaths() {
 }
 
 export function GET({ props }: { props: { item: ShowcaseItem; cluster?: ShowcaseCluster } }) {
-  return new Response(renderShowcaseArticleMarkdown(props.item, props.cluster), {
+  return new Response(props.item.analysisMarkdown ?? renderShowcaseArticleMarkdown(props.item, props.cluster), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8"
     }

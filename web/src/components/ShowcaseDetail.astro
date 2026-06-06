@@ -73,7 +73,7 @@ const localHref = (path: string) => {
   return `${basePath}${path.replace(/^\//, "")}`;
 };
 const itemHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
-const analysisMarkdown = renderShowcaseArticleMarkdown(item, cluster);
+const analysisMarkdown = item.analysisMarkdown ?? renderShowcaseArticleMarkdown(item, cluster);
 const analysisHtml = renderMarkdownToHtml(analysisMarkdown);
 const analysisMarkdownHref = localHref(`/data/${item.analysisMarkdownPath}`);
 const auditEntries = locale === "zh"

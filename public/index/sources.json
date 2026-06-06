@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T23:43:58Z",
+  "generated_at": "2026-06-06T23:41:31Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -10,9 +10,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "人工深读 arXiv 论文、PDF、项目页和代码 README 后写入。",
+      "description": "arXiv research paper source for Daily Report automation.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -26,12 +26,20 @@
       "name": "arXiv / OpenWebRL Project"
     },
     {
-      "description": "Code release and repository metadata source for implementation and reproducibility checks.",
+      "description": "Official code and documentation source for selected research projects.",
       "enabled": true,
-      "homepage_url": "https://github.com/",
+      "homepage_url": "https://github.com",
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
+    },
+    {
+      "description": "Model cards and HF Papers metadata for current AI research.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co",
+      "id": "huggingface",
+      "kind": "manual",
+      "name": "Hugging Face"
     },
     {
       "description": "Community paper page used for publication-window confirmation, discussion and related-paper discovery.",

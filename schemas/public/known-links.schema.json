@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-report.local/schemas/public/known-links.schema.json",
+  "title": "Known public links ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "updated_at", "links"],
+  "properties": {
+    "version": { "const": 1 },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "canonical_url",
+          "external_id",
+          "item_id",
+          "category_id",
+          "title_hash",
+          "content_hash",
+          "first_seen_at"
+        ],
+        "properties": {
+          "canonical_url": { "type": "string", "format": "uri" },
+          "external_id": { "type": "string", "minLength": 1 },
+          "item_id": { "type": "string", "minLength": 1 },
+          "category_id": {
+            "type": "string",
+            "enum": ["llm-agent", "llm-post-training", "ai-safety"]
+          },
+          "title_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "content_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "first_seen_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

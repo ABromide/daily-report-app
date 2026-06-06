@@ -76,11 +76,47 @@ def item_fingerprint(raw_item: JsonObject) -> str:
     return sha256_bytes(canonical_json_bytes(item_identity(raw_item)))
 
 
+def canonical_url(raw_item: JsonObject) -> str:
+    return str(raw_item["url"]).split("#", maxsplit=1)[0].rstrip("/")
+
+
+def external_id(raw_item: JsonObject) -> str:
+    return canonical_url(raw_item).rsplit("/", maxsplit=1)[-1]
+
+
+def title_hash(raw_item: JsonObject) -> str:
+    return sha256_bytes(canonical_json_bytes({"title": str(raw_item["title"]).casefold().strip()}))
+
+
 def normalize_item(raw_item: JsonObject) -> JsonObject:
     fingerprint = item_fingerprint(raw_item)
     item = deepcopy(raw_item)
     item["fingerprint"] = fingerprint
     item["id"] = f"itm_{fingerprint[:16]}"
+    item["item_id"] = str(item["id"])
+    item["category_id"] = "llm-agent"
+    item["type"] = "report"
+    item["source_name"] = "Sample Research Feed"
+    item["source_type"] = "fixture"
+    item["external_id"] = external_id(raw_item)
+    item["canonical_url"] = canonical_url(raw_item)
+    item["fetched_at"] = str(raw_item["collected_at"])
+    item["sort_at"] = str(raw_item["published_at"])
+    item["summary_zh"] = f"样例摘要：{raw_item['summary']}"
+    item["analysis_zh"] = "这条 fixture 用来验证自动化写入、manifest 校验、去重表和前端展示格式。"
+    item["language"] = "en"
+    item["reading_minutes"] = 3
+    item["title_hash"] = title_hash(raw_item)
+    item["content_hash"] = fingerprint
+    item["visual"] = {
+        "question": "这条内容应该如何进入 AI 研究 Hub？",
+        "approach": ["识别来源", "生成摘要", "写入去重表"],
+        "takeaway": "自动化输出必须同时可读、可验证、可去重。",
+        "metrics": [
+            {"label": "格式完整度", "value": "High", "score": 88},
+            {"label": "去重可信度", "value": "Strong", "score": 84},
+        ],
+    }
     item["tags"] = sorted(set(str(tag) for tag in raw_item["tags"]))
     item["evidence"] = [
         {
@@ -108,3 +144,20 @@ def dedupe_items(items: Iterable[JsonObject]) -> list[JsonObject]:
 
 def sample_items() -> list[JsonObject]:
     return dedupe_items(raw_sample_items())
+
+
+def known_link_entries(items: Iterable[JsonObject]) -> list[JsonObject]:
+    entries: list[JsonObject] = []
+    for item in items:
+        entries.append(
+            {
+                "canonical_url": str(item["canonical_url"]),
+                "external_id": str(item["external_id"]),
+                "item_id": str(item["item_id"]),
+                "category_id": str(item["category_id"]),
+                "title_hash": str(item["title_hash"]),
+                "content_hash": str(item["content_hash"]),
+                "first_seen_at": str(item["fetched_at"]),
+            }
+        )
+    return sorted(entries, key=lambda entry: (str(entry["canonical_url"]), str(entry["item_id"])))

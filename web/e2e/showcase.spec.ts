@@ -17,27 +17,37 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   const errors = watchConsole(page);
 
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "今天值得打开的 AI 论文、博客与代码" })).toBeVisible();
-  await expect(page.getByPlaceholder("搜索论文、博客、代码、模型、作者或关键词")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "三类 AI 前沿内容：Agent、后训练、安全" })).toBeVisible();
+  await expect(page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码")).toBeVisible();
   await expect(page.getByRole("heading", { name: "今日精选" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "主题聚类" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "三类频道" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最新更新" })).toBeVisible();
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "分类跳转" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /02 大模型后训练相关/ })).toBeVisible();
+  await expect(page.getByText("核心问题").first()).toBeVisible();
+  await expect(page.getByText("方法路径").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-zh.png`, fullPage: true });
 
-  await page.getByPlaceholder("搜索论文、博客、代码、模型、作者或关键词").fill("安全");
-  await expect(page.getByRole("heading", { name: "AI 安全从模型问答扩展到操作风险" })).toBeVisible();
+  await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("OPD");
+  await expect(page.getByRole("heading", { name: "大模型后训练相关" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Trust Region OPD：用可信区域稳定 On-Policy Distillation" }).first()).toBeVisible();
+
+  await page.getByRole("button", { name: "清除筛选" }).click();
+  await page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码").fill("安全");
+  await expect(page.getByRole("heading", { name: "AI 安全相关" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "一年 AI 网络威胁映射：攻击者正在把 AI 用到更深阶段" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
   await page.getByRole("button", { name: "代码" }).click();
   await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" }).first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Open WebUI：用户友好的 AI 本地界面" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Open WebUI：本地 Agent 入口的用户界面" }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "清除筛选" }).click();
-  await expect(page.getByRole("heading", { name: "Agent 工程正在进入真实开发流程" })).toBeVisible();
+  await page.getByRole("link", { name: /03 AI 安全相关/ }).click();
+  await expect(page.locator("#ai-safety")).toBeVisible();
 
   expect(errors).toEqual([]);
 });
@@ -46,17 +56,51 @@ test("English content hub remains available under /en", async ({ page }, testInf
   const errors = watchConsole(page);
 
   await page.goto("/en");
-  await expect(page.getByRole("heading", { name: "AI Papers, Blogs, and Code Worth Opening Today" })).toBeVisible();
-  await expect(page.getByPlaceholder("Search papers, blogs, code, models, authors, or keywords")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Three Frontiers: Agents, Post-Training, Safety" })).toBeVisible();
+  await expect(page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Featured today" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Topic clusters" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Three channels" })).toBeVisible();
   await expect(page.getByLabel("Open GitHub repository")).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Jump channels" })).toBeVisible();
+  await expect(page.getByText("Core question").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-en.png`, fullPage: true });
 
-  await page.getByPlaceholder("Search papers, blogs, code, models, authors, or keywords").fill("memory");
-  await expect(page.getByRole("heading", { name: "OpenAI: Better Memory for a More Helpful ChatGPT" }).first()).toBeVisible();
+  await page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code").fill("post-training");
+  await expect(page.getByRole("heading", { name: "LLM Post-Training", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "FiRe-OPD: Filter, Then Reweight On-Policy Distillation" }).first()).toBeVisible();
+
+  expect(errors).toEqual([]);
+});
+
+test("Chinese visual card opens a second-level analysis page", async ({ page }, testInfo) => {
+  const errors = watchConsole(page);
+
+  await page.goto("/");
+  await page.getByRole("link", { name: "Dify：生产级 Agentic Workflow 平台" }).first().click();
+  await expect(page).toHaveURL(/\/items\/dify-agent-platform$/);
+  await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "AI 深度解析" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
+  await expect(page.getByText("大模型 Agent 相关")).toBeVisible();
+  await expect(page.getByRole("link", { name: "打开原文" })).toBeVisible();
+
+  await mkdir("test-results", { recursive: true });
+  await page.screenshot({ path: `test-results/${testInfo.project.name}-detail-zh.png`, fullPage: true });
+
+  expect(errors).toEqual([]);
+});
+
+test("English detail page shows post-training classification", async ({ page }) => {
+  const errors = watchConsole(page);
+
+  await page.goto("/en/items/trust-region-opd");
+  await expect(page.getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "AI Deep Analysis" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
+  await expect(page.getByText("LLM Post-Training")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open source" })).toBeVisible();
 
   expect(errors).toEqual([]);
 });

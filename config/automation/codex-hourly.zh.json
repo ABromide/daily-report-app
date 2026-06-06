@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "name": "Daily Report 中文小时级采集",
+  "language": "zh-CN",
+  "schedule": {
+    "kind": "hourly",
+    "recommended_minute": 17,
+    "timezone": "Asia/Shanghai"
+  },
+  "date_window": {
+    "mode": "today_or_current_week",
+    "max_age_days": 7,
+    "rule": "只允许采集今天或本周内发布、更新、合并或被官方页面标记为当前日期范围内的内容。无法确认日期的候选必须丢弃。"
+  },
+  "categories": [
+    {
+      "id": "llm-agent",
+      "label": "大模型 Agent 相关",
+      "queries": [
+        "LLM agent workflow tool use coding agent",
+        "Claude Code agent workflow",
+        "agentic workflow open source AI agent"
+      ]
+    },
+    {
+      "id": "llm-post-training",
+      "label": "大模型后训练相关",
+      "queries": [
+        "LLM post-training SFT RL OPD",
+        "on-policy distillation large language model",
+        "reinforcement learning SFT reasoning model post-training"
+      ]
+    },
+    {
+      "id": "ai-safety",
+      "label": "AI 安全相关",
+      "queries": [
+        "frontier AI safety framework",
+        "AI enabled cyber threats",
+        "LLM agent containment permissions safety"
+      ]
+    }
+  ],
+  "dedupe": {
+    "ledger_path": "public/index/known-links.json",
+    "keys": ["canonical_url", "external_id", "title_hash", "content_hash"],
+    "normalization": [
+      "去除 URL fragment",
+      "去除常见 tracking query 参数",
+      "域名转小写",
+      "标题大小写折叠并压缩空白"
+    ],
+    "rule": "每次写入前必须读取 known-links.json 和最新 items.jsonl；如果候选 canonical_url、external_id、title_hash 或 content_hash 已存在，视为重复内容，必须丢弃该候选并继续寻找同类替代内容。"
+  },
+  "output_contract": {
+    "branch": "data",
+    "item_path": "public/items/YYYY/MM/DD/items.jsonl",
+    "report_path": "public/reports/hourly/YYYY/MM/DD/HH.json",
+    "manifest_path": "public/manifests/YYYY/MM/DD/HH.manifest.json",
+    "required_item_fields": [
+      "item_id",
+      "category_id",
+      "type",
+      "source_id",
+      "external_id",
+      "url",
+      "canonical_url",
+      "title",
+      "published_at",
+      "fetched_at",
+      "summary_zh",
+      "analysis_zh",
+      "visual",
+      "tags",
+      "content_hash"
+    ]
+  },
+  "codex_prompt_zh": "你是 Daily Report 的中文采集 Agent。每小时只寻找今天或本周内的大模型 Agent、大模型后训练、AI 安全内容。优先官方博客、论文页、GitHub 仓库和研究机构页面。写入前读取 public/index/known-links.json 与最新 items.jsonl 做去重；重复则丢弃并寻找同类替代。每条内容必须输出中文摘要、AI 解读、可视化摘要字段、来源链接、发布日期和 category_id。完成后生成 manifest，运行 validate-public 与 secret-scan，通过后提交到 data 分支并触发 data-updated。"
+}

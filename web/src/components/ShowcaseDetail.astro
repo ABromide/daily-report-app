@@ -1,0 +1,187 @@
+---
+import type { Locale } from "../lib/i18n";
+import type { LocalizedDocument, ShowcaseData } from "../lib/showcaseContent";
+import { formatDateTime } from "../lib/format";
+import VisualBrief from "./VisualBrief.astro";
+
+interface Props {
+  data: ShowcaseData;
+  item: LocalizedDocument;
+  locale: Locale;
+}
+
+const { data, item, locale } = Astro.props;
+const cluster = data.clusters.find((entry) => entry.id === item.clusterId);
+const relatedItems = (cluster?.documents ?? []).filter((entry) => entry.id !== item.id).slice(0, 3);
+
+const labels = {
+  zh: {
+    back: "返回首页",
+    github: "查看 GitHub 仓库",
+    source: "打开原文",
+    detail: "AI 深度解析",
+    visual: "可视化摘要",
+    category: "分类位置",
+    categoryHint: "这篇内容被归入固定三类频道之一，用来保证每次自动化写入都能被稳定聚类。",
+    problem: "它解决什么问题",
+    path: "方法路径",
+    why: "为什么值得看",
+    sourceInfo: "来源信息",
+    related: "同类继续看",
+    published: "发布时间",
+    reading: "阅读时间",
+    minutes: "分钟",
+    coreQuestion: "核心问题",
+    methodPath: "方法路径",
+    keySignals: "关键信号",
+    aiTakeaway: "AI 解读"
+  },
+  en: {
+    back: "Back home",
+    github: "Open GitHub repository",
+    source: "Open source",
+    detail: "AI Deep Analysis",
+    visual: "Visual Brief",
+    category: "Category Fit",
+    categoryHint: "This item is assigned to one of three fixed channels so automated writes stay consistently clustered.",
+    problem: "Problem It Addresses",
+    path: "Method Path",
+    why: "Why It Matters",
+    sourceInfo: "Source",
+    related: "Related Reads",
+    published: "Published",
+    reading: "Reading Time",
+    minutes: "min",
+    coreQuestion: "Core question",
+    methodPath: "Method path",
+    keySignals: "Key signals",
+    aiTakeaway: "AI take"
+  }
+}[locale];
+
+const alternatePath = locale === "zh" ? `/en/items/${item.id}` : `/items/${item.id}`;
+const homePath = locale === "zh" ? "/" : "/en";
+const basePath = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const localHref = (path: string) => {
+  if (path === "/") return basePath;
+  return `${basePath}${path.replace(/^\//, "")}`;
+};
+const itemHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
+const visualLabels = {
+  coreQuestion: labels.coreQuestion,
+  methodPath: labels.methodPath,
+  keySignals: labels.keySignals,
+  aiTakeaway: labels.aiTakeaway
+};
+---
+
+<main class="detail-page" data-locale={locale}>
+  <header class="site-header detail-site-header">
+    <a class="site-brand" href={localHref(homePath)} aria-label={labels.back}>
+      <span>Daily Report</span>
+      <strong>{labels.back}</strong>
+    </a>
+    <nav class="site-actions" aria-label="Header actions">
+      <a class="language-link" href={localHref(alternatePath)}>{locale === "zh" ? "English" : "中文"}</a>
+      <a class="github-link" href={data.repoUrl} aria-label={labels.github} title={labels.github}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.88c.51.1.7-.22.7-.49v-1.8c-2.86.62-3.46-1.22-3.46-1.22-.47-1.19-1.14-1.5-1.14-1.5-.93-.64.07-.63.07-.63 1.03.07 1.57 1.06 1.57 1.06.92 1.56 2.4 1.11 2.99.85.09-.66.36-1.11.65-1.37-2.28-.26-4.68-1.14-4.68-5.07 0-1.12.4-2.04 1.05-2.76-.11-.26-.46-1.31.1-2.72 0 0 .86-.28 2.82 1.05A9.76 9.76 0 0 1 12 6.72c.87 0 1.74.12 2.56.35 1.95-1.33 2.81-1.05 2.81-1.05.56 1.41.21 2.46.1 2.72.66.72 1.05 1.64 1.05 2.76 0 3.94-2.4 4.8-4.69 5.06.37.32.7.95.7 1.92v2.84c0 .27.18.59.71.49A10.2 10.2 0 0 0 12 1.8Z" />
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <article class="detail-hero">
+    <div>
+      <div class="content-card-meta">
+        <span class:list={["type-pill", `type-${item.type}`]}>{item.typeLabel}</span>
+        <span>{formatDateTime(item.publishedAt, locale)}</span>
+        <span>{item.readingMinutes} {labels.minutes}</span>
+      </div>
+      <h1>{item.title}</h1>
+      <p>{item.summary}</p>
+      <div class="tag-row">{item.tags.map((tag) => <span>{tag}</span>)}</div>
+    </div>
+    <aside class="detail-source-card" aria-label={labels.sourceInfo}>
+      <img src={item.faviconUrl} alt="" loading="lazy" />
+      <strong>{item.sourceName}</strong>
+      <span>{item.domain}</span>
+      <a href={item.url}>{labels.source}</a>
+    </aside>
+  </article>
+
+  <div class="detail-layout">
+    <div class="detail-main">
+      <section class="detail-section" aria-labelledby="visual-title">
+        <p class="eyebrow">{labels.visual}</p>
+        <h2 id="visual-title">{labels.visual}</h2>
+        <VisualBrief visual={item.visual} labels={visualLabels} />
+      </section>
+
+      <section class="detail-section" aria-labelledby="analysis-title">
+        <p class="eyebrow">{labels.detail}</p>
+        <h2 id="analysis-title">{labels.detail}</h2>
+        <div class="analysis-grid">
+          <div>
+            <span>{labels.problem}</span>
+            <p>{item.visual.question}</p>
+          </div>
+          <div>
+            <span>{labels.why}</span>
+            <p>{item.analysis}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="path-title">
+        <p class="eyebrow">{labels.path}</p>
+        <h2 id="path-title">{labels.path}</h2>
+        <ol class="method-steps">
+          {item.visual.approach.map((step) => <li>{step}</li>)}
+        </ol>
+      </section>
+    </div>
+
+    <aside class="detail-aside">
+      <section class="detail-section" aria-labelledby="category-title">
+        <p class="eyebrow">{labels.category}</p>
+        <h2 id="category-title">{labels.category}</h2>
+        <strong>{cluster?.title}</strong>
+        <p>{cluster?.thesis}</p>
+        <p class="muted-copy">{labels.categoryHint}</p>
+      </section>
+
+      <section class="detail-section" aria-labelledby="source-title">
+        <p class="eyebrow">{labels.sourceInfo}</p>
+        <h2 id="source-title">{labels.sourceInfo}</h2>
+        <dl class="detail-facts">
+          <div>
+            <dt>{labels.published}</dt>
+            <dd>{formatDateTime(item.publishedAt, locale)}</dd>
+          </div>
+          <div>
+            <dt>{labels.reading}</dt>
+            <dd>{item.readingMinutes} {labels.minutes}</dd>
+          </div>
+        </dl>
+      </section>
+
+      {relatedItems.length > 0 && (
+        <section class="detail-section" aria-labelledby="related-title">
+          <p class="eyebrow">{labels.related}</p>
+          <h2 id="related-title">{labels.related}</h2>
+          <div class="related-list">
+            {relatedItems.map((related) => (
+              <a href={itemHref(related.id)}>
+                <span>{related.typeLabel}</span>
+                <strong>{related.title}</strong>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </aside>
+  </div>
+</main>

@@ -37,7 +37,7 @@ export const copy = {
   zh: {
     appName: "Daily Report App",
     appTitle: "日报情报操作台",
-    layoutDescription: "一个自动聚类、可搜索、点击即打开的 AI 研究内容 Hub。",
+    layoutDescription: "一个按大模型 Agent、后训练和 AI 安全三类组织的可视化研究内容 Hub。",
     eyebrow: "Agent 情报简报",
     workstationTitle: "情报工作台",
     fixtureData: "样例数据",
@@ -114,7 +114,7 @@ export const copy = {
   en: {
     appName: "Daily Report App",
     appTitle: "Research Workstation",
-    layoutDescription: "A searchable AI research content hub with topic clusters and direct source links.",
+    layoutDescription: "A visual AI research content hub organized around LLM Agents, LLM Post-Training, and AI Safety.",
     eyebrow: "Agent Research Briefing",
     workstationTitle: "Research Workstation",
     fixtureData: "Fixture data",

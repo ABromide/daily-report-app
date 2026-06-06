@@ -19,7 +19,7 @@
         "properties": {
           "path": {
             "type": "string",
-            "pattern": "^(index/(days|sources)\\.json|items/[0-9]{4}/[0-9]{2}/[0-9]{2}/items\\.jsonl|reports/(hourly/[0-9]{4}/[0-9]{2}/[0-9]{2}/[0-9]{2}|daily/[0-9]{4}/[0-9]{2}/[0-9]{2})\\.json)$"
+            "pattern": "^(index/(days|sources|known-links)\\.json|items/[0-9]{4}/[0-9]{2}/[0-9]{2}/items\\.jsonl|reports/(hourly/[0-9]{4}/[0-9]{2}/[0-9]{2}/[0-9]{2}|daily/[0-9]{4}/[0-9]{2}/[0-9]{2})\\.json)$"
           },
           "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
           "bytes": { "type": "integer", "minimum": 0 },

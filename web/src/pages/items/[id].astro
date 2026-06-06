@@ -1,0 +1,20 @@
+---
+import Layout from "../../components/Layout.astro";
+import ShowcaseDetail from "../../components/ShowcaseDetail.astro";
+import { copy } from "../../lib/i18n";
+import { getShowcaseData } from "../../lib/showcaseContent";
+
+export function getStaticPaths() {
+  const data = getShowcaseData("zh");
+  return data.documents.map((item) => ({
+    params: { id: item.id },
+    props: { data, item }
+  }));
+}
+
+const { data, item } = Astro.props;
+---
+
+<Layout title={`${item.title} · Daily Report App`} description={copy.zh.layoutDescription} locale="zh">
+  <ShowcaseDetail data={data} item={item} locale="zh" />
+</Layout>

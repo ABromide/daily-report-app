@@ -2,6 +2,7 @@
 import type { Locale } from "../lib/i18n";
 import type { ShowcaseData } from "../lib/showcaseContent";
 import { formatDateTime } from "../lib/format";
+import VisualBrief from "./VisualBrief.astro";
 
 interface Props {
   data: ShowcaseData;
@@ -15,30 +16,42 @@ const labels = {
     search: "搜索",
     allTopics: "全部主题",
     featured: "今日精选",
-    featuredHint: "优先展示最值得点开的报告、论文和代码。",
-    clusters: "主题聚类",
-    clustersHint: "Agent 已把相关论文、博客和代码合并成阅读路径。",
+    featuredHint: "每个分类选出一张代表卡，先看 AI 可视化摘要，再打开原文。",
+    clusters: "三类频道",
+    clustersHint: "固定分为大模型 Agent、大模型后训练、AI 安全。",
     timeline: "最新更新",
     timelineHint: "按时间倒序排列，适合快速扫一遍今日新增。",
+    detail: "查看解析",
     open: "打开原文",
     noResults: "没有找到匹配内容。换个关键词试试。",
     minutes: "分钟",
-    clear: "清除筛选"
+    clear: "清除筛选",
+    jump: "分类跳转",
+    coreQuestion: "核心问题",
+    methodPath: "方法路径",
+    keySignals: "关键信号",
+    aiTakeaway: "AI 解读"
   },
   en: {
     github: "Open GitHub repository",
     search: "Search",
     allTopics: "All topics",
     featured: "Featured today",
-    featuredHint: "The most useful briefs, papers, and repositories to open first.",
-    clusters: "Topic clusters",
-    clustersHint: "The agent grouped related papers, blogs, and code into reading paths.",
+    featuredHint: "One representative visual card per channel before opening the source.",
+    clusters: "Three channels",
+    clustersHint: "Fixed channels: LLM Agents, LLM Post-Training, and AI Safety.",
     timeline: "Latest updates",
     timelineHint: "Sorted by time for a fast daily scan.",
+    detail: "Read analysis",
     open: "Open source",
     noResults: "No matching content. Try another keyword.",
     minutes: "min",
-    clear: "Clear filters"
+    clear: "Clear filters",
+    jump: "Jump channels",
+    coreQuestion: "Core question",
+    methodPath: "Method path",
+    keySignals: "Key signals",
+    aiTakeaway: "AI take"
   }
 }[locale];
 
@@ -51,7 +64,14 @@ const localHref = (path: string) => {
   if (path === "/") return basePath;
   return `${basePath}${path.replace(/^\//, "")}`;
 };
-const featuredDocs = data.documents.slice(0, 3);
+const detailHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
+const visualLabels = {
+  coreQuestion: labels.coreQuestion,
+  methodPath: labels.methodPath,
+  keySignals: labels.keySignals,
+  aiTakeaway: labels.aiTakeaway
+};
+const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter(Boolean);
 ---
 
 <main class="showcase-page" data-locale={locale}>
@@ -69,6 +89,18 @@ const featuredDocs = data.documents.slice(0, 3);
       </a>
     </nav>
   </header>
+
+  <nav class="jump-rail" data-jump-rail aria-label={labels.jump}>
+    <button class="jump-rail-handle" type="button" data-rail-handle aria-label={`${labels.jump} handle`}>
+      <span></span>
+    </button>
+    {data.clusters.map((cluster, index) => (
+      <a href={`#${cluster.id}`} data-jump-target={cluster.id}>
+        <b>{String(index + 1).padStart(2, "0")}</b>
+        <span>{cluster.title}</span>
+      </a>
+    ))}
+  </nav>
 
   <section class="showcase-hero">
     <div class="hero-copy">
@@ -120,13 +152,15 @@ const featuredDocs = data.documents.slice(0, 3);
             <span>{formatDateTime(document.publishedAt, locale)}</span>
             <span>{document.readingMinutes} {labels.minutes}</span>
           </div>
-          <h3>{document.title}</h3>
+          <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
+          <VisualBrief visual={document.visual} labels={visualLabels} />
           <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">
             <img src={document.faviconUrl} alt="" loading="lazy" />
             <span>{document.sourceName}</span>
+            <a class="detail-link" href={detailHref(document.id)}>{labels.detail}</a>
             <a href={document.url}>{labels.open}</a>
           </div>
         </article>
@@ -144,7 +178,7 @@ const featuredDocs = data.documents.slice(0, 3);
     </div>
     <div class="cluster-list">
       {data.clusters.map((cluster) => (
-        <article class="cluster-panel" data-cluster-panel data-cluster={cluster.id}>
+        <article id={cluster.id} class="cluster-panel" data-cluster-panel data-cluster={cluster.id}>
           <div class="cluster-copy">
             <time datetime={cluster.lastUpdatedAt}>{formatDateTime(cluster.lastUpdatedAt, locale)}</time>
             <h3>{cluster.title}</h3>
@@ -153,20 +187,22 @@ const featuredDocs = data.documents.slice(0, 3);
             <div class="tag-row">{cluster.tags.map((tag) => <span>{tag}</span>)}</div>
           </div>
           <div class="cluster-documents">
-            {cluster.documents.slice(0, 4).map((document) => (
+            {cluster.documents.map((document) => (
               <article class="content-card content-card-compact" data-document-card data-cluster={document.clusterId} data-type={document.type} data-search={document.searchText}>
                 <div class="content-card-meta">
                   <span class:list={["type-pill", `type-${document.type}`]}>{document.typeLabel}</span>
                   <span>{formatDateTime(document.publishedAt, locale)}</span>
                   <span>{document.readingMinutes} {labels.minutes}</span>
                 </div>
-                <h3>{document.title}</h3>
+                <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
                 <p>{document.summary}</p>
+                <VisualBrief visual={document.visual} labels={visualLabels} variant="compact" />
                 <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
                 <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
                 <div class="source-row">
                   <img src={document.faviconUrl} alt="" loading="lazy" />
                   <span>{document.sourceName}</span>
+                  <a class="detail-link" href={detailHref(document.id)}>{labels.detail}</a>
                   <a href={document.url}>{labels.open}</a>
                 </div>
               </article>
@@ -193,13 +229,15 @@ const featuredDocs = data.documents.slice(0, 3);
             <span>{formatDateTime(document.publishedAt, locale)}</span>
             <span>{document.readingMinutes} {labels.minutes}</span>
           </div>
-          <h3>{document.title}</h3>
+          <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
+          <VisualBrief visual={document.visual} labels={visualLabels} variant="timeline" />
           <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">
             <img src={document.faviconUrl} alt="" loading="lazy" />
             <span>{document.sourceName}</span>
+            <a class="detail-link" href={detailHref(document.id)}>{labels.detail}</a>
             <a href={document.url}>{labels.open}</a>
           </div>
         </article>
@@ -215,9 +253,13 @@ const featuredDocs = data.documents.slice(0, 3);
   const clearButton = document.querySelector(".clear-filter");
   const contentCards = Array.from(document.querySelectorAll("[data-document-card]"));
   const clusterPanels = Array.from(document.querySelectorAll("[data-cluster-panel]"));
+  const jumpRail = document.querySelector("[data-jump-rail]");
+  const jumpLinks = Array.from(document.querySelectorAll("[data-jump-target]"));
+  const railHandle = document.querySelector("[data-rail-handle]");
   const noResults = document.querySelector(".no-results");
   let activeCluster = "all";
   let activeType = "all";
+  let railDragging = false;
 
   function normalize(value: unknown) {
     return String(value ?? "").trim().toLowerCase();
@@ -287,5 +329,35 @@ const featuredDocs = data.documents.slice(0, 3);
     if (searchInput instanceof HTMLInputElement) searchInput.value = "";
     syncButtons();
     applyFilters();
+  });
+
+  for (const link of jumpLinks) {
+    if (!(link instanceof HTMLAnchorElement)) continue;
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const target = link.dataset.jumpTarget;
+      if (!target) return;
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  railHandle?.addEventListener("pointerdown", (event) => {
+    if (!(jumpRail instanceof HTMLElement)) return;
+    railDragging = true;
+    jumpRail.classList.add("is-dragging");
+    if (event instanceof PointerEvent && railHandle instanceof HTMLElement) {
+      railHandle.setPointerCapture(event.pointerId);
+    }
+  });
+
+  window.addEventListener("pointermove", (event) => {
+    if (!railDragging || !(jumpRail instanceof HTMLElement)) return;
+    const nextTop = Math.min(Math.max(event.clientY - 24, 96), window.innerHeight - 220);
+    jumpRail.style.top = `${nextTop}px`;
+  });
+
+  window.addEventListener("pointerup", () => {
+    railDragging = false;
+    if (jumpRail instanceof HTMLElement) jumpRail.classList.remove("is-dragging");
   });
 </script>

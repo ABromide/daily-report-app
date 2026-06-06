@@ -13,6 +13,7 @@ SCHEMA_BY_NAME = {
     "days": "days.schema.json",
     "hourly-report": "hourly-report.schema.json",
     "item": "item.schema.json",
+    "known-links": "known-links.schema.json",
     "latest": "latest.schema.json",
     "manifest": "manifest.schema.json",
     "sources": "sources.schema.json",

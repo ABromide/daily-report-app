@@ -54,6 +54,8 @@ def _schema_for_manifest_path(path: str) -> str | None:
         return "days"
     if path == "index/sources.json":
         return "sources"
+    if path == "index/known-links.json":
+        return "known-links"
     if path.startswith("reports/hourly/") and path.endswith(".json"):
         return "hourly-report"
     if path.startswith("reports/daily/") and path.endswith(".json"):
@@ -73,8 +75,8 @@ def _validate_items_jsonl(path: Path) -> list[ValidationIssue]:
     for index, row in enumerate(rows, start=1):
         row_path = f"{path}:{index}"
         issues.extend(_schema_issues("item", row_path, row))
-        item_id = str(row.get("id", ""))
-        fingerprint = str(row.get("fingerprint", ""))
+        item_id = str(row.get("item_id") or row.get("id") or "")
+        fingerprint = str(row.get("content_hash") or row.get("fingerprint") or "")
         if item_id in seen_ids:
             issues.append(_issue(row_path, f"duplicate item id {item_id}"))
         if fingerprint in seen_fingerprints:

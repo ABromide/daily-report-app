@@ -11,6 +11,7 @@ from collector.sample_source import (
     SAMPLE_DATE,
     SAMPLE_GENERATED_AT,
     SAMPLE_PERIOD_END,
+    known_link_entries,
     load_source_index,
     sample_items,
 )
@@ -38,7 +39,7 @@ def _date_parts() -> tuple[str, str, str]:
 
 
 def _hourly_report(items: list[JsonObject]) -> JsonObject:
-    item_ids = [str(item["id"]) for item in items]
+    item_ids = [str(item["item_id"]) for item in items]
     return {
         "version": 1,
         "report_id": "hourly:2026-06-06T00:00:00Z",
@@ -61,7 +62,7 @@ def _hourly_report(items: list[JsonObject]) -> JsonObject:
 
 
 def _daily_report(items: list[JsonObject]) -> JsonObject:
-    item_ids = [str(item["id"]) for item in items]
+    item_ids = [str(item["item_id"]) for item in items]
     return {
         "version": 1,
         "date": SAMPLE_DATE,
@@ -98,6 +99,7 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     source_index = load_source_index()
 
     sources_path = public_root / "index" / "sources.json"
+    known_links_path = public_root / "index" / "known-links.json"
     items_path = public_root / items_rel
     hourly_path = public_root / hourly_rel
     daily_path = public_root / daily_rel
@@ -106,6 +108,14 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     manifest_path = public_root / manifest_rel
 
     write_json(sources_path, {**source_index, "generated_at": SAMPLE_GENERATED_AT})
+    write_json(
+        known_links_path,
+        {
+            "version": 1,
+            "updated_at": SAMPLE_GENERATED_AT,
+            "links": known_link_entries(items),
+        },
+    )
     write_jsonl(items_path, items)
     write_json(hourly_path, _hourly_report(items))
     write_json(daily_path, _daily_report(items))
@@ -130,7 +140,7 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     manifest = build_manifest(
         public_root,
         SAMPLE_GENERATED_AT,
-        [days_path, sources_path, items_path, hourly_path, daily_path],
+        [days_path, known_links_path, sources_path, items_path, hourly_path, daily_path],
     )
     write_json(manifest_path, manifest)
     manifest_sha256 = sha256_file(manifest_path)

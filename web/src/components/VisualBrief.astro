@@ -1,0 +1,39 @@
+---
+import type { LocalizedDocument } from "../lib/showcaseContent";
+
+interface Props {
+  visual: LocalizedDocument["visual"];
+  labels: {
+    coreQuestion: string;
+    methodPath: string;
+    keySignals: string;
+    aiTakeaway: string;
+  };
+  variant?: "featured" | "compact" | "timeline";
+}
+
+const { visual, labels, variant = "featured" } = Astro.props;
+---
+
+<div class:list={["visual-brief", `visual-brief-${variant}`]}>
+  <div class="visual-question">
+    <span>{labels.coreQuestion}</span>
+    <strong>{visual.question}</strong>
+  </div>
+  <span class="visual-section-label">{labels.methodPath}</span>
+  <div class="visual-flow" aria-label={labels.methodPath}>
+    {visual.approach.map((step, index) => (
+      <span><b>{index + 1}</b>{step}</span>
+    ))}
+  </div>
+  <span class="visual-section-label">{labels.keySignals}</span>
+  <div class="visual-metrics" aria-label={labels.keySignals}>
+    {visual.metrics.map((metric) => (
+      <div class="metric-row" style={`--score: ${metric.score}%`}>
+        <span>{metric.label}</span>
+        <strong>{metric.value}</strong>
+      </div>
+    ))}
+  </div>
+  <p><span>{labels.aiTakeaway}</span>{visual.takeaway}</p>
+</div>

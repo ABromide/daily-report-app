@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-06-06T14:15:18Z",
+  "item_count": 3,
+  "period": {
+    "end": "2026-06-06T15:00:00Z",
+    "start": "2026-06-06T14:00:00Z"
+  },
+  "report_id": "hourly:2026-06-06T14:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型 Agent 相关",
+      "item_ids": [
+        "itm_2d450e628d639adc"
+      ],
+      "summary": "OpenWebRL 将视觉网页 Agent 的训练从离线演示轨迹推向真实网站在线多轮 RL。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_52fe6ed46b3dab0e"
+      ],
+      "summary": "Trust Region OPD 关注 OPD 中教师和学生分布错配导致的可靠监督问题。"
+    },
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_7eed37bd41712388"
+      ],
+      "summary": "OpenAI Frontier Safety Blueprint 把安全讨论推进到联邦框架、CAISI 与 whole-of-government resilience。"
+    }
+  ],
+  "summary": "本次真实自动化验证写入 3 条本周公开内容：OpenWebRL 代表 Agent 在线 RL 训练，Trust Region OPD 代表后训练稳定性，OpenAI Frontier Safety Blueprint 代表前沿 AI 安全制度化。",
+  "top_item_ids": [
+    "itm_7eed37bd41712388",
+    "itm_52fe6ed46b3dab0e",
+    "itm_2d450e628d639adc"
+  ],
+  "version": 1
+}

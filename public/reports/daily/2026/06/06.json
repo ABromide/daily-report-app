@@ -1,0 +1,40 @@
+{
+  "date": "2026-06-06",
+  "generated_at": "2026-06-06T14:15:18Z",
+  "item_count": 3,
+  "sections": [
+    {
+      "heading": "大模型 Agent",
+      "item_ids": [
+        "itm_2d450e628d639adc"
+      ],
+      "summary": "OpenWebRL 显示开放网页 Agent 训练正在从 SFT 轨迹依赖转向真实环境反馈。"
+    },
+    {
+      "heading": "大模型后训练",
+      "item_ids": [
+        "itm_52fe6ed46b3dab0e"
+      ],
+      "summary": "TrOPD 把 OPD 训练里的可靠区域、异常区域与教师前缀引导拆成可分析方法。"
+    },
+    {
+      "heading": "AI 安全",
+      "item_ids": [
+        "itm_7eed37bd41712388"
+      ],
+      "summary": "OpenAI 蓝图将前沿安全从自愿承诺推向联邦制度、评估机构和国家韧性计划。"
+    }
+  ],
+  "source_counts": {
+    "openai-frontier-safety-blueprint": 1,
+    "openwebrl": 1,
+    "trust-region-opd": 1
+  },
+  "summary": "本日公开数据由真实检索和深度阅读生成，覆盖 Agent、后训练与 AI 安全三类固定频道；正文均为独立 Markdown 深度分析稿，而不是模板字段填充。",
+  "top_item_ids": [
+    "itm_7eed37bd41712388",
+    "itm_52fe6ed46b3dab0e",
+    "itm_2d450e628d639adc"
+  ],
+  "version": 1
+}

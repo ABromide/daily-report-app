@@ -29,11 +29,13 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert contract["analysis_requirements"]["minimum_chinese_chars"] >= 5000
     assert contract["analysis_requirements"]["style_reference"]["url"] == "https://www.mlpod.com/1548.html"
     assert "MLPod" in contract["analysis_requirements"]["style_reference"]["name"]
-    assert "论文或项目元信息" in contract["analysis_requirements"]["required_sections"]
-    assert "按内容类型选择正文结构" in contract["analysis_requirements"]["required_sections"]
-    assert "5. 图表与图片解读" in contract["analysis_requirements"]["required_sections"]
-    assert "6. 讨论、相关工作与第三方解读" in contract["analysis_requirements"]["required_sections"]
-    assert "审稿式结论" in contract["analysis_requirements"]["required_sections"]
+    assert "required_sections" not in contract["analysis_requirements"]
+    assert contract["analysis_requirements"]["suggested_section_count"] >= 8
+    assert "论文或项目元信息" in contract["analysis_requirements"]["suggested_sections"]
+    assert "按内容类型选择正文结构" in contract["analysis_requirements"]["suggested_sections"]
+    assert "5. 图表与图片解读" in contract["analysis_requirements"]["suggested_sections"]
+    assert "6. 讨论、相关工作与第三方解读" in contract["analysis_requirements"]["suggested_sections"]
+    assert "审稿式结论" in contract["analysis_requirements"]["suggested_sections"]
     assert "完整原文" in contract["analysis_requirements"]["depth_rule"]
     assert "README" in contract["analysis_requirements"]["code_rule"]
     assert "figures/tables" in contract["analysis_requirements"]["paper_rule"]
@@ -51,15 +53,16 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
         for step in contract["codex_prompt_zh"]["steps"]
         for instruction in step["instructions"]
     )
-    assert "paper" in contract["analysis_requirements"]["type_templates"]
-    assert "blog_or_report" in contract["analysis_requirements"]["type_templates"]
-    assert "code" in contract["analysis_requirements"]["type_templates"]
+    assert "type_templates" not in contract["analysis_requirements"]
+    assert "paper" in contract["analysis_requirements"]["type_guidance"]
+    assert "blog_or_report" in contract["analysis_requirements"]["type_guidance"]
+    assert "code" in contract["analysis_requirements"]["type_guidance"]
     assert "原始图片链接" in contract["analysis_requirements"]["image_rule"]
-    assert "每张图片必须配中文说明" in contract["analysis_requirements"]["image_rule"]
+    assert "建议配中文说明" in contract["analysis_requirements"]["image_rule"]
     assert "第三方解读" in contract["analysis_requirements"]["reference_search_rule"]
     assert "Markdown" in contract["analysis_requirements"]["format"]
     assert "公式" in contract["analysis_requirements"]["format"]
-    assert "5000 字" in contract["analysis_requirements"]["format"]
+    assert "5000 中文字" in contract["analysis_requirements"]["format"]
     assert any("image_notes" in gate for gate in contract["analysis_requirements"]["quality_gate"])
     assert any("third_party_references" in gate for gate in contract["analysis_requirements"]["quality_gate"])
     assert any("skeptical_review" in gate for gate in contract["analysis_requirements"]["quality_gate"])
@@ -81,10 +84,17 @@ def test_chinese_automation_contract_is_recent_deduped_and_categorized() -> None
     assert any("validate-public" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("secret-scan" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("index.md" in " ".join(step["instructions"]) for step in prompt["steps"])
-    assert any("纯 Markdown" in " ".join(step["instructions"]) for step in prompt["steps"])
+    prompt_text = " ".join(
+        instruction
+        for step in prompt["steps"]
+        for instruction in step["instructions"]
+    )
+    assert "纯 Markdown" in prompt_text
     assert any("MLPod" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("第三方解读" in step["name"] for step in prompt["steps"])
-    assert any("不少于 5000 字" in " ".join(step["instructions"]) for step in prompt["steps"])
+    assert "目标不少于 5000 字" in prompt_text
+    assert "不要把它当成固定模板" in prompt_text
+    assert "根据内容自然组织 Markdown 标题" in prompt_text
     assert any("Markdown 图片语法" in " ".join(step["instructions"]) for step in prompt["steps"])
     assert any("子 Agent" in step["name"] for step in prompt["steps"])
     assert any("优先选择 1 篇" in " ".join(step["instructions"]) for step in prompt["steps"])

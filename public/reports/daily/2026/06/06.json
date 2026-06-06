@@ -1,0 +1,26 @@
+{
+  "date": "2026-06-06",
+  "generated_at": "2026-06-06T00:00:00Z",
+  "item_count": 3,
+  "sections": [
+    {
+      "heading": "Public data contract",
+      "item_ids": [
+        "itm_3fcb6ef14e59761c",
+        "itm_f4b29831fa65e61f",
+        "itm_ab7b9d44942b5524"
+      ],
+      "summary": "The sample day covers JSONL items, hourly summaries, daily summaries, and sha256 manifest entries."
+    }
+  ],
+  "source_counts": {
+    "sample-research-feed": 3
+  },
+  "summary": "The deterministic daily report exercises item, source, report, and manifest validation without network access.",
+  "top_item_ids": [
+    "itm_3fcb6ef14e59761c",
+    "itm_f4b29831fa65e61f",
+    "itm_ab7b9d44942b5524"
+  ],
+  "version": 1
+}

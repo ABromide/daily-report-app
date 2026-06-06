@@ -2,7 +2,7 @@
 import type { Locale } from "../lib/i18n";
 import type { LocalizedDocument, ShowcaseData } from "../lib/showcaseContent";
 import { formatDateTime } from "../lib/format";
-import VisualBrief from "./VisualBrief.astro";
+import { renderMarkdownToHtml, renderShowcaseArticleMarkdown } from "../lib/articleAnalysisMarkdown";
 
 interface Props {
   data: ShowcaseData;
@@ -20,9 +20,8 @@ const labels = {
     github: "查看 GitHub 仓库",
     source: "打开原文",
     detail: "AI 深度解析",
-    htmlArticle: "HTML 深度分析稿",
-    openAnalysis: "单独打开分析稿",
-    visual: "可视化摘要",
+    markdownArticle: "Markdown 深度分析稿",
+    openAnalysis: "单独打开 Markdown",
     category: "分类位置",
     categoryHint: "这篇内容被归入固定三类频道之一，用来保证每次自动化写入都能被稳定聚类。",
     problem: "它解决什么问题",
@@ -37,9 +36,6 @@ const labels = {
     published: "发布时间",
     reading: "阅读时间",
     minutes: "分钟",
-    coreQuestion: "核心问题",
-    methodPath: "方法路径",
-    keySignals: "关键信号",
     aiTakeaway: "AI 解读"
   },
   en: {
@@ -47,9 +43,8 @@ const labels = {
     github: "Open GitHub repository",
     source: "Open source",
     detail: "AI Deep Analysis",
-    htmlArticle: "HTML Analysis Document",
-    openAnalysis: "Open analysis document",
-    visual: "Visual Brief",
+    markdownArticle: "Markdown Analysis Document",
+    openAnalysis: "Open Markdown",
     category: "Category Fit",
     categoryHint: "This item is assigned to one of three fixed channels so automated writes stay consistently clustered.",
     problem: "Problem It Addresses",
@@ -64,9 +59,6 @@ const labels = {
     published: "Published",
     reading: "Reading Time",
     minutes: "min",
-    coreQuestion: "Core question",
-    methodPath: "Method path",
-    keySignals: "Key signals",
     aiTakeaway: "AI take"
   }
 }[locale];
@@ -81,28 +73,22 @@ const localHref = (path: string) => {
   return `${basePath}${path.replace(/^\//, "")}`;
 };
 const itemHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
-const visualLabels = {
-  coreQuestion: labels.coreQuestion,
-  methodPath: labels.methodPath,
-  keySignals: labels.keySignals,
-  aiTakeaway: labels.aiTakeaway
-};
-const analysisPagePath = item.analysisHtmlPath.replace(/\/index\.html$/, "");
-const analysisHtmlHref = localHref(`/data/${analysisPagePath}`);
-const analysisFrameTitle = `${item.title} ${labels.htmlArticle}`;
+const analysisMarkdown = renderShowcaseArticleMarkdown(item, cluster);
+const analysisHtml = renderMarkdownToHtml(analysisMarkdown);
+const analysisMarkdownHref = localHref(`/data/${item.analysisMarkdownPath}`);
 const auditEntries = locale === "zh"
   ? [
       { label: "时间窗口", value: "今天或本周内" },
       { label: "分类", value: cluster?.title ?? item.clusterId },
       { label: "来源", value: item.sourceName },
-      { label: "正文格式", value: "完整 HTML 文件" },
+      { label: "正文格式", value: "纯 Markdown 文件" },
       { label: "去重依据", value: "canonical_url / title_hash / content_hash" }
     ]
   : [
       { label: "Date Window", value: "Today or current week" },
       { label: "Category", value: cluster?.title ?? item.clusterId },
       { label: "Source", value: item.sourceName },
-      { label: "Body Format", value: "Complete HTML file" },
+      { label: "Body Format", value: "Plain Markdown file" },
       { label: "Dedupe Keys", value: "canonical_url / title_hash / content_hash" }
     ];
 ---
@@ -144,27 +130,15 @@ const auditEntries = locale === "zh"
 
   <div class="detail-layout">
     <div class="detail-main">
-      <section class="detail-section" aria-labelledby="visual-title">
-        <p class="eyebrow">{labels.visual}</p>
-        <h2 id="visual-title">{labels.visual}</h2>
-        <VisualBrief visual={item.visual} labels={visualLabels} />
-      </section>
-
-      <section class="detail-section article-html-shell" aria-labelledby="analysis-title">
-        <div class="article-html-header">
+      <section class="detail-section article-markdown-shell" aria-labelledby="analysis-title">
+        <div class="article-markdown-header">
           <div>
             <p class="eyebrow">{labels.detail}</p>
-            <h2 id="analysis-title">{labels.htmlArticle}</h2>
+            <h2 id="analysis-title">{labels.markdownArticle}</h2>
           </div>
-          <a href={analysisHtmlHref}>{labels.openAnalysis}</a>
+          <a href={analysisMarkdownHref}>{labels.openAnalysis}</a>
         </div>
-        <iframe
-          class="article-html-frame"
-          src={analysisHtmlHref}
-          title={analysisFrameTitle}
-          loading="lazy"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-        ></iframe>
+        <div class="markdown-body" set:html={analysisHtml} />
       </section>
     </div>
 
@@ -222,29 +196,3 @@ const auditEntries = locale === "zh"
     </aside>
   </div>
 </main>
-
-<script>
-  const analysisFrames = Array.from(document.querySelectorAll(".article-html-frame"));
-
-  function resizeAnalysisFrame(frame: Element) {
-    if (!(frame instanceof HTMLIFrameElement)) return;
-    const doc = frame.contentDocument;
-    if (!doc) return;
-    const bodyHeight = doc.body?.scrollHeight ?? 0;
-    const documentHeight = doc.documentElement?.scrollHeight ?? 0;
-    const height = Math.max(bodyHeight, documentHeight);
-    if (height > 0) {
-      frame.style.height = `${height + 24}px`;
-    }
-  }
-
-  for (const frame of analysisFrames) {
-    frame.addEventListener("load", () => resizeAnalysisFrame(frame));
-  }
-
-  window.addEventListener("resize", () => {
-    for (const frame of analysisFrames) {
-      resizeAnalysisFrame(frame);
-    }
-  });
-</script>

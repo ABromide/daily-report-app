@@ -61,7 +61,7 @@ export interface LocalizedDocument {
   tags: string[];
   domain: string;
   faviconUrl: string;
-  analysisHtmlPath: string;
+  analysisMarkdownPath: string;
   searchText: string;
   visual: {
     question: string;
@@ -650,14 +650,14 @@ const heroCopy: Record<Locale, ShowcaseData["hero"]> = {
   zh: {
     eyebrow: "AI 研究日报",
     title: "三类 AI 前沿内容：Agent、后训练、安全",
-    summary: "自动化 Agent 已把公开论文、博客和代码重组为三个固定频道：大模型 Agent、大模型后训练、AI 安全。每张卡片都用 AI 摘要转成可视化阅读界面。",
+    summary: "自动化 Agent 已把公开论文、博客和代码重组为三个固定频道：大模型 Agent、大模型后训练、AI 安全。每张卡片提供摘要入口，点击后进入同一套样式渲染的 Markdown 深度分析稿。",
     updateLabel: "更新于 2026-06-06 19:35",
     searchPlaceholder: "搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码"
   },
   en: {
     eyebrow: "AI Research Daily",
     title: "Three Frontiers: Agents, Post-Training, Safety",
-    summary: "The agent reorganized public papers, blogs, and code into three fixed channels: LLM Agents, LLM Post-Training, and AI Safety. Each card is rendered as a visual AI summary.",
+    summary: "The agent reorganized public papers, blogs, and code into three fixed channels: LLM Agents, LLM Post-Training, and AI Safety. Each card opens a Markdown deep-dive rendered in the same product style.",
     updateLabel: "Updated Jun 6, 2026 19:35",
     searchPlaceholder: "Search agents, SFT, RL, OPD, AI safety, papers, or code"
   }
@@ -666,12 +666,12 @@ const heroCopy: Record<Locale, ShowcaseData["hero"]> = {
 const statCopy: Record<Locale, Array<{ label: string; value: string }>> = {
   zh: [
     { label: "固定分类", value: "3" },
-    { label: "可视化卡片", value: "14" },
+    { label: "Markdown 深度稿", value: "14" },
     { label: "重点方法", value: "Agent / SFT / RL / OPD / Safety" }
   ],
   en: [
     { label: "Fixed channels", value: "3" },
-    { label: "Visual cards", value: "14" },
+    { label: "Markdown briefs", value: "14" },
     { label: "Focus methods", value: "Agents / SFT / RL / OPD / Safety" }
   ]
 };
@@ -772,15 +772,15 @@ function localizeDocument(document: ShowcaseDocument, locale: Locale): Localized
     tags,
     domain: document.domain,
     faviconUrl: `https://www.google.com/s2/favicons?domain=${document.domain}&sz=64`,
-    analysisHtmlPath: articleHtmlPath(document),
+    analysisMarkdownPath: articleMarkdownPath(document),
     searchText,
     visual
   };
 }
 
-function articleHtmlPath(document: ShowcaseDocument): string {
+function articleMarkdownPath(document: ShowcaseDocument): string {
   const [year, month, day] = document.publishedAt.slice(0, 10).split("-");
-  return `articles/${year}/${month}/${day}/${document.id}/index.html`;
+  return `articles/${year}/${month}/${day}/${document.id}/index.md`;
 }
 
 function visual(

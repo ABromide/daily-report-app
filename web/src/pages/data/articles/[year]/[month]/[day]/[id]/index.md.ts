@@ -1,4 +1,4 @@
-import { renderShowcaseArticleHtml } from "../../../../../../../lib/articleAnalysisHtml";
+import { renderShowcaseArticleMarkdown } from "../../../../../../../lib/articleAnalysisMarkdown";
 import { getShowcaseData } from "../../../../../../../lib/showcaseContent";
 
 type ShowcaseData = ReturnType<typeof getShowcaseData>;
@@ -9,7 +9,7 @@ export function getStaticPaths() {
   const data = getShowcaseData("zh");
 
   return data.documents.map((item) => {
-    const [year, month, day] = item.analysisHtmlPath.split("/").slice(1, 4);
+    const [year, month, day] = item.analysisMarkdownPath.split("/").slice(1, 4);
 
     return {
       params: { year, month, day, id: item.id },
@@ -22,9 +22,9 @@ export function getStaticPaths() {
 }
 
 export function GET({ props }: { props: { item: ShowcaseItem; cluster?: ShowcaseCluster } }) {
-  return new Response(renderShowcaseArticleHtml(props.item, props.cluster), {
+  return new Response(renderShowcaseArticleMarkdown(props.item, props.cluster), {
     headers: {
-      "Content-Type": "text/html; charset=utf-8"
+      "Content-Type": "text/markdown; charset=utf-8"
     }
   });
 }

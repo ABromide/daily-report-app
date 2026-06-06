@@ -6,7 +6,7 @@ from typing import Iterable
 
 from collector.jsonio import JsonObject, canonical_json_bytes, read_json, sha256_bytes
 from collector.paths import SOURCE_CONFIG_ROOT
-from collector.article_html import article_html_path
+from collector.article_markdown import article_markdown_path
 
 SAMPLE_DATE = "2026-06-06"
 SAMPLE_GENERATED_AT = "2026-06-06T00:00:00Z"
@@ -104,7 +104,7 @@ def normalize_item(raw_item: JsonObject) -> JsonObject:
     item["fetched_at"] = str(raw_item["collected_at"])
     item["sort_at"] = str(raw_item["published_at"])
     item["summary_zh"] = f"样例摘要：{raw_item['summary']}"
-    item["analysis_html_path"] = article_html_path(item)
+    item["analysis_markdown_path"] = article_markdown_path(item)
     item["language"] = "en"
     item["reading_minutes"] = 3
     item["title_hash"] = title_hash(raw_item)

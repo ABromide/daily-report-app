@@ -2,7 +2,6 @@
 import type { Locale } from "../lib/i18n";
 import type { ShowcaseData } from "../lib/showcaseContent";
 import { formatDateTime } from "../lib/format";
-import VisualBrief from "./VisualBrief.astro";
 
 interface Props {
   data: ShowcaseData;
@@ -16,7 +15,7 @@ const labels = {
     search: "搜索",
     allTopics: "全部主题",
     featured: "今日精选",
-    featuredHint: "每个分类选出一张代表卡，先看 AI 可视化摘要，再打开原文。",
+    featuredHint: "每个分类选出一张代表卡，先看摘要，再进入 Markdown 深度分析稿。",
     clusters: "三类频道",
     clustersHint: "固定分为大模型 Agent、大模型后训练、AI 安全。",
     timeline: "最新更新",
@@ -26,9 +25,6 @@ const labels = {
     noResults: "没有找到匹配内容。换个关键词试试。",
     minutes: "分钟",
     clear: "清除筛选",
-    coreQuestion: "核心问题",
-    methodPath: "方法路径",
-    keySignals: "关键信号",
     aiTakeaway: "AI 解读"
   },
   en: {
@@ -36,7 +32,7 @@ const labels = {
     search: "Search",
     allTopics: "All topics",
     featured: "Featured today",
-    featuredHint: "One representative visual card per channel before opening the source.",
+    featuredHint: "One representative card per channel before opening the Markdown deep dive.",
     clusters: "Three channels",
     clustersHint: "Fixed channels: LLM Agents, LLM Post-Training, and AI Safety.",
     timeline: "Latest updates",
@@ -46,9 +42,6 @@ const labels = {
     noResults: "No matching content. Try another keyword.",
     minutes: "min",
     clear: "Clear filters",
-    coreQuestion: "Core question",
-    methodPath: "Method path",
-    keySignals: "Key signals",
     aiTakeaway: "AI take"
   }
 }[locale];
@@ -63,12 +56,6 @@ const localHref = (path: string) => {
   return `${basePath}${path.replace(/^\//, "")}`;
 };
 const detailHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
-const visualLabels = {
-  coreQuestion: labels.coreQuestion,
-  methodPath: labels.methodPath,
-  keySignals: labels.keySignals,
-  aiTakeaway: labels.aiTakeaway
-};
 const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter(Boolean);
 ---
 
@@ -140,7 +127,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
           </div>
           <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
-          <VisualBrief visual={document.visual} labels={visualLabels} />
           <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">
@@ -182,7 +168,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
                 </div>
                 <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
                 <p>{document.summary}</p>
-                <VisualBrief visual={document.visual} labels={visualLabels} variant="compact" />
                 <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
                 <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
                 <div class="source-row">
@@ -217,7 +202,6 @@ const featuredDocs = data.clusters.map((cluster) => cluster.documents[0]).filter
           </div>
           <h3><a href={detailHref(document.id)}>{document.title}</a></h3>
           <p>{document.summary}</p>
-          <VisualBrief visual={document.visual} labels={visualLabels} variant="timeline" />
           <div class="ai-note"><span>AI</span><p>{document.analysis}</p></div>
           <div class="tag-row">{document.tags.map((tag) => <span>{tag}</span>)}</div>
           <div class="source-row">

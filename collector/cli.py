@@ -64,7 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     automation_parser = subparsers.add_parser(
         "automation-dry-run",
-        help="generate sample automation output, article HTML, audit record, and validate it",
+        help="generate sample automation output, article Markdown, audit record, and validate it",
     )
     automation_parser.add_argument("--output", type=Path, required=True)
 

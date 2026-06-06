@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from collector.archive import write_archive_record
-from collector.article_html import render_article_html
+from collector.article_markdown import render_article_markdown
 from collector.jsonio import JsonObject, sha256_file, write_json, write_jsonl
 from collector.manifest import build_manifest
 from collector.sample_source import (
@@ -122,9 +122,9 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
     write_jsonl(items_path, items)
     article_paths: list[Path] = []
     for item in items:
-        article_path = public_root / str(item["analysis_html_path"])
+        article_path = public_root / str(item["analysis_markdown_path"])
         article_path.parent.mkdir(parents=True, exist_ok=True)
-        article_path.write_text(render_article_html(item), encoding="utf-8")
+        article_path.write_text(render_article_markdown(item), encoding="utf-8")
         article_paths.append(article_path)
     write_json(hourly_path, _hourly_report(items))
     write_json(daily_path, _daily_report(items))
@@ -153,7 +153,7 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
                 "replacement_candidates": 1,
             },
             "written_item_ids": [str(item["item_id"]) for item in items],
-            "article_paths": [str(item["analysis_html_path"]) for item in items],
+            "article_paths": [str(item["analysis_markdown_path"]) for item in items],
             "sub_agent_reviews": [
                 {
                     "agent_id": "scout",
@@ -176,14 +176,13 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
                     "summary": "检查重复、日期窗口和过度解释风险，保留边界说明。",
                 },
                 {
-                    "agent_id": "html_editor",
+                    "agent_id": "markdown_editor",
                     "status": "passed",
-                    "summary": "写入完整 HTML 分析稿，正文不依赖 item JSON 字段。",
+                    "summary": "写入完整 Markdown 分析稿，正文不依赖 item JSON 字段。",
                 },
             ],
             "quality_gate": {
                 "minimum_chinese_chars": 3500,
-                "minimum_sections": 10,
                 "evidence_points": 5,
                 "skeptical_review": 3,
                 "passed": True,

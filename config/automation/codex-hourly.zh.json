@@ -55,7 +55,7 @@
   "output_contract": {
     "branch": "data",
     "item_path": "public/items/YYYY/MM/DD/items.jsonl",
-    "analysis_html_path": "public/articles/YYYY/MM/DD/ITEM_ID/index.html",
+    "analysis_markdown_path": "public/articles/YYYY/MM/DD/ITEM_ID/index.md",
     "audit_path": "public/audits/YYYY/MM/DD/RUN_ID.json",
     "report_path": "public/reports/hourly/YYYY/MM/DD/HH.json",
     "manifest_path": "public/manifests/YYYY/MM/DD/HH.manifest.json",
@@ -71,7 +71,7 @@
       "published_at",
       "fetched_at",
       "summary_zh",
-      "analysis_html_path",
+      "analysis_markdown_path",
       "tags",
       "content_hash"
     ]
@@ -79,7 +79,7 @@
   "analysis_requirements": {
     "mode": "depth_first",
     "per_run_item_policy": "质量优先。默认每小时写入 1 到 3 篇；如果只有 1 篇真正值得深读且可验证，允许本次只提交 1 篇。禁止为了凑数量写浅分析。",
-    "minimum_sections": 10,
+    "suggested_sections": 10,
     "minimum_chinese_chars": 3500,
     "required_sections": [
       "TL;DR",
@@ -96,15 +96,15 @@
       "可复用到日报的判断",
       "审稿式结论"
     ],
-    "format": "每篇内容必须生成独立、完整、可直接打开的 HTML 文件，使用 Daily Report 的 parchment/ink-blue 样式；item JSON 只保留索引和卡片摘要，不允许把长文分析拆成 analysis_zh 或 visual JSON 字段。",
+    "format": "每篇内容必须生成独立、完整、可直接渲染的 Markdown 文件；允许普通链接、图片链接、行内公式和块级公式。item JSON 只保留索引和卡片摘要，不允许把长文分析拆成 analysis_zh 或 visual JSON 字段。",
     "depth_rule": "必须阅读完整原文或可访问的完整公开内容，不能只根据标题、摘要、标签、README 顶部或社媒转述生成。需要逐层说明作者如何提出问题、如何组织方法、每个部分承担什么作用、证据是否支撑结论、代码或项目结构如何支撑主张、哪些边界需要后续追踪。",
-    "code_rule": "如果候选是代码仓库，必须至少阅读 README、docs 或 examples、package/pyproject/Cargo/SwiftPM 等依赖入口、核心 src 目录或 release notes。HTML 中要解释模块边界、执行流程、状态管理、可观测性、部署入口和真实工程风险。",
+    "code_rule": "如果候选是代码仓库，必须至少阅读 README、docs 或 examples、package/pyproject/Cargo/SwiftPM 等依赖入口、核心 src 目录或 release notes。Markdown 中要解释模块边界、执行流程、状态管理、可观测性、部署入口和真实工程风险。",
     "paper_rule": "如果候选是论文，必须拆解问题设定、方法、训练或评测流程、实验设置、指标、消融、失败案例和局限。不能只复述摘要。",
     "blog_rule": "如果候选是博客或报告，必须拆解作者论证顺序、关键事实、政策或产品含义、证据强弱和未证明部分。",
-    "image_rule": "如果原文包含关键图片、表格、系统图或结果图，HTML 中可以直接使用原始图片链接；也可以下载后重新上传到 public/assets，再在 HTML 中引用镜像链接。图片必须配中文说明。",
+    "image_rule": "如果原文包含关键图片、表格、系统图或结果图，Markdown 中可以直接使用原始图片链接；也可以下载后重新上传到 public/assets，再在 Markdown 中引用镜像链接。图片必须配中文说明。",
     "quality_gate": [
-      "HTML 正文不能少于 minimum_chinese_chars。",
-      "至少 8 个 h2/h3 正文小节。",
+      "Markdown 正文不能只是几句话，要能让用户不打开原文也理解文章结构和关键证据。",
+      "不要把正文拆成复杂 JSON 字段；正文只写 Markdown。",
       "至少 5 条带来源链接或文件路径的证据点。",
       "必须包含 skeptical_review，列出 3 个不能从原文直接推出的结论。",
       "必须包含 follow_up_questions，列出下次自动化需要继续追踪的问题。",
@@ -133,9 +133,9 @@
       "responsibility": "专门找证据不足、过度解释、重复内容、日期不合规和安全/隐私风险。"
     },
     {
-      "id": "html_editor",
-      "name": "HTML 编辑 Agent",
-      "responsibility": "把深读笔记改写成中文长篇 HTML，保持 Daily Report 样式、层级和可读性。"
+      "id": "markdown_editor",
+      "name": "Markdown 编辑 Agent",
+      "responsibility": "把深读笔记改写成中文长篇 Markdown，保留链接、图片、公式和清晰层级；样式交给前端渲染。"
     }
   ],
   "audit_contract": {
@@ -152,10 +152,10 @@
       "sub_agent_reviews",
       "quality_gate"
     ],
-    "remote_rule": "每次自动化写入都必须把 audit JSON 和 article HTML 一起提交到 data 分支；远端 Pages 构建必须先 validate-public 和 secret-scan，再部署。"
+    "remote_rule": "每次自动化写入都必须把 audit JSON 和 article Markdown 一起提交到 data 分支；远端 Pages 构建必须先 validate-public 和 secret-scan，再部署。"
   },
   "codex_prompt_zh": {
-    "role": "你是 Daily Report 的中文采集与深度分析总控 Agent。你的目标不是生成链接列表，也不是把原文压成几句摘要，而是组织多个子 Agent 把今天或本周内的重要 AI 内容吃透，写成可直接发布到网页中的中文长篇 HTML 研究稿。",
+    "role": "你是 Daily Report 的中文采集与深度分析总控 Agent。你的目标不是生成链接列表，也不是把原文压成几句摘要，而是组织多个子 Agent 把今天或本周内的重要 AI 内容吃透，写成可直接发布到网页中的中文长篇 Markdown 研究稿。",
     "scope": [
       "只处理三类内容：大模型 Agent 相关、大模型后训练相关、AI 安全相关。",
       "只允许采集今天或本周内发布、更新、合并或被官方页面标记为当前日期范围内的内容。",
@@ -194,7 +194,7 @@
           "每次优先选择 1 篇最值得深读的候选；如果时间充足再扩展到第 2 或第 3 篇。",
           "启动 deep_reader 子 Agent 完整阅读原文或可访问的完整公开内容，不能只看标题、摘要、标签或 README 顶部。",
           "按文章结构做笔记：TL;DR、文章总览、来源与材料地图、引言或问题背景、方法或系统流程、逐部分细读、实验或证据、讨论与局限、可复用判断。",
-          "如果原文有关键图片、表格或系统图，保留原始图片 URL，或下载后上传到 public/assets 并在 HTML 中引用。"
+          "如果原文有关键图片、表格或系统图，保留原始图片 URL，或下载后上传到 public/assets 并在 Markdown 中引用。"
         ]
       },
       {
@@ -214,20 +214,20 @@
         ]
       },
       {
-        "name": "7. HTML Editor 子 Agent 写入长篇 HTML 分析稿",
+        "name": "7. Markdown Editor 子 Agent 写入长篇 Markdown 分析稿",
         "instructions": [
-          "为每篇内容写入 public/articles/YYYY/MM/DD/ITEM_ID/index.html。",
-          "HTML 必须是完整文档，包含 <!doctype html>、html、head、style、body。",
-          "HTML 至少包含 TL;DR、文章总览、来源与材料地图、文章架构拆解、逐部分细读、方法或系统流程、代码或项目结构深挖、关键论证链、对照与反例、证据与边界、后续追踪问题、可复用到日报的判断、审稿式结论。",
-          "HTML 正文不少于 minimum_chinese_chars；如果达不到，说明还没研究透，不能提交。",
-          "使用 Daily Report 的 parchment / ink-blue 样式，正文要能独立阅读，不依赖 item JSON。"
+          "为每篇内容写入 public/articles/YYYY/MM/DD/ITEM_ID/index.md。",
+          "正文必须是纯 Markdown，不要写完整 HTML 文档，不要内联 CSS。",
+          "Markdown 可以包含普通链接、图片链接、行内公式 `$...$` 和块级公式 `$$...$$`。",
+          "建议包含 TL;DR、文章总览、来源与材料地图、文章架构拆解、逐部分细读、方法或系统流程、代码或项目结构深挖、关键论证链、对照与反例、证据与边界、后续追踪问题、可复用到日报的判断、审稿式结论。",
+          "正文要能独立阅读，不依赖 item JSON；页面样式由 Web 前端统一渲染。"
         ]
       },
       {
         "name": "8. 写入索引 JSON",
         "instructions": [
           "item JSON 只作为索引，不写长文 analysis_zh，不写 visual 正文字段。",
-          "必须包含 item_id、category_id、type、source_id、external_id、url、canonical_url、title、published_at、fetched_at、summary_zh、analysis_html_path、tags、content_hash。",
+          "必须包含 item_id、category_id、type、source_id、external_id、url、canonical_url、title、published_at、fetched_at、summary_zh、analysis_markdown_path、tags、content_hash。",
           "更新 public/index/known-links.json。"
         ]
       },
@@ -236,7 +236,7 @@
         "instructions": [
           "写入 public/audits/YYYY/MM/DD/RUN_ID.json。",
           "审计记录必须包含 run_id、generated_at、status、date_window、category_counts、dedupe、written_item_ids、article_paths、sub_agent_reviews、quality_gate。",
-          "更新 manifest，确保每个 HTML 文件都带 sha256、bytes 和 text/html content_type。"
+          "更新 manifest，确保每个 Markdown 文件都带 sha256、bytes 和 text/markdown content_type。"
         ]
       },
       {

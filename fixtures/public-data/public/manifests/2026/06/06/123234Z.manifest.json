@@ -1,28 +1,28 @@
 {
   "files": [
     {
-      "bytes": 11767,
-      "content_type": "text/html",
-      "path": "articles/2026/06/03/itm_b5ea5cc9786d34d1/index.html",
-      "sha256": "01e92f5f8cd33990b2120a57ea863e4bb838dd7d478f5e320d8a330c35a1f84c"
+      "bytes": 6200,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/03/itm_b5ea5cc9786d34d1/index.md",
+      "sha256": "c23caae8020f4989cf6dcb646e8ab12ca9a19e6aefe6d79ea9ab5f7c6ca81206"
     },
     {
-      "bytes": 11456,
-      "content_type": "text/html",
-      "path": "articles/2026/06/05/itm_d0ccf7dfcec35db8/index.html",
-      "sha256": "f801f106aa93c5042ccdfa719c465faf0538fc366f2079c04b5f817d4977649e"
+      "bytes": 5904,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/05/itm_d0ccf7dfcec35db8/index.md",
+      "sha256": "78d7da3331b1a4322b69f4d70bb51c258a9eac99c53daf44ea19e4337fbfbe80"
     },
     {
-      "bytes": 11741,
-      "content_type": "text/html",
-      "path": "articles/2026/06/05/itm_fe01906c4ef44106/index.html",
-      "sha256": "ff2457177fdac50e7362b11b7a01f5349b0cf269b2126614456443c2a8fc16ce"
+      "bytes": 6194,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/05/itm_fe01906c4ef44106/index.md",
+      "sha256": "0b040d9ff54a3f1d06d63522d0c1ff97474de5c7e3379c45fff4cbb1244e2cd5"
     },
     {
-      "bytes": 2127,
+      "bytes": 2131,
       "content_type": "application/json",
       "path": "audits/2026/06/06/codex-hourly-20260606t123234z.json",
-      "sha256": "885fd52063453a92dfed91b098cee7df2713e9a90d78f921beefa5ac1f3126b8"
+      "sha256": "b11e9f8d696b38b37e78268b0b5eb3d274318109922d7bb1e0ec6c891005a158"
     },
     {
       "bytes": 353,
@@ -43,10 +43,10 @@
       "sha256": "32abb1123f5d2b6a09822704c3d998a48ad07db125cdbc8494854d43bb63f850"
     },
     {
-      "bytes": 4884,
+      "bytes": 4890,
       "content_type": "application/x-ndjson",
       "path": "items/2026/06/06/items.jsonl",
-      "sha256": "5039e90a7b9aa2b791cdad83fd60e5c4408d608f3c0434294172d4ba16d543d8"
+      "sha256": "ecb09120bd3f7cddd7ba3b937fbc25ca06bddc32fa744de060872ab60643ed55"
     },
     {
       "bytes": 1101,
@@ -63,7 +63,7 @@
   ],
   "generated_at": "2026-06-06T12:32:34Z",
   "root": "public",
-  "total_bytes": 46933,
+  "total_bytes": 30277,
   "total_files": 10,
   "version": 1
 }

@@ -9,8 +9,8 @@ from collector.jsonio import JsonObject, sha256_file
 def content_type_for(path: Path) -> str:
     if path.suffix == ".jsonl":
         return "application/x-ndjson"
-    if path.suffix == ".html":
-        return "text/html"
+    if path.suffix == ".md":
+        return "text/markdown"
     return "application/json"
 
 

@@ -24,8 +24,7 @@ test("Chinese content hub renders clusters, search, filters, and GitHub entry", 
   await expect(page.getByRole("heading", { name: "最新更新" })).toBeVisible();
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
   await expect(page.getByRole("button", { name: "大模型后训练相关" })).toBeVisible();
-  await expect(page.getByText("核心问题").first()).toBeVisible();
-  await expect(page.getByText("方法路径").first()).toBeVisible();
+  await expect(page.getByText("Markdown 深度稿").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-zh.png`, fullPage: true });
@@ -61,7 +60,7 @@ test("English content hub remains available under /en", async ({ page }, testInf
   await expect(page.getByRole("heading", { name: "Three channels" })).toBeVisible();
   await expect(page.getByLabel("Open GitHub repository")).toBeVisible();
   await expect(page.getByRole("button", { name: "LLM Post-Training" })).toBeVisible();
-  await expect(page.getByText("Core question").first()).toBeVisible();
+  await expect(page.getByText("Markdown briefs").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-en.png`, fullPage: true });
@@ -73,26 +72,26 @@ test("English content hub remains available under /en", async ({ page }, testInf
   expect(errors).toEqual([]);
 });
 
-test("Chinese visual card opens a second-level analysis page", async ({ page }, testInfo) => {
+test("Chinese card opens a second-level Markdown analysis page", async ({ page }, testInfo) => {
   const errors = watchConsole(page);
 
   await page.goto("/");
   await page.getByRole("link", { name: "Dify：生产级 Agentic Workflow 平台" }).first().click();
   await expect(page).toHaveURL(/\/items\/dify-agent-platform$/);
-  await expect(page.getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "HTML 深度分析稿" })).toBeVisible();
-  const analysisFrame = page.frameLocator(".article-html-frame");
-  await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "先确认我们到底读了什么" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "按原文结构重建作者论证" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "每一节都要解释它承担的作用" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "把工程面或方法面拆到能复用" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "下一轮自动化应该继续追什么" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "这篇能不能进入日报，为什么" })).toBeVisible();
+  await expect(page.locator(".detail-hero").getByRole("heading", { name: "Dify：生产级 Agentic Workflow 平台" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Markdown 深度分析稿" })).toBeVisible();
+  await expect(page.getByText("TL;DR")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "来源与材料地图" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "文章架构拆解" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "逐部分细读" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "方法或系统流程" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "代码或项目结构深挖" })).toBeVisible();
+  await expect(page.locator(".katex").first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "单独打开 Markdown" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
   await expect(page.getByLabel("分类位置").getByText("大模型 Agent 相关")).toBeVisible();
-  await expect(page.getByRole("link", { name: "打开原文" })).toBeVisible();
+  await expect(page.getByRole("complementary", { name: "来源信息" }).getByRole("link", { name: "打开原文" })).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-detail-zh.png`, fullPage: true });
@@ -104,14 +103,13 @@ test("English detail page shows post-training classification", async ({ page }) 
   const errors = watchConsole(page);
 
   await page.goto("/en/items/trust-region-opd");
-  await expect(page.getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "HTML Analysis Document" })).toBeVisible();
-  const analysisFrame = page.frameLocator(".article-html-frame");
-  await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "先确认我们到底读了什么" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "把工程面或方法面拆到能复用" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "证据与边界" })).toBeVisible();
-  await expect(analysisFrame.getByRole("heading", { name: "下一轮自动化应该继续追什么" })).toBeVisible();
+  await expect(page.locator(".detail-hero").getByRole("heading", { name: "Trust Region OPD: Stabilizing On-Policy Distillation" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Markdown Analysis Document" })).toBeVisible();
+  await expect(page.getByText("TL;DR")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Source Map" }).or(page.getByRole("heading", { name: "来源与材料地图" }))).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Method or System Flow" }).or(page.getByRole("heading", { name: "方法或系统流程" }))).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Evidence and Boundaries" }).or(page.getByRole("heading", { name: "证据与边界" }))).toBeVisible();
+  await expect(page.locator(".katex").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
   await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();

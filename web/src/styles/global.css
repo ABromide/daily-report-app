@@ -1,3 +1,5 @@
+@import "katex/dist/katex.min.css";
+
 :root {
   color-scheme: light;
   --parchment: #f5f4ed;
@@ -1044,7 +1046,7 @@ select {
 }
 
 .content-card-featured {
-  min-height: 430px;
+  min-height: 320px;
 }
 
 .content-card-compact,
@@ -1116,133 +1118,6 @@ select {
   padding: 10px;
   border-left: 3px solid var(--ink-blue);
   background: var(--paper);
-}
-
-.visual-brief {
-  display: grid;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgb(27 54 93 / 0.07), transparent 38%),
-    var(--paper);
-}
-
-.visual-question {
-  display: grid;
-  gap: 5px;
-}
-
-.visual-question span,
-.visual-brief > p span,
-.visual-section-label {
-  color: var(--warm);
-  font-size: 0.7rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.visual-section-label {
-  margin-bottom: -4px;
-}
-
-.visual-question strong {
-  color: var(--ink-blue);
-  font-size: 0.94rem;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-
-.visual-flow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-}
-
-.visual-flow span {
-  display: grid;
-  gap: 6px;
-  min-height: 70px;
-  padding: 9px;
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: var(--ivory);
-  color: var(--ink);
-  font-size: 0.78rem;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.visual-flow b {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: var(--ink-blue);
-  color: var(--ivory);
-  font-size: 0.68rem;
-}
-
-.visual-metrics {
-  display: grid;
-  gap: 7px;
-}
-
-.metric-row {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: center;
-  min-height: 32px;
-  padding: 6px 8px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: var(--ivory);
-}
-
-.metric-row::before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--score);
-  background: rgb(27 54 93 / 0.1);
-  content: "";
-}
-
-.metric-row span,
-.metric-row strong {
-  position: relative;
-  z-index: 1;
-}
-
-.metric-row span {
-  color: var(--muted);
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.metric-row strong {
-  color: var(--ink-blue);
-  font-size: 0.76rem;
-  font-weight: 900;
-}
-
-.visual-brief > p {
-  display: grid;
-  gap: 5px;
-  padding-top: 2px;
-}
-
-.visual-brief-compact {
-  padding: 10px;
-}
-
-.visual-brief-compact .visual-flow span,
-.visual-brief-timeline .visual-flow span {
-  min-height: 58px;
 }
 
 .ai-note span {
@@ -1372,7 +1247,6 @@ select {
 .content-card-timeline .content-card-meta,
 .content-card-timeline h3,
 .content-card-timeline > p,
-.content-card-timeline .visual-brief,
 .content-card-timeline .ai-note {
   grid-column: 1;
 }
@@ -1541,14 +1415,14 @@ select {
   overflow-wrap: anywhere;
 }
 
-.article-html-shell {
+.article-markdown-shell {
   gap: 14px;
   padding: 0;
   overflow: hidden;
   background: var(--paper);
 }
 
-.article-html-header {
+.article-markdown-header {
   display: flex;
   gap: 14px;
   align-items: center;
@@ -1556,11 +1430,11 @@ select {
   padding: 18px 18px 0;
 }
 
-.article-html-header h2 {
+.article-markdown-header h2 {
   margin-top: 0;
 }
 
-.article-html-header a {
+.article-markdown-header a {
   flex: none;
   padding: 8px 11px;
   border: 1px solid var(--ink-blue);
@@ -1570,12 +1444,140 @@ select {
   font-weight: 850;
 }
 
-.article-html-frame {
+.markdown-body {
+  display: block;
+  min-width: 0;
+  padding: 10px 18px 24px;
+  overflow-wrap: anywhere;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
+}
+
+.markdown-body > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  color: var(--ink-blue);
+  font-family: var(--font-serif);
+  line-height: 1.16;
+}
+
+.markdown-body h1 {
+  margin: 18px 0 14px;
+  font-size: 2.25rem;
+}
+
+.markdown-body h2 {
+  margin: 30px 0 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 1.55rem;
+}
+
+.markdown-body h3 {
+  margin: 20px 0 8px;
+  font-size: 1.08rem;
+}
+
+.markdown-body p,
+.markdown-body li {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.82;
+}
+
+.markdown-body p {
+  margin: 0 0 14px;
+}
+
+.markdown-body a {
+  color: var(--ink-blue);
+  font-weight: 850;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.markdown-body blockquote {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--warm);
+  background: #fffaf0;
+  color: var(--ink-blue);
+}
+
+.markdown-body blockquote p {
+  margin: 0;
+  color: var(--ink-blue);
+  font-weight: 820;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 18px;
+  padding-left: 24px;
+}
+
+.markdown-body code {
+  padding: 2px 5px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--ivory);
+  color: var(--ink-blue);
+  font-size: 0.92em;
+}
+
+.markdown-body pre {
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7f1e6;
+}
+
+.markdown-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ivory);
+}
+
+.markdown-body table {
   display: block;
   width: 100%;
-  min-height: 1200px;
-  border: 0;
-  background: var(--parchment);
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+}
+
+.markdown-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+}
+
+.markdown-body .katex {
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .deep-prose {
@@ -1815,7 +1817,6 @@ select {
   .content-card-timeline .content-card-meta,
   .content-card-timeline h3,
   .content-card-timeline > p,
-  .content-card-timeline .visual-brief,
   .content-card-timeline .ai-note,
   .content-card-timeline .tag-row,
   .content-card-timeline .source-row {
@@ -1852,14 +1853,6 @@ select {
     font-size: 2.2rem;
   }
 
-  .visual-flow {
-    grid-template-columns: 1fr;
-  }
-
-  .visual-flow span {
-    min-height: 0;
-  }
-
   .hero-search {
     min-height: 50px;
     padding: 0 13px;
@@ -1887,13 +1880,9 @@ select {
     grid-template-columns: 1fr;
   }
 
-  .article-html-header {
+  .article-markdown-header {
     display: grid;
     align-items: start;
-  }
-
-  .article-html-frame {
-    min-height: 1600px;
   }
 
   .clear-filter {

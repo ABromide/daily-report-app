@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import shutil
 from datetime import UTC, datetime, timedelta
-from html import escape
 from pathlib import Path
 from typing import Any
 
@@ -33,240 +32,108 @@ def _title_hash(title: str) -> str:
     return sha256_bytes(canonical_json_bytes({"title": " ".join(title.casefold().split())}))
 
 
-def _item_id(seed: JsonObject) -> str:
+def _item_id(seed: JsonObject) -> tuple[str, str]:
     fingerprint = sha256_bytes(canonical_json_bytes(seed))
     return f"itm_{fingerprint[:16]}", fingerprint
 
 
-def _article_html(item: JsonObject, article: JsonObject) -> str:
-    title = escape(str(item["title"]))
-    summary = escape(str(item["summary_zh"]))
-    source_name = escape(str(item["source_name"]))
-    published_at = escape(str(item["published_at"])[:10])
-    category = escape(str(article["category_label"]))
-    tags_html = "".join(f"<span>{escape(str(tag))}</span>" for tag in item["tags"])
-    evidence_html = "".join(
-        (
-            "<li>"
-            f"<a href=\"{escape(str(entry['url']))}\">{escape(str(entry['label']))}</a>"
-            "</li>"
-        )
-        for entry in item["evidence"]
+def _article_markdown(item: JsonObject, article: JsonObject) -> str:
+    title = str(item["title"])
+    summary = str(item["summary_zh"])
+    source_name = str(item["source_name"])
+    source_url = str(item["url"])
+    published_at = str(item["published_at"])[:10]
+    category = str(article["category_label"])
+    tags = "、".join(str(tag) for tag in item["tags"])
+    evidence_markdown = "\n".join(
+        f"- [{entry['label']}]({entry['url']})" for entry in item["evidence"]
     )
-    flow_html = "".join(
-        (
-            "<article class=\"flow-step\">"
-            f"<b>{index}</b>"
-            f"<h3>{escape(step['title'])}</h3>"
-            f"<p>{escape(step['body'])}</p>"
-            "</article>"
-        )
+    parts_markdown = "\n\n".join(
+        f"### {part['title']}\n\n{part['body']}" for part in article["parts"]
+    )
+    flow_markdown = "\n".join(
+        f"{index}. **{step['title']}**：{step['body']}"
         for index, step in enumerate(article["flow"], start=1)
     )
-    parts_html = "".join(
-        (
-            "<section class=\"part-card\">"
-            f"<h3>{escape(part['title'])}</h3>"
-            f"<p>{escape(part['body'])}</p>"
-            "</section>"
-        )
-        for part in article["parts"]
-    )
-    sections = [
-        ("TL;DR", f"{summary} 这不是首页卡片上的一句话，而是进入深读流程后的核心判断：先确认材料来源，再拆文章或项目结构，最后把能被证据支撑的结论和仍需追踪的边界分开。"),
-        ("来源与材料地图", f"本次材料来自 {source_name}，发布时间窗口为 {published_at}，证据链接包括 {len(item['evidence'])} 条公开来源。自动化必须先读这些来源，再写判断；如果某个结论不能回到原文、README、release note、PDF 或官方页面，就只能放入边界说明。"),
-        ("文章总览", article["overview"]),
-        ("文章架构拆解", article["architecture"]),
-        ("代码或项目结构深挖", "如果这是代码项目，分析必须继续阅读 README、docs/examples、依赖入口、核心目录和 release notes，解释模块边界、执行流程、状态管理、可观测性与部署入口；如果这是论文或报告，则用同样方式拆方法、实验、政策结构和执行链条。"),
-        ("关键论证链", "把作者论证还原成四步：它先把什么问题定义出来；接着提出什么机制、框架或系统；然后用哪些公开证据支撑；最后哪些结论仍然不能直接推出。这个链条比摘要更重要，因为它决定这篇内容能否被复用到日报。"),
-        ("对照与反例", "本次分析不把单个信号误读成行业定论。项目活跃不等于生产成熟，论文方法新不等于真实训练稳定，政策蓝图清晰也不等于制度已经落地。需要把同类方案、缺失证据和潜在失败模式放在同一页里看。"),
-        ("证据与边界", article["evidence_and_limits"]),
-        ("后续追踪问题", "下一轮自动化需要继续追踪：是否出现代码或复现结果；release 是否修正关键模块；作者是否补充实验或政策细节；同类项目是否给出反例；今天写入的判断是否需要 correction 或 tombstone。"),
-        ("可复用到日报的判断", article["reusability"]),
-        ("审稿式结论", "这篇内容可以进入日报，但必须以可复查的研究稿形式进入：保留来源链接、结构拆解、逐部分细读、流程复原、证据边界、后续问题和审稿式结论，而不是只在首页留一个链接。"),
-    ]
-    section_html = "".join(
-        (
-            "<section class=\"section-card\">"
-            f"<p class=\"eyebrow\">{escape(title_text)}</p>"
-            f"<p>{escape(body)}</p>"
-            "</section>"
-        )
-        for title_text, body in sections
-    )
 
-    return f"""<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · Daily Report 深度分析</title>
-    <style>
-      :root {{
-        --parchment: #f3efe3;
-        --paper: #fcfaf4;
-        --ink: #1f2e3d;
-        --ink-blue: #17375e;
-        --muted: #5f655f;
-        --line: #d4ccb8;
-        --accent: #9b6b2f;
-        --green: #46624d;
-      }}
-      * {{ box-sizing: border-box; }}
-      body {{
-        margin: 0;
-        background: radial-gradient(circle at top, #faf5e8 0%, var(--parchment) 56%);
-        color: var(--ink);
-        font-family: Charter, "Songti SC", "STSong", Georgia, serif;
-      }}
-      main {{
-        width: min(980px, calc(100% - 28px));
-        margin: 0 auto;
-        padding: 30px 0 64px;
-      }}
-      header, .section-card, .flow-shell, .parts-shell, .evidence-shell {{
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-      }}
-      header {{
-        padding: 28px;
-      }}
-      .eyebrow {{
-        margin: 0 0 8px;
-        color: var(--accent);
-        font: 700 0.78rem/1.3 Inter, "PingFang SC", sans-serif;
-        text-transform: uppercase;
-      }}
-      h1, h2, h3 {{
-        margin: 0;
-        color: var(--ink-blue);
-      }}
-      h1 {{
-        font-size: clamp(2.1rem, 6vw, 3.8rem);
-        line-height: 1.05;
-      }}
-      h2 {{
-        font-size: clamp(1.45rem, 3vw, 2rem);
-        line-height: 1.18;
-      }}
-      h3 {{
-        font-size: 1.05rem;
-        line-height: 1.35;
-      }}
-      p, li {{
-        color: var(--muted);
-        font: 400 1rem/1.8 Inter, "PingFang SC", sans-serif;
-      }}
-      .lead {{
-        margin: 16px 0 0;
-        color: var(--ink);
-      }}
-      .meta, .tags {{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 18px;
-      }}
-      .meta span, .tags span {{
-        padding: 6px 10px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: #fffdf7;
-        color: var(--ink-blue);
-        font: 700 0.8rem/1.2 Inter, "PingFang SC", sans-serif;
-      }}
-      .stack {{
-        display: grid;
-        gap: 18px;
-        margin-top: 18px;
-      }}
-      .section-card, .flow-shell, .parts-shell, .evidence-shell {{
-        padding: 22px;
-      }}
-      .flow-grid, .parts-grid {{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }}
-      .flow-step, .part-card {{
-        position: relative;
-        min-height: 150px;
-        padding: 16px 16px 16px 56px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: #fffdf7;
-      }}
-      .flow-step b {{
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        display: grid;
-        place-items: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 999px;
-        background: var(--ink-blue);
-        color: #fffef8;
-        font: 700 0.82rem/1 Inter, "PingFang SC", sans-serif;
-      }}
-      ul {{
-        margin: 14px 0 0;
-        padding-left: 18px;
-      }}
-      a {{
-        color: var(--ink-blue);
-      }}
-      .note {{
-        margin-top: 14px;
-        padding: 14px 16px;
-        border-left: 4px solid var(--green);
-        background: rgba(70, 98, 77, 0.08);
-        border-radius: 8px;
-      }}
-      @media (max-width: 760px) {{
-        main {{ width: min(100% - 20px, 980px); }}
-        .flow-grid, .parts-grid {{ grid-template-columns: 1fr; }}
-      }}
-    </style>
-  </head>
-  <body>
-    <main>
-      <header>
-        <p class="eyebrow">Daily Report 深度分析 · {category}</p>
-        <h1>{title}</h1>
-        <p class="lead">{summary}</p>
-        <div class="meta">
-          <span>{source_name}</span>
-          <span>{published_at}</span>
-          <span>独立 HTML 分析稿</span>
-        </div>
-        <div class="tags">{tags_html}</div>
-      </header>
-      <div class="stack">
-        {section_html}
-        <section class="parts-shell">
-          <p class="eyebrow">逐部分细读</p>
-          <h2>作者把信息拆成了哪些层</h2>
-          <div class="parts-grid">{parts_html}</div>
-        </section>
-        <section class="flow-shell">
-          <p class="eyebrow">方法或系统流程</p>
-          <h2>把文章主张还原成连续步骤</h2>
-          <div class="flow-grid">{flow_html}</div>
-          <div class="note">{escape(str(article["flow_note"]))}</div>
-        </section>
-        <section class="evidence-shell">
-          <p class="eyebrow">证据链接</p>
-          <h2>本次判断依赖的公开来源</h2>
-          <ul>{evidence_html}</ul>
-        </section>
-      </div>
-    </main>
-  </body>
-</html>
+    markdown = f"""# {title}
+
+> Daily Report 深度分析 · {category}
+
+**来源**：[{source_name}]({source_url})
+**发布时间**：{published_at}
+**分类**：{category}
+**标签**：{tags}
+
+## TL;DR
+
+{summary}
+
+这不是首页卡片上的一句话，而是进入深读流程后的核心判断：先确认材料来源，再拆文章或项目结构，最后把能被证据支撑的结论和仍需追踪的边界分开。
+
+## 来源与材料地图
+
+本次材料来自 [{source_name}]({source_url})，发布时间窗口为 {published_at}，证据链接包括 {len(item['evidence'])} 条公开来源。自动化必须先读这些来源，再写判断；如果某个结论不能回到原文、README、release note、PDF 或官方页面，就只能放入边界说明。
+
+### 证据链接
+
+{evidence_markdown}
+
+## 文章总览
+
+{article["overview"]}
+
+## 文章架构拆解
+
+{article["architecture"]}
+
+## 逐部分细读
+
+{parts_markdown}
+
+## 方法或系统流程
+
+{flow_markdown}
+
+{article["flow_note"]}
+
+如果原文涉及优化目标、损失函数或约束，Markdown 可以直接保留公式。示例：
+
+$$
+J(\\theta)=\\mathbb{{E}}_{{x,y\\sim\\pi_\\theta}}[r(x,y)]-\\beta\\,D_{{KL}}(\\pi_\\theta\\Vert\\pi_0)
+$$
+
+## 代码或项目结构深挖
+
+如果这是代码项目，分析必须继续阅读 README、docs/examples、依赖入口、核心目录和 release notes，解释模块边界、执行流程、状态管理、可观测性与部署入口；如果这是论文或报告，则用同样方式拆方法、实验、政策结构和执行链条。
+
+## 关键论证链
+
+把作者论证还原成四步：它先把什么问题定义出来；接着提出什么机制、框架或系统；然后用哪些公开证据支撑；最后哪些结论仍然不能直接推出。这个链条比摘要更重要，因为它决定这篇内容能否被复用到日报。
+
+## 对照与反例
+
+本次分析不把单个信号误读成行业定论。项目活跃不等于生产成熟，论文方法新不等于真实训练稳定，政策蓝图清晰也不等于制度已经落地。需要把同类方案、缺失证据和潜在失败模式放在同一页里看。
+
+## 证据与边界
+
+{article["evidence_and_limits"]}
+
+## 后续追踪问题
+
+下一轮自动化需要继续追踪：是否出现代码或复现结果；release 是否修正关键模块；作者是否补充实验或政策细节；同类项目是否给出反例；今天写入的判断是否需要 correction 或 tombstone。
+
+## 可复用到日报的判断
+
+{article["reusability"]}
+
+## 审稿式结论
+
+这篇内容可以进入日报，但必须以可复查的 Markdown 研究稿形式进入：保留来源链接、结构拆解、逐部分细读、流程复原、证据边界、后续问题和审稿式结论，而不是只在首页留一个链接。
+
+[打开原文]({source_url})
 """
+    return "\n".join(line.rstrip() for line in markdown.splitlines()).strip() + "\n"
 
 
 def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
@@ -466,7 +333,7 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
             "collected_at": generated_at,
             "sort_at": base["published_at"],
             "summary_zh": base["summary_zh"],
-            "analysis_html_path": f"articles/{year}/{month}/{day}/{item_id}/index.html",
+            "analysis_markdown_path": f"articles/{year}/{month}/{day}/{item_id}/index.md",
             "language": "zh-CN",
             "reading_minutes": base["reading_minutes"],
             "tags": base["tags"],
@@ -559,9 +426,9 @@ def main() -> int:
 
     article_paths: list[Path] = []
     for item, article in entries:
-        article_path = public_root / str(item["analysis_html_path"])
+        article_path = public_root / str(item["analysis_markdown_path"])
         article_path.parent.mkdir(parents=True, exist_ok=True)
-        article_path.write_text(_article_html(item, article), encoding="utf-8")
+        article_path.write_text(_article_markdown(item, article), encoding="utf-8")
         article_paths.append(article_path)
 
     top_item_ids = [str(item["item_id"]) for item in items]
@@ -657,7 +524,7 @@ def main() -> int:
                 "replacement_candidates": 0,
             },
             "written_item_ids": top_item_ids,
-            "article_paths": [str(item["analysis_html_path"]) for item in items],
+            "article_paths": [str(item["analysis_markdown_path"]) for item in items],
             "sub_agent_reviews": [
                 {
                     "agent_id": "scout",
@@ -667,7 +534,7 @@ def main() -> int:
                 {
                     "agent_id": "deep_reader",
                     "status": "passed",
-                    "summary": "Each selected source was expanded into a standalone HTML analysis page with deep reading notes, section-by-section interpretation, and follow-up questions.",
+                    "summary": "Each selected source was expanded into a standalone Markdown analysis document with deep reading notes, section-by-section interpretation, and follow-up questions.",
                 },
                 {
                     "agent_id": "method_or_code_analyst",
@@ -680,14 +547,13 @@ def main() -> int:
                     "summary": "Evidence and limits were called out explicitly for every article instead of only summarizing claims.",
                 },
                 {
-                    "agent_id": "html_editor",
+                    "agent_id": "markdown_editor",
                     "status": "passed",
-                    "summary": "All analysis pages were rendered as complete HTML documents with Daily Report styling.",
+                    "summary": "All analysis pages were written as Markdown documents; styling and formula rendering are handled by the web app.",
                 },
             ],
             "quality_gate": {
                 "minimum_chinese_chars": 3500,
-                "minimum_sections": 10,
                 "evidence_points": sum(len(item["evidence"]) for item in items),
                 "skeptical_review": 3,
                 "passed": True,

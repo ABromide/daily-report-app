@@ -23,21 +23,21 @@ def test_sample_manifest_is_deterministic(tmp_path: Path) -> None:
     assert read_json(first.manifest_path) == read_json(second.manifest_path)
 
 
-def test_sample_manifest_contains_article_html_and_audit_record(tmp_path: Path) -> None:
+def test_sample_manifest_contains_article_markdown_and_audit_record(tmp_path: Path) -> None:
     result = generate_sample(tmp_path / "sample")
     manifest = read_json(result.manifest_path)
     paths = {str(entry["path"]) for entry in manifest["files"]}
 
     assert "audits/2026/06/06/sample-20260606t000000z.json" in paths
-    assert any(path.startswith("articles/2026/06/06/itm_") and path.endswith("/index.html") for path in paths)
+    assert any(path.startswith("articles/2026/06/06/itm_") and path.endswith("/index.md") for path in paths)
 
     report = validate_public(result.public_root)
     assert report.ok, format_issues(report.issues)
 
-    article_path = next(result.public_root.glob("articles/2026/06/06/*/index.html"))
-    article_html = article_path.read_text(encoding="utf-8")
-    assert len(article_html) >= 3500
-    assert "来源与材料地图" in article_html
-    assert "代码或项目结构深挖" in article_html
-    assert "后续追踪问题" in article_html
-    assert "审稿式结论" in article_html
+    article_path = next(result.public_root.glob("articles/2026/06/06/*/index.md"))
+    article_markdown = article_path.read_text(encoding="utf-8")
+    assert "[打开原文]" in article_markdown
+    assert "$$" in article_markdown
+    assert "来源与材料地图" in article_markdown
+    assert "代码或项目结构深挖" in article_markdown
+    assert "审稿式结论" in article_markdown

@@ -14,7 +14,9 @@
     "category_counts",
     "dedupe",
     "written_item_ids",
-    "article_paths"
+    "article_paths",
+    "sub_agent_reviews",
+    "quality_gate"
   ],
   "properties": {
     "version": { "const": 1 },
@@ -60,6 +62,41 @@
       "items": {
         "type": "string",
         "pattern": "^articles/[0-9]{4}/[0-9]{2}/[0-9]{2}/[a-z0-9:_-]+/index\\.html$"
+      }
+    },
+    "sub_agent_reviews": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["agent_id", "status", "summary"],
+        "properties": {
+          "agent_id": {
+            "type": "string",
+            "enum": ["scout", "deep_reader", "method_or_code_analyst", "skeptic", "html_editor"]
+          },
+          "status": { "type": "string", "enum": ["passed", "needs_revision", "failed"] },
+          "summary": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "quality_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_chinese_chars",
+        "minimum_sections",
+        "evidence_points",
+        "skeptical_review",
+        "passed"
+      ],
+      "properties": {
+        "minimum_chinese_chars": { "type": "integer", "minimum": 1 },
+        "minimum_sections": { "type": "integer", "minimum": 1 },
+        "evidence_points": { "type": "integer", "minimum": 0 },
+        "skeptical_review": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "boolean" }
       }
     }
   }

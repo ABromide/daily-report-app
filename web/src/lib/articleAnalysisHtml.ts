@@ -244,7 +244,35 @@ export function renderShowcaseArticleHtml(item: LocalizedDocument, cluster?: Loc
         <p><strong>核心判断：</strong>${escapeHtml(item.visual.takeaway)} 这句话只是入口，完整 HTML 会继续追问作者如何支撑它、哪些环节仍缺证据、它应该如何影响后续日报跟踪。</p>
       </section>
 
+      <section class="article-section">
+        <p class="eyebrow">来源与材料地图</p>
+        <h2>先确认我们到底读了什么</h2>
+        <p>二级页不应该只给一个链接。本稿把材料拆成三层：原文入口、可验证证据、以及仍需要后续追踪的推断区。当前来源是 ${escapeHtml(item.sourceName)}，原文域名是 ${escapeHtml(item.domain)}，分类是「${escapeHtml(category)}」。如果自动化无法确认发布日期、原始来源或关键材料，它不能把内容写入日报。</p>
+        <p>对于代码仓库，材料地图要覆盖 README、docs/examples、依赖入口、核心目录和 release notes；对于论文，要覆盖摘要、方法、实验、指标、消融和局限；对于博客或报告，要覆盖作者论证顺序、关键事实、政策或产品含义和未证明部分。</p>
+      </section>
+
       ${sectionHtml}
+
+      <section class="article-section">
+        <p class="eyebrow">代码或项目结构深挖</p>
+        <h2>把工程面或方法面拆到能复用</h2>
+        <p>当前内容的核心路径是：${escapeHtml(item.visual.approach.join(" -> "))}。如果这是项目分析，自动化要继续解释模块边界、执行流程、状态管理、可观测性、部署入口和真实工程风险；如果这是论文或报告，则要把方法流程、实验设计、治理链条或安全假设拆成可检查的步骤。</p>
+        <p>这里的重点不是把标签写得更多，而是回答「它到底改变了哪一段工作流」。一个 Agent 项目要说明模型、工具、状态、审批、观察和部署如何连接；一个后训练工作要说明数据、目标、采样、奖励、蒸馏或评测如何连接；一个安全内容要说明风险、评估、制度或防御动作如何连接。</p>
+      </section>
+
+      <section class="article-section">
+        <p class="eyebrow">关键论证链</p>
+        <h2>把作者从问题到结论的路径还原出来</h2>
+        <p>深度分析必须能回答四个问题：作者先把什么现象定义成问题；接着提出什么机制、系统或实验；然后用什么证据证明它有效；最后哪些结论仍然不能直接推出。当前摘要是：${escapeHtml(item.summary)}。它只能作为入口，不能替代论证链。</p>
+        <p>因此，自动化生成 HTML 时必须保留逻辑顺序：问题入口 -> 方法主体 -> 证据材料 -> 边界条件 -> 日报判断。任何跳过证据直接下结论的段落，都应该被 skeptical review 打回重写。</p>
+      </section>
+
+      <section class="article-section">
+        <p class="eyebrow">对照与反例</p>
+        <h2>避免把单个信号误读成行业结论</h2>
+        <p>项目活跃不等于生产成熟，论文新目标不等于真实训练稳定，安全蓝图清晰也不等于制度已经落地。自动化必须写出同类对照、缺失证据和潜在失败模式：它和同类内容相比新增了什么，哪些只是常规能力，哪些仍停留在主张层。</p>
+        <p>如果找不到充分对照，HTML 也要明说，而不是用漂亮卡片掩盖空白。日报的可信度来自把不知道的部分写清楚。</p>
+      </section>
 
       <section class="flow-card">
         <p class="eyebrow">方法或系统流程</p>
@@ -261,7 +289,16 @@ export function renderShowcaseArticleHtml(item: LocalizedDocument, cluster?: Loc
           <article><h3>证据来源</h3><p>优先使用原文、论文页、官方博客或仓库 README；引用必须保留链接，不能只写“据称”。</p></article>
           <article><h3>边界条件</h3><p>如果原文缺少实验、复现代码、失败案例或安全假设，HTML 分析稿必须明确标出，而不是用摘要掩盖。</p></article>
           <article><h3>后续追踪</h3><p>把可复现性、部署可行性、评测覆盖和风险外溢作为下一次自动化运行的观察项。</p></article>
+          <article><h3>重复风险</h3><p>写入前必须检查 known-links、canonical URL、title hash 和 content hash；重复候选要替换，不要换个标题重复展示。</p></article>
+          <article><h3>过度解释风险</h3><p>不能把作者没有证明的结论写成确定事实；所有扩展判断都要回到公开证据或标记为后续问题。</p></article>
         </div>
+      </section>
+
+      <section class="article-section">
+        <p class="eyebrow">后续追踪问题</p>
+        <h2>下一轮自动化应该继续追什么</h2>
+        <p>第一，检查这篇内容是否出现复现代码、release 更新、作者补充说明或第三方复测；第二，检查同类项目或论文是否给出相反结果；第三，检查它是否进入真实产品、训练管线、安全政策或开发者工作流；第四，检查今天的判断是否需要被 tombstone 或 correction 修正。</p>
+        <p>这些问题会进入下一轮搜索提示，避免日报只做一次性摘录，而是形成连续观察。</p>
       </section>
 
       <section class="article-section note">
@@ -269,6 +306,12 @@ export function renderShowcaseArticleHtml(item: LocalizedDocument, cluster?: Loc
         <h2>可复用到日报的判断</h2>
         <p>JSON 只负责索引和首页卡片；真正面向用户的解释在这个完整 HTML 文件里。后续 Mac App、网页详情页和日报归档都可以直接渲染或缓存它。</p>
         <a class="footer-link" href="${escapeHtml(item.url)}">打开原文</a>
+      </section>
+
+      <section class="article-section">
+        <p class="eyebrow">审稿式结论</p>
+        <h2>这篇能不能进入日报，为什么</h2>
+        <p>可以进入，但必须带着边界进入。它满足分类、来源和可追踪性要求，也能提供一个后续观察信号；但日报不把它包装成最终答案，而是把它放进可复查的证据链里：原文链接、结构拆解、逐部分细读、流程复原、证据边界、后续问题和审稿式结论必须同时存在。</p>
       </section>
     </main>
   </body>

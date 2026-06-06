@@ -28,7 +28,8 @@ DerivedData/
 
 # Generated and private data
 data/
+!web/src/pages/data/
+!web/src/pages/data/**
 private-runs/
 screenshots/
 tmp/
-

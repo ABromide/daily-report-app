@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-06-06T12:32:34Z",
+  "item_count": 3,
+  "period": {
+    "end": "2026-06-06T13:00:00Z",
+    "start": "2026-06-06T12:00:00Z"
+  },
+  "report_id": "hourly:2026-06-06T12:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型 Agent 相关",
+      "item_ids": [
+        "itm_fe01906c4ef44106"
+      ],
+      "summary": "OpenAI Agents SDK JS 的更新重点仍然围绕 tracing 与长任务工程面。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_d0ccf7dfcec35db8"
+      ],
+      "summary": "LlamaFactory 仍在把后训练操作流程压成统一入口，而不是零散脚本集合。"
+    },
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_b5ea5cc9786d34d1"
+      ],
+      "summary": "OpenAI 的 blueprint 把安全主张明确翻译成联邦制度建设路线。"
+    }
+  ],
+  "summary": "本小时筛入 3 条满足日期窗口的公开内容，分别覆盖 Agent 工程框架、后训练基础设施和前沿 AI 安全治理。",
+  "top_item_ids": [
+    "itm_fe01906c4ef44106",
+    "itm_d0ccf7dfcec35db8",
+    "itm_b5ea5cc9786d34d1"
+  ],
+  "version": 1
+}

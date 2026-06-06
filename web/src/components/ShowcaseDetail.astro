@@ -222,3 +222,29 @@ const auditEntries = locale === "zh"
     </aside>
   </div>
 </main>
+
+<script>
+  const analysisFrames = Array.from(document.querySelectorAll(".article-html-frame"));
+
+  function resizeAnalysisFrame(frame: Element) {
+    if (!(frame instanceof HTMLIFrameElement)) return;
+    const doc = frame.contentDocument;
+    if (!doc) return;
+    const bodyHeight = doc.body?.scrollHeight ?? 0;
+    const documentHeight = doc.documentElement?.scrollHeight ?? 0;
+    const height = Math.max(bodyHeight, documentHeight);
+    if (height > 0) {
+      frame.style.height = `${height + 24}px`;
+    }
+  }
+
+  for (const frame of analysisFrames) {
+    frame.addEventListener("load", () => resizeAnalysisFrame(frame));
+  }
+
+  window.addEventListener("resize", () => {
+    for (const frame of analysisFrames) {
+      resizeAnalysisFrame(frame);
+    }
+  });
+</script>

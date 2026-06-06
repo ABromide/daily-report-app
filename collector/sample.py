@@ -154,6 +154,40 @@ def generate_sample(output_root: Path) -> SampleGenerationResult:
             },
             "written_item_ids": [str(item["item_id"]) for item in items],
             "article_paths": [str(item["analysis_html_path"]) for item in items],
+            "sub_agent_reviews": [
+                {
+                    "agent_id": "scout",
+                    "status": "passed",
+                    "summary": "确认样例候选满足今天或本周窗口，并完成 canonical_url、title_hash、content_hash 去重。",
+                },
+                {
+                    "agent_id": "deep_reader",
+                    "status": "passed",
+                    "summary": "按完整公开材料结构生成深读笔记，覆盖总览、逐部分细读、证据边界和后续追踪。",
+                },
+                {
+                    "agent_id": "method_or_code_analyst",
+                    "status": "passed",
+                    "summary": "把样例信号拆成方法或系统流程，并解释它在固定分类中的位置。",
+                },
+                {
+                    "agent_id": "skeptic",
+                    "status": "passed",
+                    "summary": "检查重复、日期窗口和过度解释风险，保留边界说明。",
+                },
+                {
+                    "agent_id": "html_editor",
+                    "status": "passed",
+                    "summary": "写入完整 HTML 分析稿，正文不依赖 item JSON 字段。",
+                },
+            ],
+            "quality_gate": {
+                "minimum_chinese_chars": 3500,
+                "minimum_sections": 10,
+                "evidence_points": 5,
+                "skeptical_review": 3,
+                "passed": True,
+            },
         },
     )
     write_json(

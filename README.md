@@ -26,7 +26,9 @@ Web 端使用 Astro 构建，默认中文，同时提供英文版 `/en`。
 
 生产数据写入 `data` 分支，应用代码和文档留在 `main` 分支。
 
-Codex 自动化每小时运行一次，执行顺序如下：
+Codex 自动化每小时运行一次，但策略是“深度优先”而不是“数量优先”。如果某个小时只有 1 篇内容真正值得研究，并且能被完整读透，自动化可以只提交 1 篇；禁止为了凑满分类写浅层摘要。
+
+执行顺序如下：
 
 1. 读取中文自动化契约：`config/automation/codex-hourly.zh.json`。
 2. 只搜索今天或本周内发布、更新、合并或被官方页面标记为当前日期范围内的内容；无法确认日期的候选直接丢弃。
@@ -36,10 +38,16 @@ Codex 自动化每小时运行一次，执行顺序如下：
    - `ai-safety`
 4. 读取 `public/index/known-links.json` 和最新 `items.jsonl` 做去重。
 5. 如果候选的 `canonical_url`、`external_id`、`title_hash` 或 `content_hash` 已存在，丢弃该候选，并继续寻找同类替代内容。
-6. 深度阅读完整原文，分析作者的问题入口、方法组织、每个部分承担的作用、证据是否支撑结论、边界和后续追踪问题。
-7. 为每条新内容生成卡片摘要、分类字段和独立 HTML 深度分析文件。
-8. 写入 JSONL、HTML 分析稿、小时报告、自动化 audit record、manifest 和 known-links。
-9. 运行校验和 secret scan，通过后提交到 `data` 分支，并触发 `repository_dispatch: data-updated`。
+6. 启动或模拟多个子 Agent：
+   - `scout`：找候选、确认日期窗口和去重键。
+   - `deep_reader`：完整阅读原文、论文、README、docs、release notes 或报告正文。
+   - `method_or_code_analyst`：论文看方法和实验；代码看模块、依赖、执行流、状态管理和部署入口。
+   - `skeptic`：专门找证据不足、过度解释、重复内容和日期不合规。
+   - `html_editor`：把深读笔记改写成完整中文 HTML。
+7. 深度阅读完整原文，分析作者的问题入口、方法组织、每个部分承担的作用、证据是否支撑结论、代码或项目结构如何支持主张、边界和后续追踪问题。
+8. 为每条新内容生成卡片摘要、分类字段和独立 HTML 深度分析文件。
+9. 写入 JSONL、HTML 分析稿、小时报告、自动化 audit record、manifest 和 known-links。
+10. 运行校验和 secret scan，通过后提交到 `data` 分支，并触发 `repository_dispatch: data-updated`。
 
 ### Item 输出格式
 
@@ -86,12 +94,27 @@ raw-public/YYYY/MM/DD/HH/
 
 HTML 分析稿至少包含：
 
+- TL;DR：先给核心判断，但不能替代正文。
 - 文章总览：这篇文章真正讨论什么。
+- 来源与材料地图：说明读了哪些原文、论文页、README、docs、release notes、PDF、图片或表格。
 - 文章架构拆解：问题入口、方法主体、证据指标、边界问题。
 - 逐部分细读：每个主要部分承担什么作用。
 - 方法或系统流程：把文章里的关键流程拆成连续步骤。
+- 代码或项目结构深挖：如果是代码仓库，要解释模块边界、执行流程、状态管理、可观测性和部署入口。
+- 关键论证链：还原作者从问题到结论的推理路径。
+- 对照与反例：说明哪些结论不能从单个信号直接推出。
 - 证据与边界：哪些证据支持结论，哪些地方仍需验证。
+- 后续追踪问题：下一轮自动化应该继续搜什么。
 - 可复用到日报的判断：为什么值得进入当前分类和后续追踪。
+- 审稿式结论：像 reviewer 一样说明它能不能进入日报、为什么、带什么边界。
+
+质量门槛：
+
+- HTML 正文至少 3500 个中文字符级别的长文内容。
+- 至少 10 个实质小节。
+- 至少 5 个证据点。
+- 必须包含 skeptical review，列出至少 3 个不能从原文直接推出或仍需验证的结论。
+- item JSON 只负责索引；长文正文不能写回 `analysis_zh` 或 `visual` 字段。
 
 如果原文有关键图片、表格、系统图或结果图，HTML 中可以直接使用原始图片链接；也可以由自动化下载后重新上传到 `public/assets/`，再引用镜像链接。所有图片都需要中文说明。
 
@@ -122,7 +145,21 @@ HTML 分析稿至少包含：
     "replacement_candidates": 1
   },
   "written_item_ids": ["paper-20260606-trust-region-opd"],
-  "article_paths": ["articles/2026/06/06/paper-20260606-trust-region-opd/index.html"]
+  "article_paths": ["articles/2026/06/06/paper-20260606-trust-region-opd/index.html"],
+  "sub_agent_reviews": [
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读原文并输出结构化深读笔记。"
+    }
+  ],
+  "quality_gate": {
+    "minimum_chinese_chars": 3500,
+    "minimum_sections": 10,
+    "evidence_points": 5,
+    "skeptical_review": 3,
+    "passed": true
+  }
 }
 ```
 
@@ -242,9 +279,20 @@ config/automation/codex-hourly.zh.json
 - 重复候选必须换同类替代内容
 - 输出必须包含 `category_id` 和 `analysis_html_path`
 - item JSON 不能承载长文正文；每篇内容必须生成独立、完整的 HTML 深度分析文件
-- 结构化提示词按读取状态、搜索候选、去重替换、深度阅读、写入 HTML、写入索引、审计 manifest、验证提交八步执行
+- 结构化提示词按读取状态、候选侦察、去重替换、深度阅读、方法/代码分析、审稿质疑、写入 HTML、写入索引、审计 manifest、验证提交十步执行
+- 自动化可以一次只研究 1 篇文章或项目，但必须研究透
+- 审计记录必须包含 `sub_agent_reviews` 和 `quality_gate`
 - 每次运行必须生成自动化 audit record，并随 public data 一起提交
 - 提交前必须运行 `validate-public` 与 `secret-scan`
+
+本仓库还提供一个真实调研样例生成脚本，用来在本地复现“深度优先”的 public data：
+
+```bash
+uv run python scripts/automation/generate_curated_public_data.py \
+  --output fixtures/public-data \
+  --run-id codex-hourly-20260606t123234z \
+  --generated-at 2026-06-06T12:32:34Z
+```
 
 测试自动化契约：
 

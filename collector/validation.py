@@ -107,7 +107,8 @@ def _validate_manifest_entry(public_root: Path, entry: JsonObject) -> list[Valid
     if expected_bytes != actual_bytes:
         issues.append(_issue(relative_path, f"byte size mismatch: expected {expected_bytes}, got {actual_bytes}"))
 
-    if relative_path.endswith(".html"):
+    if relative_path.startswith("articles/") and relative_path.endswith(".html"):
+        issues.extend(_validate_article_html(target))
         return issues
     if relative_path.endswith("/items.jsonl"):
         issues.extend(_validate_items_jsonl(target))
@@ -117,6 +118,42 @@ def _validate_manifest_entry(public_root: Path, entry: JsonObject) -> list[Valid
             issues.append(_issue(relative_path, "manifest entry path has no schema mapping"))
         else:
             issues.extend(_validate_json_file(schema_name, target))
+    return issues
+
+
+def _validate_article_html(path: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    try:
+        html = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        return [_issue(path, str(exc))]
+
+    required_markers = [
+        "<!doctype html",
+        "TL;DR",
+        "来源与材料地图",
+        "文章架构拆解",
+        "逐部分细读",
+        "方法或系统流程",
+        "代码或项目结构深挖",
+        "关键论证链",
+        "对照与反例",
+        "证据与边界",
+        "后续追踪问题",
+        "可复用到日报的判断",
+        "审稿式结论",
+    ]
+    lower_html = html.lower()
+    if "<!doctype html" not in lower_html:
+        issues.append(_issue(path, "article HTML must be a complete document with <!doctype html>"))
+    for marker in required_markers[1:]:
+        if marker not in html:
+            issues.append(_issue(path, f"article HTML is missing required section: {marker}"))
+    if len(html) < 3500:
+        issues.append(_issue(path, "article HTML is too short for deep analysis; expected at least 3500 chars"))
+    heading_count = html.count("<h2") + html.count("<h3")
+    if heading_count < 8:
+        issues.append(_issue(path, "article HTML must contain at least 8 h2/h3 headings"))
     return issues
 
 

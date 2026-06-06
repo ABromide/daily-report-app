@@ -83,8 +83,12 @@ test("Chinese visual card opens a second-level analysis page", async ({ page }, 
   await expect(page.getByRole("heading", { name: "HTML 深度分析稿" })).toBeVisible();
   const analysisFrame = page.frameLocator(".article-html-frame");
   await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "先确认我们到底读了什么" })).toBeVisible();
   await expect(analysisFrame.getByRole("heading", { name: "按原文结构重建作者论证" })).toBeVisible();
   await expect(analysisFrame.getByRole("heading", { name: "每一节都要解释它承担的作用" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "把工程面或方法面拆到能复用" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "下一轮自动化应该继续追什么" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "这篇能不能进入日报，为什么" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "自动化审查记录" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "分类位置" })).toBeVisible();
   await expect(page.getByLabel("分类位置").getByText("大模型 Agent 相关")).toBeVisible();
@@ -104,7 +108,10 @@ test("English detail page shows post-training classification", async ({ page }) 
   await expect(page.getByRole("heading", { name: "HTML Analysis Document" })).toBeVisible();
   const analysisFrame = page.frameLocator(".article-html-frame");
   await expect(analysisFrame.getByText("TL;DR")).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "先确认我们到底读了什么" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "把工程面或方法面拆到能复用" })).toBeVisible();
   await expect(analysisFrame.getByRole("heading", { name: "证据与边界" })).toBeVisible();
+  await expect(analysisFrame.getByRole("heading", { name: "下一轮自动化应该继续追什么" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
   await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();

@@ -33,3 +33,11 @@ def test_sample_manifest_contains_article_html_and_audit_record(tmp_path: Path) 
 
     report = validate_public(result.public_root)
     assert report.ok, format_issues(report.issues)
+
+    article_path = next(result.public_root.glob("articles/2026/06/06/*/index.html"))
+    article_html = article_path.read_text(encoding="utf-8")
+    assert len(article_html) >= 3500
+    assert "来源与材料地图" in article_html
+    assert "代码或项目结构深挖" in article_html
+    assert "后续追踪问题" in article_html
+    assert "审稿式结论" in article_html

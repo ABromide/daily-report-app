@@ -88,6 +88,7 @@ jobs:
       - name: Build web
         env:
           PUBLIC_DATA_DIR: ${{ github.workspace }}/web/public/data
+          PUBLIC_DATA_LABEL: data branch public manifest
           PUBLIC_SITE_BASE: /${{ github.event.repository.name }}/
         run: npm --prefix web run build
 

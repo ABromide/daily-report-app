@@ -10,11 +10,12 @@ interface Props {
 
 const { activeView, data, variant = "sidebar" } = Astro.props;
 const basePath = import.meta.env.BASE_URL;
+const normalizedBasePath = basePath.endsWith("/") ? basePath : `${basePath}/`;
 const hrefFor = (href: string) => {
   if (href === "/") {
-    return basePath;
+    return normalizedBasePath;
   }
-  return `${basePath}${href.replace(/^\//, "")}`;
+  return `${normalizedBasePath}${href.replace(/^\//, "")}`;
 };
 
 const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }> = [

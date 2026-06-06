@@ -84,19 +84,22 @@ export async function loadDashboardData(): Promise<DashboardData> {
   const publicDataDir = process.env.PUBLIC_DATA_DIR
     ? path.resolve(process.env.PUBLIC_DATA_DIR)
     : defaultPublicDataDir;
+  const publicDataLabel = process.env.PUBLIC_DATA_LABEL ?? (
+    process.env.PUBLIC_DATA_DIR ? "configured public data" : "fixtures/public-data/public"
+  );
 
-  const fixtureData = await readFixtureSnapshot(publicDataDir);
+  const fixtureData = await readFixtureSnapshot(publicDataDir, publicDataLabel);
   if (fixtureData) {
     return fixtureData;
   }
 
   return {
     ...mockDashboardData,
-    dataPath: publicDataDir
+    dataPath: publicDataLabel
   };
 }
 
-async function readFixtureSnapshot(publicDataDir: string): Promise<DashboardData | null> {
+async function readFixtureSnapshot(publicDataDir: string, dataPathLabel: string): Promise<DashboardData | null> {
   const latestPath = path.join(publicDataDir, "index/latest.json");
   if (!(await exists(latestPath))) {
     return null;
@@ -110,7 +113,7 @@ async function readFixtureSnapshot(publicDataDir: string): Promise<DashboardData
     }
 
     const manifest = await readJson(path.resolve(publicDataDir, manifestRef));
-    return await normalizePublicSnapshot(manifest, publicDataDir);
+    return await normalizePublicSnapshot(manifest, publicDataDir, dataPathLabel);
   } catch (error) {
     console.warn(`Falling back to mock data because fixture loading failed: ${String(error)}`);
     return null;
@@ -141,7 +144,11 @@ function extractManifestRef(value: unknown): string | null {
   return null;
 }
 
-async function normalizePublicSnapshot(raw: unknown, publicDataDir: string): Promise<DashboardData> {
+async function normalizePublicSnapshot(
+  raw: unknown,
+  publicDataDir: string,
+  dataPathLabel: string
+): Promise<DashboardData> {
   if (!isRecord(raw)) {
     throw new Error("Manifest root must be an object.");
   }
@@ -173,7 +180,7 @@ async function normalizePublicSnapshot(raw: unknown, publicDataDir: string): Pro
     generatedAt,
     windowLabel: asString(reportRecord.summary) ?? "Public fixture snapshot",
     dataMode: "fixture",
-    dataPath: publicDataDir,
+    dataPath: dataPathLabel,
     metrics: [
       {
         label: "Sources scanned",

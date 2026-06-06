@@ -1,0 +1,23 @@
+{
+  "name": "daily-report-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "astro": "^6.4.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.2",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.8.1",
+    "typescript": "^5.9.3"
+  }
+}

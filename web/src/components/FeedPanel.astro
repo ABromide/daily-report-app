@@ -1,0 +1,51 @@
+---
+import type { Signal } from "../lib/data";
+import { formatDateTime, formatPercent } from "../lib/format";
+
+interface Props {
+  signals: Signal[];
+}
+
+const { signals } = Astro.props;
+---
+
+<section class="feed-panel" aria-labelledby="priority-feed-title">
+  <div class="section-heading feed-heading">
+    <div>
+      <p class="eyebrow">Live Triage</p>
+      <h2 id="priority-feed-title">Priority Feed</h2>
+    </div>
+    <span class="feed-count">{signals.length} items</span>
+  </div>
+
+  <div class="feed-list">
+    {signals.map((signal, index) => (
+      <article class:list={["feed-row", { "is-selected": index === 0 }]}>
+        <div class="score-cell">
+          <strong>{signal.score}</strong>
+          <span>score</span>
+        </div>
+
+        <div class="feed-body">
+          <div class="feed-meta">
+            <span>{signal.category}</span>
+            <span>{signal.source}</span>
+            <time datetime={signal.publishedAt}>{formatDateTime(signal.publishedAt)}</time>
+          </div>
+          <h3>{signal.title}</h3>
+          <p>{signal.summary}</p>
+          <div class="label-row">
+            {signal.labels.map((label) => (
+              <span>{label}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="confidence-cell">
+          <span>{formatPercent(signal.confidence)}</span>
+          <small>confidence</small>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

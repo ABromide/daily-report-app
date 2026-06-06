@@ -1,0 +1,74 @@
+---
+import type { ReportRecord, Signal } from "../lib/data";
+import { formatDateTime, formatPercent } from "../lib/format";
+
+interface Props {
+  signal?: Signal;
+  report?: ReportRecord;
+}
+
+const { signal, report } = Astro.props;
+---
+
+<aside class="inspector" aria-labelledby="detail-inspector-title">
+  <div class="inspector-header">
+    <p class="eyebrow">Selected Signal</p>
+    <h2 id="detail-inspector-title">Detail Inspector</h2>
+  </div>
+
+  {signal ? (
+    <>
+      <article class="inspector-card">
+        <div class="inspector-score">
+          <span>Priority</span>
+          <strong>{signal.score}</strong>
+        </div>
+        <h3>{signal.title}</h3>
+        <p>{signal.impact}</p>
+      </article>
+
+      <dl class="detail-grid">
+        <div>
+          <dt>Source</dt>
+          <dd>{signal.source}</dd>
+        </div>
+        <div>
+          <dt>Type</dt>
+          <dd>{signal.sourceType}</dd>
+        </div>
+        <div>
+          <dt>Published</dt>
+          <dd>{formatDateTime(signal.publishedAt)}</dd>
+        </div>
+        <div>
+          <dt>Confidence</dt>
+          <dd>{formatPercent(signal.confidence)}</dd>
+        </div>
+        <div>
+          <dt>Run</dt>
+          <dd>{signal.runId}</dd>
+        </div>
+        <div>
+          <dt>Report</dt>
+          <dd>{report?.title ?? signal.reportId}</dd>
+        </div>
+      </dl>
+
+      <section class="evidence-block" aria-labelledby="evidence-title">
+        <h3 id="evidence-title">Evidence Notes</h3>
+        <p>{signal.summary}</p>
+        <div class="label-row">
+          {signal.labels.map((label) => (
+            <span>{label}</span>
+          ))}
+        </div>
+        {signal.url ? <a class="text-link" href={signal.url}>Open source</a> : null}
+      </section>
+    </>
+  ) : (
+    <article class="inspector-card">
+      <h3>No signal selected</h3>
+      <p>Public data loaded, but this view has no signal to inspect yet.</p>
+    </article>
+  )}
+</aside>

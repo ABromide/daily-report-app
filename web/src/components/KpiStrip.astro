@@ -1,0 +1,26 @@
+---
+import type { Metric } from "../lib/data";
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<section class="kpi-section" aria-labelledby="kpi-strip-title">
+  <div class="section-heading">
+    <p class="eyebrow">Operating Snapshot</p>
+    <h2 id="kpi-strip-title">KPI Strip</h2>
+  </div>
+
+  <div class="kpi-grid">
+    {metrics.map((metric) => (
+      <article class:list={["kpi-tile", `status-${metric.status}`]}>
+        <span>{metric.label}</span>
+        <strong>{metric.value}</strong>
+        <small>{metric.trend}</small>
+      </article>
+    ))}
+  </div>
+</section>

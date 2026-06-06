@@ -1,0 +1,53 @@
+---
+import type { DashboardData, ViewId } from "../lib/data";
+import { formatDateTime } from "../lib/format";
+
+interface Props {
+  activeView: ViewId;
+  data: DashboardData;
+  variant?: "sidebar" | "mobile";
+}
+
+const { activeView, data, variant = "sidebar" } = Astro.props;
+
+const navItems: Array<{ id: ViewId; href: string; label: string; meta: string }> = [
+  { id: "feed", href: "/", label: "Feed", meta: `${data.signals.length} signals` },
+  { id: "sources", href: "/sources", label: "Sources", meta: `${data.sources.length} connectors` },
+  { id: "runs", href: "/runs", label: "Runs", meta: `${data.runs.length} recent` },
+  { id: "reports", href: "/reports", label: "Reports", meta: `${data.reports.length} artifacts` }
+];
+---
+
+{
+  variant === "sidebar" ? (
+    <aside class="sidebar" aria-label="Workspace views">
+      <div class="brand-block">
+        <p class="eyebrow">Daily Report App</p>
+        <a class="brand-title" href="/">Research Workstation</a>
+      </div>
+
+      <nav class="nav-list" aria-label="Workspace views">
+        {navItems.map((item) => (
+          <a class:list={["nav-item", { "is-active": item.id === activeView }]} href={item.href} aria-current={item.id === activeView ? "page" : undefined}>
+            <span>{item.label}</span>
+            <small>{item.meta}</small>
+          </a>
+        ))}
+      </nav>
+
+      <div class="sync-card" aria-label="Data source status">
+        <p class="eyebrow">Data Source</p>
+        <strong>{data.dataMode === "fixture" ? "Fixture manifest" : "Mock fallback"}</strong>
+        <span>{formatDateTime(data.generatedAt)}</span>
+      </div>
+    </aside>
+  ) : (
+    <nav class="mobile-tabs" aria-label="Mobile views">
+      {navItems.map((item) => (
+        <a class:list={["mobile-tab", { "is-active": item.id === activeView }]} href={item.href} aria-current={item.id === activeView ? "page" : undefined}>
+          <span>{item.label}</span>
+        </a>
+      ))}
+    </nav>
+  )
+}

@@ -1,0 +1,100 @@
+name: CI
+
+"on":
+  push:
+    branches:
+      - main
+      - "agent/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python schema, tests, and pyright
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install root npm tools
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Run Python tests
+        run: uv run pytest
+
+      - name: Validate schema fixtures
+        run: |
+          uv run daily-report validate-fixtures
+          uv run daily-report validate-public fixtures/public-data/public
+
+      - name: Run pyright
+        run: npm run pyright
+
+  web:
+    name: Web build and e2e
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install web dependencies
+        run: |
+          test -f web/package.json
+          if [ -f web/package-lock.json ]; then
+            npm --prefix web ci
+          else
+            npm --prefix web install
+          fi
+
+      - name: Build web
+        run: npm --prefix web run build
+
+      - name: Run web e2e
+        run: npm --prefix web run test:e2e
+
+  swift:
+    name: Swift build and smoke
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Build Swift package
+        run: swift build --package-path mac
+
+      - name: Run Swift smoke test
+        run: swift run --package-path mac DailyReportSmoke

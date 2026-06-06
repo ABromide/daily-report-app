@@ -1,0 +1,107 @@
+name: Pages
+
+"on":
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types:
+      - data-updated
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.repository }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Pages artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Checkout data branch
+        id: checkout-data
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: data
+          path: _data_branch
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Prepare public data
+        run: |
+          set -euo pipefail
+          mkdir -p web/public
+          if [ -d _data_branch/public ]; then
+            source_dir="_data_branch/public"
+          elif [ -d fixtures/public-data/public ]; then
+            source_dir="fixtures/public-data/public"
+          else
+            echo "Neither data branch public/ nor fixtures/public-data/public exists." >&2
+            exit 1
+          fi
+          rm -rf web/public/data
+          cp -R "$source_dir" web/public/data
+          echo "Using public data from $source_dir"
+
+      - name: Validate public data
+        run: uv run daily-report validate-public web/public/data
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install web dependencies
+        run: |
+          test -f web/package.json
+          if [ -f web/package-lock.json ]; then
+            npm --prefix web ci
+          else
+            npm --prefix web install
+          fi
+
+      - name: Build web
+        run: npm --prefix web run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    name: Deploy Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

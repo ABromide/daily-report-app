@@ -81,7 +81,11 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   await expect(page).toHaveURL(/\/items\/itm_fe01906c4ef44106$/);
   await expect(page.locator(".detail-hero").getByRole("heading", { name: "OpenAI Agents SDK JS 把多 Agent、Sandbox 和 Tracing 收成同一条工程主线" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Markdown 深度分析稿" })).toBeVisible();
-  await expect(page.getByText("TL;DR")).toBeVisible();
+  const articleNav = page.getByRole("navigation", { name: "文章导航" });
+  await expect(articleNav).toBeVisible();
+  await expect(articleNav.getByRole("link", { name: "来源与材料地图" })).toBeVisible();
+  await expect(articleNav.getByRole("link", { name: "证据与边界" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "TL;DR" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "来源与材料地图" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "读完原文后的主线" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "结构拆解" })).toBeVisible();
@@ -89,6 +93,8 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   await expect(page.getByRole("heading", { name: "方法或系统流程" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "证据与边界" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "日报判断" })).toBeVisible();
+  await articleNav.getByRole("link", { name: "证据与边界" }).click();
+  await expect(page.locator("#证据与边界")).toBeVisible();
   await expect(page.locator(".markdown-body .katex-error")).toHaveCount(0);
   await expect(page.locator(".markdown-body").getByText("6 月 5 日最新 commit 是文档翻译").first()).toBeVisible();
   await expect(page.getByRole("link", { name: "单独打开 Markdown" })).toBeVisible();
@@ -109,7 +115,7 @@ test("English detail page shows post-training classification", async ({ page }) 
   await page.goto("/en/items/itm_d0ccf7dfcec35db8");
   await expect(page.locator(".detail-hero").getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Markdown Analysis Document" })).toBeVisible();
-  await expect(page.getByText("TL;DR")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "TL;DR" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Source Map" }).or(page.getByRole("heading", { name: "来源与材料地图" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Method or System Flow" }).or(page.getByRole("heading", { name: "方法或系统流程" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Evidence and Boundaries" }).or(page.getByRole("heading", { name: "证据与边界" }))).toBeVisible();

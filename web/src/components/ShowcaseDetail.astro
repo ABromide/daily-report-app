@@ -2,7 +2,7 @@
 import type { Locale } from "../lib/i18n";
 import type { LocalizedDocument, ShowcaseData } from "../lib/showcaseContent";
 import { formatDateTime } from "../lib/format";
-import { renderMarkdownToHtml, renderShowcaseArticleMarkdown } from "../lib/articleAnalysisMarkdown";
+import { extractMarkdownHeadings, renderMarkdownToHtml, renderShowcaseArticleMarkdown } from "../lib/articleAnalysisMarkdown";
 
 interface Props {
   data: ShowcaseData;
@@ -36,7 +36,8 @@ const labels = {
     published: "发布时间",
     reading: "阅读时间",
     minutes: "分钟",
-    aiTakeaway: "AI 解读"
+    aiTakeaway: "AI 解读",
+    articleToc: "文章导航"
   },
   en: {
     back: "Back home",
@@ -59,7 +60,8 @@ const labels = {
     published: "Published",
     reading: "Reading Time",
     minutes: "min",
-    aiTakeaway: "AI take"
+    aiTakeaway: "AI take",
+    articleToc: "Article Nav"
   }
 }[locale];
 
@@ -75,6 +77,7 @@ const localHref = (path: string) => {
 const itemHref = (id: string) => localHref(locale === "zh" ? `/items/${id}` : `/en/items/${id}`);
 const analysisMarkdown = item.analysisMarkdown ?? renderShowcaseArticleMarkdown(item, cluster);
 const analysisHtml = renderMarkdownToHtml(analysisMarkdown);
+const articleHeadings = extractMarkdownHeadings(analysisMarkdown);
 const analysisMarkdownHref = localHref(`/data/${item.analysisMarkdownPath}`);
 const auditEntries = locale === "zh"
   ? [
@@ -130,6 +133,17 @@ const auditEntries = locale === "zh"
 
   <div class="detail-layout">
     <div class="detail-main">
+      {articleHeadings.length > 0 && (
+        <nav class="detail-section article-toc article-toc-inline" aria-labelledby="article-toc-inline-title">
+          <p class="eyebrow">{labels.detail}</p>
+          <h2 id="article-toc-inline-title">{labels.articleToc}</h2>
+          <div class="article-toc-list">
+            {articleHeadings.map((heading) => (
+              <a class:list={["article-toc-link", `article-toc-level-${heading.level}`]} href={`#${heading.id}`}>{heading.text}</a>
+            ))}
+          </div>
+        </nav>
+      )}
       <section class="detail-section article-markdown-shell" aria-labelledby="analysis-title">
         <div class="article-markdown-header">
           <div>
@@ -143,6 +157,18 @@ const auditEntries = locale === "zh"
     </div>
 
     <aside class="detail-aside">
+      {articleHeadings.length > 0 && (
+        <nav class="detail-section article-toc" aria-labelledby="article-toc-title">
+          <p class="eyebrow">{labels.detail}</p>
+          <h2 id="article-toc-title">{labels.articleToc}</h2>
+          <div class="article-toc-list">
+            {articleHeadings.map((heading) => (
+              <a class:list={["article-toc-link", `article-toc-level-${heading.level}`]} href={`#${heading.id}`}>{heading.text}</a>
+            ))}
+          </div>
+        </nav>
+      )}
+
       <section class="detail-section" aria-labelledby="category-title">
         <p class="eyebrow">{labels.category}</p>
         <h2 id="category-title">{labels.category}</h2>

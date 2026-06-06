@@ -7,6 +7,16 @@ import type Token from "markdown-it/lib/token.mjs";
 
 import type { LocalizedCluster, LocalizedDocument } from "./showcaseContent";
 
+export interface MarkdownHeading {
+  id: string;
+  level: 2 | 3;
+  text: string;
+}
+
+interface MarkdownRenderEnv {
+  headingSlugCounts?: Record<string, number>;
+}
+
 const mathOptions: KatexOptions = {
   throwOnError: false,
   errorColor: "#9a493e",
@@ -19,7 +29,48 @@ const markdownRenderer = new MarkdownIt({
   typographer: true
 });
 
+const defaultHeadingOpenRenderer = markdownRenderer.renderer.rules.heading_open;
 const defaultFenceRenderer = markdownRenderer.renderer.rules.fence;
+
+function plainHeadingText(value: string): string {
+  return value
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[`*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function slugBaseForHeading(text: string): string {
+  const slug = plainHeadingText(text)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^\p{Letter}\p{Number}\s-]/gu, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+  return slug || "section";
+}
+
+function nextHeadingId(text: string, counts: Record<string, number>): string {
+  const base = slugBaseForHeading(text);
+  const count = counts[base] ?? 0;
+  counts[base] = count + 1;
+  return count === 0 ? base : `${base}-${count + 1}`;
+}
+
+markdownRenderer.renderer.rules.heading_open = (tokens, index, options, env, self) => {
+  const level = Number(tokens[index].tag.slice(1));
+  if (level >= 2 && level <= 3) {
+    const renderEnv = env as MarkdownRenderEnv;
+    renderEnv.headingSlugCounts ??= {};
+    const headingText = tokens[index + 1]?.content ?? "";
+    tokens[index].attrSet("id", nextHeadingId(headingText, renderEnv.headingSlugCounts));
+  }
+  return defaultHeadingOpenRenderer
+    ? defaultHeadingOpenRenderer(tokens, index, options, env, self)
+    : self.renderToken(tokens, index, options);
+};
 
 markdownRenderer.renderer.rules.fence = (tokens, index, options, env, self) => {
   const token = tokens[index];
@@ -130,7 +181,37 @@ function useKatexRenderer(md: MarkdownIt): void {
 useKatexRenderer(markdownRenderer);
 
 export function renderMarkdownToHtml(markdown: string): string {
-  return markdownRenderer.render(markdown);
+  return markdownRenderer.render(markdown, { headingSlugCounts: {} } satisfies MarkdownRenderEnv);
+}
+
+export function extractMarkdownHeadings(markdown: string): MarkdownHeading[] {
+  const headings: MarkdownHeading[] = [];
+  const counts: Record<string, number> = {};
+  let fenceMarker: "```" | "~~~" | null = null;
+
+  for (const line of markdown.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith("```") || trimmed.startsWith("~~~")) {
+      const marker = trimmed.startsWith("```") ? "```" : "~~~";
+      fenceMarker = fenceMarker === marker ? null : marker;
+      continue;
+    }
+    if (fenceMarker !== null) continue;
+
+    const match = /^(#{2,3})\s+(.+?)\s*#*\s*$/.exec(trimmed);
+    if (!match) continue;
+
+    const level = match[1].length as 2 | 3;
+    const text = plainHeadingText(match[2]);
+    if (!text) continue;
+    headings.push({
+      id: nextHeadingId(text, counts),
+      level,
+      text
+    });
+  }
+
+  return headings;
 }
 
 export function renderShowcaseArticleMarkdown(item: LocalizedDocument, cluster?: LocalizedCluster): string {

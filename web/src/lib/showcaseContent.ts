@@ -227,10 +227,10 @@ function loadPublicSnapshot(): PublicSnapshot {
 
   const manifest = readJson(readPublicPath(publicDataDir, manifestPath));
   const files = Array.isArray(manifest.files) ? manifest.files.map(asRecord) : [];
-  const itemsPath = findManifestPath(files, (filePath) => filePath.startsWith("items/") && filePath.endsWith(".jsonl"));
+  const itemPaths = findManifestPaths(files, (filePath) => filePath.startsWith("items/") && filePath.endsWith(".jsonl"));
   const sourcesPath = findManifestPath(files, (filePath) => filePath === "index/sources.json") ?? "index/sources.json";
 
-  const items = itemsPath ? readJsonl(readPublicPath(publicDataDir, itemsPath)).map(asRecord) : [];
+  const items = itemPaths.flatMap((itemsPath) => readJsonl(readPublicPath(publicDataDir, itemsPath)).map(asRecord));
   const sourcesIndex = existsPublicPath(publicDataDir, sourcesPath) ? readJson(readPublicPath(publicDataDir, sourcesPath)) : {};
   const sources = isRecord(sourcesIndex) && Array.isArray(sourcesIndex.sources)
     ? sourcesIndex.sources.map(asRecord)
@@ -280,7 +280,7 @@ function localizePublicItem(
   const url = asString(item.url ?? item.canonical_url) ?? repoUrl;
   const domain = hostname(url);
   const tags = asStringArray(item.tags);
-  const publishedAt = asString(item.sort_at ?? item.published_at ?? item.fetched_at) ?? snapshot.generatedAt;
+  const publishedAt = asString(item.published_at ?? item.sort_at ?? item.fetched_at) ?? snapshot.generatedAt;
   const readingMinutes = asNumber(item.reading_minutes, Math.max(4, Math.ceil(summary.length / 140)));
   const analysisMarkdownPath = asString(item.analysis_markdown_path) ?? articleMarkdownPath(publishedAt, id);
   const analysisMarkdown = readPublicText(snapshot.publicDataDir, analysisMarkdownPath);
@@ -388,8 +388,13 @@ function buildFallbackVisual(locale: Locale, clusterId: ClusterId, tags: string[
 }
 
 function findManifestPath(files: Record<string, unknown>[], predicate: (filePath: string) => boolean): string | null {
-  const file = files.find((entry) => predicate(asString(entry.path) ?? ""));
-  return asString(file?.path);
+  return findManifestPaths(files, predicate)[0] ?? null;
+}
+
+function findManifestPaths(files: Record<string, unknown>[], predicate: (filePath: string) => boolean): string[] {
+  return files
+    .map((entry) => asString(entry.path))
+    .filter((filePath): filePath is string => filePath !== null && predicate(filePath));
 }
 
 function articleMarkdownPath(publishedAt: string, id: string): string {

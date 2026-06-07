@@ -54,18 +54,15 @@ public struct PublicDataLoader: Sendable {
         let manifestURL = try localURL(root: directory, relativePath: manifestPath)
         let manifest = try readJSON(manifestURL)
         let files = records(manifest["files"])
-        let itemsPath = findManifestPath(files) { path in
+        let itemsPaths = findManifestPaths(files) { path in
             path.hasPrefix("items/") && path.hasSuffix(".jsonl")
         }
         let sourcesPath = findManifestPath(files) { path in
             path == "index/sources.json"
         } ?? "index/sources.json"
 
-        let items: [JSONRecord]
-        if let itemsPath {
-            items = try readJSONL(localURL(root: directory, relativePath: itemsPath))
-        } else {
-            items = []
+        let items: [JSONRecord] = try itemsPaths.flatMap { itemsPath in
+            try readJSONL(localURL(root: directory, relativePath: itemsPath))
         }
 
         let sourcesIndex: JSONRecord
@@ -105,18 +102,17 @@ public struct PublicDataLoader: Sendable {
 
         let manifest = try await readRemoteJSON(remoteURL(baseURL: baseURL, relativePath: manifestPath))
         let files = records(manifest["files"])
-        let itemsPath = findManifestPath(files) { path in
+        let itemsPaths = findManifestPaths(files) { path in
             path.hasPrefix("items/") && path.hasSuffix(".jsonl")
         }
         let sourcesPath = findManifestPath(files) { path in
             path == "index/sources.json"
         } ?? "index/sources.json"
 
-        let items: [JSONRecord]
-        if let itemsPath {
-            items = try await readRemoteJSONL(remoteURL(baseURL: baseURL, relativePath: itemsPath))
-        } else {
-            items = []
+        var items: [JSONRecord] = []
+        for itemsPath in itemsPaths {
+            let rows = try await readRemoteJSONL(remoteURL(baseURL: baseURL, relativePath: itemsPath))
+            items.append(contentsOf: rows)
         }
 
         let sourcesIndex = (try? await readRemoteJSON(remoteURL(baseURL: baseURL, relativePath: sourcesPath))) ?? [:]
@@ -252,8 +248,8 @@ public struct PublicDataLoader: Sendable {
         let url = urlValue(item["url"]) ?? urlValue(item["canonical_url"]) ?? Self.repositoryURL!
         let domain = hostname(url)
         let tags = stringArray(item["tags"])
-        let publishedAt = dateValue(item["sort_at"])
-            ?? dateValue(item["published_at"])
+        let publishedAt = dateValue(item["published_at"])
+            ?? dateValue(item["sort_at"])
             ?? dateValue(item["fetched_at"])
             ?? generatedAt
         let readingMinutes = int(
@@ -411,10 +407,19 @@ public struct PublicDataLoader: Sendable {
         _ files: [JSONRecord],
         matching predicate: (String) -> Bool
     ) -> String? {
-        let file = files.first { entry in
-            predicate(string(entry["path"]) ?? "")
+        findManifestPaths(files, matching: predicate).first
+    }
+
+    private func findManifestPaths(
+        _ files: [JSONRecord],
+        matching predicate: (String) -> Bool
+    ) -> [String] {
+        files.compactMap { entry in
+            guard let path = string(entry["path"]), predicate(path) else {
+                return nil
+            }
+            return path
         }
-        return string(file?["path"])
     }
 
     private func analysisMarkdownPath(item: JSONRecord, index: Int, generatedAt: Date) -> String {
@@ -423,8 +428,8 @@ public struct PublicDataLoader: Sendable {
         }
 
         let id = string(item["item_id"]) ?? string(item["id"]) ?? "item-\(index + 1)"
-        let publishedAt = dateValue(item["sort_at"])
-            ?? dateValue(item["published_at"])
+        let publishedAt = dateValue(item["published_at"])
+            ?? dateValue(item["sort_at"])
             ?? dateValue(item["fetched_at"])
             ?? generatedAt
         return articleMarkdownPath(publishedAt: publishedAt, id: id)

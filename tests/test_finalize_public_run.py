@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 from collector.finalize_public_run import derive_item_id, finalize_public_run
-from collector.jsonio import read_json, sha256_file, write_json
+from collector.jsonio import read_json, read_jsonl, sha256_file, write_json
 from collector.sample import generate_sample
 from collector.validation import format_issues, validate_public
 
@@ -120,6 +120,57 @@ def test_derive_item_id_uses_stable_hex_prefix() -> None:
         external_id="aura-agentic-reid",
         title="AURA: Agentic Re-ID for Visual Grounding",
     )
+
+
+def test_finalize_public_run_orders_items_by_published_at_not_sort_at(tmp_path: Path) -> None:
+    result = generate_sample(tmp_path / "sample")
+    item_id = "itm_sortby_publication"
+    article_rel = f"articles/2026/06/06/{item_id}/index.md"
+    article_path = result.public_root / article_rel
+    article_path.parent.mkdir(parents=True, exist_ok=True)
+    article_path.write_text(
+        "# Published-time ordering fixture\n\n"
+        "## TL;DR\n\n"
+        "This fixture catches accidental sorting by collection or page creation time.\n",
+        encoding="utf-8",
+    )
+    payload_path = result.public_root.parent / "published-order-payload.json"
+    write_json(
+        payload_path,
+        {
+            "run_id": "codex-hourly-20260606t013000z",
+            "generated_at": "2026-06-06T01:30:00Z",
+            "items": [
+                {
+                    "item_id": item_id,
+                    "category_id": "llm-agent",
+                    "type": "paper",
+                    "source_id": "test-source",
+                    "source_name": "Test Source",
+                    "source_type": "manual",
+                    "external_id": "test-source:published-order",
+                    "title": "Published time should drive item ordering",
+                    "url": "https://example.com/published-time-ordering",
+                    "canonical_url": "https://example.com/published-time-ordering",
+                    "published_at": "2026-06-06T00:10:00Z",
+                    "sort_at": "2026-06-06T23:59:00Z",
+                    "fetched_at": "2026-06-06T01:30:00Z",
+                    "summary_zh": "用于确认列表排序使用文章发布时间，而不是页面创建时间或 sort_at。",
+                    "analysis_markdown_path": article_rel,
+                    "tags": ["test", "ordering"],
+                    "content_hash": sha256_file(article_path),
+                }
+            ],
+        },
+    )
+
+    finalize_public_run(result.public_root, payload_path=payload_path, validate=True)
+
+    items = read_jsonl(result.public_root / "items/2026/06/06/items.jsonl")
+    ordered_ids = [str(item["item_id"]) for item in items]
+    assert ordered_ids.index(item_id) > 0
+    published_times = [str(item["published_at"]) for item in items]
+    assert published_times == sorted(published_times, reverse=True)
 
 
 def test_finalize_public_run_derives_missing_item_id(tmp_path: Path) -> None:

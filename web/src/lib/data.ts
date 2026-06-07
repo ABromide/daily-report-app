@@ -158,13 +158,15 @@ async function normalizePublicSnapshot(
   const files = Array.isArray(raw.files) ? raw.files.map(asRecord) : [];
   const reportPath = findManifestPath(files, "hourly_report") ?? findManifestPath(files, "daily_report");
   const dailyPath = findManifestPath(files, "daily_report");
-  const itemsPath = findManifestPath(files, "items");
+  const itemPaths = findManifestPaths(files, "items");
   const sourcesPath = findManifestPath(files, "sources") ?? "index/sources.json";
 
   const [hourlyReport, dailyReport, itemRecords, sourcesIndex] = await Promise.all([
     reportPath ? readJson(path.join(publicDataDir, reportPath)) : Promise.resolve(null),
     dailyPath ? readJson(path.join(publicDataDir, dailyPath)) : Promise.resolve(null),
-    itemsPath ? readJsonl(path.join(publicDataDir, itemsPath)) : Promise.resolve([]),
+    itemPaths.length > 0
+      ? Promise.all(itemPaths.map((itemsPath) => readJsonl(path.join(publicDataDir, itemsPath)))).then((rows) => rows.flat())
+      : Promise.resolve([]),
     readJson(path.join(publicDataDir, sourcesPath)).catch(() => null)
   ]);
 
@@ -225,17 +227,23 @@ async function normalizePublicSnapshot(
 }
 
 function findManifestPath(files: Record<string, unknown>[], role: string): string | null {
-  const file = files.find((entry) => {
-    const filePath = asString(entry.path) ?? "";
-    return (
-      entry.role === role ||
-      (role === "hourly_report" && filePath.startsWith("reports/hourly/")) ||
-      (role === "daily_report" && filePath.startsWith("reports/daily/")) ||
-      (role === "items" && filePath.startsWith("items/") && filePath.endsWith(".jsonl")) ||
-      (role === "sources" && filePath === "index/sources.json")
-    );
-  });
-  return asString(file?.path);
+  return findManifestPaths(files, role)[0] ?? null;
+}
+
+function findManifestPaths(files: Record<string, unknown>[], role: string): string[] {
+  return files
+    .filter((entry) => {
+      const filePath = asString(entry.path) ?? "";
+      return (
+        entry.role === role ||
+        (role === "hourly_report" && filePath.startsWith("reports/hourly/")) ||
+        (role === "daily_report" && filePath.startsWith("reports/daily/")) ||
+        (role === "items" && filePath.startsWith("items/") && filePath.endsWith(".jsonl")) ||
+        (role === "sources" && filePath === "index/sources.json")
+      );
+    })
+    .map((entry) => asString(entry.path))
+    .filter((filePath): filePath is string => filePath !== null);
 }
 
 function normalizePublicItems(
@@ -246,29 +254,31 @@ function normalizePublicItems(
   const topItems = Array.isArray(report.top_items) ? report.top_items.map(asRecord) : [];
   const topById = new Map(topItems.map((item) => [asString(item.item_id), item]));
 
-  return items.map((item, index) => {
-    const itemId = asString(item.item_id ?? item.id) ?? `item-${index + 1}`;
-    const top = topById.get(itemId) ?? {};
-    const tags = asStringArray(item.tags);
-    const score = asNumber(item.importance_score ?? item.score, asNumber(top.score, 70));
+  return items
+    .map((item, index) => {
+      const itemId = asString(item.item_id ?? item.id) ?? `item-${index + 1}`;
+      const top = topById.get(itemId) ?? {};
+      const tags = asStringArray(item.tags);
+      const score = asNumber(item.importance_score ?? item.score, asNumber(top.score, 70));
 
-    return {
-      id: itemId,
-      title: asString(item.title) ?? "Untitled research signal",
-      source: asString(item.source_id) ?? "unknown-source",
-      sourceType: asString(item.type) ?? "public",
-      category: tags[0] ?? "General",
-      summary: asString(top.reason) ?? asString(item.summary) ?? "No summary supplied.",
-      impact: asString(top.reason) ?? "Needs triage and human review.",
-      confidence: Math.round(score),
-      score: Math.round(score),
-      publishedAt: asString(item.published_at) ?? asString(item.fetched_at) ?? new Date().toISOString(),
-      labels: tags,
-      runId,
-      reportId: asString(report.report_id) ?? "fixture-report",
-      url: asString(item.url) ?? undefined
-    };
-  });
+      return {
+        id: itemId,
+        title: asString(item.title) ?? "Untitled research signal",
+        source: asString(item.source_id) ?? "unknown-source",
+        sourceType: asString(item.type) ?? "public",
+        category: tags[0] ?? "General",
+        summary: asString(top.reason) ?? asString(item.summary) ?? "No summary supplied.",
+        impact: asString(top.reason) ?? "Needs triage and human review.",
+        confidence: Math.round(score),
+        score: Math.round(score),
+        publishedAt: asString(item.published_at) ?? asString(item.fetched_at) ?? new Date().toISOString(),
+        labels: tags,
+        runId,
+        reportId: asString(report.report_id) ?? "fixture-report",
+        url: asString(item.url) ?? undefined
+      };
+    })
+    .sort((left, right) => Date.parse(right.publishedAt) - Date.parse(left.publishedAt));
 }
 
 function normalizePublicSources(value: unknown, items: Record<string, unknown>[]): SourceRecord[] {

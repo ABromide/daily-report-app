@@ -201,7 +201,7 @@ def _dedupe_merge_items(existing: list[JsonObject], incoming: list[JsonObject]) 
 
     return sorted(
         by_id.values(),
-        key=lambda item: (str(item.get("sort_at") or item.get("published_at") or ""), int(item.get("score", 0)), str(item["item_id"])),
+        key=lambda item: (str(item.get("published_at") or item.get("sort_at") or ""), int(item.get("score", 0)), str(item["item_id"])),
         reverse=True,
     )
 
@@ -344,7 +344,7 @@ def _rebuild_known_links(public_root: Path, all_items: list[JsonObject], generat
 def _top_items(items: Iterable[JsonObject], limit: int = 5) -> list[JsonObject]:
     return sorted(
         items,
-        key=lambda item: (int(item.get("score", 0)), str(item.get("sort_at") or item.get("published_at") or "")),
+        key=lambda item: (int(item.get("score", 0)), str(item.get("published_at") or item.get("sort_at") or "")),
         reverse=True,
     )[:limit]
 

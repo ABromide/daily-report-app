@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-07T01:07:03Z",
-  "latest_day": "2026-06-07",
-  "manifest_path": "manifests/2026/06/07/010703Z.manifest.json",
-  "manifest_sha256": "63477e1d2299e7d8b08c2aa83941a3a5e082bee8342f6cbfd331b050a413ecac",
+  "generated_at": "2026-06-06T23:59:00Z",
+  "latest_day": "2026-06-06",
+  "manifest_path": "manifests/2026/06/06/235900Z.manifest.json",
+  "manifest_sha256": "e0927c36e22e3e84eeb31b45595fb5c2cf861868ab7a28bb8f80d1a8953a602e",
   "version": 1
 }

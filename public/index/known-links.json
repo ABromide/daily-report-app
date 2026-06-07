@@ -3,7 +3,7 @@
     {
       "canonical_url": "https://red.anthropic.com/2026/attack-navigator/",
       "category_id": "ai-safety",
-      "content_hash": "23f904fa3c6f6973669c723cc367fd172c6ec6be26ba83fb4b7d3c9a767e4f15",
+      "content_hash": "2785100f8b2f705501d6656802b95307dcc80a45736aa38a532d9bb53d35595d",
       "external_id": "anthropic-red:2026:llm-attack-navigator",
       "first_seen_at": "2026-06-06T16:08:28Z",
       "item_id": "itm_17e42b7d5e2a2c7e",
@@ -12,7 +12,7 @@
     {
       "canonical_url": "https://arxiv.org/abs/2606.02373",
       "category_id": "llm-agent",
-      "content_hash": "9d668f87c44e92daeac16bddef2e200eb774c9d8aa9c4505ade4b9d4bba5e28b",
+      "content_hash": "735ee4ef945b49ecdde2320ca45db4961a57dfc569c7f0cef94f579600b10c58",
       "external_id": "arxiv:2606.02373",
       "first_seen_at": "2026-06-06T23:41:31Z",
       "item_id": "itm_25cdea8ffbbe90fd",
@@ -21,7 +21,7 @@
     {
       "canonical_url": "https://arxiv.org/abs/2606.02031",
       "category_id": "llm-agent",
-      "content_hash": "126ccf439a489ad95f8b01e88c14c2d180dfa01ad97fa774c9703b505120b438",
+      "content_hash": "3e0aaea7afaada97c55d2e7c45e9a478383714bb84747608792b1494c3728132",
       "external_id": "arxiv:2606.02031",
       "first_seen_at": "2026-06-06T16:21:13Z",
       "item_id": "itm_2606020310afed01",
@@ -30,7 +30,7 @@
     {
       "canonical_url": "https://www.sysdig.com/blog/agentic-threat-actor-hits-the-orchestration-plane-ai-agent-driven-container-escape",
       "category_id": "ai-safety",
-      "content_hash": "92b15d57a89c24bea90ad0619a90980767dd56721b7206824f3a1dc17e2dd999",
+      "content_hash": "dfc28cc673c2be14ac77405c3481b06a7e3694d5ca4c5e7171b6319a58035ea4",
       "external_id": "sysdig:2026-06-04:agentic-container-escape",
       "first_seen_at": "2026-06-06T16:42:44Z",
       "item_id": "itm_2d8c44d450c8f427",
@@ -39,7 +39,7 @@
     {
       "canonical_url": "https://arxiv.org/abs/2605.30848",
       "category_id": "ai-safety",
-      "content_hash": "23b13ca02e8b45e881831a74bcb9705b7d5ccfaff92e750af2c8410cc7fa3f6c",
+      "content_hash": "cc253add8cc7e5f3779b1d618264f44a271501f25415800c15cd37db1238b9c7",
       "external_id": "arxiv:2605.30848",
       "first_seen_at": "2026-06-06T23:43:58Z",
       "item_id": "itm_2f45d1dee0503570",
@@ -48,7 +48,7 @@
     {
       "canonical_url": "https://arxiv.org/abs/2606.01317",
       "category_id": "ai-safety",
-      "content_hash": "9a1508ed04cbd307911ae59bced6180bb53719f4b8f5eb7a020bf31b1f1221d0",
+      "content_hash": "dee589a19b24b9bb99de1045132d43f9bc51493fed4451b3476052af13800bc0",
       "external_id": "arxiv:2606.01317",
       "first_seen_at": "2026-06-06T16:21:09Z",
       "item_id": "itm_360c585a9772d5c6",
@@ -57,13 +57,13 @@
     {
       "canonical_url": "https://arxiv.org/abs/2606.01249",
       "category_id": "llm-post-training",
-      "content_hash": "17e8c67d1f5921e8249def5ca47f5a7c7f462cdb02d02ec4c97f13eb6365884e",
+      "content_hash": "a39155b78457a781381740ceaf9b8a8d4e8ae46d0344e492e79d7c7c9742a417",
       "external_id": "arxiv:2606.01249v2",
       "first_seen_at": "2026-06-06T16:50:51Z",
       "item_id": "itm_5bee1372117e3472",
       "title_hash": "36e89d0fc74fe4b08f4cab19d0c23555d9991e6c971b24cb6ef1bbfc0413e13f"
     }
   ],
-  "updated_at": "2026-06-07T01:07:03Z",
+  "updated_at": "2026-06-06T23:59:00Z",
   "version": 1
 }

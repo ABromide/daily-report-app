@@ -1,21 +1,24 @@
 {
   "date": "2026-06-07",
-  "generated_at": "2026-06-07T02:18:13Z",
-  "item_count": 1,
+  "generated_at": "2026-06-07T02:26:15Z",
+  "item_count": 2,
   "sections": [
     {
       "heading": "AI 安全相关",
       "item_ids": [
+        "itm_272fc9cff2d59d24",
         "itm_af87f039fc78b19e"
       ],
-      "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "AI 安全相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
+    "arxiv": 1,
     "openai-global-affairs": 1
   },
-  "summary": "2026-06-07 public data 已由 finalize-public-run 统一重建索引和报告，共 1 条内容。",
+  "summary": "2026-06-07 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
   "top_item_ids": [
+    "itm_272fc9cff2d59d24",
     "itm_af87f039fc78b19e"
   ],
   "version": 1

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T02:18:13Z",
+  "generated_at": "2026-06-07T02:26:15Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -10,9 +10,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv research paper source for Daily Report automation.",
+      "description": "Open-access preprint server used for current-week AI research papers.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -32,6 +32,14 @@
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
+    },
+    {
+      "description": "Official safety monitor repository linked from the paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/CHATS-lab/coding-agent-safety-monitor",
+      "id": "github-chats-lab-coding-agent-safety-monitor",
+      "kind": "manual",
+      "name": "CHATS-lab/coding-agent-safety-monitor"
     },
     {
       "description": "Model cards and HF Papers metadata for current AI research.",

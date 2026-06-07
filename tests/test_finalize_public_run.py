@@ -101,6 +101,57 @@ def test_finalize_public_run_merges_payload_and_rebuilds_indexes(tmp_path: Path)
     assert report.ok, format_issues(report.issues)
 
 
+def test_finalize_public_run_allows_non_hex_item_ids_in_reports(tmp_path: Path) -> None:
+    result = generate_sample(tmp_path / "sample")
+    item_id = "itm_harness1_260602373"
+    article_rel = f"articles/2026/06/06/{item_id}/index.md"
+    article_path = result.public_root / article_rel
+    article_path.parent.mkdir(parents=True, exist_ok=True)
+    article_path.write_text(
+        "# Non-hex item id fixture\n\n"
+        "## TL;DR\n\n"
+        "This fixture verifies report schemas accept the same item id format as item records.\n",
+        encoding="utf-8",
+    )
+    payload_path = result.public_root.parent / "non-hex-payload.json"
+    write_json(
+        payload_path,
+        {
+            "run_id": "codex-hourly-20260606t011500z",
+            "generated_at": "2026-06-06T01:15:00Z",
+            "items": [
+                {
+                    "item_id": item_id,
+                    "category_id": "llm-agent",
+                    "type": "paper",
+                    "source_id": "test-source",
+                    "source_name": "Test Source",
+                    "source_type": "manual",
+                    "external_id": "test-source:harness1",
+                    "title": "Report schema accepts non-hex item ids",
+                    "url": "https://example.com/report-schema-non-hex",
+                    "canonical_url": "https://example.com/report-schema-non-hex",
+                    "published_at": "2026-06-06T00:00:00Z",
+                    "fetched_at": "2026-06-06T01:15:00Z",
+                    "summary_zh": "用于测试 report schema 与 item schema 使用一致的 item_id 格式。",
+                    "analysis_markdown_path": article_rel,
+                    "tags": ["test", "schema"],
+                    "content_hash": sha256_file(article_path),
+                }
+            ],
+        },
+    )
+
+    finalize_public_run(result.public_root, payload_path=payload_path, validate=True)
+
+    hourly = read_json(result.public_root / "reports/hourly/2026/06/06/01.json")
+    daily = read_json(result.public_root / "reports/daily/2026/06/06.json")
+    assert item_id in hourly["top_item_ids"]
+    assert item_id in daily["top_item_ids"]
+    report = validate_public(result.public_root)
+    assert report.ok, format_issues(report.issues)
+
+
 def test_finalize_public_run_reconciles_existing_public_data(tmp_path: Path) -> None:
     result = generate_sample(tmp_path / "sample")
 

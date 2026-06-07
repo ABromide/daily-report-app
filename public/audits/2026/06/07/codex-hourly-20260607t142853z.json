@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/07/itm_e92935da15bda3fa/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-07T14:28:53Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260607t142853z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖 llm-agent、llm-post-training、ai-safety 三类，RHO 位列优先候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已深读 arXiv PDF、README、CLI 文档和源码 zipball。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含 TL;DR、公式、Mermaid、结果表、消融表、代码结构和限制。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e92935da15bda3fa"
+  ]
+}

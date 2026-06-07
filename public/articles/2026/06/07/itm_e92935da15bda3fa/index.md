@@ -446,7 +446,99 @@ Group rollout 会重复 replay coreset task。
 
 这些任务必须先放进可 reset sandbox，或者把 RHO 限制在模拟/回放环境里。
 
-### 2. self-preference 会继承 evaluator 偏好
+### 2. 失败案例应该怎么理解？
+
+论文没有把每个失败样本都写成长篇 case study，但从方法和附录可以推断，RHO 真正关心的失败不是“答案错了”这一层，而是错误背后的可迁移结构。
+
+可以把 failure mode 拆成四类：
+
+| 失败类型 | 轨迹里会出现什么 | harness 可以怎么修 | 为什么适合 RHO |
+|---|---|---|---|
+| 环境约束未知 | 工具找不到、路径错误、构建命令误判 | 写入环境检查工具和路径说明 | 多个任务会重复暴露同一约束 |
+| 验证不足 | 改完代码不跑目标测试，只看静态 diff | 增加 smoke test 或 targeted test checklist | 长程任务常败在最后确认 |
+| 任务规格漂移 | 只修了显眼 bug，漏掉 prompt 的细小约束 | 增加 spec ledger，让 agent 逐项核对 | self-validation 能抓住“做了但没做全” |
+| 路径选择不稳定 | 三条 rollout 走出完全不同方案 | 增加 trace-path 或 final-gate skill | self-consistency 能把不确定性显性化 |
+
+这里的关键是：RHO 不需要知道真正的 hidden label，也不需要直接看到测试答案。它只需要看到 agent 在同一任务上表现出可解释的差异，再把这些差异压缩成“未来任务也可能受益”的 harness 改动。
+
+但这也解释了为什么 raw trajectory baseline 表现差。原始日志里混有：
+
+- 有用的命令；
+- 无关探索；
+- 偶然成功；
+- 错误自信；
+- 工具噪声；
+- 长上下文里的局部幻觉；
+- 任务特定细节。
+
+如果 optimizer 直接读这些日志，很容易把偶然路径当成通用策略。RHO 的诊断阶段相当于先做一次信息蒸馏：把“这个样本发生了什么”改写成“这个 harness 可能缺什么”。
+
+### 3. 部署 RHO 时，最小安全流程应该是什么？
+
+如果把 RHO 放进真实 coding-agent 或 workflow-agent 系统，我不会建议让它自动热更新线上 harness。
+
+更稳的流程应该是：
+
+```mermaid
+flowchart TD
+  A["收集历史轨迹"] --> B["只在 sandbox replay"]
+  B --> C["生成 diagnosis 和候选 harness"]
+  C --> D["自动检查 harness diff"]
+  D --> E["离线 held-out / canary replay"]
+  E --> F["人工审查工具权限和新增规则"]
+  F --> G["灰度发布到低风险任务"]
+  G --> H["监控回退率、越权工具、失败类型"]
+```
+
+自动检查至少应该覆盖：
+
+- 新增脚本是否调用网络、删除、移动、权限提升或凭据读取；
+- 新增 instruction 是否鼓励跳过审批、忽略用户约束或扩大任务范围；
+- 新增 skill 是否把任务特定细节错误固化为通用规则；
+- 修改后 harness 是否仍通过已有回归任务；
+- candidate harness 是否能解释每个 diff 对应哪个 diagnosis；
+- pairwise rank 的 rationale 是否和实际轨迹证据一致。
+
+这样做的目的不是把 RHO 变慢，而是把“自我改进”变成可审计变更管理。否则 RHO 的优势，持久文件系统级修改，也会变成它的主要风险来源。
+
+### 4. 与产品里的 memory/skill 系统有什么不同？
+
+很多 Agent 产品已经有 memory、rules、skills、project instructions。RHO 的区别在于它强调 closed-loop evaluation。
+
+普通 memory 更新经常是：
+
+- 用户指出一次问题；
+- agent 写入一条规则；
+- 下次靠检索或上下文注入使用；
+- 很少系统性回放历史任务验证是否真的更好。
+
+RHO 则要求：
+
+- 先选一组有代表性的失败；
+- 在同一任务上重跑；
+- 把改动前后轨迹放到同一评价窗口；
+- 只有相对更好才接受。
+
+这个差别很实用。没有 replay 和 gate 的 skill 系统容易越积越多，最后变成互相冲突的规则堆。RHO 至少给出一个约束：新增规则必须解释历史 failure mode，并且在 coreset replay 中被 self-preference 认为优于 baseline。
+
+当然，self-preference 仍然不等于真实生产收益。更成熟的系统应把 RHO 的 gate 当作第一层筛选，再叠加真实用户反馈、线上 canary、静态风险检查和人工 code review。
+
+### 5. 对日常 coding-agent 运营，应该记录哪些诊断指标？
+
+RHO 还有一个容易被忽略的价值：它提示我们，Agent 平台的日志不应该只记录“成功/失败”和 token 成本，还应该记录能被 harness optimizer 消费的结构化信号。
+
+至少可以持续沉淀这些指标：
+
+- **任务重试差异**：同一任务多次运行是否走向不同文件、不同测试命令、不同最终解释。
+- **验证密度**：每次修改后是否运行目标测试、smoke test、类型检查或构建检查。
+- **规格覆盖率**：最终回复和 diff 是否逐项覆盖用户 prompt 里的硬性要求。
+- **工具越界率**：是否调用了与任务无关、范围过大或权限过高的工具。
+- **失败可解释性**：失败后能否定位到环境约束、缺失知识、错误计划还是执行失误。
+- **规则命中情况**：已有 skill 或 instruction 是否被实际引用，是否在关键步骤改变了行为。
+
+这些指标能让 RHO 之外的系统也受益。即使暂时不自动改 harness，团队也可以用它们做周度故障复盘：哪些失败是模型能力问题，哪些其实是工具、说明、验证流程、权限边界没有写清楚。RHO 的研究意义就在这里：它把“轨迹日志”从事后审计材料，变成了可组织、可筛选、可回放的改进数据。
+
+### 6. self-preference 会继承 evaluator 偏好
 
 RHO 的 gate 依赖 agent 自己比较轨迹。
 
@@ -465,7 +557,7 @@ RHO 的 gate 依赖 agent 自己比较轨迹。
 - domain-specific safety checks；
 - 对 accepted harness 的回归测试。
 
-### 3. 结果还没证明跨模型泛化
+### 7. 结果还没证明跨模型泛化
 
 论文配置里 solver、optimizer、ranker 都是同一 Codex + GPT-5.5 backbone。
 

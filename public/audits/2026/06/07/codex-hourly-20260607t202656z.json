@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/08/itm_96ecf77d7a876b26/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-07T20:26:56Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 1,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260607t202656z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety；Recuse 候选日期为 2026-06-04，未命中本地 known-links。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 页面、LaTeX 源码、GitHub README、spec、SSH adapter 与 phase2 harness。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 pilot 小样本、SSH-only、tool surfacing dependency、非安全边界和授权冲突边界。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_96ecf77d7a876b26"
+  ]
+}

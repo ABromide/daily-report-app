@@ -1,6 +1,6 @@
 {
   "date": "2026-06-06",
-  "generated_at": "2026-06-07T02:26:15Z",
+  "generated_at": "2026-06-07T08:23:05Z",
   "item_count": 7,
   "sections": [
     {
@@ -8,8 +8,8 @@
       "item_ids": [
         "itm_360c585a9772d5c6",
         "itm_17e42b7d5e2a2c7e",
-        "itm_2f45d1dee0503570",
-        "itm_2d8c44d450c8f427"
+        "itm_2d8c44d450c8f427",
+        "itm_2f45d1dee0503570"
       ],
       "summary": "AI 安全相关 本次共有 4 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
@@ -39,8 +39,8 @@
   "top_item_ids": [
     "itm_25cdea8ffbbe90fd",
     "itm_2606020310afed01",
-    "itm_5bee1372117e3472",
     "itm_360c585a9772d5c6",
+    "itm_5bee1372117e3472",
     "itm_17e42b7d5e2a2c7e"
   ],
   "version": 1

@@ -1,0 +1,95 @@
+{
+  "run_id": "codex-hourly-20260607t021813z",
+  "generated_at": "2026-06-07T02:18:13Z",
+  "status": "complete",
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "items": [
+    {
+      "item_id": "itm_af87f039fc78b19e",
+      "category_id": "ai-safety",
+      "type": "report",
+      "source_id": "openai-global-affairs",
+      "source_name": "OpenAI Global Affairs",
+      "source_type": "manual",
+      "external_id": "openai:biodefense-in-the-intelligence-age",
+      "title": "Biodefense in the Intelligence Age",
+      "url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
+      "canonical_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
+      "published_at": "2026-06-04T00:00:00Z",
+      "fetched_at": "2026-06-07T02:18:13Z",
+      "summary_zh": "OpenAI 在 2026-06-04 发布《Biodefense in the Intelligence Age》，提出 AI-powered biological resilience 行动计划：以 trusted access 给政府、公卫、国家实验室、大学、非营利和责任企业提供 GPT-Rosalind/Rosalind Biodefense 等能力，通过五个支柱推进防御者访问、医学反制措施、早期预警、诊断准备响应，以及 impact/risk/resilience 双账本评估。证据背景来自同周 GPT-Rosalind 更新：MedChemBench 27.5% vs GPT-5.5 25.1%、GeneBench 21.6% vs 20.4% 且少用 31% tokens、LabWorkBench 63.2% vs 55.8%。局限是计划仍以高层框架为主，缺少项目级验收指标、失败案例、partner selection 标准、外部复核细节和跨国公平治理说明。",
+      "analysis_markdown_path": "articles/2026/06/04/itm_af87f039fc78b19e/index.md",
+      "tags": [
+        "AI安全",
+        "AI for 安全",
+        "生物安全",
+        "GPT-Rosalind",
+        "trusted access",
+        "biodefense"
+      ],
+      "content_hash": "a17ff40fee91ab56736d5af694553782571334fb62cd24dd99a074e1207561a1",
+      "evidence": [
+        {
+          "type": "url",
+          "label": "OpenAI article",
+          "url": "https://openai.com/index/biodefense-in-the-intelligence-age/"
+        },
+        {
+          "type": "url",
+          "label": "Full biodefense plan PDF",
+          "url": "https://cdn.openai.com/pdf/biodefense-in-the-intelligence-age.pdf"
+        },
+        {
+          "type": "url",
+          "label": "Rosalind Biodefense launch",
+          "url": "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense/"
+        },
+        {
+          "type": "url",
+          "label": "GPT-Rosalind capability update",
+          "url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/"
+        },
+        {
+          "type": "url",
+          "label": "Mandatory nucleic acid synthesis screening open letter",
+          "url": "https://screendna.org/"
+        },
+        {
+          "type": "url",
+          "label": "IFP DNA supply chain analysis",
+          "url": "https://ifp.org/how-to-secure-the-dna-supply-chain/"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "openai-global-affairs",
+      "name": "OpenAI Global Affairs",
+      "kind": "manual",
+      "homepage_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
+      "enabled": true,
+      "description": "OpenAI official Global Affairs article and action-plan PDF selected by the hourly Chinese Daily Report automation."
+    }
+  ],
+  "dedupe": {
+    "duplicate_candidates": 0,
+    "replacement_candidates": 0,
+    "notes": "Exact rg check against public data found no existing biodefense-in-the-intelligence-age URL, external_id, or title before publish; publish-public-run performs final cross-history duplicate validation."
+  },
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout returned nine dated candidates across llm-agent, llm-post-training, and ai-safety. Main agent selected OpenAI Biodefense in the Intelligence Age for strongest date evidence, source authority, and AI-for-safety depth."
+    }
+  ],
+  "quality_gate": {
+    "minimum_chinese_chars": 5000,
+    "evidence_points": 6,
+    "image_notes": 0,
+    "third_party_references": 3,
+    "skeptical_review": 4,
+    "passed": true
+  }
+}

@@ -62,8 +62,17 @@
       "first_seen_at": "2026-06-06T16:50:51Z",
       "item_id": "itm_5bee1372117e3472",
       "title_hash": "36e89d0fc74fe4b08f4cab19d0c23555d9991e6c971b24cb6ef1bbfc0413e13f"
+    },
+    {
+      "canonical_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
+      "category_id": "ai-safety",
+      "content_hash": "a17ff40fee91ab56736d5af694553782571334fb62cd24dd99a074e1207561a1",
+      "external_id": "openai:biodefense-in-the-intelligence-age",
+      "first_seen_at": "2026-06-07T02:18:13Z",
+      "item_id": "itm_af87f039fc78b19e",
+      "title_hash": "97dab5c9acf6606e2c32a0fce3b193f30d5ffaf8aa5832e4c1e06275548ef82c"
     }
   ],
-  "updated_at": "2026-06-06T23:59:00Z",
+  "updated_at": "2026-06-07T02:18:13Z",
   "version": 1
 }

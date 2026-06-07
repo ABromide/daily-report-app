@@ -17,14 +17,15 @@ test("Chinese content hub renders chronological feed, search, filters, and GitHu
   const errors = watchConsole(page);
 
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "三类 AI 前沿内容：Agent、后训练、安全" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "今日内容概览" })).toBeAttached();
+  await expect(page.locator(".hero-stat-board")).toHaveAttribute("aria-label", "固定分类与 Markdown 深度稿统计。");
   await expect(page.getByPlaceholder("搜索 Agent、SFT、强化学习、OPD、AI 安全、论文或代码")).toBeVisible();
   await expect(page.getByRole("heading", { name: "全部更新" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "今日精选" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "三类频道" })).toHaveCount(0);
   await expect(page.getByLabel("查看 GitHub 仓库")).toBeVisible();
   await expect(page.getByRole("button", { name: "大模型后训练相关" })).toBeVisible();
-  await expect(page.getByText("Markdown 深度稿").first()).toBeVisible();
+  await expect(page.getByText("篇文档").first()).toBeVisible();
   await expect(page.locator(".ai-note")).toHaveCount(0);
   const publishedTimes = await page.locator("[data-document-card]").evaluateAll((cards) =>
     cards.map((card) => Date.parse((card as HTMLElement).dataset.publishedAt ?? ""))
@@ -60,14 +61,15 @@ test("English content hub remains available under /en", async ({ page }, testInf
   const errors = watchConsole(page);
 
   await page.goto("/en");
-  await expect(page.getByRole("heading", { name: "Three Frontiers: Agents, Post-Training, Safety" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Today at a glance" })).toBeAttached();
+  await expect(page.locator(".hero-stat-board")).toHaveAttribute("aria-label", "Fixed-channel and Markdown brief statistics.");
   await expect(page.getByPlaceholder("Search agents, SFT, RL, OPD, AI safety, papers, or code")).toBeVisible();
   await expect(page.getByRole("heading", { name: "All updates" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Featured today" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Three channels" })).toHaveCount(0);
   await expect(page.getByLabel("Open GitHub repository")).toBeVisible();
   await expect(page.getByRole("button", { name: "LLM Post-Training" })).toBeVisible();
-  await expect(page.getByText("Markdown briefs").first()).toBeVisible();
+  await expect(page.getByText("briefs").first()).toBeVisible();
 
   await mkdir("test-results", { recursive: true });
   await page.screenshot({ path: `test-results/${testInfo.project.name}-showcase-en.png`, fullPage: true });
@@ -88,16 +90,16 @@ test("Chinese card opens a second-level Markdown analysis page", async ({ page }
   await expect(page.getByRole("heading", { name: "Markdown 深度分析稿" })).toBeVisible();
   const articleNav = page.getByRole("navigation", { name: "文章导航" });
   await expect(articleNav).toBeVisible();
-  await expect(articleNav.getByRole("link", { name: "来源与材料地图" })).toBeVisible();
+  await expect(articleNav.getByRole("link", { name: "来源与材料地图" })).toHaveCount(0);
   await expect(articleNav.getByRole("link", { name: "证据与边界" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "TL;DR" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "来源与材料地图" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "来源与材料地图" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "读完原文后的主线" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "结构拆解" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "逐部分细读" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "方法或系统流程" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "证据与边界" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "日报判断" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "研究者结论" })).toBeVisible();
   await articleNav.getByRole("link", { name: "证据与边界" }).click();
   await expect(page.locator("#证据与边界")).toBeVisible();
   await expect(page.locator(".markdown-body .katex-error")).toHaveCount(0);
@@ -121,9 +123,10 @@ test("English detail page shows post-training classification", async ({ page }) 
   await expect(page.locator(".detail-hero").getByRole("heading", { name: "LlamaFactory 继续把后训练工程压成统一入口，而不是分散脚本集合" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Markdown Analysis Document" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "TL;DR" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Source Map" }).or(page.getByRole("heading", { name: "来源与材料地图" }))).toBeVisible();
+  await expect(page.getByRole("heading", { name: "来源与材料地图" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Method or System Flow" }).or(page.getByRole("heading", { name: "方法或系统流程" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Evidence and Boundaries" }).or(page.getByRole("heading", { name: "证据与边界" }))).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Researcher Conclusion" }).or(page.getByRole("heading", { name: "研究者结论" }))).toBeVisible();
   await expect(page.getByRole("heading", { name: "Automation Audit" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Category Fit" })).toBeVisible();
   await expect(page.getByLabel("Category Fit").getByText("LLM Post-Training")).toBeVisible();

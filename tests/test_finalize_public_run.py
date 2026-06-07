@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import pytest
 
-from collector.finalize_public_run import finalize_public_run
+from collector.finalize_public_run import derive_item_id, finalize_public_run
 from collector.jsonio import read_json, sha256_file, write_json
 from collector.sample import generate_sample
 from collector.validation import format_issues, validate_public
@@ -99,6 +100,78 @@ def test_finalize_public_run_merges_payload_and_rebuilds_indexes(tmp_path: Path)
 
     report = validate_public(result.public_root)
     assert report.ok, format_issues(report.issues)
+
+
+def test_derive_item_id_uses_stable_hex_prefix() -> None:
+    item_id = derive_item_id(
+        canonical_url="https://example.com/research/aura-agentic-reid",
+        external_id="aura-agentic-reid",
+        title="AURA: Agentic Re-ID for Visual Grounding",
+    )
+
+    assert re.fullmatch(r"itm_[a-f0-9]{16}", item_id)
+    assert item_id == derive_item_id(
+        canonical_url="https://example.com/research/aura-agentic-reid",
+        external_id="aura-agentic-reid",
+        title="AURA: Agentic Re-ID for Visual Grounding",
+    )
+    assert item_id != derive_item_id(
+        canonical_url="https://example.com/research/aura-agentic-reid-v2",
+        external_id="aura-agentic-reid",
+        title="AURA: Agentic Re-ID for Visual Grounding",
+    )
+
+
+def test_finalize_public_run_derives_missing_item_id(tmp_path: Path) -> None:
+    result = generate_sample(tmp_path / "sample")
+    item_id = derive_item_id(
+        canonical_url="https://example.com/finalize-public-run-derived-id",
+        external_id="test-source:derived-id",
+        title="Finalize public run derives item ids",
+    )
+    article_rel = f"articles/2026/06/06/{item_id}/index.md"
+    article_path = result.public_root / article_rel
+    article_path.parent.mkdir(parents=True, exist_ok=True)
+    article_path.write_text(
+        "# Derived item id fixture\n\n"
+        "## TL;DR\n\n"
+        "This fixture verifies finalize-public-run derives schema-safe item ids when the payload omits them.\n",
+        encoding="utf-8",
+    )
+    payload_path = result.public_root.parent / "derived-id-payload.json"
+    write_json(
+        payload_path,
+        {
+            "run_id": "codex-hourly-20260606t010500z",
+            "generated_at": "2026-06-06T01:05:00Z",
+            "items": [
+                {
+                    "category_id": "llm-agent",
+                    "type": "code",
+                    "source_id": "test-source",
+                    "source_name": "Test Source",
+                    "source_type": "manual",
+                    "external_id": "test-source:derived-id",
+                    "title": "Finalize public run derives item ids",
+                    "url": "https://example.com/finalize-public-run-derived-id",
+                    "canonical_url": "https://example.com/finalize-public-run-derived-id",
+                    "published_at": "2026-06-06T00:00:00Z",
+                    "fetched_at": "2026-06-06T01:05:00Z",
+                    "summary_zh": "用于测试 finalize-public-run 在 payload 省略 item_id 时自动生成合法 id。",
+                    "analysis_markdown_path": article_rel,
+                    "tags": ["test", "automation"],
+                    "content_hash": sha256_file(article_path),
+                }
+            ],
+        },
+    )
+
+    finalize_public_run(result.public_root, payload_path=payload_path, validate=True)
+
+    known_links = read_json(result.public_root / "index" / "known-links.json")
+    assert any(link["item_id"] == item_id for link in known_links["links"])
+    audit = read_json(result.public_root / "audits/2026/06/06/codex-hourly-20260606t010500z.json")
+    assert audit["written_item_ids"] == [item_id]
 
 
 def test_finalize_public_run_allows_non_hex_item_ids_in_reports(tmp_path: Path) -> None:

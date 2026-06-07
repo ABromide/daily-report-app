@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 from typing import Sequence
 
-from collector.finalize_public_run import finalize_public_run
+from collector.finalize_public_run import derive_item_id, finalize_public_run
 from collector.paths import FIXTURE_PUBLIC_ROOT
 from collector.publish_public_run import DEFAULT_REPO, PublishPublicRunError, automation_preflight, publish_public_run
 from collector.sample import generate_sample
@@ -49,6 +49,18 @@ def _automation_dry_run_command(output_root: Path) -> int:
     print(f"manifest: {result.manifest_path} ({result.manifest_sha256})")
     print("validation: passed")
     print("secret scan: passed")
+    return 0
+
+
+def _make_item_id_command(args: argparse.Namespace) -> int:
+    print(
+        derive_item_id(
+            canonical_url=args.canonical_url,
+            url=args.url,
+            external_id=args.external_id,
+            title=args.title,
+        )
+    )
     return 0
 
 
@@ -152,6 +164,15 @@ def build_parser() -> argparse.ArgumentParser:
     secret_parser = subparsers.add_parser("secret-scan", help="scan a file or directory for secret-like values")
     secret_parser.add_argument("path", type=Path)
 
+    item_id_parser = subparsers.add_parser(
+        "make-item-id",
+        help="derive a stable itm_<16hex> id from canonical_url, external_id, and title",
+    )
+    item_id_parser.add_argument("--canonical-url")
+    item_id_parser.add_argument("--url")
+    item_id_parser.add_argument("--external-id")
+    item_id_parser.add_argument("--title")
+
     finalize_parser = subparsers.add_parser(
         "finalize-public-run",
         help="mechanically merge items and rebuild known-links, reports, days/latest indexes, audit, and manifest",
@@ -214,6 +235,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _automation_dry_run_command(args.output)
     if command == "secret-scan":
         return _secret_scan_command(args.path)
+    if command == "make-item-id":
+        return _make_item_id_command(args)
     if command == "finalize-public-run":
         return _finalize_public_run_command(args)
     if command == "automation-preflight":

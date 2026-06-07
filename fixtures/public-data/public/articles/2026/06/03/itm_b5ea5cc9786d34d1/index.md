@@ -1,6 +1,6 @@
 # OpenAI 的 Frontier Safety Blueprint 把安全讨论从公司自律推向联邦制度设计
 
-> Daily Report 深度分析 · AI 安全相关
+> 研究者精读 · AI 安全相关
 
 **来源**：[OpenAI Global Affairs](https://openai.com/index/frontier-safety-blueprint/)
 **发布时间**：2026-06-03
@@ -10,15 +10,6 @@
 ## TL;DR
 
 这份 6 月 3 日公开的 blueprint 不是单纯态度声明，而是把前沿 AI 安全拆成三段制度工程：联邦框架、CAISI 机构能力、以及跨政府韧性计划。它的重要性在于把“能力越来越强”与“政府应如何形成持续评估能力”直接绑在一起。
-
-## 来源与材料地图
-
-本次材料来自 [OpenAI Global Affairs](https://openai.com/index/frontier-safety-blueprint/)，发布时间窗口为 2026-06-03，证据链接包括 2 条公开来源。下面的分析只使用这些公开来源能够支撑的内容；延伸判断会单独放在边界和后续追踪里。
-
-### 证据链接
-
-- [OpenAI 文章页](https://openai.com/index/frontier-safety-blueprint/)
-- [Blueprint PDF](https://cdn.openai.com/pdf/25752ecb-0e5c-47f9-b9e4-c0f4d76f8d3d/a-blueprint-for-a-federal-framework.pdf)
 
 ## 读完原文后的主线
 
@@ -59,12 +50,12 @@
 
 证据在于 PDF 给出了相当明确的制度分层、职责划分和实施建议，尤其是对 CAISI 的角色、资源和流程边界有具体描述。边界同样明显：这是政策 blueprint，不是实证论文，没有用实验数据证明这些制度安排的效果；很多内容仍属于规范性主张，需要后续立法和执行验证。
 
-## 后续追踪问题
+## 领域延伸思考
 
-下一轮自动化应该追踪是否出现国会法案、CAISI 预算或授权变化、开发者安全框架披露要求、独立评估认证机制，以及其他 AI 公司或政策机构对 blueprint 的回应。
+下一步研究跟踪应该追踪是否出现国会法案、CAISI 预算或授权变化、开发者安全框架披露要求、独立评估认证机制，以及其他 AI 公司或政策机构对 blueprint 的回应。
 
-## 日报判断
+## 研究者结论
 
-日报里值得保留的是三个判断：一，AI 安全讨论正在从 company policy 向 federal institution design 平移；二，RSI 被提升为持续监测对象；三，安全框架开始与算力、采购、国防和国际协调打通。这些都是后续跟踪政策与行业动作的高价值轴线。
+研究者判断可以落在三个层面：一，AI 安全讨论正在从 company policy 向 federal institution design 平移；二，RSI 被提升为持续监测对象；三，安全框架开始与算力、采购、国防和国际协调打通。这些都是后续理解政策与行业动作的高价值轴线。
 
 [打开原文](https://openai.com/index/frontier-safety-blueprint/)

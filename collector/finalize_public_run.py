@@ -71,6 +71,29 @@ def _title_hash(title: str) -> str:
     return sha256_bytes(canonical_json_bytes({"title": normalized}))
 
 
+def derive_item_fingerprint(*, canonical_url: str | None = None, url: str | None = None, external_id: str | None = None, title: str | None = None) -> str:
+    seed = {
+        "canonical_url": canonical_url or url,
+        "external_id": external_id,
+        "title": title,
+    }
+    return sha256_bytes(canonical_json_bytes(seed))
+
+
+def derive_item_id(*, canonical_url: str | None = None, url: str | None = None, external_id: str | None = None, title: str | None = None) -> str:
+    return f"itm_{derive_item_fingerprint(canonical_url=canonical_url, url=url, external_id=external_id, title=title)[:16]}"
+
+
+def _derive_item_id_from_payload(item: JsonObject) -> tuple[str, str]:
+    fingerprint = derive_item_fingerprint(
+        canonical_url=str(item.get("canonical_url") or "") or None,
+        url=str(item.get("url") or "") or None,
+        external_id=str(item.get("external_id") or "") or None,
+        title=str(item.get("title") or "") or None,
+    )
+    return f"itm_{fingerprint[:16]}", fingerprint
+
+
 def _read_json_if_exists(path: Path) -> JsonObject | None:
     if not path.exists():
         return None
@@ -119,13 +142,7 @@ def _ensure_item_fields(public_root: Path, item: JsonObject, generated_at: str) 
     normalized = dict(item)
     item_id = str(normalized.get("item_id") or normalized.get("id") or "").strip()
     if not item_id:
-        seed = {
-            "canonical_url": normalized.get("canonical_url") or normalized.get("url"),
-            "external_id": normalized.get("external_id"),
-            "title": normalized.get("title"),
-        }
-        fingerprint = sha256_bytes(canonical_json_bytes(seed))
-        item_id = f"itm_{fingerprint[:16]}"
+        item_id, fingerprint = _derive_item_id_from_payload(normalized)
         normalized["fingerprint"] = fingerprint
     normalized["item_id"] = item_id
     normalized.setdefault("id", item_id)
@@ -455,7 +472,12 @@ def _infer_written_items(payload: JsonObject, all_items: list[JsonObject], gener
         return [item for item in all_items if str(item.get("item_id")) in wanted]
     payload_items = _payload_list(payload, "items")
     if payload_items:
-        wanted = {str(item.get("item_id") or item.get("id")) for item in payload_items}
+        wanted: set[str] = set()
+        for item in payload_items:
+            item_id = str(item.get("item_id") or item.get("id") or "").strip()
+            if not item_id:
+                item_id, _fingerprint = _derive_item_id_from_payload(item)
+            wanted.add(item_id)
         return [item for item in all_items if str(item.get("item_id")) in wanted]
     inferred = [
         item

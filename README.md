@@ -87,7 +87,7 @@ PUBLIC_SITE_BASE=/daily-report-app/ npm --prefix web run build
 Daily Report App 的内容分成两层：
 
 - 首页卡片：用于快速扫读，包含标题、分类、来源、发布时间、标签和自包含摘要。
-- Markdown 深度稿：用于完整阅读，包含材料地图、TL;DR、结构拆解、证据边界、图表解读、同类参考和后续追踪问题。
+- Markdown 深度稿：用于完整阅读，包含 TL;DR、结构拆解、证据边界、图表解读、同类参考和领域延伸思考。
 
 item JSON 只承担索引和卡片展示职责，长文正文保存在独立 Markdown 文件中。
 

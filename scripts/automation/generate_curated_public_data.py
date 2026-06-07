@@ -53,9 +53,6 @@ def _article_markdown(item: JsonObject, article: JsonObject) -> str:
     published_at = str(item["published_at"])[:10]
     category = str(article["category_label"])
     tags = "、".join(str(tag) for tag in item["tags"])
-    evidence_markdown = "\n".join(
-        f"- [{entry['label']}]({entry['url']})" for entry in item["evidence"]
-    )
     parts_markdown = "\n\n".join(
         f"### {part['title']}\n\n{part['body']}" for part in article["parts"]
     )
@@ -66,7 +63,7 @@ def _article_markdown(item: JsonObject, article: JsonObject) -> str:
 
     markdown = f"""# {title}
 
-> Daily Report 深度分析 · {category}
+> 研究者精读 · {category}
 
 **来源**：[{source_name}]({source_url})
 **发布时间**：{published_at}
@@ -76,14 +73,6 @@ def _article_markdown(item: JsonObject, article: JsonObject) -> str:
 ## TL;DR
 
 {summary}
-
-## 来源与材料地图
-
-本次材料来自 [{source_name}]({source_url})，发布时间窗口为 {published_at}，证据链接包括 {len(item['evidence'])} 条公开来源。下面的分析只使用这些公开来源能够支撑的内容；延伸判断会单独放在边界和后续追踪里。
-
-### 证据链接
-
-{evidence_markdown}
 
 ## 读完原文后的主线
 
@@ -107,11 +96,11 @@ def _article_markdown(item: JsonObject, article: JsonObject) -> str:
 
 {article["evidence_and_limits"]}
 
-## 后续追踪问题
+## 领域延伸思考
 
 {article["follow_up"]}
 
-## 日报判断
+## 研究者结论
 
 {article["reusability"]}
 
@@ -154,7 +143,7 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                         "body": "README 第一段把项目描述为面向 JavaScript/TypeScript 的 multi-agent workflows 框架，并说明 provider-agnostic。这个定位有两个含义：一是它要服务的不是单次聊天补全，而是多个 Agent、工具和状态共同参与的 workflow；二是它把 OpenAI API 作为核心能力来源，但接口设计并不把项目完全锁死在单一 provider 上。README 还展示了 Agents Tracing UI 的图片，这不是装饰图，而是在告诉开发者：可观测性是 SDK 的一等公民。",
                     },
                     {
-                        "title": "核心概念列表：九个入口对应一套 Agent 产品栈",
+                        "title": "核心概念列表：九个入口对应一套 Agent 能力栈",
                         "body": "README 的 Core concepts 列出 Agents、Sandbox Agents、Agents as tools / Handoffs、Tools、Guardrails、Human in the loop、Sessions、Tracing、Realtime Agents。这个顺序很值得注意：它先讲角色和工作流，再讲工具与交接，随后讲安全与人工参与，最后讲状态、追踪和实时 Agent。换句话说，OpenAI 并不是只在卖“让模型调用函数”的 API，而是在把 Agent 运行时拆成开发者可以组合、观察和治理的一组模块。",
                     },
                     {
@@ -163,7 +152,7 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                     },
                     {
                         "title": "普通 Agent 示例：保留低摩擦入口",
-                        "body": "README 紧接着给了一个普通 `Agent` 示例，只需要 name、instructions 和 `run`。这说明 SDK 并没有强迫所有用户进入 sandbox 或复杂多 Agent 架构；它同时保留了最小可用路径。产品上这很重要：一个团队可以先用普通 Agent 写简单工作流，再逐渐引入 tools、handoffs、sessions、guardrails 和 tracing，最后在确实需要文件系统执行时再切到 Sandbox Agent。",
+                        "body": "README 紧接着给了一个普通 `Agent` 示例，只需要 name、instructions 和 `run`。这说明 SDK 并没有强迫所有用户进入 sandbox 或复杂多 Agent 架构；它同时保留了最小可用路径。工程采用上这很重要：一个团队可以先用普通 Agent 写简单工作流，再逐渐引入 tools、handoffs、sessions、guardrails 和 tracing，最后在确实需要文件系统执行时再切到 Sandbox Agent。",
                     },
                     {
                         "title": "v0.11.6 与 v0.11.5：近期更新重点在 tracing 和恢复路径",
@@ -182,8 +171,8 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                 ],
                 "flow_note": "这条流程比“SDK 支持多 Agent”更具体：它说明 OpenAI 想把 Agent 的开发过程变成一条工程管线，覆盖角色定义、工具动作、工作区执行、状态管理、安全检查、人工审批和可观测性。",
                 "evidence_and_limits": "强证据来自 README 的九个核心概念、Sandbox Agent 代码示例、Node.js 22/Deno/Bun 支持说明、package scripts 中大量 examples 入口，以及 v0.11.6/v0.11.5 release notes 对 tracing 和恢复路径的连续修补。边界也很清楚：Sandbox Agents 仍被标记为 beta；README 没有提供长任务成功率、生产稳定性 benchmark 或和其他 Agent 框架的系统对比；5 月底 release notes 证明维护者在补工程细节，但不能直接推出“已经适合所有复杂生产场景”。",
-                "follow_up": "下一轮自动化应该继续追踪三件事：第一，Sandbox Agents 是否从 beta 走向稳定，并出现更完整的安全边界说明；第二，tracing lifecycle helpers 是否在 docs 和 examples 中形成清晰最佳实践，尤其是 resumed runs、usage restoration、external tracing processors；第三，examples 目录里与 Codex、computer use、sandbox coding task、research bot 相关的示例是否开始展示更复杂的端到端工作流。",
-                "reusability": "这篇内容适合放在“大模型 Agent 相关”频道，但展示方式必须准确：它不是一篇论文，也不是 6 月 5 日的大功能公告，而是一个本周仍在维护的官方 JS/TS Agent SDK。日报里值得留下的判断是：OpenAI 正在把 Agent 能力从单次调用推向可组合、可观察、可恢复、可带工作区执行的开发框架；但生产可用性、sandbox 安全边界和长任务稳定性还需要继续看 release、examples 和真实用户反馈。",
+                "follow_up": "下一步研究跟踪应该继续看三件事：第一，Sandbox Agents 是否从 beta 走向稳定，并出现更完整的安全边界说明；第二，tracing lifecycle helpers 是否在 docs 和 examples 中形成清晰最佳实践，尤其是 resumed runs、usage restoration、external tracing processors；第三，examples 目录里与 Codex、computer use、sandbox coding task、research bot 相关的示例是否开始展示更复杂的端到端工作流。",
+                "reusability": "研究者判断要保持准确：它不是一篇论文，也不是 6 月 5 日的大功能公告，而是一个本周仍在维护的官方 JS/TS Agent SDK。真正值得关注的是，OpenAI 正在把 Agent 能力从单次调用推向可组合、可观察、可恢复、可带工作区执行的开发框架；但生产可用性、sandbox 安全边界和长任务稳定性还需要继续看 release、examples 和真实用户反馈。",
             },
         },
         {
@@ -227,7 +216,7 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                     },
                     {
                         "title": "部署层",
-                        "body": "README 直接把 OpenAI-style API 与 vLLM deployment 列在 quickstart 主干里，说明作者默认后训练不该停在 checkpoint，而应无缝转成服务化验证或产品接入。",
+                        "body": "README 直接把 OpenAI-style API 与 vLLM deployment 列在 quickstart 主干里，说明作者默认后训练不该停在 checkpoint，而应无缝转成服务化验证或应用接入。",
                     },
                 ],
                 "flow": [
@@ -238,8 +227,8 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                 ],
                 "flow_note": "这条链路解释了为什么它应该归到后训练频道：它关心的不是模型预训练本身，而是如何把后训练阶段的操作复杂度压缩成统一工程接口。",
                 "evidence_and_limits": "证据主要来自 README 目录设计、零代码 CLI/Web UI 表述、以及把部署与 logger 拉进主文档骨架的做法，再加上 topic 页面证明它在本周内仍有持续更新。边界是 GitHub 首页无法直接展示每种训练方式当前的稳定性，也缺少统一 benchmark 证明不同方法的效果差异。",
-                "follow_up": "下一轮自动化应该核对最新 release notes、docs 中 SFT/RLHF/LoRA/RLVR 等章节的变化、近期 issue 中的稳定性反馈，以及是否有新的训练方法或部署后端进入主线。",
-                "reusability": "这类项目在日报里值得追的点是“后训练基础设施一体化”而非单篇算法。后续可以重点看它是否继续扩充 RLHF/RLVR 支持、是否把数据质量与评测也继续收进平台、以及部署链路是否保持和主流 serving 栈同步。",
+                "follow_up": "下一步研究跟踪应该核对最新 release notes、docs 中 SFT/RLHF/LoRA/RLVR 等章节的变化、近期 issue 中的稳定性反馈，以及是否有新的训练方法或部署后端进入主线。",
+                "reusability": "研究者判断应放在“后训练基础设施一体化”上，而不是把它当作单篇算法创新。后续可以重点看它是否继续扩充 RLHF/RLVR 支持、是否把数据质量与评测也继续收进平台、以及部署链路是否保持和主流 serving 栈同步。",
             },
         },
         {
@@ -293,8 +282,8 @@ def _build_entries(generated_at: str) -> list[tuple[JsonObject, JsonObject]]:
                 ],
                 "flow_note": "它的设计巧思在于不把安全停留在原则层，而是持续追问“谁评估、何时评估、缺资源怎么办、失败后怎么报告”。",
                 "evidence_and_limits": "证据在于 PDF 给出了相当明确的制度分层、职责划分和实施建议，尤其是对 CAISI 的角色、资源和流程边界有具体描述。边界同样明显：这是政策 blueprint，不是实证论文，没有用实验数据证明这些制度安排的效果；很多内容仍属于规范性主张，需要后续立法和执行验证。",
-                "follow_up": "下一轮自动化应该追踪是否出现国会法案、CAISI 预算或授权变化、开发者安全框架披露要求、独立评估认证机制，以及其他 AI 公司或政策机构对 blueprint 的回应。",
-                "reusability": "日报里值得保留的是三个判断：一，AI 安全讨论正在从 company policy 向 federal institution design 平移；二，RSI 被提升为持续监测对象；三，安全框架开始与算力、采购、国防和国际协调打通。这些都是后续跟踪政策与行业动作的高价值轴线。",
+                "follow_up": "下一步研究跟踪应该追踪是否出现国会法案、CAISI 预算或授权变化、开发者安全框架披露要求、独立评估认证机制，以及其他 AI 公司或政策机构对 blueprint 的回应。",
+                "reusability": "研究者判断可以落在三个层面：一，AI 安全讨论正在从 company policy 向 federal institution design 平移；二，RSI 被提升为持续监测对象；三，安全框架开始与算力、采购、国防和国际协调打通。这些都是后续理解政策与行业动作的高价值轴线。",
             },
         },
     ]

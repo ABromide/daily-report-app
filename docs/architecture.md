@@ -123,7 +123,7 @@ flowchart LR
 
 - public data 不能包含 secrets、cookies、私有 API 原始响应或个人笔记。
 - `item` JSON 只做索引和卡片展示，长文正文必须放在 Markdown 文件里。
-- 可展示图片需要先落到 `public/assets/`，再由 Markdown 引用本地附件路径。
+- 关键图表可以先落到 `public/assets/`，但 Markdown 只在图片承担证据功能时引用，不单独生成本地附件清单。
 - `known-links.json` 是去重账本，自动化写入前必须读取。
 - `latest.json` 指向 manifest；manifest 中每个文件都需要 sha256。
 - 历史数据尽量追加写入；纠错应优先使用可追踪记录，避免静默覆盖。

@@ -15,7 +15,7 @@ case ":${PYTHONPATH:-}:" in
   *) export PYTHONPATH="${repo_root}${PYTHONPATH:+:${PYTHONPATH}}" ;;
 esac
 
-exec uv run --project "${repo_root}" daily-report publish-public-run \
+exec uv run --project "${repo_root}" daily-report automation-preflight \
   --public-root "${public_root}" \
   --data-worktree "${data_worktree}" \
   --repo "${repo}" \

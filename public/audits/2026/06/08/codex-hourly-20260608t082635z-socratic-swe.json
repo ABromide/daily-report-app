@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/08/itm_1d035fe4c3bea590/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-08T08:26:35Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260608t082635z-socratic-swe",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety together; Anthropic LLM ATT&CK was rejected as duplicate and Socratic-SWE was selected from the unified table."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1d035fe4c3bea590"
+  ]
+}

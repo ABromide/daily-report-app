@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T02:26:09Z",
+  "generated_at": "2026-06-08T08:26:35Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -16,6 +16,14 @@
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Manual weekly research selection from arXiv computer science AI papers.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.07412",
+      "id": "arxiv-cs-ai",
+      "kind": "manual",
+      "name": "arXiv cs.AI"
     },
     {
       "description": "OpenWebRL paper, project page, code, models and datasets for visual web-agent online RL.",

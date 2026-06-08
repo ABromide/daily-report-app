@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T20:28:31Z",
+  "generated_at": "2026-06-08T20:25:50Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -88,6 +88,14 @@
       "id": "github-zabahana-rlhf-failure-modes-diagnostics",
       "kind": "manual",
       "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
+    },
+    {
+      "description": "Hugging Face OpenEnv announcement and related OpenEnv project materials.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/blog/openenv-agentic-rl",
+      "id": "hf-openenv-blog",
+      "kind": "manual",
+      "name": "Hugging Face Blog: OpenEnv"
     },
     {
       "description": "Model cards and HF Papers metadata for current AI research.",

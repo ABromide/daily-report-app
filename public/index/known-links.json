@@ -154,6 +154,15 @@
       "title_hash": "712abe3a69a1f5d38ef102b2f54ec8e55f78592dec8999e00c899ac06bda7326"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/openenv-agentic-rl",
+      "category_id": "llm-post-training",
+      "content_hash": "b8ab257daabd55def77f8058f1707f32fe8b86a3971bc46ddb0854de53012c2b",
+      "external_id": "hf-blog:openenv-agentic-rl",
+      "first_seen_at": "2026-06-08T20:25:50Z",
+      "item_id": "itm_bf61e43c788e1406",
+      "title_hash": "a67d6dde832b4b2df304602d370ee07856a0bf9fe7ceacc3f0f073513d5f407f"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.07367",
       "category_id": "llm-post-training",
       "content_hash": "36cc89d128e85afc35faa1546e5970bcf974717557dbc6a0c0158c10c8f418ca",
@@ -181,6 +190,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-08T20:28:31Z",
+  "updated_at": "2026-06-08T20:25:50Z",
   "version": 1
 }

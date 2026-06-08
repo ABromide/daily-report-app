@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-08T20:28:31Z",
-  "item_count": 6,
+  "generated_at": "2026-06-08T20:25:50Z",
+  "item_count": 1,
   "period": {
     "end": "2026-06-08T21:00:00Z",
     "start": "2026-06-08T20:00:00Z"
@@ -8,37 +8,16 @@
   "report_id": "hourly:2026-06-08T20:00:00Z",
   "sections": [
     {
-      "heading": "AI 安全相关",
-      "item_ids": [
-        "itm_5ccd89a8b2e576db"
-      ],
-      "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
-    },
-    {
-      "heading": "大模型 Agent 相关",
-      "item_ids": [
-        "itm_fe6a962cd9782024",
-        "itm_1d035fe4c3bea590"
-      ],
-      "summary": "大模型 Agent 相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
-    },
-    {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_d0f9a0739db075eb",
-        "itm_022035b94d1679ae",
-        "itm_0f06996a6ba91e61"
+        "itm_bf61e43c788e1406"
       ],
-      "summary": "大模型后训练相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "OpenEnv 把 agentic RL 的环境层收窄为协议、部署和消费接口，给 TRL、Unsloth、TorchForge、SkyRL 等后训练框架提供可复用环境插头。"
     }
   ],
-  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 6 条内容。",
+  "summary": "本小时深读 Hugging Face 2026-06-08 OpenEnv 公告，重点分析 Agentic RL 环境协议层、MCP、HF Spaces 部署、harness integration、taskset/external import/auto-validation RFC，以及项目仍处 experimental stage 的边界。",
   "top_item_ids": [
-    "itm_fe6a962cd9782024",
-    "itm_5ccd89a8b2e576db",
-    "itm_d0f9a0739db075eb",
-    "itm_022035b94d1679ae",
-    "itm_0f06996a6ba91e61"
+    "itm_bf61e43c788e1406"
   ],
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T14:23:13Z",
+  "generated_at": "2026-06-08T14:21:50Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -32,6 +32,14 @@
       "id": "arxiv-cs-ai",
       "kind": "manual",
       "name": "arXiv cs.AI"
+    },
+    {
+      "description": "Manual arXiv paper source for the Chinese hourly deep research workflow.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/",
+      "id": "arxiv-cs-lg",
+      "kind": "manual",
+      "name": "arXiv cs.LG"
     },
     {
       "description": "OpenWebRL paper, project page, code, models and datasets for visual web-agent online RL.",
@@ -72,6 +80,14 @@
       "id": "github-thudm-slime",
       "kind": "manual",
       "name": "GitHub: THUDM/slime"
+    },
+    {
+      "description": "Reproducibility repository linked by the paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/zabahana/rlhf-failure-modes-diagnostics",
+      "id": "github-zabahana-rlhf-failure-modes-diagnostics",
+      "kind": "manual",
+      "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
     },
     {
       "description": "Model cards and HF Papers metadata for current AI research.",

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/08/itm_022035b94d1679ae/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "/Users/lizewei/Documents/projects/personal/daily-report-app/config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-08T14:21:50Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260608t142150z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety together. It ranked Coding with Enemy, Agentopia, and When RLHF Fails as top candidates; the first two were local duplicates, so the main agent selected When RLHF Fails."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF, TeX source, repository README, and demo availability before writing the Markdown deep read."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article explains the transition taxonomy, UP-PPO shaped reward, row-level diagnostics, warning models, tables, figures, and reproducibility boundaries."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article separates controlled-artifact evidence from frontier-scale claims and calls out small model scale, prompt count, judge, and multi-seed limitations."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "The article positions the paper against reward hacking, PPO/DPO/RLHF, uncertainty monitoring, and LLM-as-judge literature using the paper references."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "The Markdown uses bullet-heavy sections, tables, formulas, pseudocode, Mermaid, and four localized figure assets."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_022035b94d1679ae"
+  ]
+}

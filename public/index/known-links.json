@@ -1,6 +1,15 @@
 {
   "links": [
     {
+      "canonical_url": "https://arxiv.org/abs/2606.03238",
+      "category_id": "llm-post-training",
+      "content_hash": "357b97f60718021e8bc028fb9ab649b211a4a2aa55294de4613ae8e32b42a5d0",
+      "external_id": "arXiv:2606.03238v1",
+      "first_seen_at": "2026-06-08T14:21:50Z",
+      "item_id": "itm_022035b94d1679ae",
+      "title_hash": "dc109a0ae85af32f9b3c81438bb8915cc9964ea7b12aff4230e22b182c857f09"
+    },
+    {
       "canonical_url": "https://github.com/THUDM/slime",
       "category_id": "llm-post-training",
       "content_hash": "f5e7ea0b86b0e370977ce4704da429ecdfdbfd85d59c2fbc5c803515fa9f58f8",
@@ -163,6 +172,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-08T14:23:13Z",
+  "updated_at": "2026-06-08T14:21:50Z",
   "version": 1
 }

@@ -1,7 +1,11 @@
 {
-  "date": "2026-06-08",
   "generated_at": "2026-06-08T14:23:13Z",
   "item_count": 4,
+  "period": {
+    "end": "2026-06-08T15:00:00Z",
+    "start": "2026-06-08T14:00:00Z"
+  },
+  "report_id": "hourly:2026-06-08T14:00:00Z",
   "sections": [
     {
       "heading": "大模型 Agent 相关",
@@ -20,13 +24,7 @@
       "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "source_counts": {
-    "arxiv": 1,
-    "arxiv-2606-07367": 1,
-    "arxiv-cs-ai": 1,
-    "github-thudm-slime": 1
-  },
-  "summary": "2026-06-08 public data 已由 finalize-public-run 统一重建索引和报告，共 4 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 4 条内容。",
   "top_item_ids": [
     "itm_fe6a962cd9782024",
     "itm_d0f9a0739db075eb",

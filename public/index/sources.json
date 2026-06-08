@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T20:26:56Z",
+  "generated_at": "2026-06-08T02:21:57Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -48,6 +48,14 @@
       "id": "github-recuse",
       "kind": "manual",
       "name": "mthamil107/Recuse"
+    },
+    {
+      "description": "Official GitHub repository for slime, an LLM post-training framework for RL Scaling.",
+      "enabled": true,
+      "homepage_url": "https://github.com/THUDM/slime",
+      "id": "github-thudm-slime",
+      "kind": "manual",
+      "name": "GitHub: THUDM/slime"
     },
     {
       "description": "Model cards and HF Papers metadata for current AI research.",

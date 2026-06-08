@@ -1,6 +1,15 @@
 {
   "links": [
     {
+      "canonical_url": "https://github.com/THUDM/slime",
+      "category_id": "llm-post-training",
+      "content_hash": "f5e7ea0b86b0e370977ce4704da429ecdfdbfd85d59c2fbc5c803515fa9f58f8",
+      "external_id": "github:THUDM/slime",
+      "first_seen_at": "2026-06-08T02:21:57Z",
+      "item_id": "itm_0f06996a6ba91e61",
+      "title_hash": "5c4717e90b64106fe95a6b0523866f16296e7edeb0fab98471449fd5001cb1a8"
+    },
+    {
       "canonical_url": "https://red.anthropic.com/2026/attack-navigator/",
       "category_id": "ai-safety",
       "content_hash": "2785100f8b2f705501d6656802b95307dcc80a45736aa38a532d9bb53d35595d",
@@ -127,6 +136,6 @@
       "title_hash": "720dff5ef4ed38f946851ed0dcc5cf95629094e7224a6767d0ef49305941c962"
     }
   ],
-  "updated_at": "2026-06-07T20:26:56Z",
+  "updated_at": "2026-06-08T02:21:57Z",
   "version": 1
 }

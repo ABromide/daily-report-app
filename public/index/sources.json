@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T14:25:48Z",
+  "generated_at": "2026-06-09T14:30:44Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -24,6 +24,14 @@
       "id": "arxiv-2606-07367",
       "kind": "manual",
       "name": "arXiv:2606.07367"
+    },
+    {
+      "description": "手动深读 arXiv 论文与公开代码仓库后写入的中文分析。",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.09748",
+      "id": "arxiv-2606-09748",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "arXiv preprint and accessible full-text mirror for AdvGRPO red-teaming research.",

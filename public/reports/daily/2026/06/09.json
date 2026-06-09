@@ -1,7 +1,7 @@
 {
   "date": "2026-06-09",
-  "generated_at": "2026-06-09T14:25:48Z",
-  "item_count": 5,
+  "generated_at": "2026-06-09T14:30:44Z",
+  "item_count": 6,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -14,26 +14,28 @@
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
+        "itm_04131c0ad57dc1f0",
         "itm_3b2465ec32468e9f",
         "itm_745fe3938cac2458",
         "itm_4863b22ee8a4324b"
       ],
-      "summary": "大模型 Agent 相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型 Agent 相关 本次共有 4 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
     "arxiv": 2,
+    "arxiv-2606-09748": 1,
     "arxiv-advgrpo-2606": 1,
     "arxiv-secureclaw-2606": 1,
     "hf-nvidia-safety-blog": 1
   },
-  "summary": "2026-06-09 public data 已由 finalize-public-run 统一重建索引和报告，共 5 条内容。",
+  "summary": "2026-06-09 public data 已由 finalize-public-run 统一重建索引和报告，共 6 条内容。",
   "top_item_ids": [
+    "itm_04131c0ad57dc1f0",
     "itm_99c3f17cdeb06ebd",
     "itm_3b2465ec32468e9f",
     "itm_745fe3938cac2458",
-    "itm_f8aa6102b06db6f8",
-    "itm_4863b22ee8a4324b"
+    "itm_f8aa6102b06db6f8"
   ],
   "version": 1
 }

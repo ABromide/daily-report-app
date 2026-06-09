@@ -10,6 +10,15 @@
       "title_hash": "dc109a0ae85af32f9b3c81438bb8915cc9964ea7b12aff4230e22b182c857f09"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.09748",
+      "category_id": "llm-agent",
+      "content_hash": "79da01808c2760fba84c4c9f541c0b2fcb233da19fe520b63c008c27cdff4d19",
+      "external_id": "arxiv:2606.09748",
+      "first_seen_at": "2026-06-09T14:30:44Z",
+      "item_id": "itm_04131c0ad57dc1f0",
+      "title_hash": "0b6de81b57071ca1b7c90223a8b2fcbd5cb2f5b44a1e020d689d35cabcb9a6c1"
+    },
+    {
       "canonical_url": "https://github.com/THUDM/slime",
       "category_id": "llm-post-training",
       "content_hash": "f5e7ea0b86b0e370977ce4704da429ecdfdbfd85d59c2fbc5c803515fa9f58f8",
@@ -235,6 +244,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-09T14:25:48Z",
+  "updated_at": "2026-06-09T14:30:44Z",
   "version": 1
 }

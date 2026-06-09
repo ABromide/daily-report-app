@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T20:25:50Z",
+  "generated_at": "2026-06-09T02:27:11Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -48,6 +48,14 @@
       "id": "arxiv-openwebrl",
       "kind": "manual",
       "name": "arXiv / OpenWebRL Project"
+    },
+    {
+      "description": "arXiv paper page for SecureClaw: Clawing Back Control of LLM Agents.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.09549",
+      "id": "arxiv-secureclaw-2606",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Official code and documentation source for selected research projects.",

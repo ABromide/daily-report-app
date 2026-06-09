@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/06/09/itm_3b2465ec32468e9f/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-09T02:27:11Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260609t022711z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety candidates; selected SecureClaw as a high-signal Agent security paper from 2026-06-08."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the arXiv abstract and PDF text, checked related benchmarks, wrote a 5000+ Chinese-character Markdown analysis, and used tables, formulas, pseudocode, and Mermaid instead of external images."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3b2465ec32468e9f"
+  ]
+}

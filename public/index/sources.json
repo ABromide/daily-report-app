@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T08:27:03Z",
+  "generated_at": "2026-06-09T08:37:13Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -24,6 +24,14 @@
       "id": "arxiv-2606-07367",
       "kind": "manual",
       "name": "arXiv:2606.07367"
+    },
+    {
+      "description": "arXiv preprint and accessible full-text mirror for AdvGRPO red-teaming research.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.09701",
+      "id": "arxiv-advgrpo-2606",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Manual weekly research selection from arXiv computer science AI papers.",

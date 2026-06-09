@@ -154,6 +154,15 @@
       "title_hash": "a587c0fa13b5826e679efe344b6cf1ed65221a7005460be9deeae01a2cf6d486"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.09701",
+      "category_id": "ai-safety",
+      "content_hash": "f6340f1d6fcb4d2ab11df443a9f2bc49a975e6018e014fe5fce04ab3a6a09770",
+      "external_id": "arXiv:2606.09701v1",
+      "first_seen_at": "2026-06-09T08:37:13Z",
+      "item_id": "itm_99c3f17cdeb06ebd",
+      "title_hash": "074d10f51825d11ff1d7566b910657cf06b623da4be3db1081b9f69a7b3e2fda"
+    },
+    {
       "canonical_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
       "category_id": "ai-safety",
       "content_hash": "a17ff40fee91ab56736d5af694553782571334fb62cd24dd99a074e1207561a1",
@@ -217,6 +226,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-09T08:27:03Z",
+  "updated_at": "2026-06-09T08:37:13Z",
   "version": 1
 }

@@ -127,6 +127,12 @@
       "sha256": "9bc536d10b5de2767076cae38f8f91c4a984fbb1bd34070a724d5cbb5d2a4425"
     },
     {
+      "bytes": 33323,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/09/itm_04131c0ad57dc1f0/index.md",
+      "sha256": "79da01808c2760fba84c4c9f541c0b2fcb233da19fe520b63c008c27cdff4d19"
+    },
+    {
       "bytes": 34446,
       "content_type": "text/markdown",
       "path": "articles/2026/06/09/itm_3b2465ec32468e9f/index.md",
@@ -471,7 +477,7 @@
   ],
   "generated_at": "2026-06-09T14:30:44Z",
   "root": "public",
-  "total_bytes": 797233,
-  "total_files": 78,
+  "total_bytes": 830556,
+  "total_files": 79,
   "version": 1
 }

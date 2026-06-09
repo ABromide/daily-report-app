@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/08/itm_2b975780dd8e06c6/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-09T20:26:25Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 1,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "20260609t202625z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout produced a unified 12-candidate table across llm-agent, llm-post-training, and ai-safety for the 2026-06-08 UTC window."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv abstract, PDF/source tarball, LaTeX sections, experiment tables, figures, and related arXiv work."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formulas, pseudocode, local architecture image, and explicit evidence boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2b975780dd8e06c6"
+  ]
+}

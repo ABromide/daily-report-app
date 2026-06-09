@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T20:26:25Z",
+  "generated_at": "2026-06-09T20:30:55Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -38,6 +38,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.09701",
       "id": "arxiv-advgrpo-2606",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "arXiv paper page for Context-Fractured Decomposition Attacks on Tool-Using LLM Agents.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.09084",
+      "id": "arxiv-cfd-2606",
       "kind": "manual",
       "name": "arXiv"
     },

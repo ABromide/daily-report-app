@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-09T02:27:11Z",
-  "item_count": 1,
+  "generated_at": "2026-06-09T02:35:00Z",
+  "item_count": 2,
   "period": {
     "end": "2026-06-09T03:00:00Z",
     "start": "2026-06-09T02:00:00Z"
@@ -10,14 +10,16 @@
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
-        "itm_3b2465ec32468e9f"
+        "itm_3b2465ec32468e9f",
+        "itm_745fe3938cac2458"
       ],
-      "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型 Agent 相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 1 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 2 条内容。",
   "top_item_ids": [
-    "itm_3b2465ec32468e9f"
+    "itm_3b2465ec32468e9f",
+    "itm_745fe3938cac2458"
   ],
   "version": 1
 }

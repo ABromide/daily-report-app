@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/04/itm_f8aa6102b06db6f8/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-09T08:27:03Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "20260609t082703z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类；OpenEnv 被主 Agent 查重后判定重复，改用 Nemotron 3.5 Content Safety。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f8aa6102b06db6f8"
+  ]
+}

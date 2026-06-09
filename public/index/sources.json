@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T02:35:00Z",
+  "generated_at": "2026-06-09T08:27:03Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -96,6 +96,14 @@
       "id": "github-zabahana-rlhf-failure-modes-diagnostics",
       "kind": "manual",
       "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
+    },
+    {
+      "description": "NVIDIA Nemotron content-safety release materials on Hugging Face.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
+      "id": "hf-nvidia-safety-blog",
+      "kind": "manual",
+      "name": "Hugging Face Blog: NVIDIA"
     },
     {
       "description": "Hugging Face OpenEnv announcement and related OpenEnv project materials.",

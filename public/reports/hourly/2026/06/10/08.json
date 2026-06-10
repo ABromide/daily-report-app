@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-10T08:35:45Z",
-  "item_count": 3,
+  "generated_at": "2026-06-10T08:33:16Z",
+  "item_count": 4,
   "period": {
     "end": "2026-06-10T09:00:00Z",
     "start": "2026-06-10T08:00:00Z"
@@ -24,16 +24,18 @@
     {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_de731de0ab961aa3"
+        "itm_de731de0ab961aa3",
+        "itm_eaedaddebf930f97"
       ],
-      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 3 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 4 条内容。",
   "top_item_ids": [
     "itm_760c1ba446129cb0",
     "itm_de731de0ab961aa3",
-    "itm_1a7515fa4ecc6350"
+    "itm_1a7515fa4ecc6350",
+    "itm_eaedaddebf930f97"
   ],
   "version": 1
 }

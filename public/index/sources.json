@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T08:35:45Z",
+  "generated_at": "2026-06-10T08:33:16Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -30,6 +30,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.09748",
       "id": "arxiv-2606-09748",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.09961",
+      "id": "arxiv-3spo-2606",
       "kind": "manual",
       "name": "arXiv"
     },

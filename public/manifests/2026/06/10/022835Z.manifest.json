@@ -169,6 +169,12 @@
       "sha256": "f6340f1d6fcb4d2ab11df443a9f2bc49a975e6018e014fe5fce04ab3a6a09770"
     },
     {
+      "bytes": 27955,
+      "content_type": "text/markdown",
+      "path": "articles/2026/06/10/itm_1a7515fa4ecc6350/index.md",
+      "sha256": "dc42b9d281421fd08f2ee3d2269e9771f4247001399cb391b94092862d98cc8f"
+    },
+    {
       "bytes": 29005,
       "content_type": "text/markdown",
       "path": "articles/2026/06/10/itm_2d694ad330df9596/index.md",
@@ -367,10 +373,10 @@
       "sha256": "658dc75a9d4e0729379c923cc91c3ad7bf20b561651df0c512875741720b9f73"
     },
     {
-      "bytes": 1344,
+      "bytes": 1189,
       "content_type": "application/json",
       "path": "audits/2026/06/10/codex-hourly-20260610t023200z.json",
-      "sha256": "e2a06d48c5f112ec238489d50656b03b21d5e9bd2702fe917531a10e0c1c786a"
+      "sha256": "3803f5e9a548935fa69d4656f4573d1887182145d35ab8196cc0ced4cb1e385c"
     },
     {
       "bytes": 1457,
@@ -543,7 +549,7 @@
   ],
   "generated_at": "2026-06-10T02:28:35Z",
   "root": "public",
-  "total_bytes": 941497,
-  "total_files": 90,
+  "total_bytes": 969297,
+  "total_files": 91,
   "version": 1
 }

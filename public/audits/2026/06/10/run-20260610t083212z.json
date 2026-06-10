@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/10/itm_760c1ba446129cb0/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-10T08:35:45Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "run-20260610t083212z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety; ABC-Bench ranked first because it was published on 2026-06-09 and directly evaluates agentic biosecurity capabilities."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_760c1ba446129cb0"
+  ]
+}

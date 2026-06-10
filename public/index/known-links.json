@@ -199,6 +199,15 @@
       "title_hash": "a4a5cbc1643ac2cee1391a090a6df64d7692208472173c8231489132a05697ac"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.10484",
+      "category_id": "ai-safety",
+      "content_hash": "67b27d1b12b64e482b4b13491851bb1c5dfc1aa57aa3b6e4d4aaeff6b3373a31",
+      "external_id": "arxiv:2606.10484",
+      "first_seen_at": "2026-06-10T14:32:59Z",
+      "item_id": "itm_8e5f12d79ac963da",
+      "title_hash": "daba04b7bcb9c499332eaaa26c85409d7a3aca8041a603d5cfbac457659e6999"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.06460",
       "category_id": "ai-safety",
       "content_hash": "d88f7562010d94058688fd9a1f3d4d3cac3bcc1150b51357d879fca27b969026",
@@ -215,6 +224,15 @@
       "first_seen_at": "2026-06-09T08:37:13Z",
       "item_id": "itm_99c3f17cdeb06ebd",
       "title_hash": "074d10f51825d11ff1d7566b910657cf06b623da4be3db1081b9f69a7b3e2fda"
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2606.09730",
+      "category_id": "llm-agent",
+      "content_hash": "22e99241078d70e1472a004098d2bdfb3bd20b414ae6deaf43cf7a86561870c7",
+      "external_id": "arxiv:2606.09730",
+      "first_seen_at": "2026-06-10T14:36:10Z",
+      "item_id": "itm_a78e5b77c7a896b3",
+      "title_hash": "50a20e528153de1dad9138f94f6fbca55412acf60ce6a43480475e5b63389e92"
     },
     {
       "canonical_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
@@ -298,6 +316,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-10T08:33:16Z",
+  "updated_at": "2026-06-10T14:36:10Z",
   "version": 1
 }

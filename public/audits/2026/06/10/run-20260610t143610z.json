@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/10/itm_a78e5b77c7a896b3/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-10T14:36:10Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "run-20260610t143610z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety candidates; RHO and AsyncWebRL were flagged for dedupe risk, SearchSwarm was recommended and selected."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a78e5b77c7a896b3"
+  ]
+}

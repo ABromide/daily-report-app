@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/09/itm_b9a482e4e02e458c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 6,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-10T20:27:57Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5215,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "run-20260610t202757z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout returned a unified table across llm-agent, llm-post-training, and ai-safety; duplicates were filtered before selection."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv HTML/PDF, extracted method, metrics, results, ablations, defense evidence, and limitations."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses bullet-heavy Markdown with tables, formulas, Mermaid, and localized figures."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b9a482e4e02e458c"
+  ]
+}

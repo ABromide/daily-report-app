@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/10/itm_1a7515fa4ecc6350/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-06-10T02:28:35Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260610t022835z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training 和 ai-safety，返回 12 个本周候选；KATE 排名第一且未命中本地已发布 canonical URL。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 元数据、PDF 正文和公开 README，整理知识获取、并行采样、后训练、BFCL/AppWorld 结果与边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文解释 MDP 公式、检索公式、KATE 伪代码、仓库目录、BFCL/AppWorld 接入和 LoRA/GRPO 训练细节。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文单列知识库规模、文本工具调用、聚合器瓶颈、RL 奖励和经验库投毒等证据边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文将 KATE 与 BFCL、AppWorld 和 Memp 放在同一坐标系内比较，未编造第三方实验。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown 为纯文本长文，包含 5000 字以上中文、表格、公式解释、伪代码和 Mermaid；未使用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1a7515fa4ecc6350"
+  ]
+}

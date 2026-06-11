@@ -226,6 +226,15 @@
       "title_hash": "a4a5cbc1643ac2cee1391a090a6df64d7692208472173c8231489132a05697ac"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.11688",
+      "category_id": "llm-agent",
+      "content_hash": "b75ccc9a8f9f9ec54700d63ff1c67f56107029518854b0ca8dbef2cfd3d016e3",
+      "external_id": "arxiv:2606.11688",
+      "first_seen_at": "2026-06-11T20:43:45Z",
+      "item_id": "itm_79c4d9b486880072",
+      "title_hash": "c31f73829bc0795cc63471895f9bb14e96a733828f9852c6dd1441d735e87c8d"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.10484",
       "category_id": "ai-safety",
       "content_hash": "d8484b0812dcd193f4a32ba01ff91c5b4e5a6ea4577c54fc3b740d7516e1db38",
@@ -397,6 +406,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-11T20:35:24Z",
+  "updated_at": "2026-06-11T20:43:45Z",
   "version": 1
 }

@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/12/itm_79c4d9b486880072/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-11T20:43:45Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260611t203119z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety in one candidate table; initial Anatomy selection and APPO/OCELOT were duplicate, then Goal-Autopilot was selected as replacement."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_79c4d9b486880072"
+  ]
+}

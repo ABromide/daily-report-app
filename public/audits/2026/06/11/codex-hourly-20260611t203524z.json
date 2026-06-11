@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/11/itm_927084855c553235/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-11T20:35:24Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260611t203524z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一 Scout 一次性覆盖 Agent、后训练、AI 安全三类，并输出统一候选表。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已阅读 arXiv abstract、HTML、PDF/source 元数据和 TeX 源，正文重构方法、实验与边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用分点、公式、表格和 Mermaid，无外部图片直链。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_927084855c553235"
+  ]
+}

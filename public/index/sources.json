@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T14:29:37Z",
+  "generated_at": "2026-06-11T20:35:24Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -10,7 +10,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for Daily Report hourly Chinese deep research.",
+      "description": "本轮由单 Scout 候选表选出的后训练论文来源。",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

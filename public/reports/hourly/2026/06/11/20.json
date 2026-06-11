@@ -1,7 +1,11 @@
 {
-  "date": "2026-06-11",
   "generated_at": "2026-06-11T20:35:24Z",
   "item_count": 7,
+  "period": {
+    "end": "2026-06-11T21:00:00Z",
+    "start": "2026-06-11T20:00:00Z"
+  },
+  "report_id": "hourly:2026-06-11T20:00:00Z",
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -29,11 +33,7 @@
       "summary": "大模型后训练相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "source_counts": {
-    "arxiv": 6,
-    "arxiv-2606-10064": 1
-  },
-  "summary": "2026-06-11 public data 已由 finalize-public-run 统一重建索引和报告，共 7 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 7 条内容。",
   "top_item_ids": [
     "itm_927084855c553235",
     "itm_eaa9dfbc3e58ff42",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T02:36:51Z",
+  "generated_at": "2026-06-11T02:36:39Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -32,6 +32,14 @@
       "id": "arxiv-2606-09748",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Manual hourly deep-read source for Bittensor Agent Arenas trajectory primitive paper.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.10064",
+      "id": "arxiv-2606-10064",
+      "kind": "manual",
+      "name": "arXiv 2606.10064"
     },
     {
       "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",

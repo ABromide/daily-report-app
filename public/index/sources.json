@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T14:28:51Z",
+  "generated_at": "2026-06-12T14:46:00Z",
   "sources": [
     {
       "description": "Official Anthropic announcement and related safety research materials.",
@@ -18,9 +18,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper pages and HTML full text selected by the hourly Daily Report automation.",
+      "description": "arXiv papers manually selected by Daily Report automation.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2606.13662",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

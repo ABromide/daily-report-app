@@ -37,7 +37,12 @@
     {
       "agent_id": "scout",
       "status": "passed",
-      "summary": "Recovered schema-safe payload for a pre-existing untracked Anthropic article that publish-public-run had already included in the previous commit."
+      "summary": "统一候选表覆盖 llm-agent、llm-post-training、ai-safety，推荐 Anthropic Fable/Mythos 发布。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已核验官方日期、阅读发布页、Mythos Preview 技术报告、Glasswing 更新与风险报告。"
     }
   ],
   "version": 1,

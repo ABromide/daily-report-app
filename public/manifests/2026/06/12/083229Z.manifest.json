@@ -589,10 +589,10 @@
       "sha256": "dbee554f9f05ae010e42dae6e9ece3a5ea78b89b10f54bfd43e0864b2020fa64"
     },
     {
-      "bytes": 1185,
+      "bytes": 1353,
       "content_type": "application/json",
       "path": "audits/2026/06/12/codex-hourly-20260612t083229z.json",
-      "sha256": "e9bbf01396cef4eb9b8af1d4c52a0410b3d68cae152be64704c07f7c99aadb8a"
+      "sha256": "68220dfde5360e57c8e8c14759dad908bac9e022fbde9dba0c018380bc2f80aa"
     },
     {
       "bytes": 2009,
@@ -604,7 +604,7 @@
       "bytes": 20759,
       "content_type": "application/json",
       "path": "index/known-links.json",
-      "sha256": "f54ab15c94d19af46a5fd6df55f3cef27860b6aa3e0f7e090db56f82eb5a0df3"
+      "sha256": "9773effc91bad9daa9310fd9931593b33d31a5e0173b60c1ef463e73368f3bdc"
     },
     {
       "bytes": 7784,
@@ -649,10 +649,10 @@
       "sha256": "f4c0423b7f4918027cc0da906b6837f014807dff0d61ca27ed8af15714b593ac"
     },
     {
-      "bytes": 10422,
+      "bytes": 10421,
       "content_type": "application/x-ndjson",
       "path": "items/2026/06/12/items.jsonl",
-      "sha256": "9e91839180ccfeab85db98551af9d1448082396e60849e7b727de8ab6535e9ab"
+      "sha256": "c64aef15bda48b591a7e21c6d0c7840eadcf092c71b8f735fc6c4f295d936038"
     },
     {
       "bytes": 1364,
@@ -843,7 +843,7 @@
   ],
   "generated_at": "2026-06-12T08:32:29Z",
   "root": "public",
-  "total_bytes": 1558297,
+  "total_bytes": 1558464,
   "total_files": 140,
   "version": 1
 }

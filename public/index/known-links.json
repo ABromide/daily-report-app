@@ -163,6 +163,15 @@
       "title_hash": "69cdf50859eafd87b22d274cae4ab25156ffeb785718cabffd7682bf2676f59c"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+      "category_id": "llm-post-training",
+      "content_hash": "86455d40012c862067e98baaf06340b835577211db5ccfc62192a5d63be0d0e5",
+      "external_id": "introducing-north-mini-code",
+      "first_seen_at": "2026-06-12T08:36:07Z",
+      "item_id": "itm_530adbdf8f24b6ce",
+      "title_hash": "15febf82a5f9a46fea5b026b1c0e3ae69c165bffc91586a453b621e432259c14"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.13663",
       "category_id": "llm-agent",
       "content_hash": "06f6ea98a98e4f75dd6042c870888e1153fce81b061e5237b0dc1fcc9bc3bc21",
@@ -424,6 +433,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-12T02:33:03Z",
+  "updated_at": "2026-06-12T08:36:07Z",
   "version": 1
 }

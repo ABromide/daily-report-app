@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T02:33:03Z",
+  "generated_at": "2026-06-12T08:36:07Z",
   "sources": [
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -168,6 +168,14 @@
       "id": "huggingface",
       "kind": "manual",
       "name": "Hugging Face"
+    },
+    {
+      "description": "Hugging Face official Cohere Labs article selected by the hourly Chinese Daily Report automation.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+      "id": "huggingface-blog",
+      "kind": "manual",
+      "name": "Hugging Face Blog"
     },
     {
       "description": "Community paper page used for publication-window confirmation, discussion and related-paper discovery.",

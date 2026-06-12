@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-06-12T08:36:07Z",
+  "generated_at": "2026-06-12T08:32:29Z",
   "sources": [
+    {
+      "description": "Official Anthropic announcement and related safety research materials.",
+      "enabled": true,
+      "homepage_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "id": "anthropic",
+      "kind": "manual",
+      "name": "Anthropic"
+    },
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
       "enabled": true,

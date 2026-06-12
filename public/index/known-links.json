@@ -307,6 +307,15 @@
       "title_hash": "50a20e528153de1dad9138f94f6fbca55412acf60ce6a43480475e5b63389e92"
     },
     {
+      "canonical_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "category_id": "ai-safety",
+      "content_hash": "622c16b455296feea5613d0dfd1a43c176d8690581b2f751710c65d972f13168",
+      "external_id": "anthropic:claude-fable-5-mythos-5",
+      "first_seen_at": "2026-06-12T08:32:29Z",
+      "item_id": "itm_aa9ad7a8c2b53b8a",
+      "title_hash": "4656c507f0a3aaeaea3dfb76690049e54e3fb544f4a6247a8f4bc36e1226d613"
+    },
+    {
       "canonical_url": "https://openai.com/index/biodefense-in-the-intelligence-age/",
       "category_id": "ai-safety",
       "content_hash": "a17ff40fee91ab56736d5af694553782571334fb62cd24dd99a074e1207561a1",
@@ -433,6 +442,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-12T08:36:07Z",
+  "updated_at": "2026-06-12T08:32:29Z",
   "version": 1
 }

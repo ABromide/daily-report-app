@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/11/itm_498300817c8d0516/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-13T02:34:21Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260613t023421z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，并输出统一候选表。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML/PDF，正文按机制、实验、表格、边界写入 Markdown。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已拆解 SFT/RL 设置、GRPO 超参、有限域任务、Table 1 与组合实验。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "已标注合成任务、小模型、LoRA、outcome reward 与策略可标注性的外推边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "已结合 DeepSeek-R1、sharpening、ProRL 与 RLVR 机制研究定位论文贡献。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式解释块、伪代码与 Mermaid，避免连续大段纯文本。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_498300817c8d0516"
+  ]
+}

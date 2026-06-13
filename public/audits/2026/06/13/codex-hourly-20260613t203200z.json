@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/06/10/itm_c766a64f8c8ea356/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-13T20:32:00Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260613t203200z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Returned one merged table across llm-agent, llm-post-training, and ai-safety; PI-Hunter was a deduped P0 AI safety candidate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv PDF/HTML, extracted Table 1-5 and 18, localized Figure 1-3, and wrote a 5000+ Chinese-character analysis."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c766a64f8c8ea356"
+  ]
+}

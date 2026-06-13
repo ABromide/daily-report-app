@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-06-13T14:33:57Z",
+  "generated_at": "2026-06-13T20:32:00Z",
   "sources": [
+    {
+      "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
+      "enabled": true,
+      "homepage_url": "https://aclanthology.org/2025.findings-emnlp.1258.pdf",
+      "id": "agentvigil-paper",
+      "kind": "manual",
+      "name": "AgentVigil paper"
+    },
     {
       "description": "Official Anthropic announcement and related safety research materials.",
       "enabled": true,
@@ -18,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv papers selected manually by the hourly Daily Report automation.",
+      "description": "Primary source for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -208,6 +216,14 @@
       "id": "openai-global-affairs",
       "kind": "manual",
       "name": "OpenAI Global Affairs"
+    },
+    {
+      "description": "Background source for prompt injection risk framing.",
+      "enabled": true,
+      "homepage_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "id": "owasp-llm-prompt-injection",
+      "kind": "manual",
+      "name": "OWASP LLM Prompt Injection guidance"
     },
     {
       "description": "Sysdig Threat Research Team 的云原生威胁研究与 AI-enabled cyber threat 分析。",

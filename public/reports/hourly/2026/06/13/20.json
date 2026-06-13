@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T20:32:00Z",
+  "generated_at": "2026-06-13T20:34:59Z",
   "item_count": 7,
   "period": {
     "end": "2026-06-13T21:00:00Z",
@@ -10,8 +10,8 @@
     {
       "heading": "AI 安全相关",
       "item_ids": [
-        "itm_32e0bbfba1cac608",
-        "itm_c766a64f8c8ea356"
+        "itm_c766a64f8c8ea356",
+        "itm_32e0bbfba1cac608"
       ],
       "summary": "AI 安全相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
@@ -37,9 +37,9 @@
   "top_item_ids": [
     "itm_e344330877878891",
     "itm_5c016e51784fe0cd",
+    "itm_c766a64f8c8ea356",
     "itm_498300817c8d0516",
-    "itm_7de8f1ba7c1797cc",
-    "itm_0190c5cfb0d85ed7"
+    "itm_7de8f1ba7c1797cc"
   ],
   "version": 1
 }

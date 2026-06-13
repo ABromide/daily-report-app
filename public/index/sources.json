@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T08:41:14Z",
+  "generated_at": "2026-06-13T08:30:51Z",
   "sources": [
     {
       "description": "Official Anthropic announcement and related safety research materials.",
@@ -18,7 +18,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "本轮由主 Agent 手动深读 arXiv 论文、项目仓库和 Hugging Face 资产后写入。",
+      "description": "arXiv papers selected manually by the hourly Daily Report automation.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

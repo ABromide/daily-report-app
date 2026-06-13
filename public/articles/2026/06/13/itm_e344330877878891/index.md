@@ -682,6 +682,87 @@ sequenceDiagram
   - 它也隐约展示了第二张图的写回机制。
   - 但第三张图仍是后续研究和安全治理的关键空白。
 
+## 可复现性、工程债与安全边界
+
+### 哪些部分最容易复现？
+
+- **论文层面的复现**：
+  - arXiv HTML、PDF、代码仓库、HF 模型和 HF 数据集都已经公开入口。
+  - 读者可以复核论文的总体 claim、实验表格和数据集说明。
+
+- **工具层面的复现**：
+  - GraphAnything README 给出 `pip install -e .`、CLI quickstart、MCP server、session state、render format 等接口。
+  - 它还明确区分规则 extractor 和 LLM extractor。
+  - 这意味着用户不必一开始就运行完整多模态论文解析管道，也能先在小语料上验证图结构、版本、diff、render、ask、quality report。
+
+- **模型层面的复现**：
+  - HF model card 给出 Transformers、vLLM、SGLang 的加载路径。
+  - 但真正复现论文训练仍需要 IEPile、奖励细节、训练脚本、硬件设置和采样配置。
+
+### 哪些部分仍然像“系统承诺”而不是“完全交付”？
+
+- **大规模 Scholar-KG 构建链路**：
+  - 论文说处理 246 万篇论文并发布 100 万篇子集。
+  - 但读者若要复现从 PDF 到 A-E 图谱的完整处理链，还需要确认 parser、VLM、OCR、table/equation extraction、dedup、provenance 校验等环节。
+
+- **General-KG 的泛化承诺**：
+  - 原文提出可以通过 schema-adaptive extension 处理任意文档。
+  - 这个方向很有价值，但不同文档类型的证据结构差异很大。
+  - 合同、代码仓库、会议纪要、科研论文都可以变成 graph，但“什么是可信证据”的定义完全不同。
+
+- **长期 graph evolution**：
+  - `evolve absorb`、`evolve compress`、`evolve gaps` 说明系统考虑了写回。
+  - 但长期写回会引出版本治理问题：旧节点是否被替换、错误节点如何撤销、冲突 claim 如何并存、Agent 产物是否和原始文献隔离。
+
+### 安全边界为什么不能事后补？
+
+- 科研 Agent 的知识图谱如果被污染，后果不是一次回答错误。
+- 它会影响后续很多任务：
+  - idea novelty 判断。
+  - baseline 选择。
+  - 代码仓库 scaffold。
+  - 实验计划。
+  - citation lineage。
+  - 安全审计结论。
+
+- 因此，Agents-K1 这类系统至少需要三层防护：
+
+| 防护层 | 需要检查什么 | 失败后果 |
+|---|---|---|
+| Source gate | 来源、版本、license、是否可信 | 低质量或恶意材料进入图谱 |
+| Extraction gate | JSON 合法性、证据 span、关系置信度 | 错 claim 和错关系被结构化固化 |
+| Action gate | Agent 是否能把图谱结论转成外部动作 | 错误知识驱动代码、实验或发布 |
+
+- <u>最危险的不是模型幻觉，而是被图谱格式包装后的幻觉</u>。
+  - 自然语言幻觉容易被读者怀疑。
+  - 带 ID、edge、confidence、provenance 的错误更像“事实”。
+
+### 对后续实验设计的建议
+
+- 如果继续推进这条路线，下一组实验应该不只比较 QA 准确率。
+- 更应比较以下指标：
+  - **evidence trace success rate**：答案能否回到正确证据节点。
+  - **relation repair rate**：人工纠错一个关系后，相关路径是否同步更新。
+  - **stale knowledge detection**：新论文推翻旧 claim 时，图谱是否标记冲突。
+  - **contamination resistance**：加入恶意论文或 prompt injection 文档后，Agent 是否被误导。
+  - **cost per reliable edge**：每条可用关系边的抽取、校验、存储和更新成本。
+
+### 这篇论文对本领域的真正贡献
+
+- 它不是简单宣称“知识图谱能增强 Agent”。
+- 更准确地说，它把科研 Agent 的知识层拆成了可研究对象：
+  - schema 如何定义。
+  - 抽取模型如何训练。
+  - 图谱如何作为工具暴露。
+  - 推理证据如何评估。
+  - Agent 活动如何写回。
+
+- 这让后续研究可以逐个击破：
+  - 有人可以专门改 relation extraction。
+  - 有人可以专门做 graph contamination benchmark。
+  - 有人可以专门做科研 Agent 的 audit graph。
+  - 有人可以专门比较不同后训练方法对 schema fidelity 的影响。
+
 ## 参考链接
 
 - [arXiv abstract](https://arxiv.org/abs/2606.13669)

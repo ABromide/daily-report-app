@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/13/itm_32e0bbfba1cac608/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-13T08:41:14Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260613t083052z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One Scout searched llm-agent, llm-post-training, and ai-safety in a unified table; OCELOT was rejected as already known and arXiv:2606.13079v1 was selected as the same-category replacement."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_32e0bbfba1cac608"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T02:35:32Z",
+  "generated_at": "2026-06-13T08:41:14Z",
   "sources": [
     {
       "description": "Official Anthropic announcement and related safety research materials.",
@@ -88,6 +88,14 @@
       "id": "arxiv-cs-ai",
       "kind": "manual",
       "name": "arXiv cs.AI"
+    },
+    {
+      "description": "Manual arXiv source for current-week AI safety and cybersecurity papers.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/list/cs.CR/recent",
+      "id": "arxiv-cs-cr",
+      "kind": "manual",
+      "name": "arXiv cs.CR"
     },
     {
       "description": "Manual arXiv paper source for the Chinese hourly deep research workflow.",

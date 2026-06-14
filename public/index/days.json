@@ -6,7 +6,7 @@
       "hourly_report_count": 1,
       "item_count": 2,
       "items_path": "items/2026/06/14/items.jsonl",
-      "manifest_path": "manifests/2026/06/14/023055Z.manifest.json"
+      "manifest_path": "manifests/2026/06/14/024329Z.manifest.json"
     },
     {
       "daily_report_path": "reports/daily/2026/06/13.json",
@@ -73,6 +73,6 @@
       "manifest_path": "manifests/2026/06/06/235900Z.manifest.json"
     }
   ],
-  "generated_at": "2026-06-14T02:30:55Z",
+  "generated_at": "2026-06-14T02:43:29Z",
   "version": 1
 }

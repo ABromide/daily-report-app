@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T02:43:29Z",
+  "generated_at": "2026-06-14T08:40:00Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for the Daily Report hourly Chinese deep research workflow.",
+      "description": "Primary source for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -128,6 +128,14 @@
       "id": "arxiv-secureclaw-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Reference source for dynamic workflows and subagent orchestration context.",
+      "enabled": true,
+      "homepage_url": "https://code.claude.com/docs/en/workflows",
+      "id": "claude-code-docs",
+      "kind": "manual",
+      "name": "Claude Code documentation"
     },
     {
       "description": "Official code and documentation source for selected research projects.",

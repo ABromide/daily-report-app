@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T08:41:21Z",
+  "generated_at": "2026-06-14T14:42:22Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,9 +26,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual selection from current-week arXiv papers for Daily Report deep research.",
+      "description": "Primary source for current-week AI research papers.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -232,6 +232,22 @@
       "id": "owasp-llm-prompt-injection",
       "kind": "manual",
       "name": "OWASP LLM Prompt Injection guidance"
+    },
+    {
+      "description": "Official implementation and documentation for the SpatialClaw runtime.",
+      "enabled": true,
+      "homepage_url": "https://github.com/NVlabs/SpatialClaw",
+      "id": "spatialclaw-code",
+      "kind": "manual",
+      "name": "SpatialClaw code repository"
+    },
+    {
+      "description": "Official project page with figures, result tables, presentation, and repository links.",
+      "enabled": true,
+      "homepage_url": "https://spatialclaw.github.io/",
+      "id": "spatialclaw-project",
+      "kind": "manual",
+      "name": "SpatialClaw project page"
     },
     {
       "description": "Sysdig Threat Research Team 的云原生威胁研究与 AI-enabled cyber threat 分析。",

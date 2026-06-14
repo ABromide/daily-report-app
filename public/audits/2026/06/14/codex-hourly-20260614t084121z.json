@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/06/14/itm_34367f7366dd70d9/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-14T08:41:21Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260614t084121z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout returned 12 current-week candidates across llm-agent, llm-post-training, and ai-safety; OrchRM selected after same-day dedupe."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_34367f7366dd70d9"
+  ]
+}

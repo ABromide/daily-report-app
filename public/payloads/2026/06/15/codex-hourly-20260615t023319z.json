@@ -1,0 +1,111 @@
+{
+  "run_id": "codex-hourly-20260615t023319z",
+  "generated_at": "2026-06-15T02:41:53Z",
+  "status": "complete",
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "items": [
+    {
+      "item_id": "itm_362b64c9dd778491",
+      "category_id": "llm-agent",
+      "type": "paper",
+      "source_id": "arxiv",
+      "source_name": "arXiv",
+      "source_type": "paper",
+      "external_id": "arXiv:2606.09421",
+      "url": "https://arxiv.org/abs/2606.09421",
+      "canonical_url": "https://arxiv.org/abs/2606.09421",
+      "title": "What Should a Skill Remember? Quality-Cost Trade-offs in Cost-Aware Skill Rewriting for Language Model Agents",
+      "published_at": "2026-06-08T12:36:51Z",
+      "updated_at": "2026-06-09T02:58:45Z",
+      "fetched_at": "2026-06-15T02:41:53Z",
+      "summary_zh": "论文把 Agent Skill 重写从普通提示词压缩改写为成本感知的操作知识保留：先为 SkillsBench 任务画像，再用 API/code、rule/formula、workflow 三类锚点保留策略重写 skill，并用任务条件选择器挑选策略。实验只改变 environment/skills/ 下的 skill，保持任务、环境和 verifier 固定；在 20 个 held-out 任务上，policy-selected rewrite 让总成本比降到 rho=0.93、下游 Agent token 比降到 ra=0.94，partial 从原始 skill 的 0.815 到 0.819；冻结迁移到 Gemini Pro、Codex + GPT-5.4、Claude Code + Opus 4.6 后，总成本比落在 0.83-0.93。局限是只覆盖文本 skill、固定环境和 token 成本，未覆盖动态检索、缓存、延迟、人审和高风险安全场景。",
+      "analysis_markdown_path": "articles/2026/06/15/itm_362b64c9dd778491/index.md",
+      "language": "zh-CN",
+      "reading_minutes": 22,
+      "tags": [
+        "Agent Skills",
+        "LLM Agent",
+        "Prompt Compression",
+        "Cost-aware Agents",
+        "SkillsBench"
+      ],
+      "score": 94,
+      "evidence": [
+        {
+          "type": "url",
+          "label": "arXiv abs page with v2 date and abstract",
+          "url": "https://arxiv.org/abs/2606.09421"
+        },
+        {
+          "type": "url",
+          "label": "Official code and result artifacts",
+          "url": "https://github.com/1Reminding/Skill_EE"
+        },
+        {
+          "type": "url",
+          "label": "Official main results CSV",
+          "url": "https://raw.githubusercontent.com/1Reminding/Skill_EE/main/results/paper_tables/main_results.csv"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "kind": "manual",
+      "homepage_url": "https://arxiv.org/",
+      "enabled": true,
+      "description": "Manual deep-read source for current-week arXiv papers."
+    },
+    {
+      "id": "github-artifacts",
+      "name": "GitHub research artifacts",
+      "kind": "manual",
+      "homepage_url": "https://github.com/1Reminding/Skill_EE",
+      "enabled": true,
+      "description": "Official repository with code, paper figures, and aggregate result tables."
+    }
+  ],
+  "dedupe": {
+    "ledger_path": "public/index/known-links.json",
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "replacement_candidates": 0
+  },
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 14 个本周日期可核验候选；本轮选择 arXiv:2606.09421。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML、官方 GitHub 仓库、main_results.csv 与 ablation_and_transfer.csv，并写入中文长文。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "补充核验 SkillsBench、Anthropic Agent Skills 与 OpenAI Skills 相关背景。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含 TL;DR、表格、公式、Mermaid、图表解读、消融、失败案例和局限。"
+    }
+  ],
+  "quality_gate": {
+    "minimum_chinese_chars": 5000,
+    "evidence_points": 12,
+    "image_notes": 2,
+    "third_party_references": 3,
+    "skeptical_review": 4,
+    "passed": true
+  }
+}

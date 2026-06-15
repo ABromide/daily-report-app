@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/06/15/itm_362b64c9dd778491/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-15T02:41:53Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260615t023319z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 14 个本周日期可核验候选；本轮选择 arXiv:2606.09421。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML、官方 GitHub 仓库、main_results.csv 与 ablation_and_transfer.csv，并写入中文长文。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "补充核验 SkillsBench、Anthropic Agent Skills 与 OpenAI Skills 相关背景。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含 TL;DR、表格、公式、Mermaid、图表解读、消融、失败案例和局限。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_362b64c9dd778491"
+  ]
+}

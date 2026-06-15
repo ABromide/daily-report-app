@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T20:33:00Z",
+  "generated_at": "2026-06-15T02:41:53Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper and HTML source used for current-week Daily Report deep reads.",
+      "description": "Manual deep-read source for current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -144,6 +144,14 @@
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
+    },
+    {
+      "description": "Official repository with code, paper figures, and aggregate result tables.",
+      "enabled": true,
+      "homepage_url": "https://github.com/1Reminding/Skill_EE",
+      "id": "github-artifacts",
+      "kind": "manual",
+      "name": "GitHub research artifacts"
     },
     {
       "description": "Official safety monitor repository linked from the paper.",

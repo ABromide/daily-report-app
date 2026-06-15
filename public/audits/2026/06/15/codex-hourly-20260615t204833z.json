@@ -25,7 +25,7 @@
   "generated_at": "2026-06-15T20:48:33Z",
   "quality_gate": {
     "evidence_points": 3,
-    "image_notes": 0,
+    "image_notes": 4,
     "minimum_chinese_chars": 5000,
     "passed": true,
     "skeptical_review": 3,

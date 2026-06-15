@@ -47,7 +47,7 @@
 
 ### 方法全景：两阶段训练加一个缓存环境
 
-![CacheRL 系统图](../../../../../assets/2026/06/16/itm_589e9bc86fa57fc5/cacherl_system_diagram.png)
+![CacheRL 系统图](../../../../../assets/2026/06/15/itm_589e9bc86fa57fc5/cacherl_system_diagram.png)
 
 图 3 给出的系统结构可以拆成三条线：
 
@@ -108,7 +108,7 @@ flowchart LR
 
 ### CacheAgentLoop：把工具执行替换成可训练的缓存环境
 
-![CacheAgentLoop](../../../../../assets/2026/06/16/itm_589e9bc86fa57fc5/cache_agent_loop.png)
+![CacheAgentLoop](../../../../../assets/2026/06/15/itm_589e9bc86fa57fc5/cache_agent_loop.png)
 
 CacheAgentLoop 的关键，不是简单查表，而是把 **模型生成 token** 和 **环境注入 token** 在训练图里分开。
 
@@ -208,7 +208,7 @@ Output:
 
 ### 分层奖励：把答案质量和过程质量按缓存可信度混合
 
-![缓存层级奖励](../../../../../assets/2026/06/16/itm_589e9bc86fa57fc5/cache_reward.png)
+![缓存层级奖励](../../../../../assets/2026/06/15/itm_589e9bc86fa57fc5/cache_reward.png)
 
 论文的奖励函数是：
 
@@ -260,7 +260,7 @@ R = alpha(tau) * R_answer + (1 - alpha(tau)) * R_process
 
 ### 主结果：小模型接近 GPT-5，但证据要分层读
 
-![结果对比](../../../../../assets/2026/06/16/itm_589e9bc86fa57fc5/quantitative_comparison.png)
+![结果对比](../../../../../assets/2026/06/15/itm_589e9bc86fa57fc5/quantitative_comparison.png)
 
 ACEBench 多步与多轮结果如下：
 

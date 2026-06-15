@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T14:35:58Z",
+  "generated_at": "2026-06-15T20:50:20Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -96,6 +96,14 @@
       "id": "arxiv-cs-ai",
       "kind": "manual",
       "name": "arXiv cs.AI"
+    },
+    {
+      "description": "Manual collection from arXiv Computation and Language papers in the current weekly window.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/list/cs.CL/recent",
+      "id": "arxiv-cs-cl",
+      "kind": "manual",
+      "name": "arXiv cs.CL"
     },
     {
       "description": "arXiv cs.CR 手工筛选来源，本轮用于 DeCompBench 论文深读。",

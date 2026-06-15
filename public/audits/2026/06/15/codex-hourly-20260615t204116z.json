@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/16/itm_589e9bc86fa57fc5/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-15T20:50:20Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260615t204116z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "统一候选表覆盖 Agent、后训练和 AI 安全；CacheRL 未命中本地去重账本。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML/PDF，正文覆盖方法、实验、消融、失败案例和局限。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown 纯文本写入，图片本地化，中文字符数超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_589e9bc86fa57fc5"
+  ]
+}

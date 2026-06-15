@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T14:35:18Z",
+  "generated_at": "2026-06-15T14:35:58Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -138,9 +138,9 @@
       "name": "Claude Code documentation"
     },
     {
-      "description": "Official code repository and release metadata source.",
+      "description": "Manual current-week GitHub and arXiv source for FastContext.",
       "enabled": true,
-      "homepage_url": "https://github.com/",
+      "homepage_url": "https://github.com/microsoft/fastcontext",
       "id": "github",
       "kind": "manual",
       "name": "GitHub"

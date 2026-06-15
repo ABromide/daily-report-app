@@ -245,7 +245,7 @@
     },
     {
       "canonical_url": "https://arxiv.org/abs/2606.14179",
-      "category_id": "llm-post-training",
+      "category_id": "llm-agent",
       "content_hash": "aefdf99a6bb11417ca29806ecc2afb75519eebbbf068f41e9dd18bdd628b9d52",
       "external_id": "arxiv:2606.14179",
       "first_seen_at": "2026-06-15T20:50:20Z",
@@ -676,6 +676,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-15T20:50:20Z",
+  "updated_at": "2026-06-15T20:48:33Z",
   "version": 1
 }

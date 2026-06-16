@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T20:48:33Z",
+  "generated_at": "2026-06-16T02:41:05Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -106,12 +106,12 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "arXiv cs.CR 手工筛选来源，本轮用于 DeCompBench 论文深读。",
+      "description": "Manual collection from arXiv Cryptography and Security papers in the current weekly window.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/list/cs.CR/recent",
       "id": "arxiv-cs-cr",
       "kind": "manual",
-      "name": "arXiv Computer Science - Cryptography and Security"
+      "name": "arXiv cs.CR"
     },
     {
       "description": "Manual arXiv paper source for the Chinese hourly deep research workflow.",

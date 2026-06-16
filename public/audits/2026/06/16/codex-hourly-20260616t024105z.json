@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/12/itm_f975e32329e99d9d/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-16T02:41:05Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260616t024105z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "统一候选表覆盖 Agent、后训练和 AI 安全；AgentCyberRange 来自 Scout 表且未命中本地去重账本。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML，正文覆盖 benchmark 设计、实验结果、失败分析、局限和安全边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown 使用表格、公式解释和 Mermaid；未使用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f975e32329e99d9d"
+  ]
+}

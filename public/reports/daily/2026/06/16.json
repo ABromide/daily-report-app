@@ -1,7 +1,7 @@
 {
   "date": "2026-06-16",
-  "generated_at": "2026-06-16T17:07:13Z",
-  "item_count": 5,
+  "generated_at": "2026-06-16T17:48:34Z",
+  "item_count": 6,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -22,22 +22,23 @@
     {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_9b00131b1e74a833"
+        "itm_9b00131b1e74a833",
+        "itm_cf18162c6617c844"
       ],
-      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
-    "arxiv": 4,
+    "arxiv": 5,
     "arxiv-cs-cr": 1
   },
-  "summary": "2026-06-16 public data 已由 finalize-public-run 统一重建索引和报告，共 5 条内容。",
+  "summary": "2026-06-16 public data 已由 finalize-public-run 统一重建索引和报告，共 6 条内容。",
   "top_item_ids": [
     "itm_9b00131b1e74a833",
     "itm_f975e32329e99d9d",
+    "itm_cf18162c6617c844",
     "itm_79c4376659a3ace7",
-    "itm_d60d2e5796360757",
-    "itm_355af50736cd43c8"
+    "itm_d60d2e5796360757"
   ],
   "version": 1
 }

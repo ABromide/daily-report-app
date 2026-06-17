@@ -46,6 +46,15 @@
       "title_hash": "5c4717e90b64106fe95a6b0523866f16296e7edeb0fab98471449fd5001cb1a8"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.17890v1",
+      "category_id": "llm-post-training",
+      "content_hash": "f89fcf8023ad974c4b9ec846857c099189742190bbbf2620dd13dedb7d9677fb",
+      "external_id": "arxiv:2606.17890v1",
+      "first_seen_at": "2026-06-17T11:42:58Z",
+      "item_id": "itm_0f0a03588843d1d7",
+      "title_hash": "f3319533851aab19cf1beefeaacc4652446a23af45f2f7a097eb105c9632f7a8"
+    },
+    {
       "canonical_url": "https://red.anthropic.com/2026/attack-navigator/",
       "category_id": "ai-safety",
       "content_hash": "2785100f8b2f705501d6656802b95307dcc80a45736aa38a532d9bb53d35595d",
@@ -766,6 +775,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-17T11:35:02Z",
+  "updated_at": "2026-06-17T11:42:58Z",
   "version": 1
 }

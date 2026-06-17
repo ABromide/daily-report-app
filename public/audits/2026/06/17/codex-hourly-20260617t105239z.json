@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/16/itm_0f0a03588843d1d7/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-17T11:42:58Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260617t105239z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single unified Scout was launched for llm-agent, llm-post-training, and ai-safety but timed out; main Agent completed one merged manual candidate pass without spawning another Scout."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent deep-read arXiv abstract, HTML full text, API metadata, tables, formulas, figures, ablations, and appendix cases."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses pure Markdown with formulas, pseudocode, tables, Mermaid, and no external image references."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0f0a03588843d1d7"
+  ]
+}

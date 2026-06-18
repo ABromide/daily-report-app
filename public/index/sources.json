@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T05:20:01Z",
+  "generated_at": "2026-06-18T05:19:43Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -120,6 +120,14 @@
       "id": "arxiv-cs-lg",
       "kind": "manual",
       "name": "arXiv cs.LG"
+    },
+    {
+      "description": "由自动化从 item itm_41baea2861fe56ec 推断的来源。",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.17114v1",
+      "id": "arxiv-data-leakage-2606",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "OpenWebRL paper, project page, code, models and datasets for visual web-agent online RL.",

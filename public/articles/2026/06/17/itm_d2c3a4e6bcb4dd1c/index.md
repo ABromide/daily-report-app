@@ -501,6 +501,293 @@ q_t  = p_S^Y(. | x, y_hat_<t)
   - 对代码、Agent、长期任务，这种 criterion-aware distillation 是否比 outcome verifier 更稳？
   - 若 rubric 由同一个 base model 生成，会不会形成自我确认偏差？
 
+## 深读补充：为什么这是“监督接口”论文，而不是单纯 reward 论文？
+
+### 旧问题：奖励太晚到达
+
+- 在经典 RLVR 里，模型完成整段推理后才得到奖励。
+- 这种设定适合最终答案可验证的任务，例如：
+  - 数学题有唯一答案。
+  - 代码题可以运行单元测试。
+  - 选择题可以做 exact match。
+- 但科学推理和开放问答常常不是这样：
+  - 一个答案可以公式正确但解释混乱。
+  - 一个答案可以结论正确但遗漏关键假设。
+  - 一个答案可以按参考解不同路径推导，但仍满足题目要求。
+- 如果监督只在最后给 `0/1` 或 `1-10` 分，训练过程很难知道中间哪一步真正贡献了错误。
+
+### 第二个旧问题：参考解太具体
+
+- 参考答案有一个隐藏风险：它不仅告诉模型“应该满足什么”，还告诉模型“应该怎样走”。
+- 对开放推理来说，这两件事不能混在一起。
+- 例如同一道科学题可能有多条等价推导：
+  - 先写物理定律，再代入单位。
+  - 先做单位换算，再写目标变量。
+  - 先给近似，再解释误差边界。
+- 如果 teacher 只被参考答案约束，student 偏离参考路径时，teacher 可能倾向于把它拉回原路径。
+- RCSD 的动机就是把“路径”替换成“标准”：
+  - 标准允许多条解法。
+  - 标准能指出必须保留的关键性质。
+  - 标准能区分 essential、important、optional、pitfall。
+
+### Rubric 为什么适合作为 privileged information？
+
+| 特性 | 对训练的意义 | 对推理的风险 |
+|---|---|---|
+| 结构化 | 可以拆成多个质量维度 | 维度过多会引入冗余 |
+| 自然语言 | teacher 容易读取并转成 token 分布 | 文字含糊时会诱导不稳定解释 |
+| 任务专属 | 能关注当前题目的关键步骤 | 生成器可能写出泛化废话 |
+| 可加权 | essential/pitfall 能区分强弱约束 | 权重是否真的影响 teacher 未完全可见 |
+| 训练期可用 | inference 不需要额外 rubric | 训练和推理存在信息不对称 |
+
+这张表说明 RCSD 的设计不是没有代价。它把 rubric 放到 teacher 侧，避免推理时依赖人工 rubric；但它仍依赖一个假设：teacher 能把 rubric 中的标准稳定转换成更好的 next-token distribution。
+
+## 对实验数字的再解释：平均分背后有三类不同证据
+
+### 证据一：rubric-heavy 任务更受益
+
+- ResearchQA 和 RubricHub 的提升最能支持论文主张。
+- 原因是这些任务本身就更依赖多维评价：
+  - 是否回答了研究问题。
+  - 是否引用了关键证据。
+  - 是否处理了边界条件。
+  - 是否避免无关推断。
+- RCSD 在 ResearchQA 上从 `64.9` 到 `73.1`，说明它不只是让模型更会算答案。
+- RubricHub 从 `50.8` 到 `55.7`，说明 rubric-conditioned signal 在开放评价任务上确实有方向性。
+
+### 证据二：传统可验证任务也没有明显退化
+
+- GPQA-D、SciBench、PIQA 都有不同程度提升。
+- PIQA 本身分数很高，提升空间较小。
+- SciBench 到 `70.8`，高于全部基线，说明 rubric 不一定只适合开放任务。
+- 这点重要，因为很多后训练方法会担心：
+  - 开放评价能力提升是否牺牲了严格推理？
+  - 更长的解释是否干扰最终答案？
+  - judge-based supervision 是否让模型学会迎合评价器？
+- 本文结果至少显示，在这组设置里，RCSD 没有明显破坏可验证推理。
+
+### 证据三：医学 OOD 保守但有价值
+
+- 医学 OOD 不是本文最强证据。
+- MedMCQA 上 RCSD 低于 OPSD。
+- PubMedQA 上 RCSD 低于 GRPO。
+- 但仍然值得写入分析，因为它说明：
+  - 科学推理训练后的模型没有严重忘记医学知识。
+  - criterion-aware distillation 可能提供跨领域的推理组织能力。
+  - OOD 迁移仍需要单独优化，不能从主表直接推出普适优势。
+
+## 细看 case study：为什么 token 数不是小事？
+
+### 三个模型都知道公式，但轨迹质量不同
+
+论文附录用理想气体题做案例。
+
+- 题目给出：
+  - `10.0 mol C2H6(g)`
+  - `4.860 dm^3`
+  - `27 °C`
+  - 要求 pressure，单位 atm。
+- 三个模型都识别了理想气体公式：
+
+```text
+PV = nRT
+P = nRT / V
+```
+
+- 差别不在“是否知道公式”，而在“是否稳定执行”。
+
+### RCSD 的轨迹
+
+- token count：`2896`。
+- 先把摄氏度转成 Kelvin。
+- 再把 `dm^3` 对应到 liter。
+- 选择 `R = 0.08206 L·atm/(mol·K)`。
+- 直接代入并得到约 `50.680 atm`。
+- 轨迹短，数值选择一致，没有重复自检。
+
+### OPSD 的轨迹
+
+- token count：`4936`。
+- 也得到正确答案附近。
+- 但存在更多重复计算和自我确认。
+- 它不是错，而是更啰嗦。
+- 对长链推理来说，这种啰嗦会带来风险：
+  - token 预算增加。
+  - 后续步骤可能被重复检查扰乱。
+  - 多次重算可能引入新的不一致。
+
+### Base Qwen3-8B 的轨迹
+
+- token count：`9294`。
+- 它反复在 `0.0821`、`0.08206`、`0.082057` 之间切换。
+- 最终答案在 `50.704`、`50.680`、`50.678` 附近摇摆。
+- 这说明模型不是不会做题，而是缺少稳定执行约束。
+
+### case study 支持的结论
+
+| 观察 | 支持什么 | 不能证明什么 |
+|---|---|---|
+| RCSD token 更少 | rubric 可能帮助抑制无效重复 | 不能证明所有任务都更短 |
+| RCSD 数值设定稳定 | criterion-aware guidance 可能改善局部一致性 | 不能证明所有错误都能局部修正 |
+| OPSD 正确但冗长 | reference-conditioned dense signal 有效但路径化 | 不能说明 OPSD 总是低效 |
+| Base 来回改常数 | scalar 或普通 SFT 难约束执行纪律 | 不能证明 base 缺知识 |
+
+## 复现与工程可用性：现在还缺什么？
+
+### 代码状态
+
+- 论文摘要页写了代码仓库。
+- 本轮检查时 GitHub 仓库为 public，但页面显示 empty repository。
+- README raw 返回 `404`。
+- 因此目前可复现性主要依赖论文文本，而不是官方代码。
+
+### 复现 RCSD 至少需要哪些组件？
+
+| 组件 | 论文给出的信息 | 仍缺的细节 |
+|---|---|---|
+| base model | Qwen3-8B，另有 1.7B/4B/8B scale | 具体 checkpoint、tokenizer 版本 |
+| rubric data | RaR-Science、RubricHub，约 10k | 数据清洗脚本、split seed |
+| reasoning data | natural_reasoning，过滤空参考答案，约 30k | 过滤规则和样本混合比例 |
+| teacher | fixed teacher，judge 用 Qwen3-14B / gpt-4.1-mini | teacher prompt 完整实现 |
+| optimizer | AdamW，LoRA `r=64, alpha=128` | 精确训练框架配置 |
+| decoding | temperature/top-p/top-k/min-p 等 | 是否按任务调参 |
+
+### 为什么这些缺口重要？
+
+- Rubric 生成对 prompt 非常敏感。
+- Judge-based open-ended evaluation 对 prompt 也敏感。
+- Forward KL 的实现细节会影响数值稳定。
+- On-policy rollout 的 sampling temperature 会改变 student 访问到的 prefix 分布。
+- 如果没有代码，很难判断提升来自：
+  - rubric-conditioned teacher。
+  - 数据混合。
+  - prompt engineering。
+  - 训练步数选择。
+  - judge 与训练目标之间的偏好一致性。
+
+## 可能的反例与失败模式
+
+### 失败模式一：rubric 看似具体，实际重复
+
+- 论文失败分析里，phonon 例子的 learned rubric 把温度/频率关系拆成多条。
+- 对 teacher 来说，这可能产生重复约束。
+- 重复约束的后果可能是：
+  - teacher 过度强调某一维度。
+  - token guidance 变窄。
+  - student 学到冗长解释模板。
+
+### 失败模式二：rubric 引入无关“好学生风格”
+
+- Soda-lime titration 例子里，learned rubric 加入 Application Context。
+- 对真实评分来说，这不是关键。
+- 如果这种条目进入 teacher context，模型可能学会写背景扩展，而不是专注计算。
+- 这和当前很多 LLM 评测中的“解释越多越像好答案”偏差有关。
+
+### 失败模式三：teacher 修正了错误 rubric，掩盖 generator 问题
+
+- Table 6 里 random/noisy/generic rubric 仍高于 base。
+- 一种解释是 rubric 风格本身有帮助。
+- 另一种解释是 teacher 很强，能忽略荒谬 rubric。
+- 如果是后者，那么 RCSD 的主要收益可能部分来自 teacher prior，而不是 generator 质量。
+- 要区分这点，需要看：
+  - teacher distribution 在不同 rubric 下的 KL 差异。
+  - criterion 删除后哪些 token 更新变化最大。
+  - generated rubric 与 reference rubric 的语义对齐，而不只是下游分数。
+
+### 失败模式四：judge 与训练 rubric 同源
+
+- 论文 open-ended 评测使用 LLM-as-a-Judge。
+- 如果训练和评测都偏好 rubric-style explanation，模型可能学到 judge-friendly writing。
+- 这不等于无效，但需要区分：
+  - 真实推理能力提高。
+  - 解释格式更符合 judge 期望。
+  - rubric 语言和 judge prompt 之间存在风格耦合。
+
+## 如果继续研究，我会要求作者补哪些实验？
+
+### 1. Token-level attribution
+
+- 问题：rubric 的哪条 criterion 改变了哪些 token？
+- 需要输出：
+  - criterion-level ablation。
+  - teacher distribution KL heatmap。
+  - student prefix 上的局部 correction case。
+- 目的：证明 rubric 不是只作为长 prompt 提升泛化，而是真的做了 credit assignment。
+
+### 2. Rubric compression
+
+- 问题：是否存在最小有效 rubric？
+- 可做实验：
+  - 只保留 Essential。
+  - 删除 Optional。
+  - 合并重复 criteria。
+  - 用信息增益筛 criterion。
+- 目的：解决 learned rubric bloated 的失败模式。
+
+### 3. Judge-free open-ended validation
+
+- 问题：gpt-4.1-mini judge 是否放大了 rubric-style response？
+- 可做实验：
+  - 人类双盲评分。
+  - 多 judge 交叉。
+  - 用不同模型 judge。
+  - 按 final correctness、reasoning consistency、verbosity penalty 分开评估。
+
+### 4. Agent / code task 迁移
+
+- 问题：RCSD 是否能处理长期工具任务？
+- 适合任务：
+  - coding agent repair trajectory。
+  - tool-use planning。
+  - multi-step browser or shell task。
+  - security audit report generation。
+- 关键观察：
+  - rubric 能否约束中间行动，而不只约束最终回答。
+  - teacher 是否能在错误 action prefix 上给局部纠错。
+
+### 5. 训练预算公平对照
+
+- 问题：RCSD `100` steps 与 GRPO `500` steps 的比较是否充分公平？
+- 需要：
+  - 同步 wall-clock。
+  - 同步 token budget。
+  - 同步 teacher calls。
+  - 同步 judge calls。
+- 目的：把方法收益和计算预算收益分开。
+
+## 审稿式检查清单
+
+### 我会给这篇论文的强项
+
+- 问题定义清楚：它没有泛泛宣称“rubric 更好”，而是指出 rubric 在现有 RL 管线里被过早压成标量。
+- 方法边界清楚：rubric 是训练期 teacher-side privileged context，不要求推理阶段额外输入 rubric。
+- 对照组有针对性：
+  - GRPO 检验 sparse scalar reward。
+  - GRPO-Rubrics 检验 rubric-as-reward。
+  - OPSD 检验 reference-conditioned dense distillation。
+- 消融比较完整：
+  - loss type。
+  - rubric source。
+  - rubric quality。
+  - model scale。
+  - Stage-I generator necessity。
+- 失败分析诚实承认 learned rubric 的冗余和泛化倾向。
+
+### 我会保留的疑问
+
+- 代码尚未公开，训练细节无法独立复查。
+- 主表与 OPSD 的差距不大，需要更多任务确认稳定优势。
+- judge-based open-ended evaluation 仍可能奖励更像 rubric 的表达风格。
+- `+14b Direct` 与 RCSD 平均几乎持平，说明 Stage-I generator 的工程意义强于绝对性能优势。
+- Table 6 中 random rubric 也能明显提升，提示 teacher prior 和 rubric style 可能共同贡献收益。
+
+### 对读者最实用的结论
+
+- 如果任务只有明确最终答案，RCSD 未必比简单 RLVR 更划算。
+- 如果任务需要多维解释、开放评分、科学推理或复杂报告，rubric-conditioned distillation 更值得考虑。
+- 如果要落地，优先研究 rubric 压缩、criterion 去重、judge 独立性和 token-level attribution。
+- 如果要复现，先等官方代码或自己严格记录数据混合、prompt、teacher、采样和 judge 配置，否则很难判断是哪一环带来增益。
+
 ## 结论
 
 - RCSD 不是简单的“再加一个 rubric prompt”。

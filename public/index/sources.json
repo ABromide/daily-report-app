@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T11:42:58Z",
+  "generated_at": "2026-06-17T17:51:13Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,9 +26,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual current-week arXiv paper selected by the Daily Report hourly Scout.",
+      "description": "Manual arXiv deep-read source for hourly Daily Report collection.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2606.17890v1",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -146,9 +146,9 @@
       "name": "Claude Code documentation"
     },
     {
-      "description": "Manual current-week GitHub and arXiv source for FastContext.",
+      "description": "Official project repository and artifact source used for code/project context.",
       "enabled": true,
-      "homepage_url": "https://github.com/microsoft/fastcontext",
+      "homepage_url": "https://github.com/",
       "id": "github",
       "kind": "manual",
       "name": "GitHub"

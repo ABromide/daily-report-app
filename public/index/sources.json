@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T05:58:18Z",
+  "generated_at": "2026-06-19T04:12:10Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -168,6 +168,22 @@
       "id": "claude-code-docs",
       "kind": "manual",
       "name": "Claude Code documentation"
+    },
+    {
+      "description": "Official policy framework accompanying the AI Control Roadmap.",
+      "enabled": true,
+      "homepage_url": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/securing-the-future-of-ai-agents/three-layers-of-agent-security.pdf",
+      "id": "deepmind-agent-security-policy",
+      "kind": "manual",
+      "name": "Google DeepMind Three Layers of Agent Security"
+    },
+    {
+      "description": "Official Google DeepMind AI safety report and blog for agent control and system-level mitigations.",
+      "enabled": true,
+      "homepage_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+      "id": "deepmind-ai-control-roadmap",
+      "kind": "manual",
+      "name": "Google DeepMind AI Control Roadmap"
     },
     {
       "description": "Official project repository and artifact source used for code/project context.",

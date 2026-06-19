@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/17/itm_141eec03bbb258f0/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-18T18:43:20Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260618t184320z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout was launched for llm-agent, llm-post-training, and ai-safety, timed out, and was closed; main process continued one merged manual candidate pass. First pick CodeSentinel duplicated a concurrent publish, so the run pivoted to same-table STARE."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv API metadata, arXiv HTML full text, and the official STARE GitHub README for implementation and reproduction details."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted GRPO entropy-gradient derivation, advantage-surprisal quadrants, near-criticality, O1/C2 reweighting, target-entropy gate, main results, ablations, and code entry points."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article highlights task-scope limits, target-entropy transfer risk, reward-noise failure modes, reflection-token measurement limits, and reproduction cost."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Positioned STARE against DAPO, entropy regularization, trajectory-level weighting, fixed-threshold reweighting, and token-level credit assignment work cited by the paper."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, tables, formulas, pseudocode, and Mermaid; no external image URL is embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_141eec03bbb258f0"
+  ]
+}

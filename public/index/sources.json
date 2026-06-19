@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T18:43:20Z",
+  "generated_at": "2026-06-19T05:58:18Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -90,12 +90,12 @@
       "name": "arXiv"
     },
     {
-      "description": "Manual current-week arXiv AI paper selection for Daily Report Chinese deep reads.",
+      "description": "arXiv cs.AI paper and full-text HTML used for the LedgerAgent deep read.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/list/cs.AI/recent",
+      "homepage_url": "https://arxiv.org/abs/2606.20529",
       "id": "arxiv-cs-ai",
       "kind": "manual",
-      "name": "arXiv cs.AI"
+      "name": "arXiv Computer Science - Artificial Intelligence"
     },
     {
       "description": "Manual collection from arXiv Computation and Language papers in the current weekly window.",

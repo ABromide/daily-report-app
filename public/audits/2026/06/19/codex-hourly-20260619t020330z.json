@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/18/itm_757c1abbe8aca051/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-19T02:03:30Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260619t020330z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 已一次性覆盖 llm-agent、llm-post-training、ai-safety 并输出统一候选表；主 Agent 选择 rank 1 的 arXiv:2606.20512。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已读取 arXiv HTML/PDF、官方 GitHub README 和仓库结构，完成中文深读。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 TL;DR、h3、小节、表格、公式/伪代码块和 Mermaid；未引用外部图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_757c1abbe8aca051"
+  ]
+}

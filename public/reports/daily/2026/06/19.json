@@ -1,8 +1,15 @@
 {
   "date": "2026-06-19",
-  "generated_at": "2026-06-19T02:09:54Z",
-  "item_count": 2,
+  "generated_at": "2026-06-19T02:12:35Z",
+  "item_count": 3,
   "sections": [
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_3660e3e2e2ec1dcb"
+      ],
+      "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
@@ -14,12 +21,14 @@
   ],
   "source_counts": {
     "arxiv": 1,
-    "arxiv-cs-se": 1
+    "arxiv-cs-se": 1,
+    "arxiv-safeclawbench-2606": 1
   },
-  "summary": "2026-06-19 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
+  "summary": "2026-06-19 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
   "top_item_ids": [
     "itm_757c1abbe8aca051",
-    "itm_283071ed5a15d434"
+    "itm_283071ed5a15d434",
+    "itm_3660e3e2e2ec1dcb"
   ],
   "version": 1
 }

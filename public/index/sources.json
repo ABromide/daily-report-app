@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T02:09:54Z",
+  "generated_at": "2026-06-19T02:12:35Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -144,6 +144,14 @@
       "id": "arxiv-openwebrl",
       "kind": "manual",
       "name": "arXiv / OpenWebRL Project"
+    },
+    {
+      "description": "arXiv paper and source material for SafeClawBench.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.18356v1",
+      "id": "arxiv-safeclawbench-2606",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "arXiv paper page for SecureClaw: Clawing Back Control of LLM Agents.",

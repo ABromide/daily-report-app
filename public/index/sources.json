@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T05:19:43Z",
+  "generated_at": "2026-06-18T10:30:37Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,9 +26,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper and source material for SciRisk-Bench.",
+      "description": "arXiv paper and source material for CodeSentinel.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2606.18936v1",
+      "homepage_url": "https://arxiv.org/abs/2606.19235v1",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

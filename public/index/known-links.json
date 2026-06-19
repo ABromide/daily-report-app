@@ -37,6 +37,15 @@
       "title_hash": "0b6de81b57071ca1b7c90223a8b2fcbd5cb2f5b44a1e020d689d35cabcb9a6c1"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.19235v1",
+      "category_id": "ai-safety",
+      "content_hash": "a8d0bed575c0887bbcebdb3c792dc909c48cd24d40a726c05d4dbc1cd23c56ea",
+      "external_id": "arxiv:2606.19235v1",
+      "first_seen_at": "2026-06-18T10:30:37Z",
+      "item_id": "itm_06c34706898687e3",
+      "title_hash": "c8023a2e29e07c703a2ca2c0ce8db711fc0bd6601bab7af579bdf15f75bfbf73"
+    },
+    {
       "canonical_url": "https://github.com/THUDM/slime",
       "category_id": "llm-post-training",
       "content_hash": "f5e7ea0b86b0e370977ce4704da429ecdfdbfd85d59c2fbc5c803515fa9f58f8",
@@ -811,6 +820,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-18T05:19:43Z",
+  "updated_at": "2026-06-18T10:30:37Z",
   "version": 1
 }

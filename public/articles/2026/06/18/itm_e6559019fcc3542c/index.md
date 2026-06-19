@@ -1,7 +1,6 @@
----
-title: "LedgerAgent：把工具 Agent 的任务状态从提示词里拿出来，在写操作前做策略闸门"
-summary_zh: "LedgerAgent: Structured State for Policy-Adherent Tool-Calling Agents 研究客服类 tool-calling Agent 的一个具体失效：模型已经读到订单、预订、账户等记录，但后续写操作仍从长 transcript 中错误重构状态，导致退款、改签、账户变更等动作违反业务策略。论文提出一个不改模型权重、不增加默认 LLM 调用的 inference-time 方法：把成功 read tool 返回映射到 schema-anchored typed ledger，在每轮生成前渲染给模型，并在环境写操作前用 28 个领域级可执行谓词检查 policy gate。实验覆盖 tau^2-bench 与 tau-Trait 的 Airline、Retail、Telecom、Telehealth 四个域，含 GPT-5.2、GPT-4.1、Kimi-K2.5、GLM-5、MiniMax-M2.5、Qwen3-30B 等模型；非 GPT backbone 上，Ledger 相比标准 function calling 的平均 pass^1 提升 3.4、4.7、7.3 个百分点，平均 pass^4 提升 5.6、7.6、8.3 个百分点；与 IRMA 相比，pass^1 为 27.2% vs 23.4%，pass^4 为 17.1% vs 9.6%，且 token overhead 为 0.0% vs 53.1%。局限是方法依赖结构化 read 工具、人工维护 schema path map 与 policy predicates，不能证明未覆盖策略或未观察状态。"
----
+### 元信息与 TL;DR
+
+这篇深读聚焦论文的状态表示、策略闸门、实验数字与安全边界。
 
 | 元信息 | 内容 |
 | --- | --- |

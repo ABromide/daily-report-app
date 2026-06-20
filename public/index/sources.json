@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T19:07:57Z",
+  "generated_at": "2026-06-20T02:32:23Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -150,6 +150,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.19887",
       "id": "arxiv-ffinred-2606",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Manual source for the NRT-Bench arXiv paper and linked dataset.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.20408v1",
+      "id": "arxiv-nrt-bench-2606",
       "kind": "manual",
       "name": "arXiv"
     },

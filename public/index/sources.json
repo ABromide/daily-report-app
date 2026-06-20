@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T22:19:15Z",
+  "generated_at": "2026-06-19T16:33:44Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -138,7 +138,7 @@
       "name": "arXiv"
     },
     {
-      "description": "Schema normalization override for an existing arXiv source entry.",
+      "description": "arXiv paper and source material for defensive misdirection against model-guided automated attacks.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.20470v1",
       "id": "arxiv-defensive-misdirection-2606",

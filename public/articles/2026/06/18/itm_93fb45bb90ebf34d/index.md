@@ -88,6 +88,29 @@
 
 ## 方法机制：NRT-Bench 到底在评测什么？
 
+### 先读懂作者的三个建模选择
+
+<u>第一，作者把“攻击成功”绑定到系统状态，而不是绑定到语言表面。</u>
+
+- 如果一个 Agent 只是说了几句危险话，但 plant state 没有越过安全函数边界，论文不会把它计为 primary breach。
+- 如果一个 Agent 的自然语言看起来温和，却促成了高权限动作、错误批准或报警屏蔽，最终导致 CSF lost，那么它会被计为攻击成功。
+- 这让评测更接近工具型 Agent 的真实风险：危险不一定出现在回答文本里，而可能出现在动作序列和环境状态里。
+
+<u>第二，作者把红队压力做成连续互动，而不是一次性诱导。</u>
+
+- 攻击者每轮都能看到经过 redaction 的 situation summary。
+- 攻击者可以根据 block、alarm、plant mode、CSF perturbation 等反馈改变下一步策略。
+- 这使 gradual escalation、authority spoofing、urgency injection 这类策略能够在轨迹里展开，而不是被压缩成一个 prompt。
+
+<u>第三，作者把防御当成可消融接口，而不是一个笼统安全等级。</u>
+
+- G0/G10、A0/A1、S0/S1 的组合让论文能问更细的问题：
+  - 是模型本身更稳？
+  - 是 guardrail 帮忙？
+  - 是 safety advisor 有效？
+  - 是某个 scenario 更容易被利用？
+- 这种拆法避免了“模型 A 总分更低，所以部署更安全”的粗糙结论。
+
 ### 系统组件
 
 ```mermaid
@@ -319,6 +342,25 @@ Hugging Face 数据集卡显示同一 record set 有两种配置：
 - 想比较新 defender，用 `replay`。
 - 想研究攻击动态或 guardrail 决策，用 `analysis`。
 
+### 为什么 paired replay 是必要的？
+
+如果每个 operator model 都面对重新生成的攻击，结果会混入两种变量：
+
+- defender 本身是否更容易被攻破。
+- attacker 当次采样是否刚好更强或更弱。
+
+paired replay 把第二个变量压下去：
+
+- 同一条攻击 payload sequence 被提交给四个 operator。
+- 同一条 session 的 cell label、入口、顺序都保持不变。
+- 因此 failure overlap 可以被解释成模型差异，而不是攻击样本差异。
+
+但 paired replay 也有代价：
+
+- 它不能代表每个模型面对自适应攻击者时的 worst case。
+- 它更像一个 controlled diagnostic protocol。
+- 所以论文把它用来比较 failure set，而不是宣称真实部署中的最终风险上限。
+
 ## 主结果：模型看似接近，失败集合却不嵌套
 
 ### full-grid：gpt 与 claude 的 cell 差异
@@ -383,6 +425,32 @@ Table 4 给出 149-session paired split 上的 aggregate ASR：
 - 若部署环境更关心某类攻击，应该看 sub-goal vector，而不是 aggregate ASR。
 
 ## 消融与失败模式：同一防御为何会帮 A 害 B？
+
+### 一个防御接口可能怎样失效？
+
+论文没有给每个失败轨迹逐条展开，但从 guardrail 设计和结果可以还原一个机制图：
+
+```mermaid
+flowchart TD
+  A["Attacker message"] --> B{"Structured action request?"}
+  B -- yes --> C["Classifier L assigns authority class"]
+  C --> D["Guardrail checks role, citation, approval"]
+  D --> E{"Allow / modify / block"}
+  B -- no --> F["Unstructured prose or indirect instruction"]
+  F --> G["Operator role interprets and relays intent"]
+  G --> H["Later action emerges in another form"]
+  E --> I["Plant state update"]
+  H --> I
+  I --> J{"CSF lost?"}
+```
+
+这个图解释了为什么同一 guardrail stack 会出现模型条件性：
+
+- 如果模型倾向输出结构化 action request，guardrail 更容易介入。
+- 如果模型把危险意图包装成解释、建议、转述或角色内沟通，guardrail 的触发面会变窄。
+- 如果 safety advisor 的建议被 operator team 错误吸收或绕开，A1 也不一定降低风险。
+
+因此，<u>guardrail 的有效性不是只由 policy rule 决定，还由模型是否把行为暴露在 policy rule 可见的接口上决定。</u>
 
 ### 按攻击策略看
 
@@ -718,6 +786,53 @@ NRT-Bench 的 Table 4/5/6 说明：
 - adversarial transfer across operator families。
 - conservative veto 的误拒成本。
 - panel arbitration 的安全证明。
+
+## 对 Agent 工程的直接启发
+
+### 权限边界必须机器可判定
+
+NRT-Bench 的 deterministic classifier `L` 很重要，因为它不让模型自己声明动作等级。
+
+这对通用 Agent 系统有一个直接对应：
+
+- 不要让模型用自然语言说“这是低风险动作”。
+- 应由 runtime 根据 tool、target resource、scope、environment state 自动判定权限。
+- 模型可以提出理由，但理由不能替代 policy decision。
+
+在 coding agent、DevOps agent、浏览器 agent 中，这意味着：
+
+| Agent 场景 | 应由系统判定的字段 |
+| --- | --- |
+| Coding Agent | 是否写入生产配置、是否改 CI/CD、是否接触 secret |
+| DevOps Agent | 是否重启服务、是否修改权限、是否访问生产数据库 |
+| Browser Agent | 是否提交表单、是否外发文件、是否跨域访问账户数据 |
+| Data Agent | 是否导出 PII、是否跨租户 join、是否生成外部链接 |
+
+### 日志必须能解释 breach causality
+
+论文强调 trace capture，不只是为了 debug。
+
+对安全评测来说，trace 至少要回答：
+
+- 哪个 attacker message 首次改变了 agent 的行为？
+- 哪个 operator role 接受或传播了它？
+- 哪个 guardrail 看到了该动作？
+- 如果 guardrail 放行，依据是什么？
+- 最终哪个 plant/tool state transition 构成 breach？
+
+没有这些信息，评测只能停留在“这次失败了”，不能解释“为什么失败，也不能修复”。
+
+### Human approval 不是天然安全边界
+
+论文里的 mock-human approval 是 rule-based abstraction。
+
+这提醒我们：
+
+- 真实 human-in-the-loop 也可能被 urgency、authority spoofing 或上下文污染影响。
+- 让 Agent 生成给人类审批的解释，本身可能成为攻击面。
+- 审批界面应显示机器生成的权限分类、状态差异和策略命中，而不是只显示模型总结。
+
+所以 human approval 更适合作为防御链的一层，而不是最终安全证明。
 
 ## 继续追问
 

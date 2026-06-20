@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/06/18/itm_eb2bf09174c68b73/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-19T22:19:15Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260619t221915z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "failed",
+      "summary": "唯一 Scout 被中断后返回空候选表；未产出可验证候选，主线程按同一合并范围兜底搜索。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主线程深读 arXiv PDF/TeX/source package，抽取 taxonomy、schema、ASR 主表、消融和专家一致性。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，含 TL;DR、表格、公式、伪代码、Mermaid 和本地图片。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 gated access、专家来源集中、ASR 不等于事故率、多轮 Agent 未覆盖等边界。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_eb2bf09174c68b73"
+  ]
+}

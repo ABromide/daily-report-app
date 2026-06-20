@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/06/20/itm_75849ec10695ed9f/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-20T15:44:24Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260620t154424z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "needs_revision",
+      "summary": "Exactly one Scout agent was launched for llm-agent, llm-post-training, and ai-safety; it timed out and was closed. Main agent completed the same merged candidate pass, discarded duplicate arXiv:2606.20512, and selected arXiv:2606.20363."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv metadata, HTML full text, tables, figures, appendix diagnostics, and reward-model details for arXiv:2606.20363."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_75849ec10695ed9f"
+  ]
+}

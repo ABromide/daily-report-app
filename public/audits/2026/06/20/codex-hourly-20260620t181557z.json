@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/06/20/itm_3f8a7fd316bb252e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-20T18:15:57Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260620t181557z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout searched llm-agent, llm-post-training, and ai-safety; OpenAnt was selected from ten current-week candidates."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML, project README, and Knostic technical blog; extracted method, experiment, cost, and limitation evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formulas, and Mermaid; Han character count is above 5000."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates confirmed evidence from boundaries including recall, dynamic verification coverage, and model dependence."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3f8a7fd316bb252e"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/06/20/itm_1acc63c1728801df/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-20T20:12:23Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260620t201223z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "failed",
+      "summary": "The single Scout agent was launched for llm-agent, llm-post-training, and ai-safety together, but timed out and was closed without a usable candidate table."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Manual fallback kept the same merged three-track contract. Candidates included DeepMind AI Control Roadmap, OpenAI Deployment Simulation, arXiv agent/tool-use papers, post-training RL papers, and AI safety framework items; DeepMind was rejected as duplicate and OpenAI Deployment Simulation was selected."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1acc63c1728801df"
+  ]
+}

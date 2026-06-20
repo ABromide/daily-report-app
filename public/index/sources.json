@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T15:44:24Z",
+  "generated_at": "2026-06-20T20:12:23Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -312,6 +312,14 @@
       "id": "huggingface-papers",
       "kind": "manual",
       "name": "Hugging Face Papers"
+    },
+    {
+      "description": "Official OpenAI paper and announcement on predicting LLM safety before release by simulating deployment.",
+      "enabled": true,
+      "homepage_url": "https://openai.com/index/deployment-simulation/",
+      "id": "openai-deployment-simulation",
+      "kind": "manual",
+      "name": "OpenAI Deployment Simulation"
     },
     {
       "description": "OpenAI official Global Affairs article and action-plan PDF selected by the hourly Chinese Daily Report automation.",

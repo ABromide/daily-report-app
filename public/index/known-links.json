@@ -91,6 +91,15 @@
       "title_hash": "fcded3077ba7ea0d7c781b8187a7b79b6a7df09cc74a45b83c1f68c953fa52d2"
     },
     {
+      "canonical_url": "https://openai.com/index/deployment-simulation/",
+      "category_id": "ai-safety",
+      "content_hash": "6c83d32e115e788937d8c9b4ab2754f2f0f17d6d58f60718a478b9f8361d6e13",
+      "external_id": "openai-deployment-simulation-2026-06-16",
+      "first_seen_at": "2026-06-20T20:12:23Z",
+      "item_id": "itm_1acc63c1728801df",
+      "title_hash": "961ea02aa540d72bea56653624429402d86b3605cc460c3959be968328b8076c"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.07412",
       "category_id": "llm-agent",
       "content_hash": "1f895f951962e4229701a8b88230bf47422c0d7ee4e60557ebe587053ef1121b",
@@ -946,6 +955,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-20T15:44:24Z",
+  "updated_at": "2026-06-20T20:12:23Z",
   "version": 1
 }

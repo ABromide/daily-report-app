@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/20/itm_3a0f4301ddf9a34c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 6,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 7
+  },
+  "generated_at": "2026-06-19T19:07:57Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260619t190757z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "needs_revision",
+      "summary": "唯一 Scout Agent 超时未返回；主 Agent 按同一合并候选表口径手动补齐三方向候选，并关闭该 Scout，未启动第二个 Scout。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv PDF、TeX source、abstract metadata、系统模型、设计、实现、实验、相关工作和结论。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含自包含 TL;DR、公式、表格、Mermaid、实验数字、case study、局限和领域延伸。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3a0f4301ddf9a34c"
+  ]
+}

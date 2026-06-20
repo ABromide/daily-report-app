@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T14:00:54Z",
+  "generated_at": "2026-06-19T19:07:57Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv deep-read source for Daily Report hourly automation.",
+      "description": "Manual deep-read source for current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -134,6 +134,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.17114v1",
       "id": "arxiv-data-leakage-2606",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Schema normalization override for an existing arXiv source entry.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.20470v1",
+      "id": "arxiv-defensive-misdirection-2606",
       "kind": "manual",
       "name": "arXiv"
     },

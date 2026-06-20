@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T05:58:18Z",
+  "generated_at": "2026-06-19T14:00:54Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -158,6 +158,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.09549",
       "id": "arxiv-secureclaw-2606",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "arXiv paper and source package for ToolPrivBench and over-privileged tool selection in LLM agents.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.20023",
+      "id": "arxiv-toolprivbench-2606",
       "kind": "manual",
       "name": "arXiv"
     },

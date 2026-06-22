@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T12:02:37Z",
+  "generated_at": "2026-06-22T17:53:43Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -128,6 +128,14 @@
       "id": "arxiv-cs-se",
       "kind": "manual",
       "name": "arXiv Computer Science - Software Engineering"
+    },
+    {
+      "description": "arXiv paper and HTML/PDF source for CWE-Trace and fine-tuning limits in LLM vulnerability detection.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.20502",
+      "id": "arxiv-cwetrace-2606",
+      "kind": "manual",
+      "name": "arXiv: Calibration Without Comprehension"
     },
     {
       "description": "由自动化从 item itm_41baea2861fe56ec 推断的来源。",

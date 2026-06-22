@@ -100,6 +100,15 @@
       "title_hash": "961ea02aa540d72bea56653624429402d86b3605cc460c3959be968328b8076c"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+      "category_id": "ai-safety",
+      "content_hash": "f14118555c9f73ccd7fe1f4897a7680f38d5c21d74d2bd184281ad4f24fb2796",
+      "external_id": "hf:servicenow-mosaicleaks",
+      "first_seen_at": "2026-06-22T12:02:37Z",
+      "item_id": "itm_1b152e8834cccbc2",
+      "title_hash": "dc91979dcf24720c7d221a112ac9b76fb1d2546277f0fd5099dc51efc5a448df"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.07412",
       "category_id": "llm-agent",
       "content_hash": "1f895f951962e4229701a8b88230bf47422c0d7ee4e60557ebe587053ef1121b",
@@ -1036,6 +1045,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-22T11:45:49Z",
+  "updated_at": "2026-06-22T12:02:37Z",
   "version": 1
 }

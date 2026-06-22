@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T11:45:49Z",
+  "generated_at": "2026-06-22T12:02:37Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -336,6 +336,14 @@
       "id": "owasp-llm-prompt-injection",
       "kind": "manual",
       "name": "OWASP LLM Prompt Injection guidance"
+    },
+    {
+      "description": "Manual source for the ServiceNow MosaicLeaks Hugging Face publication and linked arXiv paper.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+      "id": "servicenow-hf",
+      "kind": "manual",
+      "name": "Hugging Face / ServiceNow"
     },
     {
       "description": "Official implementation and documentation for the SpatialClaw runtime.",

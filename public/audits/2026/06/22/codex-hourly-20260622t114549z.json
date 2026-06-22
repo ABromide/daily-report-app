@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/22/itm_dbcee56bd56a6078/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-22T11:45:49Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260622t114549z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One Scout searched llm-agent, llm-post-training, and ai-safety together, returning nine 2026-06-18 arXiv candidates; Phoenix was rejected as already published on origin/data."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read the AutoPass arXiv abstract and HTML/PDF evidence, then prepared a long-form Chinese Markdown analysis with mechanism, experiments, tables, formula, pseudocode, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained Score, Analysis, Reasoning, and Evaluation Agent boundaries, LLVM pass-pipeline editing, rollback, baseline comparisons, and reproducibility limits."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Separated proven benchmark results from claims not established for production workloads, larger codebases, different LLVM versions, or semantic equivalence beyond benchmark execution."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Used arXiv primary pages and a secondary paper review for context; did not rely on social summaries for core evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown under public/articles/2026/06/22/itm_dbcee56bd56a6078/index.md and avoids external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_dbcee56bd56a6078"
+  ]
+}

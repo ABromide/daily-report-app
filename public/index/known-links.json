@@ -46,6 +46,15 @@
       "title_hash": "c8023a2e29e07c703a2ca2c0ce8db711fc0bd6601bab7af579bdf15f75bfbf73"
     },
     {
+      "canonical_url": "https://openai.com/index/patch-the-planet/",
+      "category_id": "ai-safety",
+      "content_hash": "c0182963eba1fb26b59f8254b6bb2c61855fee37967dba9cc27b66d4a2831b14",
+      "external_id": "openai:patch-the-planet",
+      "first_seen_at": "2026-06-22T23:53:01Z",
+      "item_id": "itm_0a731c7d969d9e6c",
+      "title_hash": "9d1e6c14ca1be5f83c7b9c757684ccba9be5eb5885bd83525fefc82566fdc981"
+    },
+    {
       "canonical_url": "https://github.com/THUDM/slime",
       "category_id": "llm-post-training",
       "content_hash": "f5e7ea0b86b0e370977ce4704da429ecdfdbfd85d59c2fbc5c803515fa9f58f8",
@@ -1072,6 +1081,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-22T23:49:22Z",
+  "updated_at": "2026-06-22T23:53:01Z",
   "version": 1
 }

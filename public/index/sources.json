@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T23:49:22Z",
+  "generated_at": "2026-06-22T23:53:01Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -330,6 +330,14 @@
       "name": "Hugging Face Papers"
     },
     {
+      "description": "Manual official OpenAI security announcement source.",
+      "enabled": true,
+      "homepage_url": "https://openai.com/",
+      "id": "openai",
+      "kind": "manual",
+      "name": "OpenAI"
+    },
+    {
       "description": "Official OpenAI paper and announcement on predicting LLM safety before release by simulating deployment.",
       "enabled": true,
       "homepage_url": "https://openai.com/index/deployment-simulation/",
@@ -384,6 +392,14 @@
       "id": "sysdig-threat-research",
       "kind": "manual",
       "name": "Sysdig Threat Research Team"
+    },
+    {
+      "description": "Manual partner blog source for Patch the Planet field notes.",
+      "enabled": true,
+      "homepage_url": "https://blog.trailofbits.com/",
+      "id": "trailofbits",
+      "kind": "manual",
+      "name": "Trail of Bits Blog"
     }
   ],
   "version": 1

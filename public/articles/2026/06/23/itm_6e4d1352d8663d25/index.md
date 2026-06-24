@@ -378,6 +378,72 @@ WideSearch 结果：
 
 ### 12. 结论与局限
 
+#### 12.0 研究者复盘：这篇论文真正改变了哪三个判断？
+
+第一，论文把“环境”从一个外部资源改写成一个可学习对象。过去做 Agent 后训练时，环境通常被当成固定基础设施：终端要开容器，网页要开浏览器，SWE 要准备仓库和测试，工具调用要部署真实服务。训练瓶颈自然落在环境构建、并发调度、费用、隔离和复现上。Qwen-AgentWorld 的变化是：只要能把真实交互压缩成 `action -> observation` 轨迹，就可以先训练一个语言模型去近似环境反馈，再用这个模型制造更多训练回合。
+
+这个判断的意义可以拆成三层：
+
+- **数据层**：真实环境仍然重要，因为 ground truth observation 来自真实执行；但真实环境不再只服务于 policy rollout，也服务于世界模型监督。
+- **训练层**：Agent RL 的采样不再完全受真实 API、真实网页、真实 sandbox 吞吐限制；部分训练可以转移到 LWM simulator。
+- **评测层**：如果 world model 能被单独评测，Agent 系统就多了一个可诊断模块；失败不再只能归因于 policy 不会规划，也可能是内部环境预测错误。
+
+第二，论文把“可控性”放到了比“真实性”更靠前的位置。普通真实环境当然真实，但它未必能稳定暴露稀有失败模式。比如 MCP 的分页、权限拒绝、批量局部失败、Search snippet 的信息遮蔽、终端磁盘空间不足，这些事件在真实部署中可能低频，却正是 Agent 上线时最容易造成灾难性误判的边界条件。Qwen-AgentWorld 证明的不是“模拟比真实更真”，而是“可控模拟能系统性放大训练所需的边界样本”。
+
+可以把这点写成一个训练分布视角：
+
+```text
+真实环境分布：
+  P_real(o_{t+1} | history, action)
+  优点：真实、可执行、可验证
+  缺点：慢、贵、不可控、稀有失败样本少
+
+语言世界模型分布：
+  P_lwm(o_{t+1} | history, action, instruction)
+  优点：快、可扩展、可调难度、可构造虚构事实
+  缺点：可能偏离真实、需要校准、需要 sim-to-real 检查
+
+后训练目标：
+  不是用 P_lwm 替代 P_real
+  而是在二者之间学习一套 routing 和 curriculum
+```
+
+第三，论文把 Agent 的思考从“解释过去”推进到“预测未来”。很多 Agent 训练会鼓励 reflection，让模型解释失败、总结经验、更新记忆；但 reflection 往往发生在动作之后。LWM warm-up 逼迫模型在动作之前预测环境反馈，这更接近规划中的 lookahead。Terminal-Bench 的 mailman 例子说明：模型不是因为知道更多 Postfix 文档而直接胜出，而是因为它在执行前模拟了 Postfix 的处理顺序，从而避免了错误修复路径。
+
+| 能力 | 常见形式 | Qwen-AgentWorld 强调的形式 | 对 Agent 的影响 |
+|---|---|---|---|
+| Reflection | 做错后总结 | 行动前预测反馈 | 减少无效探索 |
+| Memory | 记住历史事实 | 维护可变状态 | 避免跨 turn 不一致 |
+| Tool use | 会调用工具 | 会预测工具响应 | 更好选择工具与参数 |
+| Safety | 拒绝危险动作 | 预演副作用与失败路径 | 支持 dry-run 与权限边界 |
+
+#### 12.00 失败边界：哪些结论不能被过度解读？
+
+第一，AgentWorldBench 分数不能直接等价于真实 Agent 成功率。它评估的是“给定 action 后预测 observation”的保真度，而不是完整任务规划。一个模型可能很会模拟终端输出，但仍然不会选择正确命令；反过来，一个强 policy 也可能在不显式预测完整 observation 的情况下完成任务。因此 Table 5 更像是 world-model 单元测试，不是端到端 Agent 排行榜。
+
+第二，Sim RL 的正结果不能被理解为“以后不用真实环境”。论文自己的 MCP 结果已经给出反例：无控制指令的 Sim RL 在 Tool Decathlon 上从 32.4 掉到 31.5。这个失败说明，如果 simulator 没有被约束到训练目标需要的困难分布，RL 会从噪声反馈里学到错误习惯。真实环境、规则验证器和人工审计仍然是纠偏层。
+
+第三，Search fictional-world 的成功依赖非常重的合成工程。它不是简单让 LLM 编故事，而是先构造结构化数据库，再生成文档，再用 SQL 抽取答案，再反向生成查询，最后用检索检查和双重验证防止虚构事实污染训练。换到安全、医疗、金融或企业内部工具时，是否能建立同样严密的 synthetic world pipeline，是后续研究必须回答的问题。
+
+第四，语言世界模型引入新的安全面。若 agent 在训练或部署时过度信任 simulator，可能出现三类风险：
+
+- **模拟器偏差**：policy 学会了 simulator 的坏习惯，在真实环境中失败。
+- **权限错觉**：simulator 生成了看似成功的敏感操作，让 agent 低估真实权限约束。
+- **事实污染**：Search 或 MCP 模拟中生成的虚构事实进入 memory，被后续真实任务误用。
+
+因此更稳妥的系统设计不是“Agent + LWM”二元结构，而是四层闭环：
+
+```mermaid
+flowchart LR
+  A["Policy Agent"] --> B["Language World Model"]
+  B --> C["Rule / Grounded Verifier"]
+  C --> D["Real Environment Check"]
+  D --> E["Human or Policy Gate"]
+  E --> A
+```
+
+这个闭环里，LWM 负责低成本预演，verifier 负责可执行约束，真实环境负责抽样校准，human/policy gate 负责不可逆动作和安全边界。
+
 #### 12.1 我认为最值得带走的判断
 
 - **Agent 后训练会从“收集真实轨迹”走向“设计可控环境分布”**。Qwen-AgentWorld 的关键贡献不是又做了一个 benchmark，而是展示了如何系统性地控制环境困难度。

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T12:05:29Z",
+  "generated_at": "2026-06-24T12:05:31Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for Daily Report hourly deep research.",
+      "description": "Manual arXiv source for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -234,7 +234,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for official project repositories.",
+      "description": "Manual source for public code repository metadata.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",
@@ -322,12 +322,20 @@
       "name": "Hugging Face Blog"
     },
     {
-      "description": "Community paper page used for publication-window confirmation, discussion and related-paper discovery.",
+      "description": "Manual Hugging Face paper and project metadata source.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co/papers/2606.02031",
+      "homepage_url": "https://huggingface.co/papers",
       "id": "huggingface-papers",
       "kind": "manual",
       "name": "Hugging Face Papers"
+    },
+    {
+      "description": "Manual official project source for OpenThoughts-Agent resources.",
+      "enabled": true,
+      "homepage_url": "https://www.openthoughts.ai/",
+      "id": "open-thoughts",
+      "kind": "manual",
+      "name": "OpenThoughts"
     },
     {
       "description": "Manual official OpenAI security announcement source.",

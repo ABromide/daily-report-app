@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/24/itm_3c6f66b6290f985c/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-24T18:01:01Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260624t180101z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖 llm-agent、llm-post-training、ai-safety 三类并返回 10 个本周候选；SAFARI 被列为 llm-agent 低重复风险首选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv HTML、OpenReview 条目和相关 benchmark 代码页，正文按论文主线写入。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含 TL;DR、表格、公式解释、伪代码和 Mermaid，无外链图片直引。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3c6f66b6290f985c"
+  ]
+}

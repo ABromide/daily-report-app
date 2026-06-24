@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/23/itm_af06384cfee34ea6/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-06-23T23:53:35Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260623t235335z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout returned 12 current-week candidates across llm-agent, llm-post-training, and ai-safety; SelfCompact was ranked first with official arXiv date evidence."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Full PDF was extracted and read; article covers method, rubrics, experiments, ablations, figures, cost model, limitations, and Agent safety implications."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related context was checked through the paper references and benchmark/source links; no separate image localization was needed."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_af06384cfee34ea6"
+  ]
+}

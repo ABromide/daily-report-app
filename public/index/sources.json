@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T00:18:32Z",
+  "generated_at": "2026-06-24T06:03:00Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,9 +26,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv research item selected by the hourly Daily Report automation.",
+      "description": "Manual official arXiv paper source for current-week AI research items.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2606.23321",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -234,7 +234,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for official benchmark code repositories.",
+      "description": "Manual source for official project repositories.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",
@@ -306,9 +306,9 @@
       "name": "Hugging Face Blog: OpenEnv"
     },
     {
-      "description": "Model cards and HF Papers metadata for current AI research.",
+      "description": "Manual Hugging Face source for paper-linked model and dataset cards.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co",
+      "homepage_url": "https://huggingface.co/",
       "id": "huggingface",
       "kind": "manual",
       "name": "Hugging Face"

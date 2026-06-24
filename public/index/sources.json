@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T12:05:31Z",
+  "generated_at": "2026-06-24T18:34:21Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv source for current-week AI research papers.",
+      "description": "Manual arXiv source for current-week AI security research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -322,7 +322,7 @@
       "name": "Hugging Face Blog"
     },
     {
-      "description": "Manual Hugging Face paper and project metadata source.",
+      "description": "Manual Hugging Face paper metadata and related-work discovery source.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/papers",
       "id": "huggingface-papers",

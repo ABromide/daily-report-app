@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/22/itm_3386bbd60b8902d9/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-25T01:50:06Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "run-20260625t013230z-plans",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout table covered llm-agent, llm-post-training, and ai-safety; selected arXiv:2606.22953 after official-date and local dedupe checks."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, and PDF; extracted replay pairing, probe, strict stripping, compression stress test, limitations, and numeric evidence."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained PlanSignal formula, replay-pairing pseudocode, probe target, strict stripping protocol, and context-compression policies."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Highlighted step-index leakage, plan-content confounds, asymmetric strict stripping, limited model coverage, and null behavioral interventions."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched exact title and arXiv ID; found no substantive third-party analysis beyond paper index pages, so the article relies on official arXiv sources."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article exceeds 5000 Chinese characters and uses tables, formulas, pseudocode, and Mermaid without external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3386bbd60b8902d9"
+  ]
+}

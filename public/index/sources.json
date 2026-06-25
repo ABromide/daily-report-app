@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T02:20:46Z",
+  "generated_at": "2026-06-25T06:34:14Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -322,7 +322,7 @@
       "name": "Hugging Face Blog"
     },
     {
-      "description": "Manual Hugging Face paper metadata and related-work discovery source.",
+      "description": "Manual Hugging Face paper metadata and daily paper listings.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/papers",
       "id": "huggingface-papers",

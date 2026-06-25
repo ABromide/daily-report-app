@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T12:09:37Z",
+  "generated_at": "2026-06-25T12:09:34Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection from the hourly unified Scout table.",
+      "description": "手动筛选的当前周 arXiv 论文。",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -328,6 +328,14 @@
       "id": "huggingface-papers",
       "kind": "manual",
       "name": "Hugging Face Papers"
+    },
+    {
+      "description": "论文官方工具调用 RL 训练与诊断代码仓库。",
+      "enabled": true,
+      "homepage_url": "https://github.com/hypasd-art/Tool-RL-Box",
+      "id": "hypasd-art-tool-rl-box",
+      "kind": "manual",
+      "name": "hypasd-art/Tool-RL-Box"
     },
     {
       "description": "Manual official project source for OpenThoughts-Agent resources.",

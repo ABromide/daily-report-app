@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/06/24/itm_cf2091dd118bebe9/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-25T12:09:37Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260625t120937z-unified-scout",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety. It recommended Progress Advantage as the strongest in-window Agent/post-training candidate and listed AsyncOPD, ToolBench-X, ActPlane, Poisoned Playbooks, RAS, AdversaBench, and related alternatives."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the 35-page PDF, checked the official code repository, and wrote a formula/table/Mermaid-heavy Chinese deep dive without requiring localized image assets."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_cf2091dd118bebe9"
+  ]
+}

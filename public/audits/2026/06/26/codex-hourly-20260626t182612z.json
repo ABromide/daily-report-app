@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/26/itm_aeeac7820c4e99df/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-06-26T18:26:12Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260626t182612z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety in one table; ShareLock was selected as the backup after the top tool-use RL paper was skipped from automation memory."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv abstract, HTML full text, threat model, method, evaluation tables, adaptive defenses, ablations, failure cases, and related MCP poisoning references."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with more than 5000 Chinese characters, no external image embeds, and evidence represented through tables, formulas, pseudocode, and Mermaid-free structured sections."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_aeeac7820c4e99df"
+  ]
+}

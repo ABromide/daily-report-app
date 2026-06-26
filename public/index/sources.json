@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T12:09:34Z",
+  "generated_at": "2026-06-26T00:13:23Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -160,6 +160,14 @@
       "id": "arxiv-ffinred-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Manual arXiv paper selection and deep reading for Daily Report hourly research.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/",
+      "id": "arxiv-manual",
+      "kind": "manual",
+      "name": "arXiv manual deep read"
     },
     {
       "description": "Manual source for the NRT-Bench arXiv paper and linked dataset.",

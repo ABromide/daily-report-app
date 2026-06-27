@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/27/itm_b8c22f448196adff/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-27T06:39:23Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260627t063923z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety; Chai was selected for low duplicate risk and strong AI-for-security evidence."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The full 17-page PDF was read and converted into a standalone Chinese Markdown deep dive."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article explains differential testing, discrepancy tracing, UCB1 lease allocation, protocol harnesses, baselines, results, and disclosure limits."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article separates confirmed findings from under-disclosure findings and states that code/data were not publicly available."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Third-party search found only arXiv aggregators and social reposts; the paper remains the source of truth."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "The page uses pure Markdown with tables, formulas, pseudocode, and Mermaid; no external image URLs are embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b8c22f448196adff"
+  ]
+}

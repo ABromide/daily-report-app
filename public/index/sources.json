@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T01:47:44Z",
+  "generated_at": "2026-06-27T03:22:39Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -184,6 +184,14 @@
       "id": "arxiv-openwebrl",
       "kind": "manual",
       "name": "arXiv / OpenWebRL Project"
+    },
+    {
+      "description": "Official arXiv page for RolloutPipe, a paper on overlapping rollout and training in disaggregated on-policy LLM reinforcement learning.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.26997",
+      "id": "arxiv-rolloutpipe",
+      "kind": "manual",
+      "name": "arXiv: RolloutPipe"
     },
     {
       "description": "arXiv paper and source material for SafeClawBench.",

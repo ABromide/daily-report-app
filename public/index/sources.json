@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T06:39:23Z",
+  "generated_at": "2026-06-27T12:44:52Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv source selected from the unified hourly Scout candidate table.",
+      "description": "Manual arXiv paper selection for Daily Report hourly deep research.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

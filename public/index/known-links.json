@@ -217,6 +217,15 @@
       "title_hash": "7b2e0e3de1c806c8952d225c4b5273de134a9ffbe0b57d544d45388e449f21d4"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.26590",
+      "category_id": "ai-safety",
+      "content_hash": "52ec986a0dce0c328e3eff497ea9d5431d001d3382458550ac2b6ca9491d3190",
+      "external_id": "arxiv:2606.26590v1",
+      "first_seen_at": "2026-06-27T18:51:23Z",
+      "item_id": "itm_271b12e53a278ee1",
+      "title_hash": "119523f633a79037930089e6834c128f8269d2d06bf75a36c49b5868fa869a0f"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.05647",
       "category_id": "ai-safety",
       "content_hash": "9faab1d549e98cbb4008dfea73c61d978e013435a3e3aed71a66f0545dd735ea",
@@ -1333,6 +1342,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-27T18:49:52Z",
+  "updated_at": "2026-06-27T18:51:23Z",
   "version": 1
 }

@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/27/itm_271b12e53a278ee1/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-06-27T18:51:23Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260627t185123z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety candidates; TerraProbe was selected after avoiding recent VIGIL, ShareLock, Verification Horizon, RolloutPipe, Chai, JERP, Progress Advantage, and harness-design repeats."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv abstract, API metadata, 34-page PDF text, HTML full text, oracle stack, corpus design, statistics, taxonomy, MLOE framework, IAM analysis, limitations, and a third-party summary search result."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with 5000+ Chinese characters; no external image embeds; evidence is represented through tables, formulas, pseudocode, and Mermaid-free structured analysis."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_271b12e53a278ee1"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T12:42:15Z",
+  "generated_at": "2026-06-27T18:49:52Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -114,12 +114,12 @@
       "name": "arXiv cs.CR"
     },
     {
-      "description": "arXiv cs.LG paper and official implementation used for the VIMPO deep read.",
+      "description": "Manual arXiv paper selection for the hourly Daily Report workflow.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2606.20008",
+      "homepage_url": "https://arxiv.org/list/cs.LG/recent",
       "id": "arxiv-cs-lg",
       "kind": "manual",
-      "name": "arXiv Computer Science - Machine Learning"
+      "name": "arXiv cs.LG"
     },
     {
       "description": "arXiv cs.SE 手工筛选来源，本轮用于 Probe-and-Refine coding-agent guidance 论文深读。",

@@ -125,7 +125,7 @@ Go(receptacle="drawer 1")
 
 这也是论文的重要立场：**不是说 harness 越丰富越无成本，而是说它的成本必须进入后训练设计。**
 
-![实验设计与 harness 构造](../../../../../assets/2026/06/27/itm_0e1070a3aa0de65b/fig1-experiment-design.png)
+![实验设计与 harness 构造](/daily-report-app/data/assets/2026/06/27/itm_0e1070a3aa0de65b/fig1-experiment-design.png)
 
 ### 三种 tool schema：工具环境迁移是怎么构造出来的？
 
@@ -309,7 +309,7 @@ flowchart LR
 - 但经过 GRPO 后训练的 `h-low` 只有 **2.7**；
 - 也就是说，后训练不是单调增强，可能让模型更过拟合训练时接口。
 
-![工具环境迁移下的成功率](../../../../../assets/2026/06/27/itm_0e1070a3aa0de65b/fig7-tool-shift.png)
+![工具环境迁移下的成功率](/daily-report-app/data/assets/2026/06/27/itm_0e1070a3aa0de65b/fig7-tool-shift.png)
 
 ### 失败案例：模型生成了“看起来合理但不存在”的工具名
 
@@ -344,7 +344,7 @@ Qwen2.5-7B + GiGPO 在 `v2.0` 下的关键结果：
 | `h-mid` | `Invalid tool format` 占 **75.1%**；性能下降 **45.2** 分 |
 | `h-high` | **95.7%** 工具调用格式有效；但 **34.9%** 是当前状态不可执行；性能从 **86.9** 降到 **69.6**，下降 **17.3** 分 |
 
-![强工具迁移下的工具调用拆解](../../../../../assets/2026/06/27/itm_0e1070a3aa0de65b/fig8-tool-call-breakdown.png)
+![强工具迁移下的工具调用拆解](/daily-report-app/data/assets/2026/06/27/itm_0e1070a3aa0de65b/fig8-tool-call-breakdown.png)
 
 这个拆解很关键，因为它把“鲁棒性”拆成两层：
 

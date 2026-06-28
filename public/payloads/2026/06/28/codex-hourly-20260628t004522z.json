@@ -1,0 +1,112 @@
+{
+  "run_id": "codex-hourly-20260628t004522z",
+  "generated_at": "2026-06-28T00:45:22Z",
+  "status": "complete",
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "items": [
+    {
+      "item_id": "itm_c231151d71aeb9c1",
+      "category_id": "ai-safety",
+      "type": "paper",
+      "source_id": "arxiv",
+      "source_name": "arXiv",
+      "source_type": "paper",
+      "external_id": "arXiv:2606.27210v1",
+      "url": "https://arxiv.org/abs/2606.27210",
+      "canonical_url": "https://arxiv.org/abs/2606.27210",
+      "title": "Paved with True Intents: Intent-Aware Training Improves LLM Safety Classification Across Training Regimes",
+      "published_at": "2026-06-25T16:03:57Z",
+      "updated_at": "2026-06-25T16:03:57Z",
+      "fetched_at": "2026-06-28T00:45:22Z",
+      "summary_zh": "AIMS 研究安全分类器是否应该显式建模用户 intent，而不是直接从 prompt 跳到 safe/harmful label。作者从 WildGuardMix 中用 ensemble uncertainty 选择困难样本，收集 1,946 条原始标注，过滤 222 条后得到 1,724 条 intent-label annotations，覆盖 1,275 个 unique prompts，其中 70.1% 原始样本带 adversarial 标记；标注员为每个 prompt 写一句 underlying intent，并给四档 harm label，训练时折成二分类。论文用同一 AIMS 信号测试 SFT、DPO、reasoning distillation 和 GRPO：SFT 生成 intent+label；DPO 拒绝 label-error intent 与 label-correct but unfaithful intent；distillation 用 human intent 约束教师 trace；GRPO 使用 R=format*label*length*intent 的乘积 reward，intent faithfulness 由 Gemma-3-27B-IT judge 判定。五个外部安全 benchmark 上，GRPO label+intent reward 平均 F1 达到 0.836，高于 GPT-5.4 的 0.815 和 Nemotron Safety 4B 的 0.809；但单项并非全胜，WildGuard 7B、Nemotron Safety 4B、ShieldGemma 27B 分别在部分数据集更强。局限是论文只覆盖 prompt-level safety classification，AIMS 来自 WildGuardMix 难例而非自然分布，且 DPO/GRPO 的 intent reward 依赖模型 judge。",
+      "analysis_markdown_path": "articles/2026/06/28/itm_c231151d71aeb9c1/index.md",
+      "language": "zh-CN",
+      "reading_minutes": 22,
+      "tags": [
+        "AI安全",
+        "Safety Classifier",
+        "Intent Modeling",
+        "DPO",
+        "GRPO",
+        "AIMS"
+      ],
+      "score": 93,
+      "evidence": [
+        {
+          "type": "url",
+          "label": "arXiv abs page with current-week submission date and abstract",
+          "url": "https://arxiv.org/abs/2606.27210"
+        },
+        {
+          "type": "url",
+          "label": "arXiv HTML full text with dataset, training regimes, and results",
+          "url": "https://arxiv.org/html/2606.27210"
+        },
+        {
+          "type": "url",
+          "label": "Official project page",
+          "url": "https://jazhyc.github.io/aims-safety/"
+        },
+        {
+          "type": "url",
+          "label": "Project page repository",
+          "url": "https://github.com/Jazhyc/aims-safety"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "kind": "manual",
+      "homepage_url": "https://arxiv.org/",
+      "enabled": true,
+      "description": "Manual deep-read source for current-week arXiv papers."
+    },
+    {
+      "id": "project-page",
+      "name": "Official project page",
+      "kind": "manual",
+      "homepage_url": "https://jazhyc.github.io/aims-safety/",
+      "enabled": true,
+      "description": "Official project page linked from the paper."
+    }
+  ],
+  "dedupe": {
+    "ledger_path": "public/index/known-links.json",
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "replacement_candidates": 1
+  },
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety；RiVER 被发布脚本判重后，在同一候选表内替换为 arXiv:2606.27210。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML、PDF、TeX 源码、结果表、DPO/GRPO 奖励定义和官方项目页。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含自包含 TL;DR、表格、公式、伪代码、Mermaid、主结果、定性失败模式和局限。"
+    }
+  ],
+  "quality_gate": {
+    "minimum_chinese_chars": 5000,
+    "evidence_points": 14,
+    "image_notes": 0,
+    "third_party_references": 1,
+    "skeptical_review": 5,
+    "passed": true
+  }
+}

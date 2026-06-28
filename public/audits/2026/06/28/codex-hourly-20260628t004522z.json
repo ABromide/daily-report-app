@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/28/itm_c231151d71aeb9c1/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-28T00:45:22Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260628t004522z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety；RiVER 被发布脚本判重后，在同一候选表内替换为 arXiv:2606.27210。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已深读 arXiv HTML、PDF、TeX 源码、结果表、DPO/GRPO 奖励定义和官方项目页。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文包含自包含 TL;DR、表格、公式、伪代码、Mermaid、主结果、定性失败模式和局限。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c231151d71aeb9c1"
+  ]
+}

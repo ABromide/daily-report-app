@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T00:45:22Z",
+  "generated_at": "2026-06-28T06:53:56Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -98,7 +98,7 @@
       "name": "arXiv Computer Science - Artificial Intelligence"
     },
     {
-      "description": "Manual collection from arXiv Computation and Language papers in the current weekly window.",
+      "description": "Manual arXiv paper selection for the hourly Daily Report workflow.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/list/cs.CL/recent",
       "id": "arxiv-cs-cl",

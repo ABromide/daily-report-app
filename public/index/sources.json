@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T06:53:56Z",
+  "generated_at": "2026-06-28T06:53:19Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -56,6 +56,14 @@
       "id": "arxiv-2606-10064",
       "kind": "manual",
       "name": "arXiv 2606.10064"
+    },
+    {
+      "description": "Official arXiv abstract, PDF, and linked implementation for Semantic Early-Stopping for Iterative LLM Agent Loops.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.27009",
+      "id": "arxiv-2606-27009",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",

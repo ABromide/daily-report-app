@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T00:47:58Z",
+  "generated_at": "2026-06-29T00:56:28Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -280,6 +280,14 @@
       "id": "github-chats-lab-coding-agent-safety-monitor",
       "kind": "manual",
       "name": "CHATS-lab/coding-agent-safety-monitor"
+    },
+    {
+      "description": "GitHub repository for GraphGuard, a local LLM-driven static security linter for LangGraph agent pipelines.",
+      "enabled": true,
+      "homepage_url": "https://github.com/RodriguezRepetto/graphguard",
+      "id": "github-graphguard",
+      "kind": "manual",
+      "name": "RodriguezRepetto/graphguard"
     },
     {
       "description": "论文官方代码仓库，用于确认 README、实验入口和项目结构。",

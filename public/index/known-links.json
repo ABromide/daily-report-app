@@ -10,6 +10,15 @@
       "title_hash": "0e45a86a8dc8d424e7d1e6458cfc468102920024f64ee8114cad0a9b478b8ed5"
     },
     {
+      "canonical_url": "https://github.com/jamjet-labs/jamjet/commit/6ed0b697e59a5e24adb2426c28b9b69cecd7430e",
+      "category_id": "ai-safety",
+      "content_hash": "c13b41b1ba012b9270da350010bd4865f62f6697b026582a7a350fba824a62e5",
+      "external_id": "github:jamjet-labs/jamjet@6ed0b697",
+      "first_seen_at": "2026-06-29T07:01:01Z",
+      "item_id": "itm_0136eea9573b87a5",
+      "title_hash": "6977ba73738c501831c1288b351667c3f9ddac30aff0189b6588bee835f70fc9"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.09426",
       "category_id": "llm-agent",
       "content_hash": "853eb91340c284ce4b5f6d2432a468729c73b52f2711e0cd7fb63f3dad5e94f9",
@@ -1432,6 +1441,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-29T00:56:28Z",
+  "updated_at": "2026-06-29T07:01:01Z",
   "version": 1
 }

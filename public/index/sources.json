@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T00:56:28Z",
+  "generated_at": "2026-06-29T07:01:01Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -258,7 +258,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for public code repository metadata and project documentation.",
+      "description": "Manual source for public code repository metadata, commits, and project documentation.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",
@@ -370,6 +370,14 @@
       "name": "hypasd-art/Tool-RL-Box"
     },
     {
+      "description": "Manual official product and documentation source for JamJet.",
+      "enabled": true,
+      "homepage_url": "https://jamjet.dev/",
+      "id": "jamjet-site",
+      "kind": "manual",
+      "name": "JamJet official site"
+    },
+    {
       "description": "Manual source for Rust crate metadata and ecosystem context.",
       "enabled": true,
       "homepage_url": "https://lib.rs/",
@@ -432,6 +440,14 @@
       "id": "project-page",
       "kind": "manual",
       "name": "Official project page"
+    },
+    {
+      "description": "Manual source for Python package release metadata.",
+      "enabled": true,
+      "homepage_url": "https://pypi.org/",
+      "id": "pypi",
+      "kind": "manual",
+      "name": "PyPI"
     },
     {
       "description": "Manual source for the ServiceNow MosaicLeaks Hugging Face publication and linked arXiv paper.",

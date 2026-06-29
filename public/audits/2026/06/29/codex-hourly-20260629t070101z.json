@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/06/29/itm_0136eea9573b87a5/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 4
+  },
+  "generated_at": "2026-06-29T07:01:01Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260629t070101z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; arXiv had no matching 2026-06-29 UTC papers, so the table pivoted to current GitHub/official updates and selected JamJet after duplicate and WIP candidates were rejected."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the JamJet README, CHANGELOG, docs index, runtime notes, governance/session/team/replay/policy/guardrail source files, tests, and evidence placeholders."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with more than 5000 Chinese characters, no external image embeds, and evidence represented through tables, formula-style blocks, pseudocode, and Mermaid."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0136eea9573b87a5"
+  ]
+}

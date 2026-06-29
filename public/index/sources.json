@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T07:01:01Z",
+  "generated_at": "2026-06-29T07:00:00Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -128,6 +128,14 @@
       "id": "arxiv-cs-lg",
       "kind": "manual",
       "name": "arXiv cs.LG"
+    },
+    {
+      "description": "Manual source for official arXiv Multiagent Systems new-submission listings.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/list/cs.MA/new",
+      "id": "arxiv-cs-ma-new",
+      "kind": "manual",
+      "name": "arXiv cs.MA new submissions"
     },
     {
       "description": "arXiv cs.SE 手工筛选来源，本轮用于 Probe-and-Refine coding-agent guidance 论文深读。",

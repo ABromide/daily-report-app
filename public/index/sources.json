@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T13:10:00Z",
+  "generated_at": "2026-06-29T18:54:02Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -328,6 +328,14 @@
       "id": "github-recuse",
       "kind": "manual",
       "name": "mthamil107/Recuse"
+    },
+    {
+      "description": "Manual source for official GitHub repository updates in RL post-training infrastructure.",
+      "enabled": true,
+      "homepage_url": "https://github.com/RL-Align/RL-Kernel",
+      "id": "github-rl-align-rl-kernel",
+      "kind": "manual",
+      "name": "RL-Align/RL-Kernel GitHub repository"
     },
     {
       "description": "Official GitHub repository for slime, an LLM post-training framework for RL Scaling.",

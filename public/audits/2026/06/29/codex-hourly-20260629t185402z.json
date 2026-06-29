@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/29/itm_9f8fe2ddc3a86053/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-29T18:54:02Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260629t185402z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 一次性覆盖 Agent、后训练、AI 安全；最终从本周 GitHub 更新表选择 RL-Kernel。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 RL-Kernel README、operator docs、runtime dispatch、weight-sync bridge、示例和 PR #169 文件列表。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 GRPO loss、linear-logp、embedding reference、registry fallback 和 weight update lifecycle。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "区分项目文档 benchmark 与第三方复现，保留 embedding 无 fused backend、CUDA backward 和 transport 能力边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "与 TRL、DeepSpeed、vLLM/SGLang、Liger Kernel、verl/slime/miles 等后训练基础设施对照。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 TL;DR、表格、公式解释、伪代码、Mermaid 和逐项边界分析，中文字符数超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_9f8fe2ddc3a86053"
+  ]
+}

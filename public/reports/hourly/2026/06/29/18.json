@@ -1,47 +1,45 @@
 {
-  "date": "2026-06-06",
   "generated_at": "2026-06-29T18:54:02Z",
   "item_count": 7,
+  "period": {
+    "end": "2026-06-29T19:00:00Z",
+    "start": "2026-06-29T18:00:00Z"
+  },
+  "report_id": "hourly:2026-06-29T18:00:00Z",
   "sections": [
     {
       "heading": "AI 安全相关",
       "item_ids": [
-        "itm_360c585a9772d5c6",
-        "itm_17e42b7d5e2a2c7e",
-        "itm_2d8c44d450c8f427",
-        "itm_2f45d1dee0503570"
+        "itm_0136eea9573b87a5",
+        "itm_1af9bb3ef867c1c5",
+        "itm_16380880d8f57429",
+        "itm_b46193c648a2f22f"
       ],
       "summary": "AI 安全相关 本次共有 4 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
-        "itm_25cdea8ffbbe90fd",
-        "itm_2606020310afed01"
+        "itm_dbc9f9818e4392a8",
+        "itm_8549d163900db01e"
       ],
       "summary": "大模型 Agent 相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_5bee1372117e3472"
+        "itm_9f8fe2ddc3a86053"
       ],
       "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "source_counts": {
-    "anthropic-red-team": 1,
-    "arxiv": 4,
-    "arxiv-openwebrl": 1,
-    "sysdig-threat-research": 1
-  },
-  "summary": "2026-06-06 public data 已由 finalize-public-run 统一重建索引和报告，共 7 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 7 条内容。",
   "top_item_ids": [
-    "itm_25cdea8ffbbe90fd",
-    "itm_2606020310afed01",
-    "itm_360c585a9772d5c6",
-    "itm_5bee1372117e3472",
-    "itm_17e42b7d5e2a2c7e"
+    "itm_dbc9f9818e4392a8",
+    "itm_0136eea9573b87a5",
+    "itm_9f8fe2ddc3a86053",
+    "itm_1af9bb3ef867c1c5",
+    "itm_16380880d8f57429"
   ],
   "version": 1
 }

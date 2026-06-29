@@ -946,6 +946,15 @@
       "title_hash": "4148dbcee60542a5f08f96ef24e4d49051f39289a57037f598fd2a81835cc80b"
     },
     {
+      "canonical_url": "https://github.com/RL-Align/RL-Kernel",
+      "category_id": "llm-post-training",
+      "content_hash": "9a5d653f20ee1f8b04c50b94a97ce0b0b929193728404cfc94c87369615b81f6",
+      "external_id": "github:RL-Align/RL-Kernel",
+      "first_seen_at": "2026-06-29T18:54:02Z",
+      "item_id": "itm_9f8fe2ddc3a86053",
+      "title_hash": "d43cbf0455083642804fdc5252ef931934c5b96d96d503a53371cae08b645218"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.25556",
       "category_id": "llm-post-training",
       "content_hash": "710b781e8b1dbb83cd72886ca53c651409c5b4f694719f5c25bee0d2adad368b",
@@ -1468,6 +1477,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-29T13:10:00Z",
+  "updated_at": "2026-06-29T18:54:02Z",
   "version": 1
 }

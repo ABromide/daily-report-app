@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T12:58:23Z",
+  "generated_at": "2026-06-29T13:10:00Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -312,6 +312,14 @@
       "id": "github-probe-and-refine",
       "kind": "manual",
       "name": "asashepard/probe-and-refine-tuning"
+    },
+    {
+      "description": "Manual source for official merged PyRIT pull requests and code changes.",
+      "enabled": true,
+      "homepage_url": "https://github.com/microsoft/PyRIT/pulls",
+      "id": "github-pyrit-pr",
+      "kind": "manual",
+      "name": "GitHub microsoft/PyRIT pull requests"
     },
     {
       "description": "Reference implementation, specification, adapters, and experiment harness for Recuse Signal.",

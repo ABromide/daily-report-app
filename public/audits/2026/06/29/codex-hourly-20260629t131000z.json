@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/06/29/itm_1af9bb3ef867c1c5/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-29T13:10:00Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260629t131000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，推荐 PyRIT word-game DecompositionConverter 为安全价值最高候选；主 Agent 复核 GitHub 合并时间、diff、测试和去重后选用。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 PR 描述、merge commit diff、converter 实现、word_game_preamble YAML、reconstruction prompt 和单元测试。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确区分 GPT-judge refusal-bypass ASR 与 operational harm，并保留 mapping 仍暴露 noun phrase、依赖 decomposition target 的边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，无外部图片，包含 TL;DR、表格、公式解释、伪代码和 Mermaid。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1af9bb3ef867c1c5"
+  ]
+}

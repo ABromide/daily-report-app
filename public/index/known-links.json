@@ -181,6 +181,15 @@
       "title_hash": "961ea02aa540d72bea56653624429402d86b3605cc460c3959be968328b8076c"
     },
     {
+      "canonical_url": "https://github.com/microsoft/PyRIT/pull/2051",
+      "category_id": "ai-safety",
+      "content_hash": "f3832cab625d1640ef938ce6c6c14463ef6c14ee94aa48173e3ca12ae172ef5e",
+      "external_id": "microsoft/PyRIT#2051",
+      "first_seen_at": "2026-06-29T13:10:00Z",
+      "item_id": "itm_1af9bb3ef867c1c5",
+      "title_hash": "c3efc3266964bb79ec6fc3e10da935a6b5411e747a58016d93f15b228dda03a9"
+    },
+    {
       "canonical_url": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
       "category_id": "ai-safety",
       "content_hash": "f14118555c9f73ccd7fe1f4897a7680f38d5c21d74d2bd184281ad4f24fb2796",
@@ -1459,6 +1468,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-29T12:58:23Z",
+  "updated_at": "2026-06-29T13:10:00Z",
   "version": 1
 }

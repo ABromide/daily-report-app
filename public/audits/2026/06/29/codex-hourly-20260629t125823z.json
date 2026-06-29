@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/29/itm_b46193c648a2f22f/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-29T12:58:23Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260629t125823z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 并推荐 ToolPrivacyBench 为首选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv HTML/PDF，抽取 benchmark 构造、指标、实验表格和失败案例。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 policy knowledge base、OpenClaw 执行栈、FOR、MT-POI、SMTC 和 path-level diagnostics。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确区分 benign workflow 审计与 prompt injection、恶意工具、企业真实权限系统之间的边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "将该 benchmark 与 function calling、Agent benchmark、隐私 benchmark、安全 benchmark 和 compliance audit 对照。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文写入纯 Markdown，包含 TL;DR、表格、公式、伪代码、Mermaid 和 Figure/Table 证据解读。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b46193c648a2f22f"
+  ]
+}

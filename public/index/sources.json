@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T18:47:00Z",
+  "generated_at": "2026-06-29T00:47:58Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -258,7 +258,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for public code repository metadata.",
+      "description": "Manual source for public code repository metadata and project documentation.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",
@@ -362,6 +362,14 @@
       "name": "hypasd-art/Tool-RL-Box"
     },
     {
+      "description": "Manual source for Rust crate metadata and ecosystem context.",
+      "enabled": true,
+      "homepage_url": "https://lib.rs/",
+      "id": "lib-rs",
+      "kind": "manual",
+      "name": "Lib.rs"
+    },
+    {
       "description": "Manual official project source for OpenThoughts-Agent resources.",
       "enabled": true,
       "homepage_url": "https://www.openthoughts.ai/",
@@ -400,6 +408,14 @@
       "id": "owasp-llm-prompt-injection",
       "kind": "manual",
       "name": "OWASP LLM Prompt Injection guidance"
+    },
+    {
+      "description": "Manual source for AI agent package integration metadata.",
+      "enabled": true,
+      "homepage_url": "https://pi.dev/",
+      "id": "pi-dev",
+      "kind": "manual",
+      "name": "Pi.dev"
     },
     {
       "description": "Official project page linked from the paper.",

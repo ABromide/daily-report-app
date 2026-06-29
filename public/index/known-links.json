@@ -1207,6 +1207,15 @@
       "title_hash": "a1df9efebc374ef69a4d1b25fdc846411a3d5b0bcb4de2334d59987ef50ebf2d"
     },
     {
+      "canonical_url": "https://github.com/yvgude/lean-ctx",
+      "category_id": "llm-agent",
+      "content_hash": "51d8169c8b9d94eddc495f17ad9ccffc69dc9474c30f8a861df3efa5ca12ac11",
+      "external_id": "github:yvgude/lean-ctx@d12286497d7fbdce73bcc48044f711918d81c388",
+      "first_seen_at": "2026-06-29T00:47:58Z",
+      "item_id": "itm_dbc9f9818e4392a8",
+      "title_hash": "0a8034746268621131e63063bad570ba876fb361412317802681eee614e02306"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.20373v1",
       "category_id": "llm-agent",
       "content_hash": "9554e46c6fb671429f1334d7bde90c63fb9267332a80cec6c0a44567b815628b",
@@ -1414,6 +1423,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-28T18:47:00Z",
+  "updated_at": "2026-06-29T00:47:58Z",
   "version": 1
 }

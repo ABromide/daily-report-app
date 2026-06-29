@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/06/29/itm_adef3bc9ff65fc49/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-29T18:51:31Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260629t185131z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类，输出统一候选表并推荐 Inner Warden。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读项目 README、agents-install、THREAT_MODEL、SECURITY、Agent Guard 代码、ATR 规则引擎和 scoreboard。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 Agent Guard、MCP proxy、command scoring、ATR field routing、eBPF host layer、safe defaults 和 audit hash chain。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确项目不能替代 sandbox、最小权限、独立第三方 benchmark、Linux 以外 eBPF 能力和人工 review。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用纯 Markdown，包含 TL;DR、表格、公式解释、伪代码式流程和两段 Mermaid，无外链图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_adef3bc9ff65fc49"
+  ]
+}

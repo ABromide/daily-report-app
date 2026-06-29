@@ -991,6 +991,15 @@
       "title_hash": "1ba39565ca9ec5008f60b7cf58b7bab46493bdcac8ab62c2894a38e4472f3bc2"
     },
     {
+      "canonical_url": "https://github.com/InnerWarden/innerwarden",
+      "category_id": "ai-safety",
+      "content_hash": "0870c02f621a66b304724147377945ee66522c041ac427894d1359838c5c73b5",
+      "external_id": "github:InnerWarden/innerwarden@7b629a17969c387c3495534d03f7db7d8fca5be4",
+      "first_seen_at": "2026-06-29T18:51:31Z",
+      "item_id": "itm_adef3bc9ff65fc49",
+      "title_hash": "61c42b65e04f8c21beba07f4b2e35e6e4cb44686440ffadc4aa58a05355feaf6"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.27027",
       "category_id": "ai-safety",
       "content_hash": "3f8ebe301cc70d3d20f6268cd1932c1e8ad435486ceed70b4368ba19de204e82",
@@ -1477,6 +1486,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-29T18:54:02Z",
+  "updated_at": "2026-06-29T18:51:31Z",
   "version": 1
 }

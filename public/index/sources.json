@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T18:54:02Z",
+  "generated_at": "2026-06-29T18:51:31Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -304,6 +304,14 @@
       "id": "github-graphguard",
       "kind": "manual",
       "name": "RodriguezRepetto/graphguard"
+    },
+    {
+      "description": "Manual GitHub source for current-week Inner Warden repository commits and code documentation.",
+      "enabled": true,
+      "homepage_url": "https://github.com/InnerWarden/innerwarden",
+      "id": "github-innerwarden",
+      "kind": "manual",
+      "name": "GitHub InnerWarden/innerwarden"
     },
     {
       "description": "论文官方代码仓库，用于确认 README、实验入口和项目结构。",

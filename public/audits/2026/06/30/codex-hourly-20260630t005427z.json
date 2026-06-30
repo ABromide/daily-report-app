@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/06/30/itm_0695e9f391cbf688/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-06-30T01:02:06Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260630t005427z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类；ToolPrivacyBench 和 Glite ARF 命中重复后，主 Agent 在同一候选表内 pivot 到 GILP。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv abstract、HTML full text、实验、prompt appendix、limitations，并检查论文代码链接当前仓库状态。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 agent-based world model、parameterized backbone、skeleton scoring、consistency gate、risk gate、HSR、Propagation Depth 和 long-horizon error growth。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确 benchmark 是图结构环境，backbone 依赖 oracle transitions，risk gate 不是安全策略，GitHub artifact 当前不能闭环复现。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用纯 Markdown，包含 TL;DR、表格、公式解释、伪代码、Mermaid 和具体迁移失败案例；没有外链图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0695e9f391cbf688"
+  ]
+}

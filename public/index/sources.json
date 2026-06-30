@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T06:55:42Z",
+  "generated_at": "2026-06-30T13:04:03Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -70,6 +70,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.30531",
       "id": "arxiv-2606-30531",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Manual arXiv source for the current-week paper Pessimism's Paradox.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.30627v1",
+      "id": "arxiv-2606-30627",
       "kind": "manual",
       "name": "arXiv"
     },

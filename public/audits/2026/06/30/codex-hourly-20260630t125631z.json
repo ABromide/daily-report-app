@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/30/itm_7794f8b1cb6a0b3d/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-30T13:04:03Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260630t125631z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类，统一候选表首选 Pessimism's Paradox。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv HTML/PDF、抽取 12 页全文，核对模型、数据、β 网格、Goodhart gap、AUGC 和 Figure/Table。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 DPO 目标、online adaptation objective、reward ensemble uncertainty、AUGC、power-law β⋆ 和复现协议。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 Pessimism's Paradox、2606.30627 和代码标题；未发现可用第三方深度解读，正文明确主要依赖原文与 arXiv 元数据。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "指出三 β 点、单模型族、单 GSM8K 任务、单硬件和 power-law 三点插值的外推边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用纯 Markdown，包含 TL;DR、表格、公式解释、伪代码和 Mermaid；未使用外部图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_7794f8b1cb6a0b3d"
+  ]
+}

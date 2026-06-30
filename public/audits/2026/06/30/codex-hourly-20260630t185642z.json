@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/06/30/itm_f907c922d5f3972d/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-06-30T19:03:42Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260630t185642z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类，输出统一候选表并推荐模型 Hub AI-App 安全论文。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 论文 PDF，抽取 AI-App 架构、10 个攻击向量、Insightor 数据流规则、测量结果和披露边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 Insightor 的平台规则、CodeQL source-to-sink、GuardDog、KeySentinel、OSV 版本匹配和抽样验证逻辑。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确候选 precision、公开资源范围、container-based 偏置、平台状态时效和 artifact 访问性的证据边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用纯 Markdown，包含 TL;DR、表格、公式、伪代码、Mermaid 和 Figure/Table 证据解读，无外链图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f907c922d5f3972d"
+  ]
+}

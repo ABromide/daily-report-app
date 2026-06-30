@@ -559,6 +559,15 @@
       "title_hash": "69cdf50859eafd87b22d274cae4ab25156ffeb785718cabffd7682bf2676f59c"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2606.30383",
+      "category_id": "ai-safety",
+      "content_hash": "0d86786c052ce76efd9551d0586bc091a48eace1c0dbcc1bc6727f30b93fd3fc",
+      "external_id": "arXiv:2606.30383",
+      "first_seen_at": "2026-06-30T12:55:18Z",
+      "item_id": "itm_4eaa000dea9a0eba",
+      "title_hash": "d3e9160449e10d763a39d1105d7d3e60f92f941448a22679e7268308ef0b932e"
+    },
+    {
       "canonical_url": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
       "category_id": "llm-post-training",
       "content_hash": "86455d40012c862067e98baaf06340b835577211db5ccfc62192a5d63be0d0e5",
@@ -1531,6 +1540,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-30T13:04:03Z",
+  "updated_at": "2026-06-30T12:55:18Z",
   "version": 1
 }

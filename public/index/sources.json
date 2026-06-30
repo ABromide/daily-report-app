@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T06:54:40Z",
+  "generated_at": "2026-06-30T06:55:42Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -62,6 +62,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.27009",
       "id": "arxiv-2606-27009",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Manual arXiv source for the current-week paper Entity Binding Failures in Tool-Augmented Agents.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2606.30531",
+      "id": "arxiv-2606-30531",
       "kind": "manual",
       "name": "arXiv"
     },
@@ -304,6 +312,14 @@
       "id": "github-chats-lab-coding-agent-safety-monitor",
       "kind": "manual",
       "name": "CHATS-lab/coding-agent-safety-monitor"
+    },
+    {
+      "description": "Manual GitHub source for the artifact repository, benchmark data, reproduction guide, and final result tables.",
+      "enabled": true,
+      "homepage_url": "https://github.com/R-Suresh/EntityBindingFailures",
+      "id": "github-entity-binding-failures",
+      "kind": "manual",
+      "name": "GitHub R-Suresh/EntityBindingFailures"
     },
     {
       "description": "Manual source for the current-week GitHub Agentic Workflows weekly update and linked GitHub PR evidence.",

@@ -1189,6 +1189,15 @@
       "title_hash": "3e265763751ded2dbda35481eb8c408dc5b979786e5ec83c75a375ec91a9d37f"
     },
     {
+      "canonical_url": "https://github.github.com/gh-aw/blog/2026-06-29-weekly-update/",
+      "category_id": "llm-agent",
+      "content_hash": "3eef38a27e1fd75aed53b08b969d9f8714929e4a8372f7b2eb914eadeb30fa61",
+      "external_id": "gh-aw-weekly-2026-06-29",
+      "first_seen_at": "2026-06-30T01:14:22Z",
+      "item_id": "itm_c98ff9bcb39e8348",
+      "title_hash": "e79c76e5bc9279c7742c02f7584524b0d8b6ab69799d5201eac39c9d9fc95c90"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.24402",
       "category_id": "ai-safety",
       "content_hash": "fa1966ad1736d1952df5a4bbff583518dc296083f4562ed2818c89da14b22161",
@@ -1495,6 +1504,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-06-30T01:02:06Z",
+  "updated_at": "2026-06-30T01:14:22Z",
   "version": 1
 }

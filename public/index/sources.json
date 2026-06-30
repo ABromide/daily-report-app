@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T01:02:06Z",
+  "generated_at": "2026-06-30T01:14:22Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -304,6 +304,14 @@
       "id": "github-chats-lab-coding-agent-safety-monitor",
       "kind": "manual",
       "name": "CHATS-lab/coding-agent-safety-monitor"
+    },
+    {
+      "description": "Manual source for the current-week GitHub Agentic Workflows weekly update and linked GitHub PR evidence.",
+      "enabled": true,
+      "homepage_url": "https://github.github.com/gh-aw/blog/2026-06-29-weekly-update/",
+      "id": "github-gh-aw-blog",
+      "kind": "manual",
+      "name": "GitHub Agentic Workflows Blog"
     },
     {
       "description": "GitHub repository for GraphGuard, a local LLM-driven static security linter for LangGraph agent pipelines.",

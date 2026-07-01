@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/01/itm_55e64787a511046c/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-01T06:59:45Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260701t065945z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类，输出 12 个统一候选；推荐 arXiv:2606.31916，并标记 ANTAP 为高重复风险。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv abstract、PDF 正文与附录，提取 NCP-ToM、六类动作、24 个 base goals、600 个任务实例、Table 1/2/3 和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 ExploreToM 到 NCP-ExploreToM 的任务转换、belief-state goal、agentic/Q&A 消融、goal-size scaling 和 context variance。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确符号化环境、被动角色、视觉人类界面与文本模型接口不完全一致、真实部署外推有限，以及复现实验仓库当前不可访问。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用纯 Markdown，包含 TL;DR、h3 子标题、表格、公式解释、伪代码和 Mermaid；未引用外链图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_55e64787a511046c"
+  ]
+}

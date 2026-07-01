@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/01/itm_ed6e174b6ef4f530/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-01T01:03:01Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260701t010301z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; selected arXiv:2606.30639v1 after date and duplicate-risk screening."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF and HTML, extracted Algorithm 1, Table 1, Table 2, figures, ablations, limitations, and reproducibility risks."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, claim-mechanism-evidence-boundary table, formulas, pseudocode, Mermaid, and experiment tables with more than 5000 Chinese characters."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_ed6e174b6ef4f530"
+  ]
+}

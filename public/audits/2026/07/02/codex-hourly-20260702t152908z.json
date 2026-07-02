@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/02/itm_5e5df63e4ed9e2fc/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-02T15:29:08Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260702t152908z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 输出统一候选表，覆盖 llm-agent、llm-post-training、ai-safety；选中 rank 1 AI-Infra-Guard，避开近期已发布主题。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv PDF、HTML、source TeX 和项目 README，正文按论文结构展开。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解四层攻击面、Prompt-as-Rule、规则引擎、多轮红队和 jailbreak harness。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "标注该文偏系统框架报告，缺少统一 precision/recall、成本和端到端复现实验。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检查项目 README、相关工具定位和近期已发布 MalSkillBench 交叉点，保留非重复边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，使用 TL;DR、表格、公式解释、Mermaid 和分点结构。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5e5df63e4ed9e2fc"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/02/itm_9a44bd30016e3559/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 6
+  },
+  "generated_at": "2026-07-03T19:17:30Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260703t190939z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一合并 Scout 覆盖 llm-agent、llm-post-training、ai-safety；候选含 Online Safety Monitoring、Vera、Purified OPSD、ContextNest、PACE，并剔除已发布的 2607.02514、2607.02357 与 HARC。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "深读 arXiv 正文和官方代码 README，按 claim、mechanism、evidence、boundary 解释 Vera 三阶段 pipeline、实验和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 taxonomy 生成、ISC case 构造、MCP gateway、自适应 Control Agent、证据优先 verifier 和 guard 微调流程。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "检查当前周提交、干净 data 克隆去重和高 ASR 解释边界；明确沙箱、筛选 case 与 verifier oracle bug 风险。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 AgentHarm、AgentDojo、SafeArena、OpenAgentSafety、guardrail 与软件测试 oracle 方向。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，使用表格、公式解释、伪代码和 Mermaid；未引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_9a44bd30016e3559"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T07:20:14Z",
+  "generated_at": "2026-07-03T19:17:30Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -280,6 +280,14 @@
       "id": "arxiv-toolprivbench-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Manual source record for the Vera executable LLM agent safety testing paper.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2607.01793",
+      "id": "arxiv-vera-2607-01793",
+      "kind": "manual",
+      "name": "arXiv: Vera Agent Safety Testing"
     },
     {
       "description": "Reference source for dynamic workflows and subagent orchestration context.",

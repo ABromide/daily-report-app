@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/02/itm_962a13fac8a15e38/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-03T07:20:14Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260703t071603z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类；第一候选已被并发发布，本轮在同一候选表 pivot 到 Cloak and Detonate。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 摘要、PDF 和公开 artifact 链接，提取 Cloak 攻击、Detonate 沙箱、RQ 结构、scanner blind spot 与部署边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 skill package 的自然语言策略、tool schema、可执行代码、触发输入、source-to-sink 和运行时权限模型。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确样本生态有限、触发覆盖不足、沙箱真实性、LLM scanner prompt 敏感、detonation 无法证明未触发路径安全等边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含自包含 TL;DR、h3 子标题、表格、公式解释、伪代码和 Mermaid；未引用外链图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_962a13fac8a15e38"
+  ]
+}

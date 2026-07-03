@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T19:09:09Z",
+  "generated_at": "2026-07-03T01:21:03Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -208,6 +208,14 @@
       "id": "arxiv-ffinred-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Manual source record for the HARC robust safety alignment paper.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2607.00572",
+      "id": "arxiv-harc-2607-00572",
+      "kind": "manual",
+      "name": "arXiv: HARC"
     },
     {
       "description": "Manual arXiv paper selection and deep reading for Daily Report hourly research.",

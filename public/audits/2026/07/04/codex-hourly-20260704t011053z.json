@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/06/30/itm_e372920f76f4d683/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-04T01:12:23Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260704t011053z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; TraceLab ranked first with current-week arXiv v2 evidence and acceptable duplicate risk."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv HTML, project repository, official SyFI blog, and public dataset explorer before writing the Markdown analysis."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article explains TraceLab step-level schema, token accounting, tool latency, prefix-cache formulas, pseudo-code, and system trade-offs."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article flags SyFI self-use sampling bias, external-log-only visibility, and semantic loss caused by sanitization."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Article positions TraceLab against coding-agent benchmarks, production LLM traces, KV-cache systems, and CacheWise-style work."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formula blocks, pseudocode, and Mermaid, with no external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e372920f76f4d683"
+  ]
+}

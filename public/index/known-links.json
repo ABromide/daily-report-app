@@ -37,6 +37,15 @@
       "title_hash": "dc109a0ae85af32f9b3c81438bb8915cc9964ea7b12aff4230e22b182c857f09"
     },
     {
+      "canonical_url": "https://www.microsoft.com/en-us/research/articles/fara1-5-computer-use-agent/",
+      "category_id": "llm-agent",
+      "content_hash": "f3a2c4c577a3500e28f6560ca6ca3334b170d7f62ad735f163f4c55be242c3f3",
+      "external_id": "msr:fara1.5",
+      "first_seen_at": "2026-07-05T19:59:11Z",
+      "item_id": "itm_03842ef8d27dbac6",
+      "title_hash": "0efa5a36fafea954e490585233f1befaef2d3ce3d0e9149131383f70255785c1"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.31023",
       "category_id": "ai-safety",
       "content_hash": "e8aecfa1e7965ce135b901c2df6118865634caa3cdcc2ce4d59e7dc82953e2a4",
@@ -1801,6 +1810,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-05T19:56:41Z",
+  "updated_at": "2026-07-05T19:59:11Z",
   "version": 1
 }

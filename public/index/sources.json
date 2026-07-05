@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T19:56:41Z",
+  "generated_at": "2026-07-05T19:59:11Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -488,6 +488,14 @@
       "id": "lib-rs",
       "kind": "manual",
       "name": "Lib.rs"
+    },
+    {
+      "description": "Manual current-week Microsoft Research selection from the merged Daily Report Scout table.",
+      "enabled": true,
+      "homepage_url": "https://www.microsoft.com/en-us/research/",
+      "id": "microsoft-research",
+      "kind": "manual",
+      "name": "Microsoft Research"
     },
     {
       "description": "Manual official project source for OpenThoughts-Agent resources.",

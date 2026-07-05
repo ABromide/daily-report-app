@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/05/itm_8f1b36555f804963/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-05T07:13:17Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260705t071317z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety. PACE and LACUNA were already live on origin/data, so the main agent selected the clean first-ranked candidate Epistemic Goggles."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF, official code README, Hugging Face artifact card, and external search results, extracting method, training objective, results, ablations, and limitations."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, claim-mechanism-evidence-boundary table, formulas, pseudocode, Mermaid, result tables, and explicit limitation analysis."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_8f1b36555f804963"
+  ]
+}

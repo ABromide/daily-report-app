@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T07:39:57Z",
+  "generated_at": "2026-07-06T07:40:39Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -392,6 +392,14 @@
       "id": "github-pyrit-pr",
       "kind": "manual",
       "name": "GitHub microsoft/PyRIT pull requests"
+    },
+    {
+      "description": "Official GitHub repository for Miles, an enterprise-facing reinforcement learning framework for LLM and VLM post-training.",
+      "enabled": true,
+      "homepage_url": "https://github.com/radixark/miles",
+      "id": "github-radixark-miles",
+      "kind": "manual",
+      "name": "GitHub: radixark/miles"
     },
     {
       "description": "Reference implementation, specification, adapters, and experiment harness for Recuse Signal.",

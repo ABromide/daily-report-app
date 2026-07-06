@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T01:29:13Z",
+  "generated_at": "2026-07-06T01:27:07Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -26,7 +26,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv papers selected by the Daily Report hourly deep-research workflow.",
+      "description": "Manual current-week arXiv paper selection for Daily Report hourly deep research.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -322,7 +322,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for official project README and reproducibility repository.",
+      "description": "Manual source for official paper code repositories and release evidence.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",

@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/02/itm_5be9399afd59e582/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-06T07:39:57Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260706t072813z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; THUDM/slime was already live, so the same table pivoted to arXiv:2607.02512v1."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF, official demo metadata, Python SDK README, Browser SDK README, and package metadata."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, claim-mechanism-evidence-boundary table, formulas, pseudocode, Mermaid, experiment tables, and more than 5000 Chinese characters."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5be9399afd59e582"
+  ]
+}

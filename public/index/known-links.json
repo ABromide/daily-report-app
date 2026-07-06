@@ -802,6 +802,15 @@
       "title_hash": "9cf521dc7e4b2832cd2f372d2d19dde20d0aca685f022260f0791358f54f5cc6"
     },
     {
+      "canonical_url": "https://aclanthology.org/2026.findings-acl.2028/",
+      "category_id": "llm-agent",
+      "content_hash": "308c78c5c24629c4fcfaa8c27b44430215a6c25a295c8e62d50ddbc45cc40f0d",
+      "external_id": "acl:2026.findings-acl.2028",
+      "first_seen_at": "2026-07-06T19:28:57Z",
+      "item_id": "itm_6356037ccdda40e7",
+      "title_hash": "b0b864ff1be97d1d2303efd5fc1b2aa0b342a5054d068f17985a92eece4aca92"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.13657",
       "category_id": "llm-post-training",
       "content_hash": "ff9364c7816bf694b8fe4675b9d9b2e5ffc36a6ed9c5d2bf387e886272894da3",
@@ -1873,6 +1882,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-06T19:31:32Z",
+  "updated_at": "2026-07-06T19:28:57Z",
   "version": 1
 }

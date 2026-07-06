@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-07-06T19:31:32Z",
+  "generated_at": "2026-07-06T19:28:57Z",
   "sources": [
+    {
+      "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
+      "enabled": true,
+      "homepage_url": "https://aclanthology.org/",
+      "id": "acl-anthology",
+      "kind": "manual",
+      "name": "ACL Anthology"
+    },
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
       "enabled": true,

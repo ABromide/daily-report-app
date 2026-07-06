@@ -820,6 +820,15 @@
       "title_hash": "4f0473b9687537abcc38e4da0171aa84f06d76bac85701e0a1d7b94a0e95d44d"
     },
     {
+      "canonical_url": "https://github.com/inth3shadows/runecho",
+      "category_id": "llm-agent",
+      "content_hash": "b53d777ee54a83285eac463b246cf473d1e4641ed548ce5a1e689ad59ee3cd59",
+      "external_id": "github:inth3shadows/runecho",
+      "first_seen_at": "2026-07-06T13:40:15Z",
+      "item_id": "itm_6b6b0eb97d17da21",
+      "title_hash": "7266da1d6c475d1ed018ee746ef987c85b7382e80fca25815ef510c4c4c5d471"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.24855",
       "category_id": "llm-post-training",
       "content_hash": "06dd2f847a22b0caf8e9524beff9440b0adf9f8ac57555ba6a7bcc6ee483baa9",
@@ -1855,6 +1864,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-06T13:37:37Z",
+  "updated_at": "2026-07-06T13:40:15Z",
   "version": 1
 }

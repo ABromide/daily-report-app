@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/06/itm_6b6b0eb97d17da21/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 10
+  },
+  "generated_at": "2026-07-06T13:40:15Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260706t132754z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single unified Scout covered llm-agent, llm-post-training, and ai-safety in one table. Main agent rejected the duplicate THUDM/slime row and selected RunEcho after clean origin/data dedupe found no canonical_url, external_id, or exact-title duplicate."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_6b6b0eb97d17da21"
+  ]
+}

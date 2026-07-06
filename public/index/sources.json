@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T13:37:37Z",
+  "generated_at": "2026-07-06T13:40:15Z",
   "sources": [
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -416,6 +416,14 @@
       "id": "github-rl-align-rl-kernel",
       "kind": "manual",
       "name": "RL-Align/RL-Kernel GitHub repository"
+    },
+    {
+      "description": "Manual GitHub code project selection for Daily Report hourly deep research.",
+      "enabled": true,
+      "homepage_url": "https://github.com/inth3shadows/runecho",
+      "id": "github-runecho",
+      "kind": "manual",
+      "name": "GitHub: inth3shadows/runecho"
     },
     {
       "description": "Official GitHub repository for slime, an LLM post-training framework for RL Scaling.",

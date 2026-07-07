@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/07/itm_4bb18c9f0aafd2e6/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-07T19:31:35Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260707t193135z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Unified Scout covered llm-agent, llm-post-training, and ai-safety; LLM-as-a-Verifier was selected from the single table after recent duplicate and theme screening."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML, arXiv Atom metadata, official project page, GitHub README, scripts listing, and commit metadata; extracted formulas, benchmarks, code boundaries, RL setup, and limits."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses h3 sections, tables, formulas, pseudocode, Mermaid, benchmark tables, failure cases, and more than 5000 Chinese characters; no external image URLs are embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_4bb18c9f0aafd2e6"
+  ]
+}

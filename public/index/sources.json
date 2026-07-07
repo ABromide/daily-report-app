@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T01:37:53Z",
+  "generated_at": "2026-07-07T01:45:03Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -384,6 +384,14 @@
       "id": "github-innerwarden",
       "kind": "manual",
       "name": "GitHub InnerWarden/innerwarden"
+    },
+    {
+      "description": "Manual current-week GitHub release candidate from the merged Daily Report Scout table.",
+      "enabled": true,
+      "homepage_url": "https://github.com/langchain-ai/langgraph",
+      "id": "github-langgraph",
+      "kind": "manual",
+      "name": "GitHub: langchain-ai/langgraph"
     },
     {
       "description": "论文官方代码仓库，用于确认 README、实验入口和项目结构。",

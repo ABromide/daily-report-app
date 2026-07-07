@@ -379,6 +379,15 @@
       "title_hash": "db1076067f42f36766d358ee73fd9ddf476260799bc8c827edba9a0c3c8f114f"
     },
     {
+      "canonical_url": "https://github.com/langchain-ai/langgraph",
+      "category_id": "llm-agent",
+      "content_hash": "58976dc0d4c2ebf14e45632cf20c9540a884c8dd7c70a88395c0be8800d31224",
+      "external_id": "github:langchain-ai/langgraph@23652c54be18ce59f697aa38f10075ee91913220",
+      "first_seen_at": "2026-07-07T01:45:03Z",
+      "item_id": "itm_2cb7a0e109e43ddc",
+      "title_hash": "64ab4f7e36b099e8899773b5b24fea1c4acc278d8b7aa7d91ac66478fb5ecb84"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.09084",
       "category_id": "ai-safety",
       "content_hash": "dc891e9d7bf03f337a669cff731e40e95d110f570394f45fdb46371544be87c4",
@@ -1891,6 +1900,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-07T01:37:53Z",
+  "updated_at": "2026-07-07T01:45:03Z",
   "version": 1
 }

@@ -1009,6 +1009,15 @@
       "title_hash": "2acb1e32c40b915baf31b61b640d51528c3d07849bb29e24377da66afbc9ecc1"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.05394",
+      "category_id": "llm-post-training",
+      "content_hash": "704ee1514d81d671af498cf250dbc8cefc31c3721e593911851867d3537c98e7",
+      "external_id": "arxiv:2607.05394v1",
+      "first_seen_at": "2026-07-07T07:38:39Z",
+      "item_id": "itm_7ea940125dda3354",
+      "title_hash": "810cc4cac1dd6151a5269ec90309a397490b1a4ed13b8394fa97ebecc4d46460"
+    },
+    {
       "canonical_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
       "category_id": "ai-safety",
       "content_hash": "d7ac0b26a67fed44d93c49a7f0b2de33681f13dd4fee1792cd29162c8656da49",
@@ -1909,6 +1918,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-07T07:33:16Z",
+  "updated_at": "2026-07-07T07:38:39Z",
   "version": 1
 }

@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/07/itm_c6da99a9aa8973a9/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-07T13:34:40Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260707t133440z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Unified Scout covered llm-agent, llm-post-training, and ai-safety in one candidate table; selected CompactionRL after excluding same-day FORGE, Direct-OPD, LangGraph, and Agentic Test-Time Training duplicates."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML, arXiv Atom metadata, benchmark context pages, and Harbor repository page; extracted method, formulas, experiments, ablations, figures, limitations, and benchmark caveats."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses h3 sections, tables, formula blocks, pseudocode, and Mermaid; no external image URLs are embedded because the evidence is reconstructed textually."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c6da99a9aa8973a9"
+  ]
+}

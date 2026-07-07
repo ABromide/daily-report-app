@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/07/itm_5cb11ff53b3439b8/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-07T19:31:37Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260707t193137z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 并输出 12 条统一候选；首选 LLM-as-a-Verifier 在 publish 阶段 canonical_url 重复，已在同表 pivot 到第 2 名 ADI。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML/PDF，提取 ADI 威胁模型、probabilistic delimiter injection、真实 Agent 场景、防御评估、ASR/utility 数字和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文解释 instruction injection 与 ADI 的形式化差异、Agent context 数据流、typed parser、provenance、taint-preserving extraction 与 high-risk sink policy。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确不复现攻击 payload，指出 artifact 当前 404、模型版本会变化、真实部署需按具体 context 格式和权限策略复核。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文将 ADI 放在 IPI、系统级信息流控制、传统注入漏洞和 AgentDojo 类评测之间定位。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含自包含 TL;DR、多张表格、两个 Mermaid 数据流图、指标解释和防御清单；未使用外部图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5cb11ff53b3439b8"
+  ]
+}

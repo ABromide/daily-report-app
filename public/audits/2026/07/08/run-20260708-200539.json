@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/07/itm_2aab41b29ac6a169/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-08T20:05:39Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "run-20260708-200539",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖 llm-agent、llm-post-training、ai-safety 三个方向，统一候选表推荐 CurateEvo，并给出 MCP Unicode 与 SovereignPA-Bench 备选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 页面与 PDF，提取方法公式、实验设置、Table/Figure 证据、消融、失败模式和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 rho 策展代码、SFT/RL/memory 三资源、J(rho)=P(rho)-lambda C(rho) 与 failure-driven evolution。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文标明 dev-set 代表性、LLM code evolution、memory overfitting、成本函数简化和 benchmark 覆盖风险。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 CurateEvo、Data-Curation Evolving、2607.06140 未发现可靠第三方解读；正文对比 Direct-OPD、Agentic TTT 与数据扩展类 baseline。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含 TL;DR、表格、公式、伪代码和 Mermaid，无外链图片引用。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2aab41b29ac6a169"
+  ]
+}

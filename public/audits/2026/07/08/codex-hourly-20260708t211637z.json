@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_70f966c97030c123/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 3
+  },
+  "generated_at": "2026-07-08T21:16:37Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260708t211637z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety, then selected UCM after excluding recent duplicates."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv metadata, full PDF text, appendix tables, WASP evaluation, and official repository README."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained DOM masking, Q-Model typed interface, trust-boundary inference, WebArena setup, and data-flow limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Separated control-flow guarantees from data-flow risks and highlighted mislabeling, free-text fallback, and deployment limits."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Compared UCM with heuristic detection, prompt defense, typed API planning, dual LLM, WASP, CaMeL, and FIDES-style lines."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses pure Markdown with TLDR, tables, formula blocks, pseudocode, and Mermaid; no external images embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_70f966c97030c123"
+  ]
+}

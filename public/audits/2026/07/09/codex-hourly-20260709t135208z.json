@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_f0f2bd81c47cbe1d/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-09T14:00:35Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260709t135208z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety in a unified table; Institutional Red-Teaming ranked first after recent duplicate themes were excluded."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The main agent read the arXiv PDF and HTML, extracting IABench-CA design, IAG formula, rule coordinates, tables, ablations, and certification workflow."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article decomposes consequence rules, context grid, cooperative-refinement reference, population heterogeneity, identity-salience ablation, and safety-case algorithm."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article calls out the simplified 3-agent game, limited rule set, hosted model snapshots, normative reference dependence, pending artifact, and lack of real tool-chain evidence."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "The analysis positions the paper against ordinary model red-teaming, tool-use safety, prompt injection, trace integrity, and mechanism-design perspectives without overclaiming third-party commentary."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "The Markdown uses TL;DR, h3 sections, tables, formula blocks, pseudocode, and Mermaid; no external images or direct image URLs were used."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f0f2bd81c47cbe1d"
+  ]
+}

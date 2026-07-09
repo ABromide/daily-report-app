@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_99aa759fc0b37b0c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-09T09:03:57Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260709t090357z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety in a unified table; rank 1 was arXiv:2607.07461v1 after recent duplicate themes were excluded."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The main agent read the arXiv PDF, API metadata, and HTML text, extracting dataset, RQ, method, benchmark, metric, table, and limitation details."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "SPELLSMITH was decomposed into risk profile R=<C,P,W>, metadata augmentation, invocation reflection, benchmark setup, and ablation results."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article distinguishes mitigation from fix and calls out missing benign utility, model transfer, adaptive attack, dynamic metadata, and hard-isolation evidence."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related MCP security lines were compared against malicious-server defenses, static scanners, ordinary jailbreak defenses, and recent UCM/STRACE coverage."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "The Markdown uses TL;DR, h3 sections, tables, formula blocks, pseudocode-style definitions, and Mermaid; no direct external image references were used."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_99aa759fc0b37b0c"
+  ]
+}

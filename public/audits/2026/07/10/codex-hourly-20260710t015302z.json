@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/09/itm_7f6ea957130af570/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-10T01:53:02Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260710t015302z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; UniClawBench ranked first after recent-topic exclusions and exact latest-data dedupe."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv metadata, HTML, PDF-extracted text, GitHub README, runtime docs, task schema docs, supervisor/user-simulator docs, and reproducibility notes."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article decomposes five capability buckets, task package schema, three-role closed-loop evaluation, information firewall, PR/AS metrics, cross-model and cross-framework results, token-cycle progression, and engineering reproducibility."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Analysis separates final pass rate from checkpoint score, flags single-run/no-error-bar limits, live-environment drift, LLM supervisor bias, hand-built task coverage, and framework implementation confounds."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related positioning covers WebArena, OSWorld, VisualWebArena, ClawBench, LiveClawBench, ClawMark, SkillsBench, and SkillCenter."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, h3 sections, tables, formula blocks, Mermaid, and no external image URLs; key figures are reconstructed textually."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_7f6ea957130af570"
+  ]
+}

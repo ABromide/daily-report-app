@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T07:54:03Z",
+  "generated_at": "2026-07-10T13:55:01Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,7 +34,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv official paper pages and paper full text used for current-week paper discovery and deep reading.",
+      "description": "Manual current-week research source for arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -330,7 +330,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Manual source for official paper code repositories and release evidence.",
+      "description": "Manual code and artifact source for related repositories.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_b9bb28642f3d62d2/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 14
+  },
+  "generated_at": "2026-07-10T07:54:03Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260710t075403z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training 和 ai-safety，Multi-Agent AI Control 位列前三且避开近期已发布主题。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已读取 arXiv 摘要、PDF 全文和关键 Appendix 目录，正文覆盖方法、实验、图表和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文复原 FakeLab deployment protocol、undetected success 定义、monitor FPR 校准和 planner ablation。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 FakeLab 合成、不公开复现、模型族有限、顺序部署和 diff-only monitor 等证据边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 AI control、ControlArena、decomposition attack、sum-threshold 和多 Agent 协作 benchmark。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、列表、表格、公式块、伪代码和 Mermaid，未引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b9bb28642f3d62d2"
+  ]
+}

@@ -1531,6 +1531,15 @@
       "title_hash": "521375c64d73c66a5d12757880b149bacaab951306ec6a59325e07ed8db16b51"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.07368",
+      "category_id": "ai-safety",
+      "content_hash": "28d0c153cba7268808d81418c6af6e6d2e61a4890c2f9b76c447c4134e8983e8",
+      "external_id": "arxiv:2607.07368v1",
+      "first_seen_at": "2026-07-10T07:54:03Z",
+      "item_id": "itm_b9bb28642f3d62d2",
+      "title_hash": "35df776af620db079572f40c8a8ab050a02f056b56bc20dadd6ce571b95bac40"
+    },
+    {
       "canonical_url": "https://github.com/microsoft/fastcontext",
       "category_id": "llm-agent",
       "content_hash": "8e2b0300a843cd97734e0d5e99c75c7dc59e0c9dd9e3c67be15222fd1626d3a4",
@@ -2080,6 +2089,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-10T07:56:12Z",
+  "updated_at": "2026-07-10T07:54:03Z",
   "version": 1
 }

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_4a2f9bb46e1fe9c7/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-10T02:00:02Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260710t020002z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 输出统一候选表，Agon 位列推荐深读候选且本地去重未命中。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已读取 arXiv 摘要、PDF 文本和 TeX 源码，正文覆盖方法、实验、消融和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已复原 GRPO advantage、Agon conversion bonus、训练流程伪代码和主要表格。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 single-run、post hoc cascade direction、verifier 依赖和总 token 成本边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 GRPO、self-play、debate、prover-verifier 和 RLVR 相邻工作。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 Markdown 小节、表格、公式块、伪代码和 Mermaid，未引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_4a2f9bb46e1fe9c7"
+  ]
+}

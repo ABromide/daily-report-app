@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/06/itm_264195592b884f44/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-11T06:19:05Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260711t061905z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; aiAuthZ was selected after current-week filtering and recent-topic exclusion."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, PDF, official repository README, whitepaper, and related-work notes; extracted threat model, formulas, benchmarks, and deployment boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched aiAuthZ paper, repository, and adjacent OAP/AIP references; no independent deep-dive commentary with stronger evidence than the official sources was found."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown article exceeds 5000 Chinese characters and uses tables, formulas, and Mermaid without external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_264195592b884f44"
+  ]
+}

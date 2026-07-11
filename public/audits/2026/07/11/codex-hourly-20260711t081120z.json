@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/06/itm_cfbb7976cb467f56/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-11T08:11:20Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260711t081120z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; top two choices were duplicates, so the run pivoted within the same table to arXiv:2607.04728."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv abstract, HTML, PDF metadata, and TeX source, then wrote a 5000+ Chinese-character Markdown analysis."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article reconstructs SIS formulas, top-K approximation, pseudocode, main tables, staleness/MoE/no-clipping ablations, and failure boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External reference search found arXiv/HTML/source/PDF as primary evidence; no stronger independent technical review was used for claims beyond the paper."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formulas, pseudocode, and Mermaid-free structured sections; no external images are embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_cfbb7976cb467f56"
+  ]
+}

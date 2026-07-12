@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/08/itm_0144380e5949acdb/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-12T15:45:37Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5024,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 1
+  },
+  "run_id": "run_20260712t153941z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; ScopeJudge ranked first and exact duplicate checks found no local hit."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, and PDF; extracted dataset, formulas, algorithm, tables, results, limitations, and operating points."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked arXiv search results and third-party discussion pages; no stronger current-week duplicate source was found."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses Markdown tables, formula blocks, pseudocode, and Mermaid; images were not localized because figures were reproducible text evidence."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0144380e5949acdb"
+  ]
+}

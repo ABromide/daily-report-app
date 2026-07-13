@@ -574,6 +574,49 @@ Runtime check:
 
 这类判断靠最终反思很难补救，因为一旦工具调用已经执行，违规状态可能已经发生。
 
+### 如果把 SLBench 变成持续评测，应关注哪些指标
+
+论文给出的 86 个 case 更像一个高信号起点。若把它放进真实 Agent 平台的持续评测，需要从单次 unsafe rate 扩展到更细的仪表盘。
+
+| 指标 | 为什么重要 |
+| --- | --- |
+| relation-type failure rate | 判断是 precondition、postcondition 还是 override 最薄弱 |
+| unsafe-before-tool rate | 衡量执行前 gate 是否能拦住违规动作 |
+| unsafe-after-success rate | 捕捉“任务看似成功但 postcondition 未完成”的隐蔽风险 |
+| inconclusive rate | 防止模型通过不行动、少留证据或含糊输出逃避评分 |
+| remediation success rate | 看 Agent 在发现 relation violation 后能否修复状态 |
+| evidence completeness | 检查 cleanup manifest、approval record、rollback proof 是否齐全 |
+
+一个持续评测循环可以这样运行：
+
+```text
+for each release_candidate_agent:
+    for each skill_relation_case in SLBench_like_suite:
+        run agent in clean fixture
+        collect tool trace, diff, logs, final artifacts
+        grade unsafe / safe / inconclusive
+        if unsafe:
+            classify relation type and concrete evidence
+        if inconclusive:
+            classify missing evidence channel
+    block release if:
+        critical relation unsafe exceeds threshold
+        or inconclusive hides required artifact evidence
+```
+
+这里最容易被忽略的是 inconclusive。
+
+如果系统只追求降低 unsafe，Agent 可能学会更保守地少做事，或者不留下可评分 artifact。这样表面风险下降，但可用性和可审计性都下降。
+
+因此，更合理的 release gate 应该同时要求：
+
+- unsafe 低。
+- inconclusive 低。
+- safe evidence 足够强。
+- 对关键 relation 的失败有可复现 trace。
+
+这也解释了为什么论文把 grading 设计得很复杂。Agent 安全评测不是只要一个总分，而是要知道失败发生在动作前、动作中、动作后，还是证据链断裂处。
+
 ### 与最近 Agent 安全主题的边界
 
 本轮 Scout 的第一候选 ScopeJudge 已经发布过，所以本文选择 SLBench。

@@ -1126,6 +1126,15 @@
       "title_hash": "c31f73829bc0795cc63471895f9bb14e96a733828f9852c6dd1441d735e87c8d"
     },
     {
+      "canonical_url": "https://github.com/modelscope/ms-swift/releases/tag/v4.4.1",
+      "category_id": "llm-post-training",
+      "content_hash": "8d862e64d1358bfe6d7883d5ea4602cfbea551b61e8f36a57ac6a708875422d3",
+      "external_id": "github:modelscope/ms-swift:v4.4.1",
+      "first_seen_at": "2026-07-13T03:51:06Z",
+      "item_id": "itm_7cfcf519a0b35fa5",
+      "title_hash": "9ed9820b4ca0b5a89e8abdacebc1fa6c652485cecc67ab71c4baaf649e784cd6"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.13608",
       "category_id": "llm-agent",
       "content_hash": "58170315c3aadf02635c8f11230394b67c0cdb46f7c29854daab2ac36f9363b3",
@@ -2197,6 +2206,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-13T03:49:57Z",
+  "updated_at": "2026-07-13T03:51:06Z",
   "version": 1
 }

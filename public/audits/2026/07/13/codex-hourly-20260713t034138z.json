@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/13/itm_7cfcf519a0b35fa5/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-13T03:51:06Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260713t034138z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety for the UTC week window; it ranked ms-swift v4.4.1 first after verifying the 2026-07-13 GitHub release timestamp."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read GitHub release, compare metadata, README, docs, examples, core packing/GKD/Megatron source files, and key PR descriptions."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Clean origin/data dedupe found no ms-swift v4.4.1, exact release title, external id, or item id hit before drafting; the article explicitly states the lack of benchmark evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote a 5000-plus Chinese character Markdown analysis using tables, formula blocks, pseudocode, and Mermaid; no images were needed or referenced."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_7cfcf519a0b35fa5"
+  ]
+}

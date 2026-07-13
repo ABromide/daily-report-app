@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/13/itm_713b0629b7e523f3/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-13T09:50:19Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260713t094217z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，输出 12 个本周候选；首选 arXiv:2607.09510，重复风险低。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv HTML/PDF、复现包 README、CODEBOOK、RQ 结果 JSON/CSV 与 oracle 说明。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解三时间点标注、root-cause taxonomy、恢复尾部行为、监视器消融与 model-scaffold 方差分解。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "检查本地 public 去重、日期窗口、语义标注局限、Terminal-Bench 外部有效性和实时监控 precision/recall 代价。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照论文相关工作表与复现包，定位其相对 SWE-bench、AgentLens、MAST 和 Terminal-Bench 研究的增量。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入 5,000+ 中文字 Markdown，包含 TL;DR、claim-mechanism-evidence-boundary、公式、伪代码、Mermaid、表格和本地图。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_713b0629b7e523f3"
+  ]
+}

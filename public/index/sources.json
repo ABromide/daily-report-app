@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T09:41:14Z",
+  "generated_at": "2026-07-13T09:50:19Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,11 +34,11 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper metadata and HTML/PDF full text.",
+      "description": "arXiv paper pages and full-text HTML used for current-week research discovery.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
-      "kind": "api",
+      "kind": "manual",
       "name": "arXiv"
     },
     {
@@ -424,6 +424,14 @@
       "id": "github-recuse",
       "kind": "manual",
       "name": "mthamil107/Recuse"
+    },
+    {
+      "description": "Open research replication package used for data, codebook, figures, and result tables.",
+      "enabled": true,
+      "homepage_url": "https://github.com/xz-Sean/cli_trajectory_analysis",
+      "id": "github-replication",
+      "kind": "manual",
+      "name": "GitHub replication packages"
     },
     {
       "description": "Manual source for official GitHub repository updates in RL post-training infrastructure.",

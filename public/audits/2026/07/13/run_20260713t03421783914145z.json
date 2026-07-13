@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/09/itm_548a1dce054f7c85/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-13T03:49:57Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "run_20260713t03421783914145z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety; it ranked Refused in Chat, Written in Code first after current-week date verification."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, and PDF; extracted threat model, workflow stages, benchmark sampling, expert rubric, result counts, discussion, and limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Clean origin/data dedupe found no 2607.03968, exact title, or item id. Earlier non-Scout STAPO draft was soft-moved to automation trash and not published."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote a defensive Chinese Markdown analysis with tables, Mermaid diagrams, safety boundaries, and no harmful operational prompts or completions."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_548a1dce054f7c85"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T09:50:19Z",
+  "generated_at": "2026-07-13T15:43:55Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -456,6 +456,14 @@
       "id": "github-thudm-slime",
       "kind": "manual",
       "name": "GitHub: THUDM/slime"
+    },
+    {
+      "description": "Official Vime repository maintained in the vLLM ecosystem.",
+      "enabled": true,
+      "homepage_url": "https://github.com/vllm-project/vime",
+      "id": "github-vllm-vime",
+      "kind": "manual",
+      "name": "vllm-project/vime"
     },
     {
       "description": "Reproducibility repository linked by the paper.",

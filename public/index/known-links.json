@@ -1558,6 +1558,15 @@
       "title_hash": "84f9a5518ffd06a8c2ad636f4ae031f356322e62de277a3f31248d8a891c08e0"
     },
     {
+      "canonical_url": "https://github.com/vllm-project/vime",
+      "category_id": "llm-post-training",
+      "content_hash": "53a906b7a42c56e3323668d0259f2f48943f5d12872b7f09476068abdde9801c",
+      "external_id": "github:vllm-project/vime@edeb3a1d9228562ac93020d54c9c6cae13006b9a",
+      "first_seen_at": "2026-07-13T15:43:55Z",
+      "item_id": "itm_b3d305417cf95afe",
+      "title_hash": "5aacb3e8c9cce1a1b0b0ec490f6ae2f1a52bd3ae6cfa17610c30313dd994f5fe"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.28061",
       "category_id": "ai-safety",
       "content_hash": "b1dd22520b6e828d9115150878e9fe5a3f636a227849a3d629bf9cdbb98049ca",
@@ -2224,6 +2233,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-13T09:50:19Z",
+  "updated_at": "2026-07-13T15:43:55Z",
   "version": 1
 }

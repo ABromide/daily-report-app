@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_e4124f678db6c42e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-14T09:43:54Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260714t094354z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety. Candidate table included AHA (duplicate live), Inside the Unfair Judge (selected), Gauntlet technical-comprehension agents, Qwen-Music progressive post-training, and Hourglass reasoning."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, official project page, and extracted the 58-page PDF with pypdf; detail inventory includes methods, formulas, tables, figures, ablations, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained scoring-bias formulation, Delta h_l, bias-direction estimation, activation steering, random/swap controls, and cross-domain detector results."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked white-box access limits, perturbation-template limits, cross-architecture attenuation, detector domain gap, and fairness-overclaim risks."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Positioned the paper against LLM-as-Judge bias measurement, activation steering, reward-model safety, and recent ScopeJudge-style policy-gate work."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article exceeds 5000 Chinese characters and includes TL;DR, claim-mechanism-evidence-boundary table, formulas, pseudocode, Mermaid, experiment tables, and figure/table evidence reading."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e4124f678db6c42e"
+  ]
+}

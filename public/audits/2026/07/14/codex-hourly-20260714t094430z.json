@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_06a14038efd9c459/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-14T09:51:21Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260714t094430z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety in one unified table; SCOPE-RL was selected as the low-duplicate-risk post-training candidate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, arXiv HTML full text, experiment tables, appendix evidence, and the official GitHub repository metadata."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained ASR scaffold rewards, QPR correctness gate, step taxonomy, GRPO reward variance, training stages, ablations, and robustness checks."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked verifier-task bias, LLM judge dependence, limited non-math generalization, and engineering-cost boundaries explicitly in the Markdown."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article includes self-contained TL;DR, formulas, tables, Mermaid, Figure/Table evidence reading, and research-oriented limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_06a14038efd9c459"
+  ]
+}

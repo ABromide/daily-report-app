@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_b4d39b631d0373f6/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-14T03:50:29Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260714t035029z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "候选选择、日期窗口和去重键由自动化完成。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "深读正文已写入 Markdown，索引由 finalize-public-run 机械更新。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "方法、代码或报告结构已在 Markdown 正文中说明。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "索引阶段未重新审稿；脚本只负责结构化写入和校验。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "第三方参考数量从 item evidence 和正文材料中继承。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文保持纯 Markdown；JSON、audit 和 manifest 由脚本统一生成。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b4d39b631d0373f6"
+  ]
+}

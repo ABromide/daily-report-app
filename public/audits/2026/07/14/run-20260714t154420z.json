@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_550ffc8e8839a7a1/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-14T15:44:20Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "run-20260714t154420z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety in one unified table; this paper ranked first and passed current-week and duplicate screening."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, arXiv HTML full text, method definitions, main experiment tables, appendix boundary tests, and the official repository README."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained local benignness, epsilon-local indistinguishability, observation views, locality sweep, AgentDojo witness, assembly recovery, decoded-view blocking, and full-trace failure cases."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked decoded-view oracle assumptions, code-payload scope, natural-language transfer limits, incomplete reproduction package, and deployability gaps explicitly in the Markdown."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article includes a self-contained TL;DR, formulas, tables, pseudocode, Mermaid, Figure/Table evidence reading, and research-oriented limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_550ffc8e8839a7a1"
+  ]
+}

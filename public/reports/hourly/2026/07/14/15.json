@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-14T15:46:06Z",
-  "item_count": 4,
+  "generated_at": "2026-07-14T15:44:20Z",
+  "item_count": 5,
   "period": {
     "end": "2026-07-14T16:00:00Z",
     "start": "2026-07-14T15:00:00Z"
@@ -11,9 +11,10 @@
       "heading": "AI 安全相关",
       "item_ids": [
         "itm_e4124f678db6c42e",
+        "itm_550ffc8e8839a7a1",
         "itm_b4d39b631d0373f6"
       ],
-      "summary": "AI 安全相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "AI 安全相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型 Agent 相关",
@@ -30,9 +31,10 @@
       "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 4 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 5 条内容。",
   "top_item_ids": [
     "itm_e4124f678db6c42e",
+    "itm_550ffc8e8839a7a1",
     "itm_b4d39b631d0373f6",
     "itm_06a14038efd9c459",
     "itm_34e9830367555187"

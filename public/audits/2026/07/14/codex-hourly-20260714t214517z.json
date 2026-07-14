@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_32099dbe8f4b656f/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-14T21:45:17Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260714t214517z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; duplicate top rows were rejected against latest origin/data."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv HTML paper and official GitHub repository before writing the Chinese Markdown analysis."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article explains the reproduce-intervene-mitigate loop, 12-fault taxonomy, scoring split, mitigation results, and repository layout."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article preserves limits around single-fault injection, authored data-quality scenarios, scorer fallibility, and false confidence."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related benchmark, fault-injection, observability, and debugging lines are compared in the Markdown article."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, h3 sections, tables, formulas, pseudocode, and Mermaid; no external image URLs are embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_32099dbe8f4b656f"
+  ]
+}

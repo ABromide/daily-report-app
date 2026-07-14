@@ -1180,6 +1180,15 @@
       "title_hash": "c31f73829bc0795cc63471895f9bb14e96a733828f9852c6dd1441d735e87c8d"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.11086v1",
+      "category_id": "ai-safety",
+      "content_hash": "859ab076e8780a141feae9a8800c99ebbd47febecac6c2e0b570d04bfc2b4c4d",
+      "external_id": "arXiv:2607.11086v1",
+      "first_seen_at": "2026-07-14T21:47:17Z",
+      "item_id": "itm_7af9d8c834b53589",
+      "title_hash": "eb9fd19d7a70988380b84cc9540aa81ace93bd6c03242bc197f146fa6dc15574"
+    },
+    {
       "canonical_url": "https://github.com/modelscope/ms-swift/releases/tag/v4.4.1",
       "category_id": "llm-post-training",
       "content_hash": "8d862e64d1358bfe6d7883d5ea4602cfbea551b61e8f36a57ac6a708875422d3",
@@ -2314,6 +2323,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-14T21:45:17Z",
+  "updated_at": "2026-07-14T21:47:17Z",
   "version": 1
 }

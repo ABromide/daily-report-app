@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_7af9d8c834b53589/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-14T21:47:17Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "run_20260714t21471784065622z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 输出统一候选表；首选 2607.11751v1 已在当前 data 树发布，因此在同表内 pivot 到 2607.11086v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 摘要、HTML 全文和 PDF，提取 MCPZoo、scanner precision、Jaccard、CVE recall、表格和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解多 Agent 部署框架、协议验证、工具能力分类、scanner 实验设置和证据分层。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "区分 capability risk、scanner signal 和 confirmed vulnerability，并标注部署偏差、版本漂移和 ground truth 规模限制。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照先前 MCPZoo dataset 与 MCP 安全 survey/benchmark 脉络，避免把本文误读成威胁列表或漏洞率报告。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，使用表格、公式解释块、伪代码和 Mermaid；未直接引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_7af9d8c834b53589"
+  ]
+}

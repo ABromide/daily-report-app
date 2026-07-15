@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_e1919cd145c9c86d/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-15T21:48:37Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260715t214837z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout table covered llm-agent, llm-post-training, and ai-safety; selected arXiv:2607.12463v1 after rejecting recent duplicates such as When Local Monitors, Isolation, AgentCheck, Do AI Agents Know, Who Grades the Grader, Agentic Botnets, PVDetector, ScopeJudge, Prismata, and AHA."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML/PDF text plus Hugging Face dataset and model cards; extracted method, formulas, corpus statistics, main results, ablations, trajectory analysis, hyperparameters, compute, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Rewrote function-aware FIM target selection as formulas, tables, pseudocode, and a Mermaid training pipeline; noted that the official GitHub repository was not anonymously cloneable during this run."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Kept boundaries explicit: Python-only corpus and benchmarks, Gemini-3-Flash rationale dependency, partial cross-base evidence, no multi-file gain, expensive full reproduction, and current GitHub access issue."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked arXiv, Hugging Face, alphaXiv, and author/project evidence; substantive third-party analysis was sparse, so the article relies on primary paper and dataset/model-card evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, h3 sections, tables, formula blocks, pseudocode, Mermaid, figure/table evidence mapping, and research-facing limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e1919cd145c9c86d"
+  ]
+}

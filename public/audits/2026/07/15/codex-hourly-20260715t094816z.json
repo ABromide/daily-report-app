@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_94ea21532bfc98f9/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-15T09:48:16Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260715t094816z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety. Candidate table included Do AI Agents Know When a Task Is Simple? (duplicate live), PalmClaw, Tracing Agentic Failure from the Flow of Success (selected), EG-VAR, Resist and Update, and Bulkhead."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read the arXiv abstract, HTML full text, method sections, experiment tables, appendix limitations, and code repository README/scripts before writing the Chinese Markdown analysis."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Mapped OAT's step representation, Neural CDE, gated control path, Top-k and conformal prediction detection, datasets, metrics, ablations, and code pipeline."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Called out that anomaly scores are not causal proof, MCP-Atlas labels are manually judged, CP thresholds can miss boundary errors, and OOD evaluation is failure-only."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched third-party and author pages; only current lightweight index pages were found, so the article relies mainly on arXiv full text plus the anonymous code/data repository."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, h3 sections, tables, formulas, a Mermaid pipeline, and no external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_94ea21532bfc98f9"
+  ]
+}

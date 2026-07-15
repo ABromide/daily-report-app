@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/13/itm_c5f5168c80cddaee/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 4,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-15T21:48:01Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "run_20260715t214801z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety. Duplicate hits in the same table were MCPZoo, Agent Hacks Agent, AgentFootprint, and PUST; selected non-duplicate TerraRepair."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML full text and replication package README; extracted method, tables, metrics, ablations, escalation taxonomy, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained bounded ReAct repair loop, graph_query, schema_lookup, scanner_run, claimed-vs-verified gap, and reproduction scripts."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Separated scanner-verified evidence from semantic correctness, deployment validity, and independent cloud-security review."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Positioned TerraRepair against automatic program repair, LLM vulnerability repair, IaC generation, and configuration-security remediation."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, h3-style sections, tables, formula block, pseudocode, and Mermaid; no external image URLs were embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c5f5168c80cddaee"
+  ]
+}

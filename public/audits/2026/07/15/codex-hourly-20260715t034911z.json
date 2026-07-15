@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/15/itm_14f16d47e44a9c40/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-15T03:49:11Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260715t034911z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; PVDetector was selected after top two candidates were confirmed duplicates on latest data."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML full text, method sections, tables, appendices, and official GitHub README."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted PV vector formulas, PVS score, key-layer selection, benchmark setup, main results, ablations, VLM tests, and code availability boundary."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Documented hidden-state access requirement, threshold calibration risk, adaptive attack boundary, and incomplete repository release."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched external coverage and used arXiv plus official repository because independent third-party analysis was not yet available."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Produced pure Markdown with TL;DR, tables, formulas, pseudocode, Mermaid, figure/table evidence, and Chinese length over 5000."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_14f16d47e44a9c40"
+  ]
+}

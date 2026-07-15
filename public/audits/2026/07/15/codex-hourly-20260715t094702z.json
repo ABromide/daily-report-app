@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_71062620ce1fa953/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-15T09:47:02Z",
+  "quality_gate": {
+    "evidence_points": 2,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260715t094702z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; PVDetector, Agentic Botnets, and complexity-aware execution were rejected as duplicate or already live, then Who Grades the Grader was selected from the same table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract and HTML full text, including method setup, Algorithm 1, Tables 1-3, appendix artifacts, Goodhart repair, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article reconstructs metric grammar, Double Ratchet loop, objective function, pseudocode, held-out results, ablation table, and detector lifecycle evidence."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Review emphasized anchor quality, vacuous grader collapse, judge disagreement, Spider semantic limits, and reproducibility dependencies."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses self-contained TL;DR, h3 sections, tables, formulas, pseudocode, and Mermaid; no external image URLs are referenced."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_71062620ce1fa953"
+  ]
+}

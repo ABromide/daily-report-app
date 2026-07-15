@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_fc99796653ba7ad5/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-15T03:50:04Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260715t034507z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety. Candidate table included Do AI Agents Know When a Task Is Simple? (selected), PalmClaw, DenseReward, ExToken, and Agentic Botnets (duplicate live)."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, arXiv HTML full text, official GitHub README, source files, benchmark CSVs, ablations, robustness checks, and LLM-Case notes."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained minimum-sufficient execution, ACRR, CostModel, E3 policy control flow, MSE-Bench task tiers, and LLM-Case tool-measurement setup."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked simulator boundary, rule-based estimator limits, small LLM-Case sample, rename-task bias, validation-cost assumptions, and true-model variance."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Positioned the paper against ReAct/tool-use agents, adaptive computation, model routers, long-context agents, and cost-aware execution policies."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article exceeds 5000 Chinese characters and includes self-contained TL;DR, formulas, pseudocode, tables, Mermaid, Figure/Table evidence reading, and limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_fc99796653ba7ad5"
+  ]
+}

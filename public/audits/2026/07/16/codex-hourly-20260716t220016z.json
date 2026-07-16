@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/16/itm_9f01588b2bd57f09/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-16T22:00:16Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260716t220016z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "统一 Scout 表覆盖 Agent、后训练和 AI 安全；Agent Skill Security 已发布，枢转到本周后训练候选 arXiv:2607.13753v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv HTML 正文、附录训练细节、推理协议和指标定义，并检查官方代码仓库复现边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 Pre-CoT、Intra-CoT、Post-CoT、PosConf、训练配置、benchmark 和失败边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "保留数学推理、Qwen 7B、内部 log-prob 和代码仓库未补全复现说明等边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "搜索第三方索引与作者代码链接；未发现实质第三方深评，正文以原文证据为主。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "纯 Markdown 正文使用 h3、列表、表格、公式解释、伪代码和 Mermaid，中文字符超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_9f01588b2bd57f09"
+  ]
+}

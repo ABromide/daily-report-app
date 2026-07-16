@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/14/itm_f0f024e326c18131/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-16T16:14:24Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260716t161424z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; TRACE became live on origin/data during drafting, so the same table pivoted to Ring-Zero."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML, PDF text, abstract metadata, training pipeline, benchmark table, CoT quality evaluation, ablations, dynamics, emergent behaviors, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted the four-stage zero RL pipeline, clipped importance sampling objective, ratio correction, KL and precision stabilization, sample-level loss, tiered budget training, and failure modes."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Kept the article clear that evidence is centered on mathematical RLVR, extremely expensive 1T training, LLM judge use, and emergent behavior side effects such as context anxiety."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched current third-party surfaces; substantive analysis is sparse because the paper is new, so the article relies mainly on original arXiv evidence and alphaXiv overview metadata."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, tables, formula explanations, Mermaid dynamics graph, evidence inventory, ablation analysis, limitations, and research extensions."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f0f024e326c18131"
+  ]
+}

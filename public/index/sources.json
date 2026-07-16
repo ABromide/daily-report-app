@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T22:00:16Z",
+  "generated_at": "2026-07-16T21:58:23Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,7 +34,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI papers.",
+      "description": "arXiv paper metadata and full-text HTML used for the hourly deep read.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -536,6 +536,14 @@
       "id": "lib-rs",
       "kind": "manual",
       "name": "Lib.rs"
+    },
+    {
+      "description": "Project code repository linked from the paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/microsoft/gflowrl",
+      "id": "microsoft-github",
+      "kind": "manual",
+      "name": "Microsoft GitHub"
     },
     {
       "description": "Manual current-week Microsoft Research selection from the merged Daily Report Scout table.",

@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/15/itm_648040bb22594e3f/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-16T10:41:39Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260716t104139z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; the selected item was rank 1 from the unified table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The main agent read the arXiv HTML paper, arXiv metadata, and the official GitHub artifact repository before drafting."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article maps GEPA prompt artifacts, Meta Harness code artifacts, RELAI-VCL package artifacts, equations, protocol, and failure modes."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External references include arXiv, the official artifact repository, author summary, and current arXiv listing evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "The Markdown uses TL;DR, h3 sections, tables, formulas, pseudocode, and Mermaid-style flow structure without direct external images."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_648040bb22594e3f"
+  ]
+}

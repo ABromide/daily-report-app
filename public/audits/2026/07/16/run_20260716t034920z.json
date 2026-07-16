@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/15/itm_eb396af423eb8784/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-16T03:49:20Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "run_20260716t034920z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout searched llm-agent, llm-post-training, and ai-safety, returned 11 current-week arXiv candidates, and the selected Agent Skill Security row cleared exact arXiv URL, external_id, and title checks in the fresh origin/data checkout."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv abstract, PDF text, lifecycle taxonomy, framework design, empirical tables, appendix skill distribution, prompts, related work, limitations, and third-party skill-eval references."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article extracted the skill formula S=(M,W,P,T,V), five-stage control loop, retrieval/planner/runtime/evolution metrics, pseudocode, and Mermaid lifecycle flow."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Review highlighted controlled-repository limits, missing public code/data on the arXiv page, LLM validator drift, high evolution false positives, and unresolved semantic information-flow tracking."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related references covered OpenAI agent skill evals, StackHawk eval harness practice, Red Hat skill security controls, prompt injection, agent benchmarks, and supply-chain security framing."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown is written as h3 sections with tables, formulas, pseudocode, Mermaid, self-contained TL;DR, concrete benchmark numbers, and no external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_eb396af423eb8784"
+  ]
+}

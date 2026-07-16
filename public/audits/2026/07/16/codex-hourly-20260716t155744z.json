@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/15/itm_3cdf83afeb061500/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-16T15:57:44Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260716t155744z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; TRACE ranked first and passed date-window checks."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, and TeX source sections for method, experiments, appendix, limitations, and data synthesis."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted rollout notation, log-ratio state value, TD credit, K-step backup, training hyperparameters, main table, ablations, and qualitative credit cases."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around short-answer deep search, single-run ablations, proxy reliability, and missing official code repository."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched title, arXiv ID, GitHub, alphaXiv, and daily technical digests; found limited third-party coverage beyond paper indexes and summaries."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, formulas, tables, pseudocode, Mermaid flow, Figure/Table evidence, and explicit limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3cdf83afeb061500"
+  ]
+}

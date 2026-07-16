@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/15/itm_70a0f64d7ce525cb/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 2
+  },
+  "generated_at": "2026-07-16T03:49:09Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260716t034909z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout table covered llm-agent, llm-post-training, and ai-safety; selected the top-ranked current-week permissions-safety paper arXiv:2607.13718."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read the arXiv abstract and HTML full text, extracting the 21-system taxonomy, five commercial walkthroughs, and literature-vs-commercial gap."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Translated the permissions taxonomy into tables, a policy pipeline formula, scoped-approval pseudocode, and a Mermaid enforcement graph."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Kept the article clear that this is a survey and black-box walkthrough, not a new benchmark or verified enforcement implementation."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched direct commentary and engineering discussions around delegated access, OAuth scopes, consent, and AI agent permission anti-patterns."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, question-style sections, tables, formula blocks, pseudocode, Mermaid, figure evidence notes, and limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_70a0f64d7ce525cb"
+  ]
+}

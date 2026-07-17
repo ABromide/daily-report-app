@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/17/itm_40b79ac623fa56af/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-17T04:13:19Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260717t035847z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety candidates for the current UTC week; SearchOS-V1 ranked first because it directly addresses stateful multi-agent search, evidence tracking, and failure memory."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv HTML/PDF/source plus official GitHub README and CONTEXT.md; extracted problem formulation, SOCM formulas, middleware governance, benchmark tables, schema/pipeline/skill ablations, and trajectory case studies."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Checked official repository HEAD and project layout; mapped paper concepts to searchos/agents, harness, socm, tools, skills, web, eval, and datasets boundaries."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around Max@3 reporting, GLM-5/Qwen3.5 model dependence, schema planning errors, skill maintenance, inaccessible sources, and deployment cost."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote a pure Markdown Chinese deep read with TL;DR, formula blocks, tables, Mermaid flow, benchmark evidence, ablations, failure cases, and research boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_40b79ac623fa56af"
+  ]
+}

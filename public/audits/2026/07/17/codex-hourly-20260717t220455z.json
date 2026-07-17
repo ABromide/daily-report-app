@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/17/itm_e9a0655aa6d9a030/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 20,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-07-17T22:04:55Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260717t220455z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout table covered llm-agent, llm-post-training, and ai-safety; recent memory rejected multiple already-covered agent and safety topics, and the table selected arXiv:2607.15253."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML, PDF extraction, and TeX source; extracted CTU/SRU definitions, quadrant results, OER mechanism, and threats to validity."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Translated the counterfactual replay method into formulas, variable tables, pseudocode, and a Mermaid trajectory diagram."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Kept the article clear that the 35.72% bridge figure partly follows from SRU-axis skew, CTU is agent-specific, and H2 did not replicate."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked arXiv listings and related retrieval/agentic RAG context; substantive current-week third-party commentary was sparse, so the article relies on paper evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, tables, formula blocks, pseudocode, Mermaid, evidence interpretation, and limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e9a0655aa6d9a030"
+  ]
+}

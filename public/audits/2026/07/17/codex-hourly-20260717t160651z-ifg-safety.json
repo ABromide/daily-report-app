@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/17/itm_96f7b4fe1c0cf7af/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-17T16:06:51Z",
+  "quality_gate": {
+    "evidence_points": 13,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260717t160651z-ifg-safety",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout pass covered llm-agent, llm-post-training, and ai-safety. Selected arXiv:2607.14570v1 because it is current-week, non-duplicate, safety-relevant, and has concrete ControlArena/IFG rollback evidence."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Deep read extracted IFG pipeline, SecurityDelta inputs, 1% FPR calibration, asynchronous FNR/AUC results, synchronous rollback results, and cdk.out blind spot."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article flags scope limits: iac_fast-only evidence, excluded cdk.out artifact smuggling, unavailable public code repository during this run, and residual trusted-model attack surface."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_96f7b4fe1c0cf7af"
+  ]
+}

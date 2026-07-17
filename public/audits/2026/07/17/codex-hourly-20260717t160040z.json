@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/17/itm_b0cc1533245d5084/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-17T16:00:40Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260717t160040z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; selected Setup Complete from the same table after dedupe because it has concrete coding-agent supply-chain experiments and defense details."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv metadata, PDF, HTML, TeX source, and appendix; extracted threat model, scenarios, harness-model ablation, mitigation prompts, cross-ecosystem validation, limitations, and pre-install hook design."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Mapped the 12 scenarios, 5 attack classes, 9 harness-model configurations, R9 CVE battery, source attacks, and PreToolUse gate into tables, formulas, pseudocode, and a state machine."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around synthetic repositories, hosted model drift, limited false-positive evidence, construction-specific hook coverage, missing resolved-set gate, and limited third-party follow-up."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched exact title, arXiv ID, and Sentinel repository terms; found no substantive independent reproduction beyond source and aggregation pages, so the article states that boundary."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, claim-mechanism-evidence-boundary table, scenario tables, formulas, pseudocode, Mermaid diagrams, Figure/Table evidence, and explicit limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b0cc1533245d5084"
+  ]
+}

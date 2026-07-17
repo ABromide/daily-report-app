@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/17/itm_dfd4be8b6fbc4c6f/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-17T04:08:52Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260717t040852z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一合并 Scout 覆盖 Agent、后训练和 AI 安全，选中 2026-07-16 发布的安全 Agent 成本评测论文。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv HTML、PDF 和 source，抽取 Cybench、BOTS v1、refusal、contamination 与 scaling 证据。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "将论文方法拆成成本账本、任务族、工具调用曲线、BOTS no-tools controls 和 bootstrap 边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "对 ScopeJudge 和 cost-aware skill rewriting 做近邻去重，保留不同问题边界并标注公开 BOTS v1 局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 exact title 与 cost-aware security-agent evaluation，未发现本文独立第三方深度解读，记录相邻论文。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文写入纯 Markdown，包含自包含 TL;DR、表格、公式、Mermaid、两张本地化证据图和局限。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_dfd4be8b6fbc4c6f"
+  ]
+}

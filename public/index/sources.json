@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T04:37:16Z",
+  "generated_at": "2026-07-18T04:59:03Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,7 +34,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual current-week arXiv paper selection, metadata, HTML, PDF, and source package.",
+      "description": "Manual selection from current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -472,6 +472,14 @@
       "id": "github-zabahana-rlhf-failure-modes-diagnostics",
       "kind": "manual",
       "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
+    },
+    {
+      "description": "Official project page and repository for Harness Handbook.",
+      "enabled": true,
+      "homepage_url": "https://ruhan-wang.github.io/Harness-Handbook/",
+      "id": "harness-handbook-project",
+      "kind": "manual",
+      "name": "Harness Handbook Project"
     },
     {
       "description": "NVIDIA Nemotron content-safety release materials on Hugging Face.",

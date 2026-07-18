@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/18/itm_e62e4484a5d9947f/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 8,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-18T22:03:14Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 6,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 6
+  },
+  "run_id": "2026-07-18t220314z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety; SEED was selected after same-table duplicate pivots."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e62e4484a5d9947f"
+  ]
+}

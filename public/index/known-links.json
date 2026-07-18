@@ -109,6 +109,15 @@
       "title_hash": "c8023a2e29e07c703a2ca2c0ce8db711fc0bd6601bab7af579bdf15f75bfbf73"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.15218",
+      "category_id": "ai-safety",
+      "content_hash": "7caf88f2ff7aa6575a0919bd485b87a724320df24c1de4228bef2f33fb40b234",
+      "external_id": "arxiv:2607.15218v1",
+      "first_seen_at": "2026-07-18T04:37:16Z",
+      "item_id": "itm_083c2a53e8e4aaa5",
+      "title_hash": "ed5ec45947b6a4f2a89ba6b97754a6e245b5922fdf225f420a66acd83ebdf5cc"
+    },
+    {
       "canonical_url": "https://openai.com/index/patch-the-planet/",
       "category_id": "ai-safety",
       "content_hash": "c0182963eba1fb26b59f8254b6bb2c61855fee37967dba9cc27b66d4a2831b14",
@@ -2521,6 +2530,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-17T22:04:47Z",
+  "updated_at": "2026-07-18T04:37:16Z",
   "version": 1
 }

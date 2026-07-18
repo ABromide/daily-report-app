@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/18/itm_0b4e43f3dafce241/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-18T13:32:57Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260718t133257z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Unified Scout table covered llm-agent, llm-post-training, and ai-safety; SearchOS was already live, so selection pivoted inside the same table to LongStraw."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv PDF, repository README, STATUS, limitations, evidence index, architecture notes, and core receipt/plan modules."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article explains GRPO graph boundary, prompt-state detachment, Qwen/GLM state ownership, receipts, and review-only runtime gates."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates execution capacity from distributed update, full-gradient parity, policy quality, and public runnability claims."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Article positions LongStraw against Ring Attention, DeepSpeed-Ulysses, ByteScale, FlashAttention, LoRA/QLoRA, and GRPO systems."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Pure Markdown article uses TL;DR, tables, formulas, pseudocode, and Mermaid without external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0b4e43f3dafce241"
+  ]
+}

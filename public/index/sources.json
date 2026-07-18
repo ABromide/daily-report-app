@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T10:02:17Z",
+  "generated_at": "2026-07-18T13:32:57Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,9 +34,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper metadata and full text for weekly Daily Report research items.",
+      "description": "Primary arXiv record and PDF for LongStraw.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2607.14952",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -392,6 +392,14 @@
       "id": "github-langgraph",
       "kind": "manual",
       "name": "GitHub: langchain-ai/langgraph"
+    },
+    {
+      "description": "Public review-only LongStraw implementation and evidence boundary.",
+      "enabled": true,
+      "homepage_url": "https://github.com/MindLab-Research/longstraw",
+      "id": "github-longstraw",
+      "kind": "manual",
+      "name": "MindLab-Research/longstraw"
     },
     {
       "description": "论文官方代码仓库，用于确认 README、实验入口和项目结构。",

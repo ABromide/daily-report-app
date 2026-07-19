@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/19/itm_1eef6986445559ee/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-19T13:32:48Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260719t133248z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety together; duplicate top rows were rejected and MCPEvol-Bench was selected from the same table."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1eef6986445559ee"
+  ]
+}

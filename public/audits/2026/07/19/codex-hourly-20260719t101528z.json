@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/19/itm_10f7dae714ee0a72/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-19T10:15:28Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260719t101528z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety; the first two ranked candidates were exact duplicates in the clean data tree, so the run pivoted within the same table to OmniaBench."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read the arXiv metadata, TeX source, project README, evaluation README, project page, Hugging Face dataset card, and third-party overview; extracted formulation, routes, benchmark statistics, leaderboard, robustness checks, error modes, and limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Clean origin/data dedupe found no exact OmniaBench item, canonical URL, external ID, or title in known-links/items; only a prior candidate-table mention was present."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote a 5000-plus Chinese Markdown analysis with tables, formulas, Mermaid, and four localized project figures referenced from local assets."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_10f7dae714ee0a72"
+  ]
+}

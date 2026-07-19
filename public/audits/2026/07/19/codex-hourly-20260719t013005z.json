@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/19/itm_da267915420e5acc/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 9
+  },
+  "generated_at": "2026-07-19T01:30:05Z",
+  "quality_gate": {
+    "evidence_points": 7,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260719t013005z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; SEED was rejected as already published on origin/data, then the same table pivoted to DataShield."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML full text, PDF, and TeX source; extracted formulation, subspace equations, intervention variants, main tables, ablations, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Translated DataShield's safe/unsafe subspace construction, sample risk, segment risk, and masked SFT loss into formulas, tables, and Mermaid workflow."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around supervised fine-tuning scope, benchmark and judge dependence, source-model blind spots, and the fact that representation risk is not causal attribution."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, short sections, tables, formulas, Mermaid, evidence interpretation, and AI safety extension."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_da267915420e5acc"
+  ]
+}

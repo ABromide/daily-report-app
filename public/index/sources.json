@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T13:32:48Z",
+  "generated_at": "2026-07-19T16:45:41Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,7 +34,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for Daily Report hourly Chinese deep research.",
+      "description": "Manual deep-read source for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -336,6 +336,14 @@
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
+    },
+    {
+      "description": "Official reproduction code for the answer leakage one-bit experiment.",
+      "enabled": true,
+      "homepage_url": "https://github.com/js-lee-AI/answer-leakage",
+      "id": "github-answer-leakage",
+      "kind": "manual",
+      "name": "answer-leakage GitHub repository"
     },
     {
       "description": "Official repository with code, paper figures, and aggregate result tables.",

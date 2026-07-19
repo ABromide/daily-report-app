@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_c684a434169042e0/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-07-19T19:32:49Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260719t193249z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; it returned a unified SIGIR current-window table and ranked Tool-Star first."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read SIGIR program evidence, ACM DOI metadata, arXiv abstract and HTML full text, plus the official GitHub README for training and evaluation details."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Mapped Tool-Star's data synthesis, cold-start SFT, GRPO/self-critic DPO loop, six-tool design, reward structure, and inference-time controls into formulas, tables, pseudocode, and Mermaid."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around SIGIR-vs-arXiv version drift, tool API dependence, Qwen2.5 small-model scope, automatic judging, and lack of full production-agent safety guarantees."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR, short sections, tables, formulas, pseudocode, Mermaid diagrams, result interpretation, and agent-safety extensions."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c684a434169042e0"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T01:30:05Z",
+  "generated_at": "2026-07-19T04:15:40Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,7 +34,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual current-week arXiv paper selection for the Daily Report public data feed.",
+      "description": "Manual arXiv source for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -456,6 +456,14 @@
       "id": "github-runecho",
       "kind": "manual",
       "name": "GitHub: inth3shadows/runecho"
+    },
+    {
+      "description": "Official SCALE-CUA repository with code, checkpoints, datasets, and reproduction documentation.",
+      "enabled": true,
+      "homepage_url": "https://github.com/THUDM/SCALE-CUA",
+      "id": "github-thudm-scale-cua",
+      "kind": "manual",
+      "name": "GitHub: THUDM/SCALE-CUA"
     },
     {
       "description": "Official GitHub repository for slime, an LLM post-training framework for RL Scaling.",

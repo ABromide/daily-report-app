@@ -1828,6 +1828,15 @@
       "title_hash": "84f9a5518ffd06a8c2ad636f4ae031f356322e62de277a3f31248d8a891c08e0"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.15200",
+      "category_id": "llm-post-training",
+      "content_hash": "b4eeee9c45f67c3c3d9c311431f000441fd726d93c6c546bc1a529c43a995ea0",
+      "external_id": "arXiv:2607.15200v1",
+      "first_seen_at": "2026-07-19T22:23:54Z",
+      "item_id": "itm_b373fca8f6d79fa4",
+      "title_hash": "3d51e0c6e1cb22a39bb11330e31f26945ac165b6d96fc388fb9d733e5df580a2"
+    },
+    {
       "canonical_url": "https://github.com/vllm-project/vime",
       "category_id": "llm-post-training",
       "content_hash": "53a906b7a42c56e3323668d0259f2f48943f5d12872b7f09476068abdde9801c",
@@ -2647,6 +2656,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-19T19:32:49Z",
+  "updated_at": "2026-07-19T22:23:54Z",
   "version": 1
 }

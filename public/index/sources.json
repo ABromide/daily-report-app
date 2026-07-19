@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T19:32:49Z",
+  "generated_at": "2026-07-19T22:23:54Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI research papers.",
+      "description": "Manual selection from current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -576,6 +576,14 @@
       "id": "lib-rs",
       "kind": "manual",
       "name": "Lib.rs"
+    },
+    {
+      "description": "Official code repository referenced by the paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/Haran71/mask-aware-policy-gradients",
+      "id": "mask-aware-policy-gradients-code",
+      "kind": "manual",
+      "name": "Mask-Aware Policy Gradients GitHub"
     },
     {
       "description": "Project code repository linked from the paper.",

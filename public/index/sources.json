@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T01:37:56Z",
+  "generated_at": "2026-07-20T04:28:44Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,9 +42,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Official arXiv paper page and full text for AgentCompass.",
+      "description": "arXiv paper selected by the unified hourly Scout candidate table.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.13705",
+      "homepage_url": "https://arxiv.org/abs/2607.16097",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

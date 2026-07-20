@@ -1,6 +1,14 @@
 {
   "days": [
     {
+      "daily_report_path": "reports/daily/2026/07/20.json",
+      "date": "2026-07-20",
+      "hourly_report_count": 1,
+      "item_count": 1,
+      "items_path": "items/2026/07/20/items.jsonl",
+      "manifest_path": "manifests/2026/07/20/013756Z.manifest.json"
+    },
+    {
       "daily_report_path": "reports/daily/2026/07/19.json",
       "date": "2026-07-19",
       "hourly_report_count": 8,
@@ -353,6 +361,6 @@
       "manifest_path": "manifests/2026/06/06/235900Z.manifest.json"
     }
   ],
-  "generated_at": "2026-07-19T22:23:54Z",
+  "generated_at": "2026-07-20T01:37:56Z",
   "version": 1
 }

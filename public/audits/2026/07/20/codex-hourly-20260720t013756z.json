@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_bf06709b1498743d/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 9,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-20T01:37:56Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260720t013756z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout returned one unified table across llm-agent, llm-post-training, and ai-safety; most top rows were already published on latest origin/data, so the run pivoted within the same table to AgentCompass."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Main Agent read arXiv abstract, HTML, PDF, official GitHub README, runtime specs, analyzer docs, and implementation files; no required evidence images were needed because tables, formulas, and pseudocode preserved the claims."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article explicitly separates infrastructure evidence from model-ranking claims, notes behavioral rather than causal reward-hacking labels, and states reproducibility limits for closed models and harness versions."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_bf06709b1498743d"
+  ]
+}

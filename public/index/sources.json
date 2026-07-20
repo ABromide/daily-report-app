@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T22:23:54Z",
+  "generated_at": "2026-07-20T01:37:56Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,9 +42,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual selection from current-week arXiv papers.",
+      "description": "Official arXiv paper page and full text for AgentCompass.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2607.13705",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -344,6 +344,14 @@
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
+    },
+    {
+      "description": "Official AgentCompass implementation repository and README.",
+      "enabled": true,
+      "homepage_url": "https://github.com/open-compass/AgentCompass",
+      "id": "github-agentcompass",
+      "kind": "manual",
+      "name": "open-compass/AgentCompass"
     },
     {
       "description": "Official reproduction code for the answer leakage one-bit experiment.",

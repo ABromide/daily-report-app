@@ -1009,6 +1009,15 @@
       "title_hash": "257f09189638cbf42f5619626e50a51d15fc6c4f5e32b366da5eac0926abd7a2"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.15901",
+      "category_id": "llm-agent",
+      "content_hash": "be320d4f719e134309579189c577584660870f4087e9d107669f7455884cf7dc",
+      "external_id": "arxiv:2607.15901v1",
+      "first_seen_at": "2026-07-20T16:24:30Z",
+      "item_id": "itm_58fba65d9e11f073",
+      "title_hash": "87b23ea153c76b0eea118b8e74be92570816d96e6b5f6dfb53e0682e56c1a266"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.13663",
       "category_id": "llm-agent",
       "content_hash": "06f6ea98a98e4f75dd6042c870888e1153fce81b061e5237b0dc1fcc9bc3bc21",
@@ -2692,6 +2701,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-20T10:18:14Z",
+  "updated_at": "2026-07-20T16:24:30Z",
   "version": 1
 }

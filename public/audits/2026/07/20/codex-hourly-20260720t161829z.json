@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_58fba65d9e11f073/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 9
+  },
+  "generated_at": "2026-07-20T16:24:30Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 5,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260720t161829z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; DSWorld ranked first after excluding already published ToolSciVer and Understanding Reasoning."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv API metadata, Hugging Face paper page, arXiv HTML full text, PDF, tables, figures, appendices, and limitations."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Translated DSWorld's state transition model, hybrid execute/simulate routing, DSWorld-8K synthesis, reflective GRPO objective, experiments, and deployment boundaries into formulas, tables, pseudocode, and Mermaid."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked boundaries around data-science-only transitions, LLM simulator errors, synthetic-to-real distribution gap, limited production environment coverage, and inaccessible anonymous code repository."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with self-contained TL;DR and summary, 5638 CJK characters, local figure references, formulas, tables, Mermaid, pseudocode, and explicit limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_58fba65d9e11f073"
+  ]
+}

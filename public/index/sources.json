@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T16:24:30Z",
+  "generated_at": "2026-07-20T19:36:14Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual current-week arXiv paper selection for the Daily Report public data feed.",
+      "description": "Manual arXiv paper selection for the Daily Report hourly deep research workflow.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -426,6 +426,14 @@
       "name": "MindLab-Research/longstraw"
     },
     {
+      "description": "Official Resource2Skill runtime and skill library repository.",
+      "enabled": true,
+      "homepage_url": "https://github.com/microsoft/Resource2Skill",
+      "id": "github-microsoft-resource2skill",
+      "kind": "manual",
+      "name": "microsoft/Resource2Skill"
+    },
+    {
       "description": "论文官方代码仓库，用于确认 README、实验入口和项目结构。",
       "enabled": true,
       "homepage_url": "https://github.com/asashepard/probe-and-refine-tuning",
@@ -530,6 +538,14 @@
       "name": "Harness Handbook Project"
     },
     {
+      "description": "Official Resource2Skill dataset release containing skills_wiki and skills_library.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/datasets/microsoft/RESOURCE2SKILL",
+      "id": "hf-dataset-microsoft-resource2skill",
+      "kind": "manual",
+      "name": "microsoft/RESOURCE2SKILL"
+    },
+    {
       "description": "NVIDIA Nemotron content-safety release materials on Hugging Face.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
@@ -562,7 +578,7 @@
       "name": "Hugging Face Blog"
     },
     {
-      "description": "Manual Hugging Face paper metadata and daily paper listings.",
+      "description": "Hugging Face Papers page used for current-window paper submission evidence.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/papers",
       "id": "huggingface-papers",

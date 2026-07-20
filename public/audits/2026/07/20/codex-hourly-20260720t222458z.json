@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_c605d9bbc1d48dfd/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-20T22:24:58Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260720t222458z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全三方向；Mantis 满足本周窗口且未发现同 URL 重复。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "主 Agent 静态阅读 README、Agent Guide、schema 与技能契约，拆解状态机、快照、复现和补丁门禁。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确局限：项目是技能与契约，不是完整托管产品；安全结论仍需 sandbox 与人工验证。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含 Mermaid、表格、公式、伪代码和失败边界说明，CJK 字符超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c605d9bbc1d48dfd"
+  ]
+}

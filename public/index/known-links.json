@@ -2071,6 +2071,15 @@
       "title_hash": "0979d2bb3e1c391347acb56a9a757782d70d57111b11074cb8af6a8dae29a14c"
     },
     {
+      "canonical_url": "https://github.com/google/mantis",
+      "category_id": "ai-safety",
+      "content_hash": "241d1fd6030a692c1ada45c3c547e93c02ba9e8e5b6389c4ab34a2993a9cda3b",
+      "external_id": "github:google/mantis@8c991c0c2e74cc9c62cc7b97f17d1ca3d968778c",
+      "first_seen_at": "2026-07-20T22:24:58Z",
+      "item_id": "itm_c605d9bbc1d48dfd",
+      "title_hash": "e9c260353463b80e7760115a503e60a6a3c0524af8badf72b186fbcecd7c0577"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.24496",
       "category_id": "ai-safety",
       "content_hash": "a9619e11cfc7f6fc1c69ee81d8608202b6953e2f48742f9369251254edc12f97",
@@ -2710,6 +2719,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-20T19:36:14Z",
+  "updated_at": "2026-07-20T22:24:58Z",
   "version": 1
 }

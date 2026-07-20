@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T19:36:14Z",
+  "generated_at": "2026-07-20T22:24:58Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -528,6 +528,14 @@
       "id": "github-zabahana-rlhf-failure-modes-diagnostics",
       "kind": "manual",
       "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
+    },
+    {
+      "description": "Google Mantis Skills repository for coding-agent security review harnesses.",
+      "enabled": true,
+      "homepage_url": "https://github.com/google/mantis",
+      "id": "google-mantis",
+      "kind": "manual",
+      "name": "google/mantis"
     },
     {
       "description": "Official project page and repository for Harness Handbook.",

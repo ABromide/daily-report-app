@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/21/itm_98396b70139be2d5/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-21T10:42:17Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260721t103522z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，输出 9 个本周 arXiv 候选；FlashRT 排名第一且本地 exact rg 去重未命中。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整读取 FlashRT arXiv PDF，抽取问题形式化、IR 设计、validation loop、五类应用实验、B200/MI355X 数字和局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "将 chain-of-program、state/streaming annotation、variant queue、baseline equivalence 和 benchmark gate 拆成可审计 agent harness 机制。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "检查日期窗口、重复风险、GitHub 仓库可访问性、消融缺口、硬件复现门槛和 Auto permission mode 安全边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "补充 vLLM-Omni 与 Code as Agent Harness 作为相关工作坐标，区分固定 serving 系统、自动并行、kernel agent 与应用级 harness。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入纯 Markdown 长文，使用 h3、列表、表格、公式解释和 Mermaid，CJK 字符数 5121。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_98396b70139be2d5"
+  ]
+}

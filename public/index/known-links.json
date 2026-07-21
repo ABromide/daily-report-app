@@ -1810,6 +1810,15 @@
       "title_hash": "50a20e528153de1dad9138f94f6fbca55412acf60ce6a43480475e5b63389e92"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.17619",
+      "category_id": "ai-safety",
+      "content_hash": "06a23014e6887bfa42f2e36704010324d76c5985a523cc91cef5ebeab1cb6a1c",
+      "external_id": "arXiv:2607.17619v1",
+      "first_seen_at": "2026-07-22T16:35:50Z",
+      "item_id": "itm_a8c2a680fdfba2bf",
+      "title_hash": "2aff212d819b57d31772608d316e8e304ec8bb2ad28457100b3ecda540e5a721"
+    },
+    {
       "canonical_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
       "category_id": "ai-safety",
       "content_hash": "622c16b455296feea5613d0dfd1a43c176d8690581b2f751710c65d972f13168",
@@ -2764,6 +2773,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-21T13:46:42Z",
+  "updated_at": "2026-07-22T16:35:50Z",
   "version": 1
 }

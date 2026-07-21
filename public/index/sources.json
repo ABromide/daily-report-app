@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T10:42:17Z",
+  "generated_at": "2026-07-21T13:46:42Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper source for current-week Daily Report research items.",
+      "description": "arXiv paper metadata and PDF used for Daily Report deep research.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -496,6 +496,14 @@
       "id": "github-runecho",
       "kind": "manual",
       "name": "GitHub: inth3shadows/runecho"
+    },
+    {
+      "description": "Public SlotGuard implementation and reproducibility instructions.",
+      "enabled": true,
+      "homepage_url": "https://github.com/illinoisdata/SlotGuard",
+      "id": "github-slotguard",
+      "kind": "manual",
+      "name": "illinoisdata/SlotGuard"
     },
     {
       "description": "Official SCALE-CUA repository with code, checkpoints, datasets, and reproduction documentation.",

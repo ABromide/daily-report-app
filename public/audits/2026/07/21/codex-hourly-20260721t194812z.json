@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/21/itm_f8ef91cb8fa23b29/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-21T19:48:12Z",
+  "quality_gate": {
+    "evidence_points": 10,
+    "image_notes": 1,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260721t194812z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练、AI 安全三类，输出 12 个本周候选；主 Agent 从同表枢转掉已发布候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 arXiv PDF、附录、实验表格、统计检验和官方仓库 README/目录结构。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "拆解 Sequential BoN、Top-K、epsilon、UCT、PUCT、OpenEvolve-style、adaptive allocation、budget equations 和代码目录。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "保留任务分布、evaluator 质量、rollout-budget 口径、模型覆盖和 run pools 暂未可下载等边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "纯 Markdown 正文使用 h3、列表、表格、公式块、伪代码和 Mermaid；实际 CJK 字符 5169。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f8ef91cb8fa23b29"
+  ]
+}

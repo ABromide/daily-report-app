@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T22:24:58Z",
+  "generated_at": "2026-07-21T01:44:52Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for the Daily Report hourly deep research workflow.",
+      "description": "Manual source entry for arXiv papers selected by the Daily Report automation.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -568,6 +568,14 @@
       "id": "hf-openenv-blog",
       "kind": "manual",
       "name": "Hugging Face Blog: OpenEnv"
+    },
+    {
+      "description": "Manual source entry for Hugging Face Papers daily discovery and date evidence.",
+      "enabled": true,
+      "homepage_url": "https://huggingface.co/papers",
+      "id": "hf-papers",
+      "kind": "manual",
+      "name": "Hugging Face Papers"
     },
     {
       "description": "Manual supporting dataset and model-card evidence for current-week AI research items.",

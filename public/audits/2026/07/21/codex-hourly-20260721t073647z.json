@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/07/21/itm_f0c01e6783ee1c7e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-21T07:36:47Z",
+  "quality_gate": {
+    "evidence_points": 7,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260721t073647z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety together; returned 15 current-week candidates with arXiv submission dates, and ranked Adaptive Adversaries first."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Main-agent review confirmed TL;DR and summary are self-contained, CJK count exceeds 5000, key figures are localized, and limitations distinguish protocol evidence from model leaderboard claims."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f0c01e6783ee1c7e"
+  ]
+}

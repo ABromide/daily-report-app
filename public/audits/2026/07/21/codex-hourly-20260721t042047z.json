@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_1ec06fe1bd7c699a/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-21T04:37:00Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260721t042047z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 12 个本周候选；本项 arXiv 提交时间在 2026-07-20 UTC。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv HTML 与 TeX 源，提取四轴攻击空间、23-cell 矩阵、43 个实例和 Exp1-Exp3 结果。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "将 A(R) subset L(R)、VFS tuple、B2 anomaly score、V/C/I 分类和 L3+B2+backup cascade 拆成公式、表格和 Mermaid。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 MITRE ATLAS、OWASP Agentic AI、AgentPoison、AgentDojo、AgentSight 和 OS containment 相关工作定位论文边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确实验基于 OpenClaw-like harness 和 per-event OS detector，不把结论扩大为所有语义层防御无效。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式解释、伪代码和 Mermaid，中文字符数 5461，未直接引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1ec06fe1bd7c699a"
+  ]
+}

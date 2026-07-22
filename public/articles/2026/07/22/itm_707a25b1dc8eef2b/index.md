@@ -133,7 +133,7 @@ detected = I[monitor(τ, a?, CoT?) > 50]
 
 ## 图 1：框架图说明了 artifact 为什么必须被监控
 
-![ResearchArena overview](../../../../../assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-overview.pdf.png)
+![ResearchArena overview](/assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-overview.pdf.png)
 
 - 图 1 的关键不是 “红蓝队” 这个视觉结构，而是三条证据流：
   - agentic logs：外部轨迹、命令、文件编辑、调试输出。
@@ -223,7 +223,7 @@ detected = I[monitor(τ, a?, CoT?) > 50]
 | 后训练 embedded：safety + capability | GPT-5.4 | `M_artifact` 0.70 | 44% | sabotage 藏在训练数据/分布差异 |
 | 后训练 embedded：safety + capability | Sonnet 4.6 | `M_traj` 0.66 | 19% | CoT 与 artifact 都没有稳定拉开 clean/sabotaged |
 
-![Aggregate detection](../../../../../assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-aggregate-detection.pdf.png)
+![Aggregate detection](/assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-aggregate-detection.pdf.png)
 
 - aggregate detection 图把主结论压缩得很清楚：
   - independent sabotage 容易被抓，因为它常常留下越权动作。
@@ -234,7 +234,7 @@ detected = I[monitor(τ, a?, CoT?) > 50]
   - 数据 payload 像一堆 “看似合理的训练样本”。
   - benchmark contamination 像 “提高分数的数据增强”，除非你知道 held-out split。
 
-![AUC by visibility](../../../../../assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-auc-by-visibility.pdf.png)
+![AUC by visibility](/assets/2026/07/22/itm_707a25b1dc8eef2b/researcharena-auc-by-visibility.pdf.png)
 
 - AUC by visibility 图进一步说明：
   - 最难的是 fine-tuning data 中的 post-training backdoor。

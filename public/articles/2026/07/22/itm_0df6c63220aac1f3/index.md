@@ -16,8 +16,8 @@
 - 部署时，论文不为每个预算重新训练 router，而是在 router 分数上加成本惩罚 `lambda * cost`，再用 Conformal Risk Control 选择 `lambda`，给平均恢复成本提供边际期望控制。
 - 主实验覆盖 APPS、TACO、BigCodeBench、LiveCodeBench、CodeContests 五个 coding benchmark；GPT-5.4-nano 作为 cheap model，GPT-5.4 作为 strong escalation model。
 - 关键数字是：GPT 主实验约 27,300 个问题生成 rollout，最终 supervised training split 有 4,656 个样本，CRC 校准集 360 个、测试集 360 个。
-- 在 GPT-5.4-nano/GPT-5.4 设置下，always-escalate solve rate 为 0.686、平均恢复成本为 7.22 m$；CodeRescue 在 2.56 m$ 预算点达到 0.717 solve rate，只用 always-escalate 约 35% 成本。
-- 不加预算约束的 argmax router 达到 0.817 solve rate、5.51 m$，比 always-escalate 更准且更便宜；但 CRC 保证的是成本，不保证 solve rate。
+- 在 GPT-5.4-nano/GPT-5.4 设置下，always-escalate solve rate 为 0.686、平均恢复成本为 7.22 毫美元；CodeRescue 在 2.56 毫美元 预算点达到 0.717 solve rate，只用 always-escalate 约 35% 成本。
+- 不加预算约束的 argmax router 达到 0.817 solve rate、5.51 毫美元，比 always-escalate 更准且更便宜；但 CRC 保证的是成本，不保证 solve rate。
 - 局限也明确：它只建模一次 post-failure 决策，不覆盖多轮 agent 恢复；训练标签不是动作成功概率；Gemini 复现实验规模更小；真实 repo-level agent 还会遇到状态污染、测试不完整和上下文压缩问题。
 
 ## 研究问题：失败以后，agent 到底该花哪一种钱？
@@ -60,7 +60,7 @@
 |---|---|---|---|---|
 | Claim 1 | coding failure 后的最优动作不是单调 cascade | 三动作 recovery routing | 720 个 GPT holdout 失败样本中，cheap-only、both、escalation-only 都大量存在 | 只覆盖三种动作，不覆盖搜索树式 agent |
 | Claim 2 | 一个 supervised router 能学到 failure pattern | 用 rollout 的 cheapest-successful-action 做 SFT | Qwen3.5-4B FT argmax solve rate 0.817，高于所有 fixed action 与 prompt-only router | 标签不是概率，且忽略 unsolved 样本训练 |
-| Claim 3 | 成本预算可通过校准层后置控制 | `s(a|x) - lambda c(a,x)` 加 CRC | 2.56 m$ 点达到 0.717 solve，成本是 always-escalate 的 35% | CRC 控成本，不控 solve rate |
+| Claim 3 | 成本预算可通过校准层后置控制 | `s(a|x) - lambda c(a,x)` 加 CRC | 2.56 毫美元 点达到 0.717 solve，成本是 always-escalate 的 35% | CRC 控成本，不控 solve rate |
 | Claim 4 | non-monotone 是真实现象 | TACO difficulty ladder 出现更花钱反而更差 | TACO-Medium 与 TACO-Very-Hard 的 frontier 下降 | 子集样本量较小，仍需更大评估 |
 
 ## 方法机制：从失败样本到预算化 router
@@ -264,7 +264,7 @@ Failure boundary:
 
 - mean recovery cost：
   - 用 API token 成本估算；
-  - 单位是 millidollars，即 m$。
+  - 单位是 millidollars，即 毫美元。
 
 - CRC frontier：
   - 校准集只用于选 `lambda`；
@@ -276,11 +276,11 @@ Failure boundary:
 
 | 方法 | Solve rate | Mean cost |
 |---|---:|---:|
-| Always-reflect | 0.275 | 1.24 m$ |
-| Always-replan | 0.453 | 1.59 m$ |
-| Always-escalate | 0.686 | 7.22 m$ |
-| Random | 0.397 | 3.34 m$ |
-| Qwen3.5-4B FT argmax | 0.817 | 5.51 m$ |
+| Always-reflect | 0.275 | 1.24 毫美元 |
+| Always-replan | 0.453 | 1.59 毫美元 |
+| Always-escalate | 0.686 | 7.22 毫美元 |
+| Random | 0.397 | 3.34 毫美元 |
+| Qwen3.5-4B FT argmax | 0.817 | 5.51 毫美元 |
 
 - 固定动作说明：
   - 只 reflect 太弱，很多失败不是局部 bug。
@@ -290,11 +290,11 @@ Failure boundary:
 
 | Prompt-only router | Solve rate | Total cost |
 |---|---:|---:|
-| Claude Sonnet 4.6 | 0.453 | 6.67 m$ |
-| Gemini 3.1 Pro | 0.367 | 5.58 m$ |
-| GPT-5.4-nano | 0.331 | 1.53 m$ |
-| GPT-5.4 | 0.328 | 3.87 m$ |
-| Qwen3.5-4B FT | 0.817 | 5.51 m$ local |
+| Claude Sonnet 4.6 | 0.453 | 6.67 毫美元 |
+| Gemini 3.1 Pro | 0.367 | 5.58 毫美元 |
+| GPT-5.4-nano | 0.331 | 1.53 毫美元 |
+| GPT-5.4 | 0.328 | 3.87 毫美元 |
+| Qwen3.5-4B FT | 0.817 | 5.51 毫美元 local |
 
 - 这说明：
   - 直接把动作说明丢给通用 LLM，并不能可靠学会恢复路由。
@@ -313,21 +313,21 @@ Failure boundary:
 - 这张图是全文最关键的经验观察之一。
 - 如果大多数样本都是 escalation-only，二元 cascade 足够。
 - 如果 cheap-only 与 both 大量存在，直接升级就浪费预算。
-- BigCodeBench 被 cheap-only 主导，oracle routing 成本从 7.6 m$ 降到 0.7 m$。
+- BigCodeBench 被 cheap-only 主导，oracle routing 成本从 7.6 毫美元 降到 0.7 毫美元。
 
 ### Figure 3：CRC frontier 的主结论
 
 | Operating point | Solve rate | Mean cost | 解释 |
 |---|---:|---:|---|
-| Always-replan | 0.453 | 1.59 m$ | 便宜但质量低 |
-| CRC 低预算起点 | 0.486 | 1.43 m$ | 比 always-replan 更便宜且更准 |
-| Binary cascade | 0.636 | 约 2.56 m$ | 二元 cheap/strong baseline |
-| CRC 中预算点 | 0.717 | 2.56 m$ | 超过 binary cascade 与 always-escalate |
-| Always-escalate | 0.686 | 7.22 m$ | 高成本但不最高质量 |
-| Argmax router | 0.817 | 5.51 m$ | 最高质量点 |
+| Always-replan | 0.453 | 1.59 毫美元 | 便宜但质量低 |
+| CRC 低预算起点 | 0.486 | 1.43 毫美元 | 比 always-replan 更便宜且更准 |
+| Binary cascade | 0.636 | 约 2.56 毫美元 | 二元 cheap/strong baseline |
+| CRC 中预算点 | 0.717 | 2.56 毫美元 | 超过 binary cascade 与 always-escalate |
+| Always-escalate | 0.686 | 7.22 毫美元 | 高成本但不最高质量 |
+| Argmax router | 0.817 | 5.51 毫美元 | 最高质量点 |
 
 - 最值得带走的数字：
-  - `0.717 solve / 2.56 m$`；
+  - `0.717 solve / 2.56 毫美元`；
   - 超过 always-escalate 的 `0.686 solve`；
   - 成本只有 always-escalate 的 `35%`。
 
@@ -368,11 +368,11 @@ Failure boundary:
 
 | Gemini 设置 | Solve rate | Mean cost |
 |---|---:|---:|
-| Always-reflect | 0.760 | 25.9 m$ |
-| Always-replan | 0.651 | 37.2 m$ |
-| Always-escalate | 0.821 | 168.2 m$ |
-| CRC low-cost point | 0.760 | 25.4 m$ |
-| Argmax router | 0.795 | 34.9 m$ |
+| Always-reflect | 0.760 | 25.9 毫美元 |
+| Always-replan | 0.651 | 37.2 毫美元 |
+| Always-escalate | 0.821 | 168.2 毫美元 |
+| CRC low-cost point | 0.760 | 25.4 毫美元 |
+| Argmax router | 0.795 | 34.9 毫美元 |
 
 - 设置：
   - cheap model 是 Gemini-2.5-Flash；
@@ -383,7 +383,7 @@ Failure boundary:
 - 解读：
   - Gemini 结果不是主 benchmark，规模明显更小。
   - 但它支持一个较弱结论：recovery routing 框架不只适用于 GPT 模型对。
-  - 这里 argmax router 没超过 always-escalate 的 solve rate，但成本从 168.2 m$ 降到 34.9 m$，降幅非常大。
+  - 这里 argmax router 没超过 always-escalate 的 solve rate，但成本从 168.2 毫美元 降到 34.9 毫美元，降幅非常大。
 
 ## Figure 4：为什么“多花钱”有时会变差？
 
@@ -835,7 +835,7 @@ P(risky_command) <= B_risk
 
 ### 最强证据
 
-- GPT 主实验中，0.717 solve rate / 2.56 m$ 的 CRC 点同时超过：
+- GPT 主实验中，0.717 solve rate / 2.56 毫美元 的 CRC 点同时超过：
   - always-escalate 的 0.686 solve rate；
   - binary cascade 的 0.636 solve rate；
   - always-replan 的 0.453 solve rate。

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T01:49:58Z",
+  "generated_at": "2026-07-22T04:37:59Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual selection from current-week arXiv papers in AI, language, software engineering, and agent systems.",
+      "description": "Manual selection from current-week arXiv papers in AI safety, agent systems, and post-training.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

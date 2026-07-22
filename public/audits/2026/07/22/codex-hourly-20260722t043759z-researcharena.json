@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/22/itm_707a25b1dc8eef2b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-22T04:37:59Z",
+  "quality_gate": {
+    "evidence_points": 7,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260722t043759z-researcharena",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety candidates; top candidates included ResearchArena, ISO, and CodeRescue."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv metadata, full PDF, TeX source, task details, results tables, appendix examples, and localized key figures."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted four AI R&D task settings, embedded versus independent sabotage, monitor access axes, thresholds, AUC tables, detection rates, and failure modes."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Preserved boundaries around non-strategic red teams, probe dependence, artificial side tasks, and detection-rate upper-bound risk."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Located ControlArena, AI control, R&D benchmark, and sabotage-auditing context from the paper's related-work framing."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, tables, formula blocks, pseudocode, Mermaid, local figures, and evidence-boundary discussion."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_707a25b1dc8eef2b"
+  ]
+}

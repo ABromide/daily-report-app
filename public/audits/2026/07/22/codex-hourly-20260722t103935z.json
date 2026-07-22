@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/07/22/itm_0df6c63220aac1f3/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-22T10:48:32Z",
+  "quality_gate": {
+    "evidence_points": 15,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5126,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260722t103935z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety. ResearchArena was already present on origin/data, so the main agent pivoted within the same table to CodeRescue."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF, arXiv metadata, GitHub README, repository tree, CRC scripts, recovery agent implementation, and SFT config without executing external project code."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0df6c63220aac1f3"
+  ]
+}

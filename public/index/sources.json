@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T07:54:50Z",
+  "generated_at": "2026-07-22T10:48:32Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -16,6 +16,14 @@
       "id": "acm",
       "kind": "manual",
       "name": "ACM Digital Library"
+    },
+    {
+      "description": "Public implementation for CodeRescue recovery routing experiments.",
+      "enabled": true,
+      "homepage_url": "https://github.com/Qijia-He/agent-budget-control",
+      "id": "agent-budget-control",
+      "kind": "manual",
+      "name": "agent-budget-control repository"
     },
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",

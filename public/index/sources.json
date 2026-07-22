@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T04:37:59Z",
+  "generated_at": "2026-07-22T07:54:50Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -42,7 +42,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual selection from current-week arXiv papers in AI safety, agent systems, and post-training.",
+      "description": "Manual source for current-window research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -728,6 +728,14 @@
       "id": "searchos-github",
       "kind": "manual",
       "name": "antins-labs/SearchOS"
+    },
+    {
+      "description": "Reproduction harness and aggregate data for RELAY and ATLAS AI-security studies.",
+      "enabled": true,
+      "homepage_url": "https://github.com/senthex-security/senthex-research",
+      "id": "senthex-research",
+      "kind": "manual",
+      "name": "Senthex Research repository"
     },
     {
       "description": "Manual source for the ServiceNow MosaicLeaks Hugging Face publication and linked arXiv paper.",

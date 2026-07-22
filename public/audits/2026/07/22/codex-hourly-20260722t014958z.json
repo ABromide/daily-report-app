@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/20/itm_aead1422774aae94/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-22T01:49:58Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260722t014958z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety candidates for the 2026-07-20 UTC week; main agent selected arXiv:2607.17598 for depth."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read the arXiv abstract, HTML/PDF full text, TeX source, method, results, appendix tables, and limitations before writing."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted LoongDoc, raw, flat, hierarchical, hybrid RAG, benchmark, harness, cost, and failure-case details."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Preserved boundaries around En.MC memorization, narrow K scaling, Chinese QA instability, and fixed chunking recipe."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked arXiv, Hugging Face paper availability, Agent Skills specification, and Claude Platform Skills docs; no author supplement was found."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, tables, formula blocks, pseudocode, Mermaid, detail inventory, and evidence boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_aead1422774aae94"
+  ]
+}

@@ -3,10 +3,10 @@
     {
       "daily_report_path": "reports/daily/2026/07/23.json",
       "date": "2026-07-23",
-      "hourly_report_count": 2,
-      "item_count": 5,
+      "hourly_report_count": 3,
+      "item_count": 6,
       "items_path": "items/2026/07/23/items.jsonl",
-      "manifest_path": "manifests/2026/07/23/151039Z.manifest.json"
+      "manifest_path": "manifests/2026/07/23/171618Z.manifest.json"
     },
     {
       "daily_report_path": "reports/daily/2026/07/22.json",
@@ -385,6 +385,6 @@
       "manifest_path": "manifests/2026/06/06/235900Z.manifest.json"
     }
   ],
-  "generated_at": "2026-07-23T15:10:39Z",
+  "generated_at": "2026-07-23T17:16:18Z",
   "version": 1
 }

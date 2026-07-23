@@ -2179,6 +2179,15 @@
       "title_hash": "781834dc495f2256633ae80b6811c128d516c3d4a8b6be0f064390166e69c24a"
     },
     {
+      "canonical_url": "https://openai.com/index/safety-alignment-long-horizon-models/",
+      "category_id": "ai-safety",
+      "content_hash": "9a242792068fbee58663d03fbad12b0448a03ae51c8292f2de7adabf5f0d6f63",
+      "external_id": "openai:safety-alignment-long-horizon-models",
+      "first_seen_at": "2026-07-23T17:16:18Z",
+      "item_id": "itm_c547aebb431f7b6e",
+      "title_hash": "7966a6b3f1030b551f0d299f1ac042a5c891cb93ac38d4dcccaea3c99c7222ba"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.14651",
       "category_id": "ai-safety",
       "content_hash": "5f48287f068283a9d15189e82aa441306e8d99d41c8ab93457cb14c736697f45",
@@ -2881,6 +2890,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-23T15:10:39Z",
+  "updated_at": "2026-07-23T17:16:18Z",
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T15:10:39Z",
+  "generated_at": "2026-07-23T17:16:18Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -682,7 +682,7 @@
       "name": "OpenThoughts"
     },
     {
-      "description": "Manual official OpenAI security announcement source.",
+      "description": "Official OpenAI research, safety, and deployment updates.",
       "enabled": true,
       "homepage_url": "https://openai.com/",
       "id": "openai",

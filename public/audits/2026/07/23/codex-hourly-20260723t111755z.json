@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/22/itm_0f141660b0e432bc/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 14
+  },
+  "generated_at": "2026-07-23T11:17:55Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260723t111755z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一正式 Scout 统一覆盖 llm-agent、llm-post-training、ai-safety，返回 15 个当前窗口候选；PRO-LONG 未命中 exact canonical_url/external_id/title 重复。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 读取 arXiv PDF 与 TeX 源，抽取方法、RHAE 公式、ARC-AGI-3 协议、主结果、消融、工具分布和边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 append-all write、programmatic read、accessed/accesssible context、日志控制流和后训练接口；论文给出的 GitHub 仓库本轮访问为 404。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 ARC-AGI-3 结构化环境、prior 选择协议、best@k 方差、成本和代码可访问性边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文对比 scratchpad、MemGPT、embedding retrieval、skill library、recursive context processing、WorldModeler、Schema 和 Arcgentica。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，CJK 计数 5423，包含表格、公式、伪代码、Mermaid 和两张本地化证据图。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_0f141660b0e432bc"
+  ]
+}

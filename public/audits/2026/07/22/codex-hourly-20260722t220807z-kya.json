@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/22/itm_187afc1febe2335b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-22T22:08:07Z",
+  "quality_gate": {
+    "evidence_points": 2,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260722t220807z-kya",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout returned 15 current-week candidates; Know Your Agent was selected after top same-table candidates were already present on origin/data."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_187afc1febe2335b"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/23/itm_5243724d4c88e32e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 7
+  },
+  "generated_at": "2026-07-23T11:17:00Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260723t111700z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety；统一候选表的首选为本周 arXiv:2607.20379，另保留同表安全与后训练替代项。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读官方 arXiv PDF 与 TeX 源码，提取 flip audit、evaluator swap、RECAP 目标、Pythia 结果、持久性与对抗实验。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分可解码、文本真值和因果使用；列出 160M 单模型、指定内容范围、文字有损渲染、持续维护与报告空间攻击边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "纯 Markdown 正文含 5,000 以上中文字符、公式、伪代码、Mermaid 和多张证据表；关键图表以文字解读，未嵌入外部图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5243724d4c88e32e"
+  ]
+}

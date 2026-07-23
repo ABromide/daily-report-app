@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/23/itm_b0c5fe88ec6126c7/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-23T15:10:39Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5001,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260723t145907z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout returned 12 current-week candidates across llm-agent, llm-post-training, and ai-safety; JANUS, PRO-LONG, and KYA were exact duplicates in the clean origin/data worktree, so the run pivoted inside the same table to Rewarding Better Thinking."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b0c5fe88ec6126c7"
+  ]
+}

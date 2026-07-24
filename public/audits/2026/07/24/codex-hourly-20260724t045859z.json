@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/24/itm_c8496e3335df6485/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-24T04:58:59Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260724t045859z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，并推荐 GuardianAgentBench；主 Agent 在远端前进后于最新 origin/data 重新发布。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv PDF/HTML，提取 benchmark、失败 taxonomy、实验表格和 guardrail 证据。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解了场景生成、工具 trace 评价、guardrail 决策流、伪代码和复杂度公式。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确列出 LLM judge、同源 guardrail、真实部署泛化和长期状态缺口。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文对照 AgentDojo、AgentSafetyBench 与已有 guardrail/benchmark 工作定位增量。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，使用 h3、表格、公式解释、伪代码和本地化图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_c8496e3335df6485"
+  ]
+}

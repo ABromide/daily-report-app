@@ -1,7 +1,7 @@
 {
   "date": "2026-07-24",
-  "generated_at": "2026-07-24T04:58:59Z",
-  "item_count": 2,
+  "generated_at": "2026-07-24T04:57:49Z",
+  "item_count": 3,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -9,6 +9,13 @@
         "itm_c8496e3335df6485"
       ],
       "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
+    {
+      "heading": "大模型 Agent 相关",
+      "item_ids": [
+        "itm_50a0de87b398f863"
+      ],
+      "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型后训练相关",
@@ -19,12 +26,14 @@
     }
   ],
   "source_counts": {
-    "arxiv": 2
+    "arxiv": 2,
+    "prime-intellect": 1
   },
-  "summary": "2026-07-24 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
+  "summary": "2026-07-24 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
   "top_item_ids": [
     "itm_c8496e3335df6485",
-    "itm_3ced48895ed29264"
+    "itm_3ced48895ed29264",
+    "itm_50a0de87b398f863"
   ],
   "version": 1
 }

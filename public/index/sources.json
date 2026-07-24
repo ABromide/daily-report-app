@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T04:58:59Z",
+  "generated_at": "2026-07-24T04:57:49Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -720,6 +720,14 @@
       "id": "pi-dev",
       "kind": "manual",
       "name": "Pi.dev"
+    },
+    {
+      "description": "Prime Intellect official research blog and open-source Agent RL infrastructure.",
+      "enabled": true,
+      "homepage_url": "https://www.primeintellect.ai",
+      "id": "prime-intellect",
+      "kind": "manual",
+      "name": "Prime Intellect"
     },
     {
       "description": "Official project page linked from the paper.",

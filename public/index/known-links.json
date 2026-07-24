@@ -1000,6 +1000,15 @@
       "title_hash": "d3e9160449e10d763a39d1105d7d3e60f92f941448a22679e7268308ef0b932e"
     },
     {
+      "canonical_url": "https://www.primeintellect.ai/blog/scaling-agentic-rl",
+      "category_id": "llm-agent",
+      "content_hash": "d4c4142400f8932f5399d055549a6ad2be7e20802ddc351198dbef0b152eb74b",
+      "external_id": "primeintellect/scaling-agentic-rl-2026-07-22",
+      "first_seen_at": "2026-07-24T04:57:49Z",
+      "item_id": "itm_50a0de87b398f863",
+      "title_hash": "cee352c3cb23b9830f732208423ea6df26e26502dc7c433b4790f8d3a9af2f2b"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.20379",
       "category_id": "ai-safety",
       "content_hash": "66aeae7bf338ac778ed90da9b7952006e6aca5a9b5ebedec2539211ddfad9935",
@@ -2908,6 +2917,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-24T04:58:59Z",
+  "updated_at": "2026-07-24T04:57:49Z",
   "version": 1
 }

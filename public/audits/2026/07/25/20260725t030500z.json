@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/25/itm_44ce868a9e34416c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-25T03:05:00Z",
+  "quality_gate": {
+    "evidence_points": 13,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5236,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "20260725t030500z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "needs_revision",
+      "summary": "唯一 Scout 因传输流断开未返回；主线程未再启动第二个 Scout，按同一合并候选表补位并记录边界。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已阅读全文 HTML、表格、图注和附录，正文按论文结构写入 5000 字以上中文 Markdown。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解了工具 stub、静默失败 profile、HSR/FAR/USR 分类、ablation 和生产检测启发式。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "外部补充搜索未发现正式作者仓库；正文以 arXiv 正文、图表、附录和相关工作为证据。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式块、伪代码和本地图片，避免直接引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_44ce868a9e34416c"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/24/itm_6cfc233052e0b40e/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-24T20:48:23Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260724t204823z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety in one unified table. It ranked AREX first, OpenForgeRL second, Dark Room third, and flagged GuardianAgentBench, Self-Explanation Faithfulness, Rewarding Better Thinking, PRO-LONG, OpenSkillRisk, RESOURCE2SKILL, and RHI as high or recent duplicate risks."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv PDF, HTML, TeX source, and Hugging Face model card; extracted formulas, tables, ablations, and evidence boundaries."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Explained AREX inner research loop, outer self-improvement loop, autonomous context updating, key-step supervision, and step-aware RL."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Flagged limits around private training data, confidence calibration, open-web pollution, benchmark comparability, and reproducibility."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Located official AREX-Turbo model card and used paper related-work framing to position verification and memory mechanisms."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote pure Markdown with TL;DR, claim-mechanism-evidence-boundary table, formulas, pseudocode, Mermaid, and localized figures."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_6cfc233052e0b40e"
+  ]
+}

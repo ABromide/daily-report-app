@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T02:43:56Z",
+  "generated_at": "2026-07-24T20:48:23Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,7 +50,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv deep-read candidate selected by the hourly Chinese Daily Report automation.",
+      "description": "Official arXiv paper metadata and full text.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -602,7 +602,7 @@
       "name": "Hugging Face Papers"
     },
     {
-      "description": "Manual supporting dataset and model-card evidence for current-week AI research items.",
+      "description": "Official model card and release metadata referenced by the article.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/",
       "id": "huggingface",

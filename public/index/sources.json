@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T05:45:23Z",
+  "generated_at": "2026-07-25T11:45:19Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,7 +50,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv papers selected by Daily Report automation.",
+      "description": "Open-access preprint server used for current-week AI research papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

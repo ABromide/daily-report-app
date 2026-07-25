@@ -1018,6 +1018,15 @@
       "title_hash": "d3e9160449e10d763a39d1105d7d3e60f92f941448a22679e7268308ef0b932e"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.20911",
+      "category_id": "llm-agent",
+      "content_hash": "c22257b2d6b5e98aa33d73b12264eff6a7d648abd6d6b245f4a2bf25542c035c",
+      "external_id": "arxiv:2607.20911v1",
+      "first_seen_at": "2026-07-25T05:45:23Z",
+      "item_id": "itm_4f7163f0f50e1415",
+      "title_hash": "8b74edee9b7bf664c45d02bdadc8a118cb2292a118807014317cc13961a06be6"
+    },
+    {
       "canonical_url": "https://www.primeintellect.ai/blog/scaling-agentic-rl",
       "category_id": "llm-agent",
       "content_hash": "d4c4142400f8932f5399d055549a6ad2be7e20802ddc351198dbef0b152eb74b",
@@ -2962,6 +2971,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-24T20:48:23Z",
+  "updated_at": "2026-07-25T05:45:23Z",
   "version": 1
 }

@@ -2584,6 +2584,15 @@
       "title_hash": "0fcdc784b38c39ad0685a5c0364bf99b862fa1c7181d665350354477ee44305f"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.21356",
+      "category_id": "ai-safety",
+      "content_hash": "f80ea2a7c1d3e438935f137c38f7d71159417e3f4fd20246d23d84daca0bbd37",
+      "external_id": "arXiv:2607.21356v1",
+      "first_seen_at": "2026-07-26T10:17:37Z",
+      "item_id": "itm_dbb5da189780d34e",
+      "title_hash": "7a892d0f101ea003579b9c8074b6a4695713ab7f222f4f135a310e888d349b30"
+    },
+    {
       "canonical_url": "https://github.com/yvgude/lean-ctx",
       "category_id": "llm-agent",
       "content_hash": "51d8169c8b9d94eddc495f17ad9ccffc69dc9474c30f8a861df3efa5ca12ac11",
@@ -3034,6 +3043,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-26T05:55:22Z",
+  "updated_at": "2026-07-26T10:17:37Z",
   "version": 1
 }

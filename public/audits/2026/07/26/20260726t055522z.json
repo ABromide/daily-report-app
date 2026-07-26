@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/26/itm_a9801a47b2360bc6/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-26T05:55:22Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 2
+  },
+  "run_id": "20260726t055522z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety. Twin Agent and PRO-LONG were rejected as already published; Stale but Stable was selected from the same table."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article states single-seed, sampled-proxy, and task-scope limits instead of treating SAT as a formal full-policy trust-region guarantee."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formulas, pseudocode, Mermaid, figure/table evidence analysis, and deployment-oriented checks."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a9801a47b2360bc6"
+  ]
+}

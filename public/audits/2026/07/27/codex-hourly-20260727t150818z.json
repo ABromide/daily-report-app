@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/27/itm_691ff88ab0dc7300/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-27T15:08:18Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260727t150818z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回统一候选表；Skill Self-Play 已在最新 data 发布，主 Agent 同表顺延选择 TRACE-Router。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv abstract、HTML 与 PDF 文本，提取任务级路由、contextual UCB、reward、benchmark、消融和边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "补充检查 τ2-Bench、RouteLLM、SWE-Router 与 program-aware serving 相关位置，用于说明 TRACE-Router 的粒度增量。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h2/h3、分点、表格、公式、伪代码和 Mermaid；真实 CJK 计数为 5370。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_691ff88ab0dc7300"
+  ]
+}

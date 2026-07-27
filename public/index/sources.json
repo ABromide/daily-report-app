@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T23:57:15Z",
+  "generated_at": "2026-07-27T03:06:29Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper source used for selected current-week AI safety research.",
+      "description": "arXiv 论文页面与 PDF。",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/abs/2607.22529",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -464,6 +464,14 @@
       "id": "github-pyrit-pr",
       "kind": "manual",
       "name": "GitHub microsoft/PyRIT pull requests"
+    },
+    {
+      "description": "论文给出的代码仓库；本轮检查时仓库为空。",
+      "enabled": true,
+      "homepage_url": "https://github.com/Qwen-Applications/skill-self-play",
+      "id": "github-qwen-skill-self-play",
+      "kind": "manual",
+      "name": "Qwen-Applications/skill-self-play"
     },
     {
       "description": "Official GitHub repository for Miles, an enterprise-facing reinforcement learning framework for LLM and VLM post-training.",

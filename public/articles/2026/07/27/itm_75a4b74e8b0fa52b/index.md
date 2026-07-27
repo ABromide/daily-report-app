@@ -91,7 +91,7 @@ s = <m, r, h, e, nu, sigma>
 
 ### 总览图：技能库不是旁路，而是课程引擎
 
-![Skill-SP 方法总览](../../../../../assets/2026/07/27/itm_75a4b74e8b0fa52b/skill-sp-method.png)
+![Skill-SP 方法总览](/daily-report-app/data/assets/2026/07/27/itm_75a4b74e8b0fa52b/skill-sp-method.png)
 
 这张图的核心信息不是“多了一个技能库”这么简单，而是技能库同时控制三类动作：
 

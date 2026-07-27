@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/07/24/itm_ad1c18c4d9ea2084/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-27T05:59:01Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260727t055901z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified scout covered llm-agent, llm-post-training, and ai-safety via arXiv official recent lists; candidates were date-verified and exact duplicates were checked."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_ad1c18c4d9ea2084"
+  ]
+}

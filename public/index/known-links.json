@@ -2044,6 +2044,15 @@
       "title_hash": "1ba39565ca9ec5008f60b7cf58b7bab46493bdcac8ab62c2894a38e4472f3bc2"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.22186",
+      "category_id": "llm-post-training",
+      "content_hash": "28f53504233581973bc00813d803bbdf06a4ebee11c75ec0d72c3f2a324c2462",
+      "external_id": "arxiv:2607.22186",
+      "first_seen_at": "2026-07-27T05:59:01Z",
+      "item_id": "itm_ad1c18c4d9ea2084",
+      "title_hash": "4cff39610da3028944addf1775645ef153ea961f35f68a6ad78f33507e1f02bf"
+    },
+    {
       "canonical_url": "https://github.com/InnerWarden/innerwarden",
       "category_id": "ai-safety",
       "content_hash": "0870c02f621a66b304724147377945ee66522c041ac427894d1359838c5c73b5",
@@ -3097,6 +3106,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-27T03:06:29Z",
+  "updated_at": "2026-07-27T05:59:01Z",
   "version": 1
 }

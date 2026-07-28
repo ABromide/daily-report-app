@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T03:22:46Z",
+  "generated_at": "2026-07-28T06:01:35Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,7 +50,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv papers selected by Daily Report automation.",
+      "description": "Manual selection from current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -330,12 +330,28 @@
       "name": "arXiv: Vera Agent Safety Testing"
     },
     {
+      "description": "Related work reference for prompt injection defense by design.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2503.18813",
+      "id": "camel-arxiv",
+      "kind": "manual",
+      "name": "CaMeL arXiv"
+    },
+    {
       "description": "Reference source for dynamic workflows and subagent orchestration context.",
       "enabled": true,
       "homepage_url": "https://code.claude.com/docs/en/workflows",
       "id": "claude-code-docs",
       "kind": "manual",
       "name": "Claude Code documentation"
+    },
+    {
+      "description": "Related work reference for execution-boundary policy enforcement.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/html/2607.06000v1",
+      "id": "cxi-arxiv",
+      "kind": "manual",
+      "name": "Context-to-Execution Integrity arXiv"
     },
     {
       "description": "Official policy framework accompanying the AI Control Roadmap.",
@@ -688,6 +704,14 @@
       "id": "microsoft-research",
       "kind": "manual",
       "name": "Microsoft Research"
+    },
+    {
+      "description": "Related work reference for LLM agent information flow tracking.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2604.23374",
+      "id": "neurotaint-arxiv",
+      "kind": "manual",
+      "name": "NeuroTaint arXiv"
     },
     {
       "description": "Manual official project source for OpenThoughts-Agent resources.",

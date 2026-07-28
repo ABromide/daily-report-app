@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T09:22:51Z",
+  "generated_at": "2026-07-28T12:01:57Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -650,9 +650,9 @@
       "name": "Hugging Face Blog"
     },
     {
-      "description": "Hugging Face Papers page used for current-window paper submission evidence.",
+      "description": "Community paper page used as a third-party publication and discussion signal.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co/papers",
+      "homepage_url": "https://huggingface.co/papers/2607.24280",
       "id": "huggingface-papers",
       "kind": "manual",
       "name": "Hugging Face Papers"
@@ -680,6 +680,14 @@
       "id": "lib-rs",
       "kind": "manual",
       "name": "Lib.rs"
+    },
+    {
+      "description": "Official code repository linked from the MAPD arXiv paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/AaronLiu0702/MAPD",
+      "id": "mapd-github",
+      "kind": "manual",
+      "name": "MAPD GitHub Repository"
     },
     {
       "description": "Official code repository referenced by the paper.",
@@ -752,6 +760,14 @@
       "id": "owasp-llm-prompt-injection",
       "kind": "manual",
       "name": "OWASP LLM Prompt Injection guidance"
+    },
+    {
+      "description": "Current arXiv category listing used for independent date-window confirmation.",
+      "enabled": true,
+      "homepage_url": "https://papers.cool/arxiv/cs.AI",
+      "id": "papers-cool",
+      "kind": "manual",
+      "name": "Papers.cool"
     },
     {
       "description": "Manual source for AI agent package integration metadata.",

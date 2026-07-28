@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_35c73c0f5fad97b4/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-28T00:01:17Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260728t000117z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout searched llm-agent, llm-post-training, and ai-safety candidates for the current-week window and recommended VIGOR as a low-duplication post-training target."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv HTML/PDF and author publication page, extracted method, theory, experiments, ablations, figures, tables, and evidence boundaries."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The analysis calls out false-negative risk, verifiable-reward dependence, non-agent deployment boundaries, and per-benchmark counterexamples."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_35c73c0f5fad97b4"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T21:10:34Z",
+  "generated_at": "2026-07-28T00:01:17Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -104,6 +104,14 @@
       "id": "arxiv-2606-30627",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Primary arXiv source for VIGOR: Progressive Rollout Allocation for Efficient Reinforcement Learning.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2607.22002",
+      "id": "arxiv-2607-22002",
+      "kind": "manual",
+      "name": "arXiv:2607.22002"
     },
     {
       "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",

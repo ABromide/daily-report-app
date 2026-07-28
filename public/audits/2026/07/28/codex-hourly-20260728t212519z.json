@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_99c8f643e61e288b/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-28T21:31:29Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260728t212519z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 16 个 2026-07-27T00:00:00Z 之后候选；主 Agent 选择 OpenAI 2026-07-28 官方 field report。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 OpenAI 官方页和 55 页 PDF，提取 8 个案例、验证门、失败模式、性能数字、Table/Figure 证据和可复现边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "用官方页面日期、PDF Last-Modified 和 clean origin/data 定向去重核验当前性；未采用已发布的 arXiv:2607.24604。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式解释、伪代码和 Mermaid；未本地化图片，因为关键证据已用结构化文字重构。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_99c8f643e61e288b"
+  ]
+}

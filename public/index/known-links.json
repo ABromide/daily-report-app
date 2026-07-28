@@ -1963,6 +1963,15 @@
       "title_hash": "074d10f51825d11ff1d7566b910657cf06b623da4be3db1081b9f69a7b3e2fda"
     },
     {
+      "canonical_url": "https://openai.com/index/scientific-computing-agentic-ai/",
+      "category_id": "llm-agent",
+      "content_hash": "d43af03840ff66eb55ace635d6cde1e38057f2a58d375dcca0cb14cd1fc740ef",
+      "external_id": "openai:scientific-computing-agentic-ai",
+      "first_seen_at": "2026-07-28T21:31:29Z",
+      "item_id": "itm_99c8f643e61e288b",
+      "title_hash": "0cad9dfb8bf868ab10aadec481e81e96c6f97960717584b7b87c3d4c3e929251"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.01793",
       "category_id": "ai-safety",
       "content_hash": "3f6b96e538102f248bda3eeb41f4e07d97f36ed55fa96e7e6e838427fdbd5c93",
@@ -3214,6 +3223,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-28T18:15:08Z",
+  "updated_at": "2026-07-28T21:31:29Z",
   "version": 1
 }

@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_f103cb88c0eda325/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 5
+  },
+  "generated_at": "2026-07-28T09:22:51Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260728t092251z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety for the 2026-07-27 UTC window; APPA was excluded as already live and ContainmentBench was selected from the same table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv metadata, PDF text, and HTML full text; extracted trace graph definitions, policy semantics, evidence stages, result tables, diagnostics, limitations, and artifact boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked public references around AgentDojo and NeuroTaint; third-party deep commentary is sparse because the paper appeared on 2026-07-27."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Dedupe found APPA already published and no ContainmentBench markers in the clean origin/data worktree; the article explicitly preserves single-model, synthetic-workflow, ledger-oracle, and adaptive-coverage limitations."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Wrote a 5000-plus CJK Markdown article with tables, formulas, pseudocode, and Mermaid-free structured diagrams; no image localization was needed."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f103cb88c0eda325"
+  ]
+}

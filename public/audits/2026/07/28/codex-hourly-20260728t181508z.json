@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_49ae1a4b67c42d57/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-28T18:15:08Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260728t181508z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety. APPA and MAPD were already live on the clean data baseline, so the main agent pivoted within the same table to arXiv:2607.24343v1."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Deep read extracted aggregate-budget failure, alpha times p_r budget shrinkage, per-role CRC thresholding, rare-role pooling, AgentDojo/InjecAgent setup, shifted-condition compliance, and recorded-trace limitations."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related-work check connected the paper to AgentDojo, InjecAgent, CaMeL, FIDES, PACT, CORA, information-flow control, and action-level conformal risk control."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article flags limits around exchangeability, frozen distribution shift, detector-relative guarantees, role-label governance, shared-detector comparisons, and missing live replanning utility after blocks."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_49ae1a4b67c42d57"
+  ]
+}

@@ -2503,6 +2503,15 @@
       "title_hash": "24e2992b49bc6bc7660a79d1fa83c6626e01171d6ab88fa79e5c784d07d37ae4"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "category_id": "ai-safety",
+      "content_hash": "eb5d5edf41d1602468cef9a074b4a6c9a3c299f3f6af48316596b140d098ce04",
+      "external_id": "huggingface-blog:agent-intrusion-technical-timeline",
+      "first_seen_at": "2026-07-29T06:22:47Z",
+      "item_id": "itm_c75dab1be33f454b",
+      "title_hash": "0e7f51f72cb6aa8a1cfa85f648c937fc278d44c1be45f2df3dc239f5cd785dd7"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.12737",
       "category_id": "ai-safety",
       "content_hash": "f775abcb6e23ea3e78542d036a924db43d6e3b11c1f09630f99c5b596600d353",
@@ -3241,6 +3250,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-29T03:35:52Z",
+  "updated_at": "2026-07-29T06:22:47Z",
   "version": 1
 }

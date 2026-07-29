@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T03:35:52Z",
+  "generated_at": "2026-07-29T06:22:47Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -642,9 +642,9 @@
       "name": "Hugging Face"
     },
     {
-      "description": "Hugging Face official Cohere Labs article selected by the hourly Chinese Daily Report automation.",
+      "description": "Hugging Face official blog and technical incident writeups.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+      "homepage_url": "https://huggingface.co/blog",
       "id": "huggingface-blog",
       "kind": "manual",
       "name": "Hugging Face Blog"

@@ -1,8 +1,15 @@
 {
   "date": "2026-07-29",
-  "generated_at": "2026-07-29T03:35:52Z",
-  "item_count": 2,
+  "generated_at": "2026-07-29T06:22:47Z",
+  "item_count": 3,
   "sections": [
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_c75dab1be33f454b"
+      ],
+      "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
@@ -19,12 +26,14 @@
     }
   ],
   "source_counts": {
-    "arxiv": 2
+    "arxiv": 2,
+    "huggingface-blog": 1
   },
-  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
+  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
   "top_item_ids": [
     "itm_a751cfeb634171fe",
-    "itm_da401251d0ddf193"
+    "itm_da401251d0ddf193",
+    "itm_c75dab1be33f454b"
   ],
   "version": 1
 }

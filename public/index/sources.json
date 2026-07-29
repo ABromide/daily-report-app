@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T18:22:39Z",
+  "generated_at": "2026-07-29T21:28:26Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Primary arXiv record and HTML/PDF source for HANDBOOK.md.",
+      "description": "arXiv abstract page and HTML full text for Speculate While You Reason.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.25398",
+      "homepage_url": "https://arxiv.org/abs/2607.25816",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

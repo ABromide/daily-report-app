@@ -1630,6 +1630,15 @@
       "title_hash": "eb9fd19d7a70988380b84cc9540aa81ace93bd6c03242bc197f146fa6dc15574"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.25816",
+      "category_id": "llm-post-training",
+      "content_hash": "f88d08abd6c97b273520130a3f206c6d0b4a5ef27728811a7b56050bb6bbfb2b",
+      "external_id": "arXiv:2607.25816v1",
+      "first_seen_at": "2026-07-29T21:28:26Z",
+      "item_id": "itm_7b7b901d6166e25d",
+      "title_hash": "676d5d80be961e3abe3e6f53ac6cecf269dddf56d9c0c37f53e0a41392619402"
+    },
+    {
       "canonical_url": "https://github.com/modelscope/ms-swift/releases/tag/v4.4.1",
       "category_id": "llm-post-training",
       "content_hash": "8d862e64d1358bfe6d7883d5ea4602cfbea551b61e8f36a57ac6a708875422d3",
@@ -3286,6 +3295,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-29T18:22:39Z",
+  "updated_at": "2026-07-29T21:28:26Z",
   "version": 1
 }

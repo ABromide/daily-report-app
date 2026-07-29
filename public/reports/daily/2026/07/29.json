@@ -1,7 +1,7 @@
 {
   "date": "2026-07-29",
-  "generated_at": "2026-07-29T18:22:39Z",
-  "item_count": 7,
+  "generated_at": "2026-07-29T21:28:26Z",
+  "item_count": 8,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -24,17 +24,18 @@
       "heading": "大模型后训练相关",
       "item_ids": [
         "itm_8918096bb3997e9c",
-        "itm_a751cfeb634171fe"
+        "itm_a751cfeb634171fe",
+        "itm_7b7b901d6166e25d"
       ],
-      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
     "anthropic": 1,
-    "arxiv": 5,
+    "arxiv": 6,
     "huggingface-blog": 1
   },
-  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 7 条内容。",
+  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 8 条内容。",
   "top_item_ids": [
     "itm_796923ed52430d88",
     "itm_8918096bb3997e9c",

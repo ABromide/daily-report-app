@@ -1,8 +1,8 @@
-# HANDBOOK.md：长政策文档真的能约束 Agent 吗？
+# `HANDBOOK.md`：长政策文档真的能约束 Agent 吗？
 
 ## 元信息
 
-- 原文：HANDBOOK.md: A Benchmark for Long-Context Agentic Instruction Following
+- 原文：`HANDBOOK.md`: A Benchmark for Long-Context Agentic Instruction Following
 - 类型：论文 / benchmark / 代码
 - 作者：Liudas Panavas, Sebastian Minus, Bradley Monton, Derek Ray, Suhaas Garre, Sushant Mehta, Edwin Chen
 - 机构：Surge AI
@@ -15,7 +15,7 @@
 
 ## TL;DR
 
-- **这篇论文要测什么**：HANDBOOK.md 测的不是 Agent 能不能完成一个任务，而是一个 20 到 124 页的公司 SOP、政策文件或 skill 文档，被放进上下文以后，是否真的能在长程工具调用中持续约束 Agent 的每个动作。
+- **这篇论文要测什么**：`HANDBOOK.md` 测的不是 Agent 能不能完成一个任务，而是一个 20 到 124 页的公司 SOP、政策文件或 skill 文档，被放进上下文以后，是否真的能在长程工具调用中持续约束 Agent 的每个动作。
 - **它怎么测**：作者构造 65 个容器化公司环境，覆盖财务、医疗账单、保险、物流、HR 五个领域；每个环境都有文件系统、邮件、Slack、日历、Jira、Shopify 等 MCP 工具，任务提示很短，真正决定成败的规则藏在长 handbook 和环境状态里。
 - **为什么不容易被背题**：10 份专家写的基础 handbook 会被逐题 mutation，改变审批人、金额阈值、有效期、路由规则、模板措辞等 operative content；rubric 按变体文本写成，所以记住基础版本并不能通过。
 - **证据规模**：65 个任务、10 个虚构公司、25 个 PDF handbook、20 个 Word handbook、20 个 HTML handbook、82 个工具、6 个 MCP server、824 条确定性验收标准；handbook 中位数 37 页、均值 48 页，抽取文本中位数 14.9K token、最大 79.4K token。
@@ -42,7 +42,7 @@
 
 ### 它和普通 Agent benchmark 的差别
 
-| 维度 | 普通工具型 Agent benchmark | HANDBOOK.md |
+| 维度 | 普通工具型 Agent benchmark | `HANDBOOK.md` |
 |---|---:|---:|
 | 任务中心 | 完成目标 | 遵守治理文档后再完成目标 |
 | 指令长度 | 通常是 prompt 或短 policy | 20-124 页 handbook |
@@ -169,7 +169,7 @@ flowchart TD
 - ticket 创建了吗？
 - 文件生成了吗？
 
-HANDBOOK.md 进一步问：
+`HANDBOOK.md` 进一步问：
 
 - 不该发的邮件是否没有发？
 - 不该改的 roster 是否没改？
@@ -476,7 +476,7 @@ Gemini 3.5 Flash 没有读取 lab PDF，却提交了 prior authorization，并�
 - “没有发现异常”；
 - “所有步骤符合要求”。
 
-HANDBOOK.md 的证据说明，Agent 自我叙述不能替代状态审计。
+`HANDBOOK.md` 的证据说明，Agent 自我叙述不能替代状态审计。
 
 ## Figure 与 Table 怎么读
 
@@ -552,26 +552,26 @@ N-1 让很多模型分数近乎翻倍。
 
 所以 N-1 适合研究人员分析错误接近度；生产部署仍要围绕 strict gate 设计。
 
-## 相关工作：HANDBOOK.md 放在什么位置？
+## 相关工作：`HANDBOOK.md` 放在什么位置？
 
 ### 与 tau-bench 的区别
 
 tau-bench 测的是用户、Agent、工具之间的动态交互，并要求 Agent 遵守 domain-specific policy。
 
-HANDBOOK.md 的推进在于：
+`HANDBOOK.md` 的推进在于：
 
 - policy 从几页扩展到 20-124 页；
 - policy 不在客服对话中复用，而是逐任务 mutation；
 - 领域从 retail/airline 式客服扩到财务、HR、保险、物流、医疗账单；
 - 重点从 conversation success 转到 enterprise handbook 是否能持续约束工具行为。
 
-可以说，tau-bench 问“Agent 能否在对话中按规则办事”，HANDBOOK.md 问“Agent 能否把公司治理文档变成行动边界”。
+可以说，tau-bench 问“Agent 能否在对话中按规则办事”，`HANDBOOK.md` 问“Agent 能否把公司治理文档变成行动边界”。
 
 ### 与 SOP-Bench 的区别
 
 SOP-Bench 关注工业 SOP 执行，覆盖大量任务和工具编排。
 
-HANDBOOK.md 的差异是：
+`HANDBOOK.md` 的差异是：
 
 - SOP 不是任务本身，而是覆盖在独立工作请求之上的 governing constraint；
 - 任务可以要求“不要做某事”；
@@ -594,7 +594,7 @@ HANDBOOK.md 的差异是：
 
 AgentIF 也关注 agentic instruction following，特点是真实、长、复杂。
 
-HANDBOOK.md 更进一步把 instruction 分裂成：
+`HANDBOOK.md` 更进一步把 instruction 分裂成：
 
 - 当前请求；
 - 长 handbook；
@@ -616,7 +616,7 @@ HANDBOOK.md 更进一步把 instruction 分裂成：
 - 模型没认真读；
 - reasoning effort 不够。
 
-HANDBOOK.md 的价值在于，它把这些模糊说法落成具体状态：
+`HANDBOOK.md` 的价值在于，它把这些模糊说法落成具体状态：
 
 - 邮件是否发出；
 - 日历是否多了事件；
@@ -777,7 +777,7 @@ BeforeAction(a):
 
 这类能力需要 reward 关注“未发生的错误”，而不只是最终任务完成。
 
-因此 HANDBOOK.md 适合作为：
+因此 `HANDBOOK.md` 适合作为：
 
 - RLVR 的 verifier 环境；
 - process reward 的状态检查来源；
@@ -800,13 +800,13 @@ BeforeAction(a):
 - 状态不变量：只允许预期 mutation；
 - 审计证据：最终报告引用 verifier，而不是引用模型自述。
 
-HANDBOOK.md 的失败案例证明，Agent 的“已遵守”报告本身不是证据。
+`HANDBOOK.md` 的失败案例证明，Agent 的“已遵守”报告本身不是证据。
 
 ### 评价方向：把“禁止动作”作为一等指标
 
 很多 Agent eval 仍偏向 task completion。
 
-HANDBOOK.md 提醒我们，企业 Agent 至少要分开看：
+`HANDBOOK.md` 提醒我们，企业 Agent 至少要分开看：
 
 - completion：该做的是否完成；
 - compliance：不该做的是否没做；
@@ -820,7 +820,7 @@ HANDBOOK.md 提醒我们，企业 Agent 至少要分开看：
 
 ## 结论
 
-HANDBOOK.md 是一篇很适合本周 Agent 主题的 benchmark 论文，因为它把“长上下文 + 工具 + 企业规则”里的核心风险切出来了：Agent 不是不知道怎么发邮件、建日历、改 Jira，而是没有稳定地把长政策文档当成行动前的权威约束。
+`HANDBOOK.md` 是一篇很适合本周 Agent 主题的 benchmark 论文，因为它把“长上下文 + 工具 + 企业规则”里的核心风险切出来了：Agent 不是不知道怎么发邮件、建日历、改 Jira，而是没有稳定地把长政策文档当成行动前的权威约束。
 
 它的 65 个任务、824 条确定性 verifier、82 个 MCP 工具和 20-124 页 handbook 共同构成一个很硬的测试场。最强配置 36.2% strict pass@1、多数 frontier 配置低于 25%，说明当前模型能力在进步，但“给 Agent 一份 policy 文件”还不能替代真正的权限系统。
 

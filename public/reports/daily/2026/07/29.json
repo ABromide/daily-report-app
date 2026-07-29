@@ -1,7 +1,7 @@
 {
   "date": "2026-07-29",
-  "generated_at": "2026-07-29T00:21:42Z",
-  "item_count": 1,
+  "generated_at": "2026-07-29T03:35:52Z",
+  "item_count": 2,
   "sections": [
     {
       "heading": "大模型 Agent 相关",
@@ -9,13 +9,21 @@
         "itm_da401251d0ddf193"
       ],
       "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_a751cfeb634171fe"
+      ],
+      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
-    "arxiv": 1
+    "arxiv": 2
   },
-  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 1 条内容。",
+  "summary": "2026-07-29 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
   "top_item_ids": [
+    "itm_a751cfeb634171fe",
     "itm_da401251d0ddf193"
   ],
   "version": 1

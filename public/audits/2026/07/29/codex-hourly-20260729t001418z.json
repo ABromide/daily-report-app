@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/27/itm_da401251d0ddf193/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-29T00:21:42Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260729t001418z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 14 个 2026-07-27T00:00:00Z 之后候选；主 Agent 从统一表选择 MemTX。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv abstract、HTML full text 和附录表格，提取协议状态机、invariants、benchmark、baseline、主结果、成本和局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "定向检查近期已发 APPA、ContainmentBench、PlanPhys、VIGOR 等；MemTX 未在 clean origin/data 中命中重复。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式解释和 Mermaid；未本地化图片，因为原图证据已用结构化文字和流程图重构。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_da401251d0ddf193"
+  ]
+}

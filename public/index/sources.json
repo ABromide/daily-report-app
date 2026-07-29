@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T15:27:25Z",
+  "generated_at": "2026-07-29T18:22:39Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Related CryptanalysisBench paper for AI cryptanalysis capability positioning.",
+      "description": "Primary arXiv record and HTML/PDF source for HANDBOOK.md.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.18538",
+      "homepage_url": "https://arxiv.org/abs/2607.25398",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -370,9 +370,9 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Code repository and release metadata.",
+      "description": "Public repository with HANDBOOK.md tasks, environments and evaluation harness.",
       "enabled": true,
-      "homepage_url": "https://github.com/",
+      "homepage_url": "https://github.com/surge-ai/handbook",
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
@@ -840,6 +840,14 @@
       "id": "spatialclaw-project",
       "kind": "manual",
       "name": "SpatialClaw project page"
+    },
+    {
+      "description": "Official benchmark blog post with narrative examples and leaderboard context.",
+      "enabled": true,
+      "homepage_url": "https://surgehq.ai/blog/handbook-md",
+      "id": "surge-ai",
+      "kind": "manual",
+      "name": "Surge AI"
     },
     {
       "description": "Sysdig Threat Research Team 的云原生威胁研究与 AI-enabled cyber threat 分析。",

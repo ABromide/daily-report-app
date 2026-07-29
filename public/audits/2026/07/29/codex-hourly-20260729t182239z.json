@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_1649348762d73c44/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 12
+  },
+  "generated_at": "2026-07-29T18:22:39Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260729t182239z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 13 个 2026-07-27 之后候选；主 Agent 选择 llm-agent 方向的 HANDBOOK.md 深读。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML/PDF、Surge 官方博客和公开 GitHub 仓库，核对任务结构、工具面、verifier、结果表和失败模式。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 tau-bench、SOP-Bench 与 AgentIF，明确 HANDBOOK.md 在 policy-governed long-context agent evaluation 中的位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式块、伪代码和 Mermaid；未本地化图片，因为关键 Figure/Table 证据已转写为文本表格。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1649348762d73c44"
+  ]
+}

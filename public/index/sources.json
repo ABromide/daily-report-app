@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T06:22:47Z",
+  "generated_at": "2026-07-29T09:27:17Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv paper page and PDF for Reinforcement Learning for Code Optimization.",
+      "description": "arXiv paper page, HTML and PDF for IH-Benchmark.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.25970",
+      "homepage_url": "https://arxiv.org/abs/2607.25987",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

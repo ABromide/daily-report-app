@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/29/itm_1243d0b608dcd0cb/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-29T09:27:17Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260729t09271785317237z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 2026-07-27T00:00:00Z 之后的统一候选表；主 Agent 选择 ai-safety 候选 arXiv:2607.25987v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML 与 27 页 PDF，提取 2,336 场景、44 约束族、37 模型、主表、附录、失败模式和局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 IH-Challenge、ManyIH、XIH-Bench、AgentDojo、IHEval 与 Agent Security Bench，确认 IH-B 的评测定位。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式块和 Mermaid；未本地化图片，因为关键 Figure/Table 证据已用结构化文字重建。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1243d0b608dcd0cb"
+  ]
+}

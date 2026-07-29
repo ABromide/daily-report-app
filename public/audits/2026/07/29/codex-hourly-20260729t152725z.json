@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/28/itm_796923ed52430d88/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-29T15:27:25Z",
+  "quality_gate": {
+    "evidence_points": 17,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260729t152725z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 16 个 2026-07-22 到 2026-07-29 候选；主 Agent 因 Top 1 与 Top 3 已发布，选择 Top 2 Anthropic cryptanalysis。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 Anthropic 官方博客、HAWK 技术论文、AES 技术论文与 CryptanalysisBench 摘要，提取 HAWK reduction、7-round AES、验证成本和披露边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 NIST HAWK 标准化背景、CryptanalysisBench 能力评估和同周 Agent 安全事件，明确 AI for Security 与 Agent 安全治理位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式块、伪代码和 Mermaid；未本地化图片，因为官方图片不承载关键证据。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_796923ed52430d88"
+  ]
+}

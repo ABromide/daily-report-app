@@ -1585,6 +1585,15 @@
       "title_hash": "d6553c7a4e47447b9164eae336d6994d2440af813ea3851abae2fd12bd708134"
     },
     {
+      "canonical_url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+      "category_id": "ai-safety",
+      "content_hash": "165731034ca288dc745d70490a9e539e6be893da96a422eeae945ef5f052c0d0",
+      "external_id": "anthropic-frontier-red-team-cryptographic-weaknesses-2026-07-28",
+      "first_seen_at": "2026-07-29T15:27:25Z",
+      "item_id": "itm_796923ed52430d88",
+      "title_hash": "3d76719f6b0afd4c14e6cc41f29cd5e5d578e4c74f041f58248ac9eb396699af"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.15385",
       "category_id": "ai-safety",
       "content_hash": "bbaa3a32b537ededb3827805063ba7dae80ac16c51d70859d046c0acf4500d99",
@@ -3268,6 +3277,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-29T12:16:27Z",
+  "updated_at": "2026-07-29T15:27:25Z",
   "version": 1
 }

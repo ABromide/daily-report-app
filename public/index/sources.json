@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T12:16:27Z",
+  "generated_at": "2026-07-29T15:27:25Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -34,9 +34,9 @@
       "name": "AgentVigil paper"
     },
     {
-      "description": "Official Anthropic announcement and related safety research materials.",
+      "description": "Anthropic official Frontier Red Team research post and linked technical papers.",
       "enabled": true,
-      "homepage_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "homepage_url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
       "id": "anthropic",
       "kind": "manual",
       "name": "Anthropic"
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Open-access research paper repository.",
+      "description": "Related CryptanalysisBench paper for AI cryptanalysis capability positioning.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2607.18538",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/29/itm_8918096bb3997e9c/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-29T12:16:27Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "20260729t121627z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training and ai-safety for the 2026-07-27 UTC current-week window; Relay-OPD ranked first with arXiv, project page and code available."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv HTML, project page and repository documentation; extracted trigger rule, relay budget, training objective, main benchmark table, ablations, implementation requirements and limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Checked boundary claims: trigger is a reflection-token heuristic, evidence is math-reasoning focused, and Qwen3/vLLM-specific implementation limits cross-domain generalization."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_8918096bb3997e9c"
+  ]
+}

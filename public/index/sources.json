@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T21:28:26Z",
+  "generated_at": "2026-07-30T00:28:36Z",
   "sources": [
     {
       "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "arXiv abstract page and HTML full text for Speculate While You Reason.",
+      "description": "arXiv abstract, PDF and HTML full text for Keep It InMind.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.25816",
+      "homepage_url": "https://arxiv.org/abs/2607.24368",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -664,6 +664,14 @@
       "id": "hypasd-art-tool-rl-box",
       "kind": "manual",
       "name": "hypasd-art/Tool-RL-Box"
+    },
+    {
+      "description": "Official benchmark dataset, schema, evaluation guide and assets.",
+      "enabled": true,
+      "homepage_url": "https://github.com/imlrz/InMind",
+      "id": "inmind-github",
+      "kind": "manual",
+      "name": "InMind GitHub repository"
     },
     {
       "description": "Manual official product and documentation source for JamJet.",

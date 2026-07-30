@@ -118,6 +118,15 @@
       "title_hash": "ed5ec45947b6a4f2a89ba6b97754a6e245b5922fdf225f420a66acd83ebdf5cc"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.24368",
+      "category_id": "llm-agent",
+      "content_hash": "e40079eba83cd84b042b237e51d84472006e7607becd29eaa2fe75264ba63b8f",
+      "external_id": "arXiv:2607.24368v1",
+      "first_seen_at": "2026-07-30T00:28:36Z",
+      "item_id": "itm_09c456e3a31ef32c",
+      "title_hash": "c7d7c64592bd08f84f228df12a6141faf2f508cbf0bf77698add3f159c2fb820"
+    },
+    {
       "canonical_url": "https://openai.com/index/patch-the-planet/",
       "category_id": "ai-safety",
       "content_hash": "c0182963eba1fb26b59f8254b6bb2c61855fee37967dba9cc27b66d4a2831b14",
@@ -3295,6 +3304,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-29T21:28:26Z",
+  "updated_at": "2026-07-30T00:28:36Z",
   "version": 1
 }

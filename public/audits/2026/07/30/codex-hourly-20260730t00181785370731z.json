@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/30/itm_09c456e3a31ef32c/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 15
+  },
+  "generated_at": "2026-07-30T00:28:36Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260730t00181785370731z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类，返回 16 个 2026-07-27T00:00:00Z 之后候选；主 Agent 选择 rank 1 arXiv:2607.24368v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML/PDF、项目页和 GitHub 数据集 README，提取 retrieval hypothesis、InMind 诊断控制、Table 1/2/3、Always-in-State 和局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照近期 AttriMem、MemTX 与长期记忆方向，确认本题关注 query-conditioned routing 盲区而非写入训练或事务记忆。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式、伪代码、Mermaid 和两张本地化图片；实测 5358 个 CJK 字符。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_09c456e3a31ef32c"
+  ]
+}

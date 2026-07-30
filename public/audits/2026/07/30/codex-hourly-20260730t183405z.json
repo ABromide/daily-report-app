@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/30/itm_d451cd4615bfa8a8/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-07-30T18:34:05Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5280,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260730t183405z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout returned 18 current-week candidates across llm-agent, llm-post-training, and ai-safety; top duplicates were pivoted within the same table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv abstract, HTML, PDF extraction, tables, formula, ablation, and cost sections before writing."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External search found arXiv metadata, NLP arXiv daily listing, and paper mirrors; no official code repository was identified."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates ROPD's safety-task trade-off from its residual system-prompt and deployment-channel risk."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, claim-mechanism-evidence-boundary tables, formula blocks, pseudocode, Mermaid, result tables, and boundary checklists."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_d451cd4615bfa8a8"
+  ]
+}

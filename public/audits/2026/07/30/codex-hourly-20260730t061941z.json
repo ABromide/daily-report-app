@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/30/itm_520e55e8ef6ca599/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-30T06:50:32Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260730t061941z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 15 个 2026-07-27T00:00:00Z 之后候选；主 Agent 选择表内 AgentSnare。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv abstract、HTML 和 PDF，提取威胁模型、ShadowOS 状态机制、DDD 公式、实验协议、主结果和消融边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 AgentSnare、2607.26998 和相关 GitHub 仓库；未发现独立代码仓库，正文记录可复现性边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式解释、伪代码、Mermaid 以外的本地化图表证据；CJK 字数 5300。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_520e55e8ef6ca599"
+  ]
+}

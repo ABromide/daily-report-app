@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-30T12:58:00Z",
+  "generated_at": "2026-07-30T15:42:25Z",
   "sources": [
     {
-      "description": "Manual current-week ACL Anthology paper selection for Daily Report hourly deep research.",
+      "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
       "enabled": true,
-      "homepage_url": "https://aclanthology.org/",
+      "homepage_url": "https://aclanthology.org/2025.findings-acl.1311/",
       "id": "acl-anthology",
       "kind": "manual",
       "name": "ACL Anthology"
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Primary paper metadata and full text.",
+      "description": "Primary arXiv record, API metadata, PDF and HTML source for Recast.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/abs/2607.26820",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/29/itm_be1c6cf3fca5851b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 10
+  },
+  "generated_at": "2026-07-30T15:42:25Z",
+  "quality_gate": {
+    "evidence_points": 22,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 9,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260730t153554z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 11 个 2026-07-27 之后候选；主 Agent 选择 ai-safety 方向 Recast 深读。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML、PDF 和 API 元数据，核对问题定义、方法公式、训练数据、主结果、消融、Figure/Table 与边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 TRACES、Red Queen 与 AEGIS2.0，明确 Recast 在黑盒轨迹级未来风险预测中的位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式解释、伪代码和 Mermaid；未本地化图片，因为关键 Figure/Table 证据已转写为文本表格。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_be1c6cf3fca5851b"
+  ]
+}

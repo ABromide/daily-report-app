@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T09:33:33Z",
+  "generated_at": "2026-07-31T12:46:47Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -40,6 +40,14 @@
       "id": "anthropic",
       "kind": "manual",
       "name": "Anthropic"
+    },
+    {
+      "description": "Primary official incident review for Claude cybersecurity evaluation incidents.",
+      "enabled": true,
+      "homepage_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "id": "anthropic-news",
+      "kind": "manual",
+      "name": "Anthropic News"
     },
     {
       "description": "由自动化从 item itm_17e42b7d5e2a2c7e 推断的来源。",
@@ -610,6 +618,14 @@
       "name": "Harness Handbook Project"
     },
     {
+      "description": "Third-party security news coverage used as external corroboration.",
+      "enabled": true,
+      "homepage_url": "https://www.helpnetsecurity.com/2026/07/31/anthropic-claude-cybersecurity-incidents/",
+      "id": "helpnetsecurity",
+      "kind": "manual",
+      "name": "Help Net Security"
+    },
+    {
       "description": "Official Resource2Skill dataset release containing skills_wiki and skills_library.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/datasets/microsoft/RESOURCE2SKILL",
@@ -714,6 +730,14 @@
       "name": "Mask-Aware Policy Gradients GitHub"
     },
     {
+      "description": "Independent evaluator background and current discussion of AI incident investigations.",
+      "enabled": true,
+      "homepage_url": "https://metr.org/risk-assessment/",
+      "id": "metr",
+      "kind": "manual",
+      "name": "METR"
+    },
+    {
       "description": "Project code repository linked from the paper.",
       "enabled": true,
       "homepage_url": "https://github.com/microsoft/gflowrl",
@@ -768,6 +792,14 @@
       "id": "openai-global-affairs",
       "kind": "manual",
       "name": "OpenAI Global Affairs"
+    },
+    {
+      "description": "Related official disclosure that triggered Anthropic's retrospective review.",
+      "enabled": true,
+      "homepage_url": "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+      "id": "openai-news",
+      "kind": "manual",
+      "name": "OpenAI News"
     },
     {
       "description": "Background source for prompt injection risk framing.",
@@ -880,6 +912,14 @@
       "id": "trailofbits",
       "kind": "manual",
       "name": "Trail of Bits Blog"
+    },
+    {
+      "description": "Third-party reporting and expert criticism used as external context.",
+      "enabled": true,
+      "homepage_url": "https://www.wired.com/story/anthropic-says-claude-hacked-real-systems-during-cybersecurity-tests/",
+      "id": "wired",
+      "kind": "manual",
+      "name": "WIRED"
     }
   ],
   "version": 1

@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/31/itm_b551d8d31181bceb/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-07-31T12:46:47Z",
+  "quality_gate": {
+    "evidence_points": 24,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 10,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260731t124333z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 12 个 2026-07-27 UTC 之后候选；主 Agent 选择第一位 Anthropic 官方事故复盘。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 Anthropic 官方报告、OpenAI 相关披露、METR 背景和两篇第三方报道，提取时间线、三起事故、控制缺口和证据边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "文章将事故机制拆成 CTF 目标、错误环境信念、真实联网路径、公共命名空间写入、实时监控缺失和供应商 assurance。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 OpenAI/Hugging Face 事件和 METR 对独立审查的背景要求，区分 zero-day containment failure 与 Anthropic harness/运营边界失败。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h2/h3、分点、表格、公式解释、伪代码和 Mermaid；没有本地化图片，因为原文关键证据可用文字结构化呈现。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b551d8d31181bceb"
+  ]
+}

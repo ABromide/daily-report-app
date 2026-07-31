@@ -2386,6 +2386,15 @@
       "title_hash": "9e2d14a13c46df84b2861dc4ee6c301416045ef7b3ff8d89bb02aeb6cbe3c51a"
     },
     {
+      "canonical_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "category_id": "ai-safety",
+      "content_hash": "6ac19ffb5a74b316c982f31c2c96bab333525424ce3a191531973b351462a923",
+      "external_id": "anthropic/news/investigating-incidents-cybersecurity-evals@2026-07-30",
+      "first_seen_at": "2026-07-31T12:46:47Z",
+      "item_id": "itm_b551d8d31181bceb",
+      "title_hash": "2ea7a0d882f5f64fb438b34b59feae0b5aec05785cd181f6ed991a2fcdb80948"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.01224",
       "category_id": "llm-agent",
       "content_hash": "eac05c2047e581562c1781d4796d81a868f801cc5234d03d2a06d965193eff6b",
@@ -3403,6 +3412,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-31T09:33:33Z",
+  "updated_at": "2026-07-31T12:46:47Z",
   "version": 1
 }

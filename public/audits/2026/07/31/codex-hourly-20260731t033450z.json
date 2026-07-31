@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/07/31/itm_eb20e91c93f1cb66/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-07-31T03:43:53Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260731t033450z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout searched llm-agent, llm-post-training and ai-safety, returned a unified current-week table, and recommended OSReward as a primary deep-read target."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv metadata, arXiv HTML full text and the OSReward project page, extracting benchmark construction, judge protocol, leniency analysis, OS-Shepherd data pipeline, SFT/GRPO recipe, Table 4 results and cost bounds."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates OSReward human-gold evidence from held-out verifier agreement, notes the work-in-progress status, avoids overclaiming OS-Shepherd as a frontier replacement, and records that no external images were used."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_eb20e91c93f1cb66"
+  ]
+}

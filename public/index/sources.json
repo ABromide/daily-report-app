@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T06:39:55Z",
+  "generated_at": "2026-07-31T09:33:33Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -50,9 +50,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual current-week arXiv paper selection for Daily Report hourly deep research.",
+      "description": "Primary arXiv record, HTML and PDF for HARGO.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2607.28301",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -354,6 +354,14 @@
       "name": "Context-to-Execution Integrity arXiv"
     },
     {
+      "description": "Third-party arXiv discovery mirror used only as auxiliary current-week reference.",
+      "enabled": true,
+      "homepage_url": "https://deeplearn.org/arxiv/798101/hargo%3A-heterogeneity-aware-reward-guided-optimization-for-rl-post-training-of-llms-on-hpc-tasks",
+      "id": "deeplearn-org",
+      "kind": "manual",
+      "name": "DeepLearn.org"
+    },
+    {
       "description": "Official policy framework accompanying the AI Control Roadmap.",
       "enabled": true,
       "homepage_url": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/securing-the-future-of-ai-agents/three-layers-of-agent-security.pdf",
@@ -634,9 +642,9 @@
       "name": "Hugging Face Papers"
     },
     {
-      "description": "Official model card and release metadata referenced by the article.",
+      "description": "Public HPC-GPT dataset and HARGO model checkpoint links used for reproducibility checks.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co/",
+      "homepage_url": "https://huggingface.co/datasets/HPC-GPT/HPC",
       "id": "huggingface",
       "kind": "manual",
       "name": "Hugging Face"

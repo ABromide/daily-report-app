@@ -1198,6 +1198,15 @@
       "title_hash": "b696f697d68477b32b2d56a762abc03dd0ab7ad5dd74818e49f114e98ff30b4a"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.28301",
+      "category_id": "llm-post-training",
+      "content_hash": "419634e6dd2385e3757689fe25cf66abd02923fa07b6250a11cb73e672cc2ae9",
+      "external_id": "arXiv:2607.28301v1",
+      "first_seen_at": "2026-07-31T09:33:33Z",
+      "item_id": "itm_55b0aca500f87a16",
+      "title_hash": "1530ba9201a151b66dec58a95d46fb9d71cab1b5d5de6f77d2c0bb4f4e9a8ad3"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.31916",
       "category_id": "llm-agent",
       "content_hash": "068498513014651cec1d7a424a30bc9884c68906085300f5c14febf20be88665",
@@ -3394,6 +3403,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-07-31T06:39:55Z",
+  "updated_at": "2026-07-31T09:33:33Z",
   "version": 1
 }

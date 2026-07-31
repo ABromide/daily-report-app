@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/07/31/itm_55b0aca500f87a16/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 2
+  },
+  "generated_at": "2026-07-31T09:33:33Z",
+  "quality_gate": {
+    "evidence_points": 22,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 9,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260731t093333z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 2026-07-27 UTC 之后候选；ORCA-bench 已在远端 data 中重复，主 Agent 同表 pivot 到 HARGO。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv abstract、HTML、PDF、Hugging Face 数据集页面和模型链接，提取公式、训练配置、主结果、消融、失败边界和复现检查。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 HPC-GPT、GRPO、DrGRPO、DPO、KTO、SimPO 与 DeepLearn.org 当前周镜像，确认 HARGO 在领域 RL 后训练中的位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h2/h3、分点、表格、公式块、伪代码和 Mermaid；未本地化图片，因为关键 Figure/Table 证据已转写为结构化文字。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_55b0aca500f87a16"
+  ]
+}

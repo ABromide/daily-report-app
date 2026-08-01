@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/01/itm_12e914a045da0e00/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-01T13:25:29Z",
+  "quality_gate": {
+    "evidence_points": 13,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5303,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260801t130947z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training 和 ai-safety；MIND 日期有效且当前 origin/data 未命中。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已完整阅读 arXiv PDF/HTML，按 threat model、方法、实验、消融和边界写入深读。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 intent-aware Information Bottleneck、多超平面分类器、ASR/ACC/Time 指标和部署层次。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 adaptive attacker、工具参数污染、长期潜伏污染、proxy representation 和权限治理缺口。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 arXiv、Papers.cool、ADS 与公开索引页，未发现独立复现实验。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用表格、公式块、伪代码和 Mermaid，实际中文 CJK 字符数为 5303。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_12e914a045da0e00"
+  ]
+}

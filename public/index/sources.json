@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T12:46:47Z",
+  "generated_at": "2026-08-01T04:41:16Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -58,9 +58,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Primary arXiv record, HTML and PDF for HARGO.",
+      "description": "Manual deep-read source for current-week AI safety, LLM agent, and post-training research papers.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2607.28301",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

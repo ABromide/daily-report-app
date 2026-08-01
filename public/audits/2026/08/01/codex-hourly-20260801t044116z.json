@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/07/29/itm_346dcb789958234b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-01T04:41:16Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5004,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260801t044116z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; OSReward was rejected as already published and SafeFlow selected from the same table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv v2 paper, extracted methodology, experiments, ablations, confidence intervals, adaptive attacks, and failure boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Checked the official GitHub research release and a related Microsoft IFC discussion to frame implementation and reproducibility boundaries."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Marked runtime observability, provenance edges, authorization metadata, defense-side injection, and research-release reproducibility as limits."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses TL;DR, h3 sections, tables, formulas, pseudocode, and Mermaid; no external images are embedded."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_346dcb789958234b"
+  ]
+}

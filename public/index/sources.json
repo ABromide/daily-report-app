@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T13:25:29Z",
+  "generated_at": "2026-08-01T15:47:13Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -58,9 +58,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI research papers.",
+      "description": "Primary paper record, arXiv API metadata, PDF and HTML source for Qwen-UI-Agent.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2607.28227",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -904,6 +904,14 @@
       "id": "sysdig-threat-research",
       "kind": "manual",
       "name": "Sysdig Threat Research Team"
+    },
+    {
+      "description": "Official project website and GitHub materials for Qwen-UI-Agent demos and benchmark summaries.",
+      "enabled": true,
+      "homepage_url": "https://tongyi-mai.github.io/Qwen-UI-Agent/",
+      "id": "tongyi-mai",
+      "kind": "manual",
+      "name": "Tongyi-MAI"
     },
     {
       "description": "Manual partner blog source for Patch the Planet field notes.",

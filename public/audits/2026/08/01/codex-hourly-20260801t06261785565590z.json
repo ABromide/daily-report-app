@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/01/itm_17a7d982701ab252/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-01T06:27:55Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260801t06261785565590z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "一个合并 Scout 覆盖 Agent、后训练和 AI 安全；Relay-OPD 与 IH-Benchmark 已发布，改选未命中的 Matryoshka Agent。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 22 页 arXiv PDF，提取三层机制、解法树、目标函数、实验、消融、上下文与失败案例。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "核对 Orchestrator、Tool、Sub-Agent 的输入输出边界及 SFT 与排序式在线 RL 的不同监督对象。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确 best-of-three、MLE-Dojo 外推、摘要失真、成本与无公开代码的证据边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "以原论文相关工作定位模块化 Agent、MLE coding agent 与学习式优化；未发现可核验的作者代码链接。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文采用分节、列表、表格、公式、伪代码和 Mermaid，避免连续长段。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_17a7d982701ab252"
+  ]
+}

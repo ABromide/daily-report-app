@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T04:41:16Z",
+  "generated_at": "2026-08-01T06:27:55Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -58,7 +58,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI safety, LLM agent, and post-training research papers.",
+      "description": "开放预印本平台；本轮以论文原文和官方日期记录为证据。",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

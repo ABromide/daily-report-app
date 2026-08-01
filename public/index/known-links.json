@@ -361,6 +361,15 @@
       "title_hash": "feeb311fff4e6e62576e3b06838e008d9d12259caa47d35705edc53394246045"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2607.25090",
+      "category_id": "llm-agent",
+      "content_hash": "061a7d5b1da7d9340eb96d187a6f7b755dc46f9b2d523a15d2a94e34aa43753b",
+      "external_id": "arXiv:2607.25090",
+      "first_seen_at": "2026-08-01T06:27:55Z",
+      "item_id": "itm_17a7d982701ab252",
+      "title_hash": "eb17e7e474f83ed2bc79d7c7778f80e4c72f9ad74c9a21b959e7394cb1a1f148"
+    },
+    {
       "canonical_url": "https://red.anthropic.com/2026/attack-navigator/",
       "category_id": "ai-safety",
       "content_hash": "2785100f8b2f705501d6656802b95307dcc80a45736aa38a532d9bb53d35595d",
@@ -3421,6 +3430,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-01T04:41:16Z",
+  "updated_at": "2026-08-01T06:27:55Z",
   "version": 1
 }

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/01/itm_d0cae5c10649436b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-01T09:46:38Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5792,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260801t094638z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全，AISPA 日期有效且重复风险低。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已完整阅读 arXiv PDF/HTML，按论文结构写入中文深读。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 AISPA 八维 taxonomy、span-level entry、三轮人机审计和数据验证。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确泄露 prompt 样本、版本漂移、选择偏差和行为验证缺口。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索 arXiv、System Prompt Index 和第三方摘要页，未发现独立复现。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用表格、公式块和 Mermaid，实际中文 CJK 字符数为 5792。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_d0cae5c10649436b"
+  ]
+}

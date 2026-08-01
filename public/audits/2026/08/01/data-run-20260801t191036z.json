@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/07/29/itm_2069ecd051219374/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-01T19:17:36Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "data-run-20260801t191036z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，并把 SecRespond 评为 TOP1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv PDF/HTML 与项目 README/runner，提取任务、评分和实验证据。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 CAP taxonomy、CHK/CAP 公式、runner contract、流程 Skill 和部署边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文列出 LLM-as-a-Judge、10 个 range、OpenCode harness、合成环境和流程边界局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文对照 CTF、CVE、SOC 告警、patch benchmark，定位 post-compromise 增量。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含 h3、表格、公式块、伪代码和 Mermaid，未直接引用外部图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2069ecd051219374"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T03:54:34Z",
+  "generated_at": "2026-08-02T13:20:38Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -24,6 +24,14 @@
       "id": "agent-budget-control",
       "kind": "manual",
       "name": "agent-budget-control repository"
+    },
+    {
+      "description": "Official reproduction repository for AgentRadio experiments.",
+      "enabled": true,
+      "homepage_url": "https://github.com/Coral-Protocol/AgentRadio",
+      "id": "agentradio-code",
+      "kind": "manual",
+      "name": "AgentRadio code repository"
     },
     {
       "description": "Related automated black-box red-teaming baseline discussed by PI-Hunter.",
@@ -58,6 +66,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
+      "description": "Manual selection from current-week arXiv papers.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

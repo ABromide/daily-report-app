@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/02/itm_5283449f65cccb17/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-02T19:25:42Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260802t192542z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; InfoOps Bench ranked first with official arXiv date evidence and no exact local arXiv-ID duplicate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv HTML/PDF and companion benchmark page, extracted pipeline, metrics, controls, result tables, limitations, and safety boundaries."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article uses Chinese Markdown with TL;DR, h3 sections, tables, formulas, pseudocode, Mermaid diagrams, evidence boundaries, and no external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5283449f65cccb17"
+  ]
+}

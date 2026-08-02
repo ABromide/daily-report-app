@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T16:03:56Z",
+  "generated_at": "2026-08-02T19:25:42Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -824,6 +824,14 @@
       "id": "papers-cool",
       "kind": "manual",
       "name": "Papers.cool"
+    },
+    {
+      "description": "Manual source for the InfoOpsBench arXiv paper and companion live benchmark page.",
+      "enabled": true,
+      "homepage_url": "https://pattrn.ai/research/infoopsbench/",
+      "id": "pattrn-infoopsbench",
+      "kind": "manual",
+      "name": "Pattrn AI InfoOpsBench"
     },
     {
       "description": "Manual source for AI agent package integration metadata.",

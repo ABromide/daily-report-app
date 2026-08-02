@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/02/itm_95a87c596b453e6a/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-08-02T16:03:56Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5127,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 2
+  },
+  "run_id": "data-run-20260802t160356z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全；首选本地 CUA scaling 论文已在 origin/data 命中重复，本轮从同一候选表 pivot 到 MANTA。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已完整阅读 arXiv 摘要页、HTML 全文和 PDF，抽取 topology representation、Planner/Auditor/Reflector、playbook、benchmark、baseline、消融和 audit 统计。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解可校验 topology spec、bounded mutation operators、两层 playbook、context policy 和 permission-preserving repair 的工程边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确每 benchmark 30 题、Gemma 4 31B、缺完整官方代码、Auditor precision/recall 噪声、长期记忆错误率和真实权限安全验证不足。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索原题和 arXiv ID，参考 arXiv recent listing 与 Moonlight 摘要页；未发现官方代码仓库或独立复现实验。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 TL;DR、claim 表、公式、伪代码、实验表、失败统计表和 Mermaid；未本地化图片，因为文字化表格和流程图足以承载证据。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_95a87c596b453e6a"
+  ]
+}

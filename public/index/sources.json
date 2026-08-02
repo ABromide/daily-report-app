@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T21:54:06Z",
+  "generated_at": "2026-08-02T01:21:05Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -58,7 +58,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI research papers.",
+      "description": "arXiv paper metadata and PDF for current-week research signals.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -386,9 +386,9 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Public repository with HANDBOOK.md tasks, environments and evaluation harness.",
+      "description": "Public code repositories and release metadata.",
       "enabled": true,
-      "homepage_url": "https://github.com/surge-ai/handbook",
+      "homepage_url": "https://github.com/",
       "id": "github",
       "kind": "manual",
       "name": "GitHub"
@@ -658,9 +658,9 @@
       "name": "Hugging Face Papers"
     },
     {
-      "description": "Public HPC-GPT dataset and HARGO model checkpoint links used for reproducibility checks.",
+      "description": "Public model and dataset hosting metadata.",
       "enabled": true,
-      "homepage_url": "https://huggingface.co/datasets/HPC-GPT/HPC",
+      "homepage_url": "https://huggingface.co/",
       "id": "huggingface",
       "kind": "manual",
       "name": "Hugging Face"
@@ -746,7 +746,7 @@
       "name": "Microsoft GitHub"
     },
     {
-      "description": "Manual current-week Microsoft Research selection from the merged Daily Report Scout table.",
+      "description": "Official Microsoft Research blog and project announcements.",
       "enabled": true,
       "homepage_url": "https://www.microsoft.com/en-us/research/",
       "id": "microsoft-research",

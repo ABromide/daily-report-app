@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/03/itm_a41103303c39d89c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-03T22:03:32Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260803t220332z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training 和 ai-safety；推荐 arXiv:2607.28685，并列出 10 个候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已读取官方 arXiv 页面、PDF、HTML、TeX 源和表格文件，正文覆盖方法、结果、附录与边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文复原 metric-validity 公式、能力控制、partial Spearman、bootstrap、panel expansion 和 metric sensitivity。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 R-Judge、InjecAgent、AgentHarm、AgentDojo、ToolEmu、AutoMonitor-Bench 与 tau2-bench 的角色差异。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 AgentDojo n=5、tau2 单次运行、虚构 misalignment 场景、能力锚点不完整和未验证外部代码仓库。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、列表、表格、公式、伪代码和 Mermaid，并只引用本地化图片路径。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a41103303c39d89c"
+  ]
+}

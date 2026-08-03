@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/03/itm_012833b3ed2842de/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-03T07:28:15Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260803t072015z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，推荐 browser-use MCP isError 修复为首选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读官方 commit、PR、项目 README、MCP client 源码、回归测试和 MCP 规范。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 MCP tool 到 browser-use ActionResult 的状态映射、测试覆盖和生产失败场景。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确边界：server 端 isError 缺失、错误文本净化、权限隔离和真实兼容矩阵仍未解决。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "引用 MCP 官方 Tools 规范并与 Agent 工具安全、记忆污染和审计链路比较。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，含 TL;DR、表格、公式块、Mermaid 和分点小节，CJK 超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_012833b3ed2842de"
+  ]
+}

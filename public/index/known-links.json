@@ -10,6 +10,15 @@
       "title_hash": "0e45a86a8dc8d424e7d1e6458cfc468102920024f64ee8114cad0a9b478b8ed5"
     },
     {
+      "canonical_url": "https://github.com/browser-use/browser-use/commit/8651458987cc911ee96a5d31478a3da5aa625bd9",
+      "category_id": "ai-safety",
+      "content_hash": "0930abab76d2c6659210c038717123687f87df2d34e0c6b6094a6d7fc681d30b",
+      "external_id": "github:browser-use/browser-use@8651458987cc911ee96a5d31478a3da5aa625bd9",
+      "first_seen_at": "2026-08-03T07:28:15Z",
+      "item_id": "itm_012833b3ed2842de",
+      "title_hash": "53d151177f2c22e6b01711379100a3459123805203ae53c6fe3c92f39a0d00fa"
+    },
+    {
       "canonical_url": "https://github.com/jamjet-labs/jamjet/commit/6ed0b697e59a5e24adb2426c28b9b69cecd7430e",
       "category_id": "ai-safety",
       "content_hash": "c13b41b1ba012b9270da350010bd4865f62f6697b026582a7a350fba824a62e5",
@@ -3547,6 +3556,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-03T01:18:37Z",
+  "updated_at": "2026-08-03T07:28:15Z",
   "version": 1
 }

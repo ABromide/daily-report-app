@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/03/itm_69873b5f15f663ae/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 4
+  },
+  "generated_at": "2026-08-03T19:22:21Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260803t192221z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; AgentHPOBench ranked first and passed exact remote-corpus grep."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv PDF, TeX source, official README, setup notes, task manifest, and validation code before drafting."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article maps task construction, sequential HPO formulation, metrics, harness audit, repository layout, and result validation boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Article compares AgentHPOBench with broad ML-agent benchmarks and conventional HPO benchmarks without inventing unsupported experiments."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Limitations cover 30-task scale, API single-run evidence, full-budget interpretation, reproducibility cost, and final-step scoring boundary."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TL;DR, tables, formulas, pseudocode, Mermaid, and localized images with measured CJK count above 5000."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_69873b5f15f663ae"
+  ]
+}

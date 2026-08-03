@@ -1441,6 +1441,15 @@
       "title_hash": "abba66e1bfaf51f0d76d026c6836f7f88ee8564404b8b88956ee4895a4da09f9"
     },
     {
+      "canonical_url": "https://github.com/PrismorSec/prismor/releases/tag/v1.38.0",
+      "category_id": "ai-safety",
+      "content_hash": "f9b354d9683f89301648613a2c8a2377182ebdf29a2ef02d9ed0287ae61f1b8f",
+      "external_id": "github:PrismorSec/prismor@v1.38.0",
+      "first_seen_at": "2026-08-03T16:07:45Z",
+      "item_id": "itm_5fdd142a2d6c0821",
+      "title_hash": "d266d6fa0df8fa33584e12063ca4129e240a616bd1bbb25e7b9aedb115dc9655"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.11185",
       "category_id": "llm-agent",
       "content_hash": "94220d5554ff219abfc0157bdf663e78403836f7bc7ac11f9972f47fcb0c5919",
@@ -3574,6 +3583,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-03T13:25:30Z",
+  "updated_at": "2026-08-03T16:07:45Z",
   "version": 1
 }

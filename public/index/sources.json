@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T13:25:30Z",
+  "generated_at": "2026-08-03T16:07:45Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -394,7 +394,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Public code repositories and release metadata.",
+      "description": "Official GitHub repository, release, pull request, compare, documentation, and test evidence.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",

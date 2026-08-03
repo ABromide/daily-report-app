@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T10:03:37Z",
+  "generated_at": "2026-08-03T13:25:30Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -66,11 +66,11 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Official arXiv abstract, PDF, submission metadata, and linked code/data evidence.",
+      "description": "Manual selection from current-week arXiv recent and official abstract metadata.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
-      "kind": "api",
+      "kind": "manual",
       "name": "arXiv"
     },
     {
@@ -666,7 +666,7 @@
       "name": "Hugging Face Papers"
     },
     {
-      "description": "Public model and dataset hosting metadata.",
+      "description": "Related token identity and multi-turn RL discussion.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/",
       "id": "huggingface",
@@ -936,6 +936,14 @@
       "id": "trailofbits",
       "kind": "manual",
       "name": "Trail of Bits Blog"
+    },
+    {
+      "description": "Related serving front-end and agentic API context.",
+      "enabled": true,
+      "homepage_url": "https://github.com/vllm-project/vllm",
+      "id": "vllm",
+      "kind": "manual",
+      "name": "vLLM"
     },
     {
       "description": "Third-party reporting and expert criticism used as external context.",

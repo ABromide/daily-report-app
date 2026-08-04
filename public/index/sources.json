@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T04:04:54Z",
+  "generated_at": "2026-08-04T07:23:37Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -66,11 +66,11 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Official arXiv paper metadata, abstract, PDF and TeX source.",
+      "description": "Official arXiv abstract, HTML, submission metadata, and linked code evidence.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
-      "kind": "manual",
+      "kind": "api",
       "name": "arXiv"
     },
     {
@@ -402,7 +402,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Official GitHub repository, release, pull request, compare, documentation, and test evidence.",
+      "description": "Official source repository metadata and README/docs evidence.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",

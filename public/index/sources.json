@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T01:23:43Z",
+  "generated_at": "2026-08-04T04:04:54Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -328,6 +328,14 @@
       "id": "arxiv-streaming-tool-use-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Official arXiv paper and associated SWE-Touch code and dataset sources.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.02499",
+      "id": "arxiv-swe-touch",
+      "kind": "manual",
+      "name": "arXiv / SWE-Touch"
     },
     {
       "description": "arXiv paper and source package for ToolPrivBench and over-privileged tool selection in LLM agents.",

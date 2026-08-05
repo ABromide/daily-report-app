@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T10:37:57Z",
+  "generated_at": "2026-08-05T10:42:34Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -272,6 +272,14 @@
       "id": "arxiv-ial-scan-2607-01641",
       "kind": "manual",
       "name": "arXiv: IAL-Scan Infinite Agentic Loops"
+    },
+    {
+      "description": "arXiv paper and official metadata for MAFIA query-only memory attacks.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.03844",
+      "id": "arxiv-mafia-memory-attacks",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Manual arXiv paper selection and deep reading for Daily Report hourly research.",

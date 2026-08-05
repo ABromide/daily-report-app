@@ -1,7 +1,11 @@
 {
-  "date": "2026-08-05",
   "generated_at": "2026-08-05T22:28:59Z",
   "item_count": 9,
+  "period": {
+    "end": "2026-08-05T23:00:00Z",
+    "start": "2026-08-05T22:00:00Z"
+  },
+  "report_id": "hourly:2026-08-05T22:00:00Z",
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -31,13 +35,7 @@
       "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "source_counts": {
-    "aisi": 1,
-    "arxiv": 6,
-    "arxiv-mafia-memory-attacks": 1,
-    "arxiv-s3-stage-specific-safety": 1
-  },
-  "summary": "2026-08-05 public data 已由 finalize-public-run 统一重建索引和报告，共 9 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 9 条内容。",
   "top_item_ids": [
     "itm_175f4cbcd288c60e",
     "itm_18cf0f42c09244f2",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T10:46:24Z",
+  "generated_at": "2026-08-05T13:59:24Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -320,6 +320,14 @@
       "id": "arxiv-rolloutpipe",
       "kind": "manual",
       "name": "arXiv: RolloutPipe"
+    },
+    {
+      "description": "Official arXiv paper page for S3 multi-stage LLM agent safety.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.02683",
+      "id": "arxiv-s3-stage-specific-safety",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "arXiv paper and source material for SafeClawBench.",

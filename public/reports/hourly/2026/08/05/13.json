@@ -1,43 +1,44 @@
 {
-  "date": "2026-07-25",
   "generated_at": "2026-08-05T13:59:24Z",
   "item_count": 6,
+  "period": {
+    "end": "2026-08-05T14:00:00Z",
+    "start": "2026-08-05T13:00:00Z"
+  },
+  "report_id": "hourly:2026-08-05T13:00:00Z",
   "sections": [
     {
       "heading": "AI 安全相关",
       "item_ids": [
-        "itm_ee01ebd59e86c2e4",
-        "itm_aea929b123472949",
-        "itm_44ce868a9e34416c",
-        "itm_42ccd5d717fd5ec9"
+        "itm_175f4cbcd288c60e",
+        "itm_18cf0f42c09244f2",
+        "itm_3bbbe04f52646e8f",
+        "itm_0556e99c7d8a3aaf"
       ],
       "summary": "AI 安全相关 本次共有 4 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型 Agent 相关",
       "item_ids": [
-        "itm_4f7163f0f50e1415"
+        "itm_b427f898c5acbec3"
       ],
       "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型后训练相关",
       "item_ids": [
-        "itm_26a4cd36d35d8298"
+        "itm_90bd9bad92681015"
       ],
       "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "source_counts": {
-    "arxiv": 6
-  },
-  "summary": "2026-07-25 public data 已由 finalize-public-run 统一重建索引和报告，共 6 条内容。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 6 条内容。",
   "top_item_ids": [
-    "itm_4f7163f0f50e1415",
-    "itm_ee01ebd59e86c2e4",
-    "itm_aea929b123472949",
-    "itm_26a4cd36d35d8298",
-    "itm_44ce868a9e34416c"
+    "itm_175f4cbcd288c60e",
+    "itm_18cf0f42c09244f2",
+    "itm_b427f898c5acbec3",
+    "itm_90bd9bad92681015",
+    "itm_3bbbe04f52646e8f"
   ],
   "version": 1
 }

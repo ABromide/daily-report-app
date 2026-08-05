@@ -1,7 +1,7 @@
 {
   "date": "2026-08-05",
-  "generated_at": "2026-08-05T10:39:48Z",
-  "item_count": 4,
+  "generated_at": "2026-08-05T10:46:24Z",
+  "item_count": 5,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -18,18 +18,26 @@
         "itm_b427f898c5acbec3"
       ],
       "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_90bd9bad92681015"
+      ],
+      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
     "aisi": 1,
-    "arxiv": 2,
+    "arxiv": 3,
     "arxiv-mafia-memory-attacks": 1
   },
-  "summary": "2026-08-05 public data 已由 finalize-public-run 统一重建索引和报告，共 4 条内容。",
+  "summary": "2026-08-05 public data 已由 finalize-public-run 统一重建索引和报告，共 5 条内容。",
   "top_item_ids": [
     "itm_175f4cbcd288c60e",
     "itm_18cf0f42c09244f2",
     "itm_b427f898c5acbec3",
+    "itm_90bd9bad92681015",
     "itm_3bbbe04f52646e8f"
   ],
   "version": 1

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T10:42:34Z",
+  "generated_at": "2026-08-05T10:39:48Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -40,6 +40,14 @@
       "id": "agentvigil-paper",
       "kind": "manual",
       "name": "AgentVigil paper"
+    },
+    {
+      "description": "UK AI Security Institute official incident reports and technical publications.",
+      "enabled": true,
+      "homepage_url": "https://www.aisi.gov.uk/",
+      "id": "aisi",
+      "kind": "manual",
+      "name": "UK AI Security Institute"
     },
     {
       "description": "Anthropic official Frontier Red Team research post and linked technical papers.",

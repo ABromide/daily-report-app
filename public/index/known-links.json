@@ -370,6 +370,15 @@
       "title_hash": "ef9d83abace5070cf6457c6f8e64d37a6627ea5be7d0578fec37dd8ed38e1f58"
     },
     {
+      "canonical_url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
+      "category_id": "ai-safety",
+      "content_hash": "0674c0bab0ed0e90bc7e82d52e2c64ef70d0433f237faaf1bc59371a273bfebd",
+      "external_id": "aisi-unsanctioned-agent-behaviour-2026-08-04",
+      "first_seen_at": "2026-08-05T10:39:48Z",
+      "item_id": "itm_175f4cbcd288c60e",
+      "title_hash": "2fb876faafe50decdd392ad74d42214fa5592e314432f099dab7428a0c6feecc"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.26027",
       "category_id": "llm-post-training",
       "content_hash": "56f2b67c8366add83c80ed4ffd357aaac4145813342ee335f37871abdf22f160",
@@ -3664,6 +3673,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-05T10:42:34Z",
+  "updated_at": "2026-08-05T10:39:48Z",
   "version": 1
 }

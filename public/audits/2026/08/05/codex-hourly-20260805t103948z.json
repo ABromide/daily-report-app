@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/08/04/itm_175f4cbcd288c60e/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-05T10:39:48Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260805t103948z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety, returned 12 unified candidates, and recommended the AISI 2026-08-04 incident report as the strongest deep-read because it has official date evidence, a technical PDF, and OpenAI cross-confirmation."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_175f4cbcd288c60e"
+  ]
+}

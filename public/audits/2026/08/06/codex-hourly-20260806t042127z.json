@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/06/itm_a8841a1977b8c335/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-06T04:21:27Z",
+  "quality_gate": {
+    "evidence_points": 7,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260806t042127z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout searched all three configured categories and recommended CoT poisoning as the strongest AI safety candidate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the arXiv paper, extracted full text with pypdf, checked related work, and wrote a Chinese Markdown deep read above 5000 CJK characters."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article separates behavior evidence, mechanistic evidence, monitor boundary, NLA limitations, and agent-safety implications."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a8841a1977b8c335"
+  ]
+}

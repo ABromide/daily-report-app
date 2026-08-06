@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T04:21:27Z",
+  "generated_at": "2026-08-06T07:58:42Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -76,7 +76,7 @@
     {
       "description": "Primary paper record and full text.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2608.02820",
+      "homepage_url": "https://arxiv.org/abs/2608.03499",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

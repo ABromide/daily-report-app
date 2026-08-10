@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T13:59:19Z",
+  "generated_at": "2026-08-10T12:53:53Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -616,6 +616,14 @@
       "id": "github-thudm-slime",
       "kind": "manual",
       "name": "GitHub: THUDM/slime"
+    },
+    {
+      "description": "Official repository, commit, PR, issue and documentation for the selected post-training code change.",
+      "enabled": true,
+      "homepage_url": "https://github.com/verl-project/verl",
+      "id": "github-verl-project-verl",
+      "kind": "manual",
+      "name": "GitHub: verl-project/verl"
     },
     {
       "description": "Official Vime repository maintained in the vLLM ecosystem.",

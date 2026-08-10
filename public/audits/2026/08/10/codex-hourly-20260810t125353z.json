@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/10/itm_7df5e67d117b6a3d/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-10T12:53:53Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260810t125353z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout searched all three configured categories and returned nine UTC date-verified Git/GitHub candidates."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the official commit, PR, issue reproducer, core algorithm diff, tests, README and config docs."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The analysis separates mask semantics, reward propagation, test coverage, estimator scope and remaining multi-turn RL boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_7df5e67d117b6a3d"
+  ]
+}

@@ -1927,6 +1927,15 @@
       "title_hash": "2acb1e32c40b915baf31b61b640d51528c3d07849bb29e24377da66afbc9ecc1"
     },
     {
+      "canonical_url": "https://github.com/verl-project/verl/commit/8a1bf6d5b080173e29834aca55ee8d47549b2ea6",
+      "category_id": "llm-post-training",
+      "content_hash": "9c0cba3866d34407033538f9a360fc9082781c7679a303c6bf737c9f103f5e88",
+      "external_id": "github:verl-project/verl@8a1bf6d5b080173e29834aca55ee8d47549b2ea6",
+      "first_seen_at": "2026-08-10T12:53:53Z",
+      "item_id": "itm_7df5e67d117b6a3d",
+      "title_hash": "13458d9615adfc3d62842a586a9f9bfcebe8197287785f367b95b02ea06fc16c"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.05394",
       "category_id": "llm-post-training",
       "content_hash": "704ee1514d81d671af498cf250dbc8cefc31c3721e593911851867d3537c98e7",
@@ -3763,6 +3772,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-10T13:59:19Z",
+  "updated_at": "2026-08-10T12:53:53Z",
   "version": 1
 }

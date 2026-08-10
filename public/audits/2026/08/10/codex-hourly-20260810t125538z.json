@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/07/itm_458186dc74bfdbd2/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-10T13:59:19Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5832,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260810t125538z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全，返回 13 条本周候选；HarnessSafe 来自该统一候选表。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已核验 arXiv 元数据，阅读 abstract、HTML 正文、方法、实验、附录评分和 common-support 说明。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 Persistent-Risk Lifecycle、七类 carrier family、N0-N5b 评分、CSS、matched-control 和 canary oracle。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文覆盖 memory poisoning、skill/MCP 安全与 harness-level benchmark 的位置关系，并记录第三方镜像参考。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 benchmark 覆盖、adapter 质量、CSS 摘要指标和评测非防御方案等边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式、伪代码和 Mermaid；真实 CJK 字符数为 5832。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_458186dc74bfdbd2"
+  ]
+}

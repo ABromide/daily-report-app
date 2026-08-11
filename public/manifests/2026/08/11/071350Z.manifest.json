@@ -2527,6 +2527,12 @@
       "sha256": "9c0cba3866d34407033538f9a360fc9082781c7679a303c6bf737c9f103f5e88"
     },
     {
+      "bytes": 28838,
+      "content_type": "text/markdown",
+      "path": "articles/2026/08/10/itm_8bbdd332995b8a03/index.md",
+      "sha256": "a0a9c0fc99144d632b73f46afdaff59bebfff37bb41bccfbeec0f430d379a622"
+    },
+    {
       "bytes": 2390,
       "content_type": "application/json",
       "path": "audits/2026/06/06/codex-hourly-20260606t160828z.json",
@@ -5095,6 +5101,12 @@
       "sha256": "68bb57ca4b13a4d244069ab81befc57d7e2f1d76d693fb76779ddc8467b343cb"
     },
     {
+      "bytes": 1736,
+      "content_type": "application/json",
+      "path": "audits/2026/08/10/codex-hourly-20260810t125558z.json",
+      "sha256": "e9c69567de20eb23187a4a5c1fd9c00a6a8f7495586cc95adf800edbcfc08fc5"
+    },
+    {
       "bytes": 1792,
       "content_type": "application/json",
       "path": "audits/2026/08/11/codex-hourly-20260811t071350z.json",
@@ -5491,10 +5503,10 @@
       "sha256": "16f0748f14d09bd291dc863288c5ca16ddbcd293a648b2d8706260572a5ede5e"
     },
     {
-      "bytes": 5846,
+      "bytes": 8480,
       "content_type": "application/x-ndjson",
       "path": "items/2026/08/10/items.jsonl",
-      "sha256": "321ca6a02fae2efdfdf3e8176452410db192a4da5737b71cb523b7ccaa82366c"
+      "sha256": "f588119abf7b7f85f80f57346ccf7ff6baa06fe76aac5ca79e97e2d9d331f572"
     },
     {
       "bytes": 2078,

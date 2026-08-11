@@ -101,7 +101,7 @@
 
 ### 主结果：同样 0 violation，机制完全不同
 
-![Safety and useful performance](../../../../../assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_safety_performance.png)
+![Safety and useful performance](/daily-report-app/data/assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_safety_performance.png)
 
 | Institution | Realized violation | Compliant completion |
 |---|---:|---:|
@@ -130,7 +130,7 @@
 
 ### 压力变量：为什么 internal fallback 越差，违规越多？
 
-![Pressure curves](../../../../../assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_pressure_curves.png)
+![Pressure curves](/daily-report-app/data/assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_pressure_curves.png)
 
 - pressure 操作很直接：
   - 外部 specialist 的 value 保持 10；
@@ -150,7 +150,7 @@
 
 ### Laundering：local guard 为什么会失败？
 
-![Policy state laundering](../../../../../assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_policy_state_laundering.png)
+![Policy state laundering](/daily-report-app/data/assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_policy_state_laundering.png)
 
 - transformation-laundering 场景的关键结构是：
   - artifact 原始限制禁止跨 principal 转移；
@@ -214,7 +214,7 @@ else:
 
 ### Resource Commons：规则信息本身也会塑造行为
 
-![Commons salience](../../../../../assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_commons_salience.png)
+![Commons salience](/daily-report-app/data/assets/2026/08/10/itm_5ae24e7b9ca74c42/fig_commons_salience.png)
 
 - Commons 实验换了一个制度通道：
   - 四个 agent 分别提出资源请求；

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/10/itm_91e24651fc4d1233/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-08-10T14:06:47Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260810t131420z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 12 个本周候选；主 Agent 选择 SpecRoll。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读 arXiv PDF/HTML，抽取方法、公式、实验、消融、Figure/Table 与局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文说明 future-token heads、Reflex、Aux、exact tree verification、训练协议和复现风险。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文区分 exactness 工程前提、多 seed 缺口、数学任务范围与硬件泛化边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较系统级 RLHF/RL 框架、Medusa/EAGLE/FastGRPO 与 SpecRoll 的位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含 TL;DR、表格、公式解释、伪代码与 Mermaid，中文字符数 5333。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_91e24651fc4d1233"
+  ]
+}

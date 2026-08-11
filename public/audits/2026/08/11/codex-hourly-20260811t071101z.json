@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/08/10/itm_d301babf976859a3/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 13
+  },
+  "generated_at": "2026-08-11T07:11:01Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260811t071101z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 已一次性覆盖 llm-agent、llm-post-training、ai-safety 并输出统一候选表；RangeFactory 去重后可发布。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已读取 arXiv abstract、HTML、PDF 文本，提取方法、实验、表格、图示与安全边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已复写 dependency-resolution 机制、CVE Capability Atom、RangeBench 指标、消融与 trajectory corpus。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "已标注 pass@1、线性 CVE 链、容器化网络、validator witness 和 release-control 限制。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_d301babf976859a3"
+  ]
+}

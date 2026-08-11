@@ -3457,6 +3457,15 @@
       "title_hash": "0166f5bb7e866654903dd0967440c87726e5fccb4e51ff33b6eeb3d05e644857"
     },
     {
+      "canonical_url": "https://github.com/CyberSunil/LLMVault/releases/tag/v2.0.0",
+      "category_id": "ai-safety",
+      "content_hash": "6110e938529928616b4ba619d0c7e6b2ef8eab2ff2412dbee9b8b39cbabb7843",
+      "external_id": "CyberSunil/LLMVault@v2.0.0",
+      "first_seen_at": "2026-08-10T12:53:43Z",
+      "item_id": "itm_e9abbb941208041b",
+      "title_hash": "0411425f6f2c66b42a29e2cbeefc6586e0b95881e5292a97909f7c39742822c5"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.28568",
       "category_id": "llm-post-training",
       "content_hash": "c13fffd8607e5b7aef50215f41bdacde69e48f2834b737b79f261277cf597a78",

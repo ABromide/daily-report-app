@@ -12,7 +12,7 @@
       "daily_report_path": "reports/daily/2026/08/10.json",
       "date": "2026-08-10",
       "hourly_report_count": 2,
-      "item_count": 3,
+      "item_count": 4,
       "items_path": "items/2026/08/10/items.jsonl",
       "manifest_path": "manifests/2026/08/10/135919Z.manifest.json"
     },

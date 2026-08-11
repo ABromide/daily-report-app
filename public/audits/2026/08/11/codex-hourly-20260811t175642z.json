@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/08/10/itm_5ae24e7b9ca74c42/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-11T18:16:15Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 8,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260811t175642z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全；首选 reasoning trace 论文重复后，从同一候选表 pivot 到 POLIS。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已核验 arXiv 官方日期、摘要、PDF、TeX 源、关键图表、实验矩阵、局限和 POLIS 仓库线索。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "主 Agent 搜索 arXiv recent、PDF bibliography 和 public repository 线索，确认代码与复现实验声明。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分 prompt prevention、mechanical containment、authority state、safe recovery、合成环境和 0/384 上界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式、伪代码、Mermaid 和 4 张本地证据图；真实 CJK 字符数为 5002。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5ae24e7b9ca74c42"
+  ]
+}

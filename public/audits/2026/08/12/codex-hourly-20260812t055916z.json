@@ -1,0 +1,67 @@
+{
+  "article_paths": [
+    "articles/2026/08/11/itm_ead472d84a0cecb3/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-12T05:59:16Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 5,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260812t055916z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全，输出 12 个本周官方日期候选；主 Agent 选中后训练系统候选 MISA-T。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已核验 arXiv 官方日期、HTML 全文、TeX source、公式、Table 2/3/4/5 和 Figure 1-5。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "已搜索标题、MISA-T 与 arXiv ID；未发现直接第三方深度解读，正文使用论文引用的 vLLM Router 作为相关系统参照。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分 placement、admission、class quota、residency weighting、mixture fidelity 与 snapshot/label 依赖边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式块、伪代码、Mermaid 和本地图；实际 CJK 字符数为 5084。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_ead472d84a0cecb3"
+  ]
+}

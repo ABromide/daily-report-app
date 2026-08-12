@@ -3790,6 +3790,15 @@
       "title_hash": "8ba84b111116e940ccd4570d9bd7889c7b967f16c9482d88e92324efd544b236"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2608.11166",
+      "category_id": "llm-agent",
+      "content_hash": "99eb7cc4581ed18d32f8948041d4aca0afed10a36b95cb90de741af264aaeb56",
+      "external_id": "arXiv:2608.11166v1",
+      "first_seen_at": "2026-08-12T22:02:17Z",
+      "item_id": "itm_f8711cafa46a3576",
+      "title_hash": "016d0d3028225e8f38b62bb78f9885e6d8f07f925521bce546809195dfead1ab"
+    },
+    {
       "canonical_url": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
       "category_id": "ai-safety",
       "content_hash": "841c7c1e9b24cec63f9b6aaf0e4477fa3e38db21ae01ab6ecf026eb150cdb87e",
@@ -3916,6 +3925,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-12T18:01:40Z",
+  "updated_at": "2026-08-12T22:02:17Z",
   "version": 1
 }

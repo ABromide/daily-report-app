@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T18:01:40Z",
+  "generated_at": "2026-08-12T22:02:17Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -144,6 +144,14 @@
       "id": "arxiv-3spo-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "Official arXiv paper page for Agentic Configuration Management.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.11166",
+      "id": "arxiv-acm-agent-config",
+      "kind": "manual",
+      "name": "arXiv: Agentic Configuration Management"
     },
     {
       "description": "arXiv preprint and accessible full-text mirror for AdvGRPO red-teaming research.",

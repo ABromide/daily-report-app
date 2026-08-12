@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/11/itm_fc6feec674d3bd89/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-12T09:55:57Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5005,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260812t095557z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全三类，输出统一候选表；REDAgentBench 排名第一，且未命中已发布清单。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已核验 arXiv 元数据，阅读 PDF 正文，抽取 IVC taxonomy、faithful measurement、实验结果、REG 和 policy reminder。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 exposure-execution-observation-adjudication、Trajectory-State-Hybrid judge、reported ASR 与 execution ASR 公式。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 AgentDojo、InjecAgent、Vera、MCP-Tox、FinVault、OS-BLIND、JAWS-Bench、MT-AgentRisk 与 judge/eval-awareness 脉络。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确闭源模型快照、harness 敏感性、state verifier 语义缺口、REG 队列范围和 policy reminder 外推边界。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式、伪代码和 Mermaid；未引用外部图片 URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_fc6feec674d3bd89"
+  ]
+}

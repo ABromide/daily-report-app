@@ -592,7 +592,7 @@ ACM 会把这些问题变成配置图和运行时图之间的关系问题。失�
 
 ## 14. 领域延伸：Agent 安全和后训练为什么也该关心配置治理？
 
-### 11.1 对 Agent 安全
+### 14.1 对 Agent 安全
 
 Agent 安全问题常被描述成 prompt injection、tool misuse、permission escalation、data exfiltration。ACM 提供了一个更底层的追问方式：
 
@@ -604,7 +604,7 @@ Agent 安全问题常被描述成 prompt injection、tool misuse、permission es
 
 这会把安全审查从“看一段 prompt 是否危险”推进到“看完整 agentic configuration baseline 是否仍 eligible”。
 
-### 11.2 对后训练
+### 14.2 对后训练
 
 后训练经常关注 SFT/RL/RFT 的数据、reward、policy、checkpoint 和 evaluation。ACM 的思想可以迁移成：
 
@@ -625,7 +625,7 @@ Agent 安全问题常被描述成 prompt injection、tool misuse、permission es
 
 这不是论文直接验证的结果，而是机制类比：ACM 的配置治理语义可以启发后训练流水线审计。
 
-### 11.3 对 AgentOps 工具生态
+### 14.3 对 AgentOps 工具生态
 
 现有 AgentOps 工具通常先收集 runtime evidence，再展示 trace 和 metrics。ACM 提醒我们还缺一层：
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T09:55:57Z",
+  "generated_at": "2026-08-12T16:10:57Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -74,7 +74,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual deep-read source for current-week AI research papers.",
+      "description": "Manual arXiv paper selected by the Daily Report hourly deep research automation.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -426,7 +426,7 @@
       "name": "Google DeepMind AI Control Roadmap"
     },
     {
-      "description": "Official repository, release, and source-code metadata for open-source research artifacts.",
+      "description": "Manual repository availability check for the selected paper.",
       "enabled": true,
       "homepage_url": "https://github.com/",
       "id": "github",
@@ -706,7 +706,7 @@
       "name": "Hugging Face Papers"
     },
     {
-      "description": "Related token identity and multi-turn RL discussion.",
+      "description": "Manual dataset/source verification for the selected paper.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/",
       "id": "huggingface",

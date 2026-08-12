@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/11/itm_e82ec13c4163421f/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-08-12T16:10:57Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260812t160019z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Unified Scout covered llm-agent, llm-post-training and ai-safety in one table; selected arXiv:2608.11110v1 after excluding already published REDAgentBench and other recent releases."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Deep read used arXiv PDF/HTML plus Hugging Face dataset cards, preserving the distinction between symbolic traces, released datasets and the currently empty GitHub repository."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article states that tools are not executed, the GitHub repository is empty, some subsets require authorized rebuild, and 71-73% retention is bounded to greedy adherent frontier models."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e82ec13c4163421f"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/13/itm_b243ff91c37d9799/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 5,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 14
+  },
+  "generated_at": "2026-08-13T18:04:50Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260813t180450z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 15 个本周候选；主 Agent 选择排名第一 arXiv:2608.10530v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv PDF 全文，按 PRISMA 方法、四层 taxonomy、定量缺口、检测/防御和局限写入 5164 CJK 正文。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "综述论文无代码项目；已核对 GitHub exact search 未发现官方代码仓库或项目页。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分研究分布证据和部署风险推断，说明该综述不是新 benchmark 或防御系统实证。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "第三方搜索未发现独立官方项目页；正文以论文引用和 arXiv official metadata 为主要证据。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、列表、公式化风险链和 Mermaid，避免连续大段纯文本。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b243ff91c37d9799"
+  ]
+}

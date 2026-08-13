@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/13/itm_a9bde2cd86773400/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-13T16:03:14Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260813t160314z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety, then recommended arXiv:2608.11392v1."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Full PDF and reproducibility repository README were read; Markdown explains mechanism, experiments, results, judge failures, and limits."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "W/G/D/X taxonomy, replay protocol, Table 2/3/4 evidence, and repo layout were incorporated."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Boundaries are explicit: single-cycle scope, synthetic data, prohibition-only rules, salience confound, replay-model limits, and judge dependence."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related context includes Governance Decay, long-context safety degradation, constraint pinning, and commitment-preserving compression."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Chinese Markdown passed the 5000 Han-character gate and uses tables, formulas, pseudocode, and Mermaid with no external image references."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a9bde2cd86773400"
+  ]
+}

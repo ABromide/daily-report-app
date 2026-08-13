@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/13/itm_bba301843913c371/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-13T04:01:02Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260813t040102z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖三类方向并给出统一候选表；本题日期和重复风险通过官方页与干净 clone 复核。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已读取 arXiv HTML、PDF 与 TeX 源，正文按 claim、mechanism、evidence、boundary 展开。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已提取形式化定义、伪代码、benchmark、主结果、ASR、消融、泛化和局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "已检索精确标题未见第三方解读，并补充 Beyond Max Tokens、Crabs、OpenClaw 背景。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确限制在单平台、mock 后端、group-matched coordinator 和未完全核验 supplementary 材料边界内。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，无 frontmatter，无外部图片引用，包含表格、公式、伪代码和 Mermaid。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_bba301843913c371"
+  ]
+}

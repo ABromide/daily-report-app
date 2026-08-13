@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/13/itm_b4ae3a7d5126bffd/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-13T22:29:00Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260813t221229z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 llm-agent、llm-post-training、ai-safety，推荐 VAKRA 并给出官方日期证据。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv PDF、GitHub README 与 Hugging Face dataset card，抽取机制、实验、表格与局限。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文 5352 个汉字，包含 TL;DR、表格、公式、伪代码、Mermaid，无外部图片引用。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b4ae3a7d5126bffd"
+  ]
+}

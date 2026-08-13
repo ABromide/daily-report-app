@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T18:04:50Z",
+  "generated_at": "2026-08-13T22:29:00Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -74,9 +74,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Official arXiv abstract and PDF metadata for current-week AI research papers.",
+      "description": "Official arXiv record for VAKRA and linked project/data resources.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2608.12282v1",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

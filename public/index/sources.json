@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T10:14:12Z",
+  "generated_at": "2026-08-13T12:13:01Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -74,7 +74,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "官方 arXiv 论文与元数据来源。",
+      "description": "Manual arXiv research paper source for Daily Report deep reads.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

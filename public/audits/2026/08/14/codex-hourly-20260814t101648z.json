@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/14/itm_595f755d3c93bb46/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 15,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 12
+  },
+  "generated_at": "2026-08-14T10:16:48Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260814t101648z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖三类方向，返回 12 个统一候选；推荐 PIPES，备选 QuoteBench 和 Vero。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 官方页、PDF、HTML 和 TeX 源码，按威胁模型、方法、实验、结果和局限写入 5181 CJK 正文。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "论文源码包含机制图和实验表；GitHub exact search 未发现官方代码仓库，正文未编造代码实现。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确说明 PIPES 不验证事实真伪，依赖 contract、provenance anchor、unit extraction 和 LLM assessor。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "第三方补充检索没有发现更权威项目页；文章以 arXiv 官方元数据、PDF/HTML 和源码图表为主证据。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、分点、表格、公式块、Mermaid 和三张本地图片，避免连续大段纯文本。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_595f755d3c93bb46"
+  ]
+}

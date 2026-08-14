@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T18:16:30Z",
+  "generated_at": "2026-08-14T22:15:46Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -24,6 +24,14 @@
       "id": "agent-budget-control",
       "kind": "manual",
       "name": "agent-budget-control repository"
+    },
+    {
+      "description": "Official SteerBench-Work project site, repository, and release artifacts.",
+      "enabled": true,
+      "homepage_url": "https://steerbench.com",
+      "id": "agentdock",
+      "kind": "manual",
+      "name": "AgentDock"
     },
     {
       "description": "Official reproduction repository for AgentRadio experiments.",
@@ -74,9 +82,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper source for Daily Report deep research.",
+      "description": "Manual arXiv paper selection verified by the hourly Daily Report Agent.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

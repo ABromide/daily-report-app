@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/14/itm_25e8eb0c19247eff/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-14T12:20:00Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260814t120703z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety in one unified table and ranked QuoteBench first."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent verified official arXiv date, read the paper and project README/REPRODUCE/SPEC, and extracted methods, tables, formulas, robustness evidence, and limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article explicitly bounds claims to POSIX/Bash one-shot literal preservation and avoids treating synthetic nested transport as deployment prevalence."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_25e8eb0c19247eff"
+  ]
+}

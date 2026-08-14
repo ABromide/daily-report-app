@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/14/itm_4076454fc14f5b4a/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-14T00:07:17Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260814t00071786666066z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout returned one unified candidate table across llm-agent, llm-post-training, and ai-safety; main agent selected arXiv:2608.11715v1 for post-training depth and low duplicate risk."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the arXiv abstract, HTML, PDF text extraction, tables, formulas, appendices, prompt ablation, and external search results."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Article explains ALM formulation, hierarchical metrics, SFT/PPO/GRPO objectives, RM-1/RM-2/RM-3 rewards, experiment settings, tables, and limitations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Review separates supported claims from boundaries: translated benchmark, limited language coverage, judge and matching ambiguity, and task-specific RL conclusions."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "External search found mostly arXiv and index pages; no stronger third-party technical analysis was used beyond official paper evidence."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with more than 5000 Chinese characters, no external image embeds, and evidence represented through tables, formulas, pseudocode, and Mermaid."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_4076454fc14f5b4a"
+  ]
+}

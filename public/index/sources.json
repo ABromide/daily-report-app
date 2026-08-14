@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T22:29:00Z",
+  "generated_at": "2026-08-14T00:07:17Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -202,11 +202,11 @@
       "name": "arXiv cs.AI recent submissions"
     },
     {
-      "description": "Official arXiv metadata, HTML, and PDF source for current-week computation and language papers.",
+      "description": "arXiv Computation and Language papers selected by the Daily Report automation.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/list/cs.CL/recent",
       "id": "arxiv-cs-cl",
-      "kind": "api",
+      "kind": "manual",
       "name": "arXiv cs.CL"
     },
     {

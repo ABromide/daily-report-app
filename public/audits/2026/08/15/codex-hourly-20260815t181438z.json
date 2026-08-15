@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/08/15/itm_a6998aecce53e2ab/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-15T18:14:38Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 6,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260815t181438z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety candidates and recommended Beyond Final Scores as the strongest llm-agent deep-read target."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The arXiv metadata, PDF text, source TeX, tables, figures, appendix formulas, discussion, and limitations were read before drafting."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article extracts AutoLab setup, avg@3/best@3, C1/C2/C3 formulas, experience-reuse interventions, harness ablation, novelty rubric, and key numeric results."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The writeup separates final-score claims from process proxies, controlled-experiment dependence, benchmark/harness dependence, cost comparability, and novelty-scope limits."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_a6998aecce53e2ab"
+  ]
+}

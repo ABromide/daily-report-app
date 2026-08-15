@@ -1,22 +1,22 @@
 {
   "date": "2026-08-15",
-  "generated_at": "2026-08-15T00:15:22Z",
+  "generated_at": "2026-08-15T04:17:26Z",
   "item_count": 1,
   "sections": [
     {
-      "heading": "大模型 Agent 相关",
+      "heading": "AI 安全相关",
       "item_ids": [
-        "itm_2ecfd69ec17c33f7"
+        "itm_a3c13a3fa24d5a26"
       ],
-      "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "Rethinking Agent Security as a Networking Problem 深读已写入公开数据。"
     }
   ],
   "source_counts": {
     "arxiv": 1
   },
-  "summary": "2026-08-15 public data 已由 finalize-public-run 统一重建索引和报告，共 1 条内容。",
+  "summary": "2026-08-15 public data 新增 1 篇 AI 安全深读，聚焦 Agent sidecar 与网络化策略执行。",
   "top_item_ids": [
-    "itm_2ecfd69ec17c33f7"
+    "itm_a3c13a3fa24d5a26"
   ],
   "version": 1
 }

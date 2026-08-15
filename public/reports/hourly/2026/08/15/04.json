@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-15T04:17:26Z",
+  "item_count": 1,
+  "period": {
+    "end": "2026-08-15T05:00:00Z",
+    "start": "2026-08-15T04:00:00Z"
+  },
+  "report_id": "hourly:2026-08-15T04:00:00Z",
+  "sections": [
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_a3c13a3fa24d5a26"
+      ],
+      "summary": "围绕 Agent 网络化安全架构完成一篇中文深读，包含本地化架构图、公式、伪代码、表格和 Mermaid。"
+    }
+  ],
+  "summary": "本小时深读 1 篇 AI 安全论文：Rethinking Agent Security as a Networking Problem。文章把 LLM Agent 安全从模型自律问题改写为网络化执行流治理问题，重点解释可信控制面、sidecar、确定性执行、语义上下文控制和 capability-based access 的机制与边界。",
+  "top_item_ids": [
+    "itm_a3c13a3fa24d5a26"
+  ],
+  "version": 1
+}

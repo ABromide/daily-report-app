@@ -21,7 +21,7 @@
 - 经验复用既能帮忙也会误导：intra-task 经验通常提升下一次 commit，inter-task 经验让 DeepSeek-V4-Pro 的 avg@3 提升 0.093，却让 Gemini-3.1-Pro 的 avg@3 下降 0.017。
 - 局限很明确：C1/C2/C3 是 verifier 和轨迹信号上的可复现代理指标，不等于完整研究能力；结论依赖 AutoLab 任务、预算、harness 和当时 API 版本。
 
-![论文的两类分析视角：过程视角与经验视角](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure1-analytical-views.png)
+![论文的两类分析视角：过程视角与经验视角](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure1-analytical-views.png)
 
 ### 这篇论文真正反对什么？
 
@@ -64,7 +64,7 @@ flowchart LR
 
 ### 最终分数：峰值接近，稳定性差距更大
 
-![七个模型的 avg@3 与 best@3 结果](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure2-outcome-landscape.png)
+![七个模型的 avg@3 与 best@3 结果](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure2-outcome-landscape.png)
 
 | 模型 | overall avg@3 | overall best@3 | 论文中的解释 |
 |---|---:|---:|---|
@@ -94,7 +94,7 @@ flowchart LR
 
 ### C1/C2/C3：把研发循环拆开看
 
-![C1/C2/C3 三个过程维度](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure4-process-dimensions.png)
+![C1/C2/C3 三个过程维度](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure4-process-dimensions.png)
 
 作者提出的三个过程指标对应研发循环里的三个问题：
 
@@ -158,7 +158,7 @@ $$
 
 ### 过程结果：相似 final score 背后是不同失败机制
 
-![行为诊断矩阵：进展、构建、退步和恢复](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure6-behavioral-diagnostics.png)
+![行为诊断矩阵：进展、构建、退步和恢复](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure6-behavioral-diagnostics.png)
 
 论文最有价值的发现，是它把“结果接近”拆成“过程不一样”。
 
@@ -185,7 +185,7 @@ $$
 | intra-task self-improvement | 在同一任务中选一个中点，保留当前 solution；一边继续带经验，另一边清空上下文、磁盘 notes、代码注释后继续 | $\Delta S_{intra}=S^{exp}-S^{no\_exp}$ |
 | inter-task self-improvement | 从已完成 source task 抽取 lessons.md，在 held-out target task 中与无 lessons baseline 对比 | $\Delta S_{inter}=S^{(+)}-S^{(0)}$ |
 
-![跨任务经验复用对 avg@3 的影响](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure8-inter-task-experience.png)
+![跨任务经验复用对 avg@3 的影响](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure8-inter-task-experience.png)
 
 关键结果：
 
@@ -227,7 +227,7 @@ $$
 
 ### 创新性：高分更多来自组合已有技术，而不是真正新方法
 
-![252 个 best-of-three solution 的 novelty 分类](../../../../../assets/2026/08/15/itm_a6998aecce53e2ab/figure9-solution-novelty.png)
+![252 个 best-of-three solution 的 novelty 分类](/daily-report-app/data/assets/2026/08/15/itm_a6998aecce53e2ab/figure9-solution-novelty.png)
 
 作者对 252 个 best-of-three solution 做 novelty 分类：
 

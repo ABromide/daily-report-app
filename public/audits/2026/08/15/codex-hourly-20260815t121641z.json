@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/15/itm_aca6798f2d3a6289/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 14
+  },
+  "generated_at": "2026-08-15T12:16:41Z",
+  "quality_gate": {
+    "evidence_points": 11,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260815t121641z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，返回 15 条统一候选；主 Agent 选择 Top 1 ATOBench 并在干净 data clone 中未发现 URL、ID 或标题重复。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv PDF、HTML、TeX source、生成表格和官方 GitHub 仓库状态，提取 AOU、实验、指标、失败模式和边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "外部检索未发现独立长评，正文将论文放在 autonomous pentest benchmark、cyber deception 和 Agent process evaluation 脉络中。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_aca6798f2d3a6289"
+  ]
+}

@@ -2359,6 +2359,15 @@
       "title_hash": "6496093239e23807d9c955b69090671a0202e86450a622f4928e718243bc931c"
     },
     {
+      "canonical_url": "https://arxiv.org/abs/2608.13179",
+      "category_id": "llm-post-training",
+      "content_hash": "56347a69eb5854733813669d94ed301311e042ad0d3e899bb3e3c995de36d524",
+      "external_id": "arXiv:2608.13179v1",
+      "first_seen_at": "2026-08-16T04:56:05Z",
+      "item_id": "itm_9381676afe8a4519",
+      "title_hash": "9c4a53f64f4ef123222b4876d7e6ae64557f14c44daf675b41aa23cf68747fdd"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.20408v1",
       "category_id": "ai-safety",
       "content_hash": "04e0708e9421d920ba86e0643b212a53f1abef9f48280199698e3106fb55e850",
@@ -4123,6 +4132,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-16T00:10:25Z",
+  "updated_at": "2026-08-16T04:56:05Z",
   "version": 1
 }

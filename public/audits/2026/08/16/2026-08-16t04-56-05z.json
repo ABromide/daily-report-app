@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/08/16/itm_9381676afe8a4519/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-16T04:56:05Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5147,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 0
+  },
+  "run_id": "2026-08-16t04-56-05z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety 三类；首推 arXiv:2608.13179v1 CrEST，避开 QuoteBench 与 ATOBench 已发布重复风险。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_9381676afe8a4519"
+  ]
+}

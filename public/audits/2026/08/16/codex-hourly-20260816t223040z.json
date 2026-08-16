@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/16/itm_17ed62e3c92fa84c/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 10
+  },
+  "generated_at": "2026-08-16T22:39:07Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260816t223040z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout returned 12 current-week candidates across llm-agent, llm-post-training, and ai-safety; two same-table candidates were exact duplicates in the clean data ledger, so Intern-S2-Preview was selected."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Official arXiv, arXiv Atom, Hugging Face model card, and XTuner repository were checked; no unsupported third-party claims were used as primary evidence."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article preserves boundaries around preview-system reliability, verifier quality, memory-domain conflicts, incomplete cost disclosure, and limited external reproducibility."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_17ed62e3c92fa84c"
+  ]
+}

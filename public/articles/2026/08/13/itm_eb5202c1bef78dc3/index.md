@@ -625,7 +625,7 @@ Autoware 的失败边界和普通库不同：
 - 表 7 是定量中心，表 8 是归因中心，Figure 4/6/8 是流程中心。
 - 如果未来工作只改 prompt 或换更大模型，却不改变 linking 与 reachability verification，仍可能复现同样的 stub convergence。
 - 如果未来工作引入 build-system oracle、coverage-guided target assertion、symbol-level stub detector，才是在回应本文真正提出的问题。
-- 因此，这篇论文最适合被当作安全自动化评测基线：它要求研究者报告每一道门槛的通过率，并把无效证据明确标成未执行、弱反证或误报，而不是把所有中间产物混成一个成功率。
+- 因此，这篇论文最适合被当作安全自动化评测基线：它要求研究者报告每一道门槛的通过率，并把无效证据明确标成未执行、弱反证或误报，而不是把所有中间产物混成一个成功率，证据链可审计追溯。
 
 ### 23. 结论：这是一次有价值的失败
 

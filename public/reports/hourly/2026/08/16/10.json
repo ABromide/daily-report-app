@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-16T10:29:06Z",
+  "item_count": 1,
+  "period": {
+    "end": "2026-08-16T11:00:00Z",
+    "start": "2026-08-16T10:00:00Z"
+  },
+  "report_id": "hourly:2026-08-16T10:00:00Z",
+  "sections": [
+    {
+      "heading": "AI 安全",
+      "item_ids": [
+        "itm_ac5fe6f1e3f68d69"
+      ],
+      "summary": "SkillMisevo-Gym/Bench 将技能演化风险拆成 authoring、retrieval、execution 三个门，并给出 SafeEvolve 生命周期治理基线。"
+    }
+  ],
+  "summary": "本小时深读一篇 AI 安全论文，关注自改进 LLM Agent 如何把一次不安全成功轨迹写成持久技能，并在无新攻击指令的后续任务中复用。",
+  "top_item_ids": [
+    "itm_ac5fe6f1e3f68d69"
+  ],
+  "version": 1
+}

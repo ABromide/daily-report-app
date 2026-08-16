@@ -1,32 +1,22 @@
 {
   "date": "2026-08-16",
-  "generated_at": "2026-08-16T06:10:47Z",
-  "item_count": 3,
+  "generated_at": "2026-08-16T10:29:06Z",
+  "item_count": 1,
   "sections": [
     {
-      "heading": "AI 安全相关",
+      "heading": "AI 安全",
       "item_ids": [
-        "itm_272e604e9f6884a6",
-        "itm_7df75caf1a15dc3d"
+        "itm_ac5fe6f1e3f68d69"
       ],
-      "summary": "AI 安全相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
-    },
-    {
-      "heading": "大模型后训练相关",
-      "item_ids": [
-        "itm_9381676afe8a4519"
-      ],
-      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "论文给出 525-task 条件级生命周期评测，并用 SafeEvolve 显示写入、检索、归因和退休边界可以降低持久风险。"
     }
   ],
   "source_counts": {
-    "arxiv": 3
+    "arxiv": 1
   },
-  "summary": "2026-08-16 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
+  "summary": "本日新增一篇 AI 安全深读，主题是自改进 Agent 的 skill misevolution：不安全轨迹可能被技能库持久化并污染后续 benign/fresh-session 任务。",
   "top_item_ids": [
-    "itm_9381676afe8a4519",
-    "itm_272e604e9f6884a6",
-    "itm_7df75caf1a15dc3d"
+    "itm_ac5fe6f1e3f68d69"
   ],
   "version": 1
 }

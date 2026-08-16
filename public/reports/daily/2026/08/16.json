@@ -1,22 +1,22 @@
 {
   "date": "2026-08-16",
-  "generated_at": "2026-08-16T10:29:06Z",
+  "generated_at": "2026-08-16T12:21:47Z",
   "item_count": 1,
   "sections": [
     {
-      "heading": "AI 安全",
+      "heading": "大模型后训练",
       "item_ids": [
-        "itm_ac5fe6f1e3f68d69"
+        "itm_aecc92f089f003da"
       ],
-      "summary": "论文给出 525-task 条件级生命周期评测，并用 SafeEvolve 显示写入、检索、归因和退休边界可以降低持久风险。"
+      "summary": "LOPD 在工具使用与代码生成实验中展示可学习 latent context 相比手写 privileged artifact 的稳定收益。"
     }
   ],
   "source_counts": {
     "arxiv": 1
   },
-  "summary": "本日新增一篇 AI 安全深读，主题是自改进 Agent 的 skill misevolution：不安全轨迹可能被技能库持久化并污染后续 benign/fresh-session 任务。",
+  "summary": "2026-08-16 新增 LOPD 深读，聚焦后训练中可学习特权上下文、dense token supervision 与训练期 memory 内化。",
   "top_item_ids": [
-    "itm_ac5fe6f1e3f68d69"
+    "itm_aecc92f089f003da"
   ],
   "version": 1
 }

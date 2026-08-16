@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/16/itm_aecc92f089f003da/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-16T12:21:47Z",
+  "quality_gate": {
+    "evidence_points": 11,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "hourly-20260816t122147z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖三方向并输出统一候选表；TOP1 LOPD 日期与主题满足契约。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已阅读 arXiv HTML、PDF 文本与官方仓库 README，并完成中文深读。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解了 OPSD 设定、latent composer、privileged-margin objective、benchmark 与代码开放边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文列出训练代码未完整开放、成功轨迹依赖、latent 不可解释和 verifier 可靠性边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文将 LOPD 放入 on-policy distillation、OPSD 与 latent memory 谱系中比较。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 h3、表格、公式、伪代码与 Mermaid，避免连续大段纯文本。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_aecc92f089f003da"
+  ]
+}

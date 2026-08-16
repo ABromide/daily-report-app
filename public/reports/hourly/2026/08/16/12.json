@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-16T12:21:47Z",
+  "item_count": 1,
+  "period": {
+    "end": "2026-08-16T12:59:59Z",
+    "start": "2026-08-16T12:00:00Z"
+  },
+  "report_id": "hourly:2026-08-16T12:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型后训练",
+      "item_ids": [
+        "itm_aecc92f089f003da"
+      ],
+      "summary": "LOPD 用检索经验与 latent tokens 为 self-teacher 提供训练期特权上下文，并通过 privileged margin 防坍缩。"
+    }
+  ],
+  "summary": "本小时深读 LOPD：可学习 latent privileged context 改写 on-policy self-distillation。",
+  "top_item_ids": [
+    "itm_aecc92f089f003da"
+  ],
+  "version": 1
+}

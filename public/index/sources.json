@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T00:12:10Z",
+  "generated_at": "2026-08-17T04:32:25Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -328,6 +328,14 @@
       "id": "arxiv-openwebrl",
       "kind": "manual",
       "name": "arXiv / OpenWebRL Project"
+    },
+    {
+      "description": "RA-Bench paper, project, code, and public dataset official sources.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.14391",
+      "id": "arxiv-ra-bench",
+      "kind": "manual",
+      "name": "arXiv / RA-Bench"
     },
     {
       "description": "Official arXiv page for RolloutPipe, a paper on overlapping rollout and training in disaggregated on-policy LLM reinforcement learning.",

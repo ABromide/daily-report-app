@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/17/itm_94c4a5c78741708b/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-17T04:32:25Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260817t043225z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; rank 1 was an exact duplicate, so rank 4 RA-Bench was selected from the same table."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv page, arXiv HTML/PDF, official project page, GitHub README/EVALUATION, and dataset release inventory."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Mapped RA-Bench construction, source-matched aggregation, HumanProof, LastMile, metrics, and public-media/full coverage boundaries."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Separated proven detector failures from limits around visual-only I2V, controlled human review, and simulated dissemination."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Used the paper's benchmark comparison and official repository protocol rather than third-party summaries."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with tables, formula-style blocks, and Mermaid; no external image URLs or frontmatter."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_94c4a5c78741708b"
+  ]
+}

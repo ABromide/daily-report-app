@@ -1,7 +1,7 @@
 {
   "date": "2026-08-17",
-  "generated_at": "2026-08-17T18:12:49Z",
-  "item_count": 6,
+  "generated_at": "2026-08-17T18:16:37Z",
+  "item_count": 7,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -23,9 +23,10 @@
     {
       "heading": "大模型后训练相关",
       "item_ids": [
+        "itm_95a2a44c02d06dd1",
         "itm_12650e7cb15091e1"
       ],
-      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
@@ -34,15 +35,16 @@
     "arxiv-agentrewind": 1,
     "arxiv-ra-bench": 1,
     "github": 1,
-    "huggingface-papers": 1
+    "huggingface-papers": 1,
+    "snowflake-arctic-platform": 1
   },
-  "summary": "2026-08-17 public data 已由 finalize-public-run 统一重建索引和报告，共 6 条内容。",
+  "summary": "2026-08-17 public data 已由 finalize-public-run 统一重建索引和报告，共 7 条内容。",
   "top_item_ids": [
     "itm_2f60ab2fa7499677",
     "itm_94c4a5c78741708b",
     "itm_63cf06a7d74f0115",
     "itm_30de6234392e665c",
-    "itm_12650e7cb15091e1"
+    "itm_95a2a44c02d06dd1"
   ],
   "version": 1
 }

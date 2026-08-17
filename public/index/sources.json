@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T18:12:49Z",
+  "generated_at": "2026-08-17T18:16:37Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -968,6 +968,14 @@
       "id": "servicenow-hf",
       "kind": "manual",
       "name": "Hugging Face / ServiceNow"
+    },
+    {
+      "description": "Official GitHub repository for Snowflake AI Research Arctic Platform.",
+      "enabled": true,
+      "homepage_url": "https://github.com/Snowflake-AI-Research/Arctic-Platform",
+      "id": "snowflake-arctic-platform",
+      "kind": "manual",
+      "name": "Snowflake Arctic Platform"
     },
     {
       "description": "Official implementation and documentation for the SpatialClaw runtime.",

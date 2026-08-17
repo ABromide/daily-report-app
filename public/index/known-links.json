@@ -2485,6 +2485,15 @@
       "title_hash": "4b9f02f924f8b03b53fc8c05ac2d6d9421e3f9eef7bd48893ead54828c40bcb4"
     },
     {
+      "canonical_url": "https://github.com/Snowflake-AI-Research/Arctic-Platform",
+      "category_id": "llm-post-training",
+      "content_hash": "d3af3c4d8d26b406652cd02ed69b1728b7155e4af89290b6127d58855a0e6c08",
+      "external_id": "github:Snowflake-AI-Research/Arctic-Platform@c185b13920dcafd329bd67eefa65d3780693d29f",
+      "first_seen_at": "2026-08-17T18:16:37Z",
+      "item_id": "itm_95a2a44c02d06dd1",
+      "title_hash": "3dfb251896e066be871a64fc80ffc7dbb2e9b1e126a6d58f76db1c1c10a0cbf4"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.28527",
       "category_id": "llm-agent",
       "content_hash": "97ce9c15bac2986a3a7c6468b375b5466723937350c4257cd703dc6221b8336a",
@@ -4231,6 +4240,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-17T18:12:49Z",
+  "updated_at": "2026-08-17T18:16:37Z",
   "version": 1
 }

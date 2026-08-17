@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/17/itm_30de6234392e665c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-17T06:25:49Z",
+  "quality_gate": {
+    "evidence_points": 8,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260817t061721z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout searched llm-agent, llm-post-training, and ai-safety together; selected current-window Agent Egress Bench as top candidate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read repository README, STATS, SPEC, RUNNER, Gauntlet, Results Use, Receipt Scoring, OWASP mapping, Governance, and external references."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates security-tool measurement from model alignment, product certification, and no-bypass claims."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_30de6234392e665c"
+  ]
+}

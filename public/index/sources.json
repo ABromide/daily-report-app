@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T04:32:25Z",
+  "generated_at": "2026-08-17T06:25:49Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -24,6 +24,14 @@
       "id": "agent-budget-control",
       "kind": "manual",
       "name": "agent-budget-control repository"
+    },
+    {
+      "description": "Tool-neutral attack corpus for AI agent egress security tools.",
+      "enabled": true,
+      "homepage_url": "https://github.com/luckyPipewrench/agent-egress-bench",
+      "id": "agent-egress-bench",
+      "kind": "manual",
+      "name": "Agent Egress Bench"
     },
     {
       "description": "Official SteerBench-Work project site, repository, and release artifacts.",

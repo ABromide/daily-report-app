@@ -838,6 +838,15 @@
       "title_hash": "f6ce98fb9fe2dceb1dd8d7dca2a5e3eccdedb75a4e47b162a438adea46ccc016"
     },
     {
+      "canonical_url": "https://github.com/luckyPipewrench/agent-egress-bench",
+      "category_id": "ai-safety",
+      "content_hash": "867c506a14ba1673f73d5d3200e0f0ca1e72c65d7a521ad6e6a575acf28ad631",
+      "external_id": "github:luckyPipewrench/agent-egress-bench@6c79ccb35c8b8674552376063a04b1fbd497de6f",
+      "first_seen_at": "2026-08-17T06:25:49Z",
+      "item_id": "itm_30de6234392e665c",
+      "title_hash": "b74a10f88c191b6b2984fec6ccfd55872cbf79ea53893c2973ec759779ef25d6"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.14171",
       "category_id": "llm-post-training",
       "content_hash": "fea5381b825f30c37d8711e384a16cba13f312bce39eb08d5a81573ac8a5a321",
@@ -4195,6 +4204,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-17T04:32:25Z",
+  "updated_at": "2026-08-17T06:25:49Z",
   "version": 1
 }

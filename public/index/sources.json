@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T12:15:00Z",
+  "generated_at": "2026-08-17T18:12:49Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -176,6 +176,14 @@
       "id": "arxiv-advgrpo-2606",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "AgentRewind paper, arXiv source archive, official code repository, and MettleBench dataset repository.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2608.14380",
+      "id": "arxiv-agentrewind",
+      "kind": "manual",
+      "name": "arXiv / AgentRewind"
     },
     {
       "description": "arXiv paper page for Context-Fractured Decomposition Attacks on Tool-Using LLM Agents.",

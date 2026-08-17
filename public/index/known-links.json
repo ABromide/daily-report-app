@@ -802,6 +802,15 @@
       "title_hash": "2fa2cf600534b2c89fe59af1b7d44e7325ba53e9ef418346a4f7bc7b8f57885b"
     },
     {
+      "canonical_url": "https://github.com/rrahimi-uci/safety-guard-dynamics",
+      "category_id": "ai-safety",
+      "content_hash": "b1b8d7fbe3e67e5e8d8c00657efc80e002553d707dca24952695e3e78c5203d8",
+      "external_id": "rrahimi-uci/safety-guard-dynamics@e9883b6a8fd0b0e2da564e12992314984b93517f",
+      "first_seen_at": "2026-08-17T00:12:10Z",
+      "item_id": "itm_2f60ab2fa7499677",
+      "title_hash": "6e666a344292aba07e43d734c858bca623b3c83c29c26bc8ee32a6d9740de87e"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.23075",
       "category_id": "ai-safety",
       "content_hash": "4862be7a34bdc1fe8c95645e91a9516bef2f659a8c587d095775e68b396350a5",
@@ -4177,6 +4186,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-16T22:39:07Z",
+  "updated_at": "2026-08-17T00:12:10Z",
   "version": 1
 }

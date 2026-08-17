@@ -298,6 +298,15 @@
       "title_hash": "608dc10b408976e28a9bdde3ecc783cf337b95d9530c8c1c9adf296de12b106e"
     },
     {
+      "canonical_url": "https://huggingface.co/papers/2608.14277",
+      "category_id": "llm-post-training",
+      "content_hash": "b8525aa52b7b0057a24db8fc4f6fd28b9c9c887f3bcd06e5c930de849eb87d6f",
+      "external_id": "arXiv:2608.14277",
+      "first_seen_at": "2026-08-17T12:15:00Z",
+      "item_id": "itm_12650e7cb15091e1",
+      "title_hash": "317820c44d08ba5ff71289566f8ca60cb1b4d45032494a3e749154dc3de383ac"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.21653",
       "category_id": "llm-post-training",
       "content_hash": "af2e4ac9a7b71518d71cd9e56bd39a06527a89cce08f76ffac039e8046a08378",
@@ -4213,6 +4222,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-08-17T10:45:26Z",
+  "updated_at": "2026-08-17T12:15:00Z",
   "version": 1
 }

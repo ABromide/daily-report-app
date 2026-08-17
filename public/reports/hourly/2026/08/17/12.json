@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-17T12:15:00Z",
+  "item_count": 1,
+  "period": {
+    "end": "2026-08-17T13:00:00Z",
+    "start": "2026-08-17T12:00:00Z"
+  },
+  "report_id": "hourly:2026-08-17T12:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型后训练",
+      "item_ids": [
+        "itm_12650e7cb15091e1"
+      ],
+      "summary": "SimpleOPD 用共享文本 span 对齐处理 tokenizer mismatch，并在 Intern-S2 等学生上取得 ProofBench 大幅提升。"
+    }
+  ],
+  "summary": "本小时新增 SimpleOPD 深读：跨 tokenizer OPD 将长上下文证明教师能力迁移给短上下文学生，并用 reference KL 与终止 token masking 控制长度爆炸。",
+  "top_item_ids": [
+    "itm_12650e7cb15091e1"
+  ],
+  "version": 1
+}

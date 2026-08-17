@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/08/17/itm_cfaf292b4bb0c460/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-17T10:45:26Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 1,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260817t103310z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout searched llm-agent, llm-post-training, and ai-safety; returned 12 dated candidates and recommended ScienceFlow, AgentRewind, and Envs-FORGE after flagging prior-run duplicates."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_cfaf292b4bb0c460"
+  ]
+}

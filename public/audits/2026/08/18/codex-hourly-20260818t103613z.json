@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/08/18/itm_94a62b17612dedde/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 11
+  },
+  "generated_at": "2026-08-18T10:36:13Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260818t103613z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One unified Scout covered llm-agent, llm-post-training, and ai-safety; selected CompoSkill after excluding ClawGym II as duplicate."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv HTML, official code README, and Hugging Face dataset metadata before writing the Chinese deep read."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates path-level composition claim from runtime and judge limitations, and avoids operational exploit payload details."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses TLDR, sectioned analysis, tables, formulas, pseudocode, and Mermaid without direct external image links."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_94a62b17612dedde"
+  ]
+}

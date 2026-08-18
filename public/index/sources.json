@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T06:16:54Z",
+  "generated_at": "2026-08-18T10:36:13Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -234,7 +234,7 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "Manual collection from arXiv Cryptography and Security papers in the current weekly window.",
+      "description": "Manual current-week arXiv paper selection for AI safety and agent security.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/list/cs.CR/recent",
       "id": "arxiv-cs-cr",

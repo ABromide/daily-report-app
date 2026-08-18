@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T16:37:17Z",
+  "generated_at": "2026-08-18T18:18:17Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,9 +90,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for current-week Daily Report deep reads.",
+      "description": "arXiv paper source verified through abstract page, HTML/PDF full text, and export API.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -1008,6 +1008,14 @@
       "id": "sysdig-threat-research",
       "kind": "manual",
       "name": "Sysdig Threat Research Team"
+    },
+    {
+      "description": "Official A.I.G repository and sanitized DeepSeek Harness security assessment artifacts.",
+      "enabled": true,
+      "homepage_url": "https://github.com/Tencent/AI-Infra-Guard",
+      "id": "tencent-aig",
+      "kind": "manual",
+      "name": "Tencent AI-Infra-Guard"
     },
     {
       "description": "Official project website and GitHub materials for Qwen-UI-Agent demos and benchmark summaries.",

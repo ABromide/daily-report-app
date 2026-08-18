@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/18/itm_70d8a22a4568ade4/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-18T04:44:10Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 12,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260818t044410z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout searched llm-agent, llm-post-training and ai-safety, returning 12 dated candidates; recent published items were treated as duplicate risk."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read the arXiv abs page, API metadata, cs.CL recent listing, arXiv HTML full text and Hugging Face paper page."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The analysis separates black-box harness training evidence from limits around auxiliary trajectories, simplified PPO credit assignment, verifier dependence and reproducibility drift."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_70d8a22a4568ade4"
+  ]
+}

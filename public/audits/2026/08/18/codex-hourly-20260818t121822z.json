@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/08/18/itm_64122c15156fd9a4/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-18T12:28:15Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20260818t121822z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "The sole Scout stalled, so the main Agent completed one unified fallback table across llm-agent, llm-post-training, and ai-safety without spawning another Scout."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent read arXiv HTML and TeX source, including experiment design, findings, containment, validity threats, figures, and data availability."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Article separates structural claims from synthetic-task limits, single-runtime limits, shell logging blind spots, and non-sandboxed containment boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_64122c15156fd9a4"
+  ]
+}

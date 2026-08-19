@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/19/itm_e7f7422c49e53fd5/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-19T11:36:54Z",
+  "quality_gate": {
+    "evidence_points": 9,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 7,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260819t113009z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; StagedWorkspace was selected after Agent Lightning and HarnessRisk were found already present on current origin/data."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract page, HTML full text, TeX source, generated result tables, and appendix protocol sections."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted W_t, C_t, Delta_t state contract, hash-keyed freshness, tool routing arms, benchmark protocols, ablations, and residual failure slice."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Cross-checked arXiv current listing and third-party arXiv aggregators; third-party sources were used only for discovery/date corroboration."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Preserved boundaries on non-causal leaderboard comparison, parser/retriever coupling, outcome-only grading, cost accounting, and all-arm-zero residuals."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown passed the 5000 CJK gate with tables, formula blocks, pseudocode, and Mermaid; no images were required for evidence."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e7f7422c49e53fd5"
+  ]
+}

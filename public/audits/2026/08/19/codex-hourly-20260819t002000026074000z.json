@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/19/itm_fa17e2e379b7a55d/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-19T00:30:24Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260819t002000026074000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training 和 ai-safety，输出统一候选表；当前远端显示 arXiv:2608.16801、2608.16852 和 2608.16806 已 live，主 Agent 在同表 pivot 到 TRCA。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv abstract、HTML、PDF 和 cs.AI listing，提取方法、公式、算法、表格、消融、样本效率与边界。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 Evidence/Execution/Invalidity rubrics、Foundational/Breakthrough rewards、completion-aware return、context grouping 与 PPO-style objective。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文保留 adapter 可信度、rubric blind spot、无官方代码或独立复现、非 unbiased advantage estimator 等证据边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文对照 PPO/GRPO/RLOO、PRM/AgentPRM、hindsight credit 与 success-anchor 方法，说明 TRCA 的谱系位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含自包含 TL;DR、多级分点、表格、公式块、伪代码与 Mermaid，CJK 计数超过 5000。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_fa17e2e379b7a55d"
+  ]
+}

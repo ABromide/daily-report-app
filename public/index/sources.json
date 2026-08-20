@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T12:47:45Z",
+  "generated_at": "2026-08-20T17:03:46Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,9 +90,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper source used by Daily Report automation.",
+      "description": "人工深读采集的 arXiv 论文来源。",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -976,6 +976,14 @@
       "id": "snowflake-arctic-platform",
       "kind": "manual",
       "name": "Snowflake Arctic Platform"
+    },
+    {
+      "description": "SPADE 项目页、代码、模型与数据入口。",
+      "enabled": true,
+      "homepage_url": "https://spade-rl.github.io/",
+      "id": "spade-rl",
+      "kind": "manual",
+      "name": "SPADE project"
     },
     {
       "description": "Official implementation and documentation for the SpatialClaw runtime.",

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/19/itm_f9107d945ff1a12e/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-08-20T17:03:46Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260820t170346z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety；SPADE 在统一候选表中排名第一，并通过当前 origin/data 去重。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML/PDF、项目页、GitHub README、代码核心目录与 HF 发布入口，按论文结构写入中文 Markdown。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文覆盖 hint-based regret 公式、双角色 GRPO 流程、orchestrator、validator、memory、corpus loader、训练 launcher 和复现边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分已证明的 held-out 迁移、消融证据、代码可用性与真实工具安全/复现限制。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "已搜索 SPADE 题名、arXiv ID 与讨论页；外部参考主要为 HF Daily Papers/组织页，第三方解读较少且多为摘要转写。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown 使用 TL;DR、表格、公式、伪代码和 Mermaid；未本地化图片，因关键图表证据已用文字和表格解释。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_f9107d945ff1a12e"
+  ]
+}

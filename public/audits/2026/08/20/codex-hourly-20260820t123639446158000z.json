@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/08/20/itm_2476498e6de1a872/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 2
+  },
+  "generated_at": "2026-08-20T12:47:45Z",
+  "quality_gate": {
+    "evidence_points": 11,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260820t123639446158000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; SkillGate was recommended, with SPADE and MobileWorldSafety as pivots."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv API, abstract page, HTML, TeX source, appendix, GitHub README, operations guide, method code, and Hugging Face model/assets metadata."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Verified clean-oracle utility, identity-span attribution, disjoint task/selector weights, custom GRPO loss, and profile gates in the released repository."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Preserved limits on single-run evidence, oracle-skill supervision, abstention credit, frontier reference comparability, and pass@4 bootstrap uncertainty."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2476498e6de1a872"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/19/itm_d603ef9b5574e934/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-08-20T18:44:28Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260820t183627004046000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single merged Scout covered llm-agent, llm-post-training, and ai-safety; SPADE was duplicate, so the run pivoted within the same table to arXiv:2608.19072."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abstract, HTML full text, appendix details, tables, figures, and current external listings before writing the Chinese deep read."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "Extracted the execution-versus-strategy framework, formula definitions, controlled interventions, evaluator failures, and benchmark tables."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "Preserved limits: observational corpus, non-randomized scaffolds, three-run controlled setting, and AIME small-sample variance."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Searched title, arXiv ID, and PostTrainBench terms; only index/social listings had current external coverage."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses h3 sections, tables, formulas, pseudocode, Mermaid, and localized evidence figures; CJK count passed 5000."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_d603ef9b5574e934"
+  ]
+}

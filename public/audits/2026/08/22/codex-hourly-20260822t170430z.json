@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/08/20/itm_97f36cd2d53a57ad/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 5,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 14
+  },
+  "generated_at": "2026-08-22T17:04:30Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5139,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260822t170430z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 Agent、后训练和 AI 安全；统一表推荐 AI4AI-Bench、EchoCoT 与 Learning When to Think，并避开 StagedWorkspace、SPADE、MidTool、DeepSeek Harness、Agent Lightning 和 HarnessRisk 等已发布或高风险重复项。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已复核 arXiv v1、HTML 正文、项目页、GitHub API、README 与 tasks README，抽取任务协议、评分公式、10 个算法家族、290 cell 结果和 patch 分类证据。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 frozen repo、4 小时探索、12 小时 fresh replay、hidden evaluator、0.1 baseline 坐标、run-level 与 learning-level 改动边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确 baseline 非人类专家上限、10 个任务覆盖有限、proxy-final 隔离不是语义完全无重叠、patch 分类存在人工灰区、结果随 agent 版本漂移。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文按论文相关工作定位 Kaggle/ML competition、PostTrainBench、RSIBench-Data、MLS-Bench、MLGym、PaperBench、AI Scientist 与 AutoML 路线。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 TL;DR、h3、表格、公式、伪代码和 Mermaid；未本地化图片，因为关键图表证据已用文本结构复现。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_97f36cd2d53a57ad"
+  ]
+}

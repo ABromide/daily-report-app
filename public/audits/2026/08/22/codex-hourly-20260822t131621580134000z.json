@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/08/20/itm_04f88334eb46888a/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 3,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 3
+  },
+  "generated_at": "2026-08-22T13:34:47Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 6,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260822t131621580134000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "The sole merged Scout covered llm-agent, llm-post-training and ai-safety, returned a unified current-week table, and included MaliciousSkillBench as a low-duplicate AI safety candidate after MidTool was consumed by a concurrent release."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read arXiv API metadata, HTML, PDF and project page headers, extracted the source registry, deduplication, benign curation, attack taxonomy, Source-Disjoint results, scanner trade-offs, release governance and safety boundaries."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_04f88334eb46888a"
+  ]
+}

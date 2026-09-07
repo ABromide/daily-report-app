@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T18:43:37Z",
+  "generated_at": "2026-09-06T21:05:02Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -152,6 +152,14 @@
       "id": "arxiv-2607-22002",
       "kind": "manual",
       "name": "arXiv:2607.22002"
+    },
+    {
+      "description": "arXiv paper page for Terminal-Universe.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2609.04148",
+      "id": "arxiv-2609-04148",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",

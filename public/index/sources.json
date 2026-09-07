@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T03:20:45Z",
+  "generated_at": "2026-09-07T10:30:30Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -242,9 +242,9 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "arXiv Computer Science - Cryptography and Security papers selected by Daily Report automation.",
+      "description": "arXiv paper page for Repeat-After-Me visual prompt injection.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org/abs/2609.04533",
       "id": "arxiv-cs-cr",
       "kind": "manual",
       "name": "arXiv cs.CR"

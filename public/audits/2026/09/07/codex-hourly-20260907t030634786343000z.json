@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/09/03/itm_4b40cc49494e550c/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-09-07T03:06:34Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20260907t030634786343000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 一次性覆盖 llm-agent、llm-post-training、ai-safety，PatchBench 排名第一并显式排除已知重复。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 已读取 arXiv HTML/PDF、相关公开材料和项目仓库可访问性证据。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 DiffBLEU、漏洞迁移、代码变异、安全验证和语义验证机制。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文标注 GitHub 仓库当前 404、静态 benchmark 污染和 reference oracle 依赖等边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "对照 SEC-bench、AutoPatchBench 和 Team Atlanta 2026 patching post 定位贡献。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文超过 5000 CJK，使用表格、公式、伪代码和 Mermaid，无需本地化图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_4b40cc49494e550c"
+  ]
+}

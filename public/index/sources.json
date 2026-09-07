@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T21:05:02Z",
+  "generated_at": "2026-09-07T03:06:34Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -242,9 +242,9 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "Manual current-week arXiv paper selection for AI safety and agent security.",
+      "description": "arXiv Computer Science - Cryptography and Security papers selected by Daily Report automation.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/list/cs.CR/recent",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv-cs-cr",
       "kind": "manual",
       "name": "arXiv cs.CR"

@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/09/07/itm_37234c520064a546/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-09-07T15:38:52Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20260907t153852z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety in one unified table; Iris ranked top and CUA-Universe was excluded as already published."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Read arXiv abs, HTML, TeX source, GitHub README/API, and HF Daily Papers metadata; extracted data pipeline, SFT/RL, climbing, CM ablations, results, and limitations."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown is text-first with tables, formulas, pseudocode, and Mermaid; no external image URLs are embedded; measured Chinese character count is 5374."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_37234c520064a546"
+  ]
+}

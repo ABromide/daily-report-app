@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T10:30:30Z",
+  "generated_at": "2026-09-07T15:20:39Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -242,9 +242,9 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "arXiv paper page for Repeat-After-Me visual prompt injection.",
+      "description": "Manual arXiv cs.CR source with official recent-list date verification.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2609.04533",
+      "homepage_url": "https://arxiv.org/list/cs.CR/recent?skip=0&show=100",
       "id": "arxiv-cs-cr",
       "kind": "manual",
       "name": "arXiv cs.CR"

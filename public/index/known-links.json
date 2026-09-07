@@ -3864,7 +3864,7 @@
     {
       "canonical_url": "https://arxiv.org/abs/2609.05269",
       "category_id": "ai-safety",
-      "content_hash": "0addbc44f11208172377d28e51f6aedce172ec87e2ba4be62d5ee028f184ff02",
+      "content_hash": "dc290b093c739564b6c2e7c61202bfcb0cee2bfd15bc8c30d1d24265bba9921a",
       "external_id": "arXiv:2609.05269v1",
       "first_seen_at": "2026-09-07T15:20:39Z",
       "item_id": "itm_e0058b623cd392b3",
@@ -4465,6 +4465,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-09-07T15:20:39Z",
+  "updated_at": "2026-09-07T15:36:00Z",
   "version": 1
 }

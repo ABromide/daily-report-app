@@ -247,7 +247,7 @@ Verifier 对每一步做六类检查：
 
 ### 整体架构
 
-![CONTINUITY 主结果图](../../../assets/2026/09/07/itm_e0058b623cd392b3/main-security-utility.png)
+![CONTINUITY 主结果图](/daily-report-app/data/assets/2026/09/07/itm_e0058b623cd392b3/main-security-utility.png)
 
 作者的设计可以整理为下面这条控制链：
 
@@ -470,7 +470,7 @@ x 20 parameterized instances
 
 ## 主结果：组合边界缺一段就会漏
 
-![CONTINUITY 消融图](../../../assets/2026/09/07/itm_e0058b623cd392b3/ablation.png)
+![CONTINUITY 消融图](/daily-report-app/data/assets/2026/09/07/itm_e0058b623cd392b3/ablation.png)
 
 ### Figure 与 Table 证据怎么读？
 
@@ -576,7 +576,7 @@ Targeted ablation 每个 fault-domain pair 取一个代表实例，共 128 类�
 
 ## 性能与工程成本
 
-![CONTINUITY scaling 图](../../../assets/2026/09/07/itm_e0058b623cd392b3/scaling.png)
+![CONTINUITY scaling 图](/daily-report-app/data/assets/2026/09/07/itm_e0058b623cd392b3/scaling.png)
 
 Artifact 的性能测量来自 Python + Ed25519 reference prototype，不包含网络、模型、外部 policy service 或 durable storage latency。
 

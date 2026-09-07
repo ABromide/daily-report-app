@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T15:38:52Z",
+  "generated_at": "2026-09-07T21:25:45Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -242,9 +242,9 @@
       "name": "arXiv cs.CL"
     },
     {
-      "description": "Manual arXiv cs.CR source with official recent-list date verification.",
+      "description": "Manual arXiv Computer Science Cryptography and Security source used by the hourly Chinese deep research automation.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/list/cs.CR/recent?skip=0&show=100",
+      "homepage_url": "https://arxiv.org/list/cs.CR/recent",
       "id": "arxiv-cs-cr",
       "kind": "manual",
       "name": "arXiv cs.CR"

@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/09/08/itm_bb37511c9b9a703e/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-09-08T09:35:31Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 4,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20260908t093531z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "failed",
+      "summary": "The sole Scout was spawned for a unified three-track search but did not return within two wait windows and was closed; main-agent fallback reused the merged candidate table from automation memory and refreshed remote duplicate probes."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_bb37511c9b9a703e"
+  ]
+}

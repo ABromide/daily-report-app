@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/09/17/itm_3231ee479ca399e5/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-09-19T19:23:52Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20260919t191942393487000z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; Red-Teaming Auto Mode was selected from 12 candidates."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main agent read the arXiv HTML/PDF metadata and official repository, then wrote a self-contained Chinese deep read."
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "The article explains monitor variants, eval modes, key figures/tables, formulas, pseudocode, Mermaid, and repository structure."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The article states snapshot, trusted-monitor, sandboxing, simulation, and dual-use writing boundaries."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Related AI Control, prompt injection, MonitoringBench, SLEIGHT-Bench, and multi-context attack context is summarized."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Markdown uses structured Chinese sections, tables, formula blocks, pseudocode, and no external image URLs."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3231ee479ca399e5"
+  ]
+}

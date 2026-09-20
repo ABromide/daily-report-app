@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-20",
+  "generated_at": "2026-09-20T01:21:54Z",
+  "item_count": 1,
+  "sections": [
+    {
+      "heading": "AI Safety",
+      "item_ids": [
+        "itm_17f1e8dafb6890f5"
+      ],
+      "summary": "模型错位报告框架把泄密、越权通信、compaction 污染和目标不透明放进统一披露流程。"
+    }
+  ],
+  "source_counts": {
+    "openai-alignment": 1
+  },
+  "summary": "今日新增一篇 AI 安全深读，围绕 OpenAI 模型错位报告框架及六类官方案例，分析 Agent 审计协议。",
+  "top_item_ids": [
+    "itm_17f1e8dafb6890f5"
+  ],
+  "version": 1
+}

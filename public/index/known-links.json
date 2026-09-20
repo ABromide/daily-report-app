@@ -451,6 +451,15 @@
       "title_hash": "01786fa67190d7840dfc06ede91641032cc66e175036413f27946c1d488aa672"
     },
     {
+      "canonical_url": "https://openai.com/index/model-misalignment-reporting-framework/",
+      "category_id": "ai-safety",
+      "content_hash": "38239263df7ff03a4e1c25b0a03b0dbcff9cbc40ad27b0f4f26706120e5e3827",
+      "external_id": "openai-model-misalignment-reporting-framework-2026-09-16",
+      "first_seen_at": "2026-09-20T01:21:54Z",
+      "item_id": "itm_17f1e8dafb6890f5",
+      "title_hash": "2244b13b386ea06ba9496bef60b85889ab3dbb41a9feda3d965eb9b319a049ff"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.19837",
       "category_id": "ai-safety",
       "content_hash": "17be8d6a99223ac9620ffca46d2bbd30b685d3e2234a0d857bc3e74033cb9181",
@@ -4546,6 +4555,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-09-19T19:19:36Z",
+  "updated_at": "2026-09-20T01:21:54Z",
   "version": 1
 }

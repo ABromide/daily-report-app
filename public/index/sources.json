@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T19:19:36Z",
+  "generated_at": "2026-09-20T01:21:54Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -872,6 +872,14 @@
       "id": "openai",
       "kind": "manual",
       "name": "OpenAI"
+    },
+    {
+      "description": "OpenAI alignment and model misalignment reports used for current-week AI safety analysis.",
+      "enabled": true,
+      "homepage_url": "https://alignment.openai.com/",
+      "id": "openai-alignment",
+      "kind": "manual",
+      "name": "OpenAI Alignment"
     },
     {
       "description": "Official OpenAI paper and announcement on predicting LLM safety before release by simulating deployment.",

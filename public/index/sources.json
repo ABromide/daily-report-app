@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T01:21:54Z",
+  "generated_at": "2026-09-20T01:49:13Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,7 +90,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Manual arXiv paper selection for Daily Report Chinese deep research.",
+      "description": "arXiv papers selected by the Daily Report automation.",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
@@ -856,6 +856,14 @@
       "id": "neurotaint-arxiv",
       "kind": "manual",
       "name": "NeuroTaint arXiv"
+    },
+    {
+      "description": "Official SoL-Pi code repository and project documentation.",
+      "enabled": true,
+      "homepage_url": "https://github.com/NVlabs/SoL-Pi",
+      "id": "nvlabs-sol-pi",
+      "kind": "manual",
+      "name": "NVlabs SoL-Pi"
     },
     {
       "description": "Manual official project source for OpenThoughts-Agent resources.",

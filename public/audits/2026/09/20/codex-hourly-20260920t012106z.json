@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/09/17/itm_18e3fd809ef72cdf/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-09-20T01:49:13Z",
+  "quality_gate": {
+    "evidence_points": 18,
+    "image_notes": 3,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 5
+  },
+  "run_id": "codex-hourly-20260920t012106z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout covered llm-agent, llm-post-training, and ai-safety in one unified table; recommended SoL-Pi as the top candidate after excluding HazardAuditor and earlier duplicates."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_18e3fd809ef72cdf"
+  ]
+}

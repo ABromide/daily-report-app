@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-10-13T20:38:27Z",
+  "item_count": 1,
+  "period": {
+    "end": "2026-10-13T21:00:00Z",
+    "start": "2026-10-13T20:00:00Z"
+  },
+  "report_id": "hourly:2026-10-13T20:00:00Z",
+  "sections": [
+    {
+      "heading": "大模型 Agent 基础设施",
+      "item_ids": [
+        "itm_b2f0754d5fad6cb5"
+      ],
+      "summary": "vLLM 用 D->P KV 反向复用降低多轮 agentic workloads 的 TTFT，但收益依赖 EFA/RDMA、router 状态、TTL 和 prefix 对齐。"
+    }
+  ],
+  "summary": "本小时收录 vLLM 双向 KV transfer 深读，重点分析多轮 Agent serving 中 prefill 重算、KV 生命周期、router metadata 和 TTFT 证据边界。",
+  "top_item_ids": [
+    "itm_b2f0754d5fad6cb5"
+  ],
+  "version": 1
+}

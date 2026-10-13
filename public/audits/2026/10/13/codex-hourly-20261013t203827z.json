@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/10/12/itm_b2f0754d5fad6cb5/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 6
+  },
+  "generated_at": "2026-10-13T20:38:27Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 5,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261013t203827z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "failed",
+      "summary": "A single Scout was spawned for the merged three-category candidate search but was accidentally interrupted before returning a final table; no second Scout was started."
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "Main Agent recovered candidate discovery with one merged manual table across llm-agent, llm-post-training, and ai-safety, selecting the current-week vLLM report."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "Main Agent deep-read the vLLM blog, NIXL connector documentation, performance figures, configuration path, and troubleshooting boundaries."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Article is pure Markdown with local images, tables, formulas, pseudocode-style logic, Mermaid, and explicit limitations."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b2f0754d5fad6cb5"
+  ]
+}

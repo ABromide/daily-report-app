@@ -3169,6 +3169,15 @@
       "title_hash": "e0ee01eea521621ca50f785275a73c372a8cd3382f5ae6aee2da58d6dc5be74b"
     },
     {
+      "canonical_url": "https://vllm-project.github.io/2026/10/12/bidirectional-kvxfer-multiturn-agentic-workload.html",
+      "category_id": "llm-agent",
+      "content_hash": "7f755cd9cd827721e85f428990ce1f4a0a1f813141b24aee234e162aa2c30091",
+      "external_id": "vllm-bidirectional-kvxfer-multiturn-agentic-workload-2026-10-12",
+      "first_seen_at": "2026-10-13T20:38:27Z",
+      "item_id": "itm_b2f0754d5fad6cb5",
+      "title_hash": "c39b2bb0e855891af71c34bcf810cf048f8f93a80c5eb78f122bcd97143d5cb3"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.15200",
       "category_id": "llm-post-training",
       "content_hash": "b4eeee9c45f67c3c3d9c311431f000441fd726d93c6c546bc1a529c43a995ea0",
@@ -4564,6 +4573,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-09-20T01:49:13Z",
+  "updated_at": "2026-10-13T20:38:27Z",
   "version": 1
 }

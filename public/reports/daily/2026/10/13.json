@@ -1,22 +1,31 @@
 {
   "date": "2026-10-13",
-  "generated_at": "2026-10-13T20:38:27Z",
-  "item_count": 1,
+  "generated_at": "2026-10-13T20:48:49Z",
+  "item_count": 2,
   "sections": [
     {
-      "heading": "大模型 Agent",
+      "heading": "大模型 Agent 相关",
       "item_ids": [
         "itm_b2f0754d5fad6cb5"
       ],
-      "summary": "vLLM 的双向 KV transfer 把多轮 Agent 延迟问题从模型能力扩展到缓存生命周期和路由协议。"
+      "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_3d250061ea009f08"
+      ],
+      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
+    "arxiv": 1,
     "vllm-blog": 1
   },
-  "summary": "今日新增一篇大模型 Agent 基础设施深读，围绕 vLLM 双向 KV transfer 解释多轮 Agent 会话中旧上下文重算、D->P NIXL 读取、TTFT 性能证据和部署边界。",
+  "summary": "2026-10-13 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
   "top_item_ids": [
-    "itm_b2f0754d5fad6cb5"
+    "itm_b2f0754d5fad6cb5",
+    "itm_3d250061ea009f08"
   ],
   "version": 1
 }

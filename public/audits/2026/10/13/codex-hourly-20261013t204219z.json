@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/10/09/itm_3d250061ea009f08/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-13T20:48:49Z",
+  "quality_gate": {
+    "evidence_points": 5,
+    "image_notes": 2,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20261013t204219z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "Single Scout produced one merged table for llm-agent, llm-post-training, and ai-safety. Top candidates were SWE-Critix, X-AgentRed, Humanize MLE Agents, BranchOPD, and Rollout-Time Intervention; SWE-Critix was selected for strongest coding-agent verifier plus post-training evidence."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3d250061ea009f08"
+  ]
+}

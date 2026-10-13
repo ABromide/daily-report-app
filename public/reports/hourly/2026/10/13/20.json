@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-13T20:38:27Z",
-  "item_count": 1,
+  "generated_at": "2026-10-13T20:48:49Z",
+  "item_count": 2,
   "period": {
     "end": "2026-10-13T21:00:00Z",
     "start": "2026-10-13T20:00:00Z"
@@ -8,16 +8,24 @@
   "report_id": "hourly:2026-10-13T20:00:00Z",
   "sections": [
     {
-      "heading": "大模型 Agent 基础设施",
+      "heading": "大模型 Agent 相关",
       "item_ids": [
         "itm_b2f0754d5fad6cb5"
       ],
-      "summary": "vLLM 用 D->P KV 反向复用降低多轮 agentic workloads 的 TTFT，但收益依赖 EFA/RDMA、router 状态、TTL 和 prefix 对齐。"
+      "summary": "大模型 Agent 相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
+    {
+      "heading": "大模型后训练相关",
+      "item_ids": [
+        "itm_3d250061ea009f08"
+      ],
+      "summary": "大模型后训练相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
-  "summary": "本小时收录 vLLM 双向 KV transfer 深读，重点分析多轮 Agent serving 中 prefill 重算、KV 生命周期、router metadata 和 TTFT 证据边界。",
+  "summary": "本小时 public data 由 finalize-public-run 机械更新，共收录 2 条内容。",
   "top_item_ids": [
-    "itm_b2f0754d5fad6cb5"
+    "itm_b2f0754d5fad6cb5",
+    "itm_3d250061ea009f08"
   ],
   "version": 1
 }

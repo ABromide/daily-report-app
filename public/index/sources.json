@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T02:39:21Z",
+  "generated_at": "2026-10-14T08:39:32Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,9 +90,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "自动化人工筛选的 arXiv 论文来源。",
+      "description": "Primary source for current-week AI research papers.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/",
+      "homepage_url": "https://arxiv.org",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -632,6 +632,14 @@
       "id": "github-rl-align-rl-kernel",
       "kind": "manual",
       "name": "RL-Align/RL-Kernel GitHub repository"
+    },
+    {
+      "description": "Official implementation for the Evidence-First Agentic Verification paper.",
+      "enabled": true,
+      "homepage_url": "https://github.com/rsanayei/sauron",
+      "id": "github-rsanayei-sauron",
+      "kind": "manual",
+      "name": "rsanayei/Sauron"
     },
     {
       "description": "Manual GitHub code project selection for Daily Report hourly deep research.",

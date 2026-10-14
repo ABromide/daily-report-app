@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T20:34:55Z",
+  "generated_at": "2026-10-14T20:40:13Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -872,6 +872,14 @@
       "id": "neurotaint-arxiv",
       "kind": "manual",
       "name": "NeuroTaint arXiv"
+    },
+    {
+      "description": "Official source repository for the experimental Guardrails server and OpenAI Chat Completions integration.",
+      "enabled": true,
+      "homepage_url": "https://github.com/NVIDIA-NeMo/Guardrails",
+      "id": "nvidia-nemo-guardrails",
+      "kind": "manual",
+      "name": "NVIDIA NeMo Guardrails"
     },
     {
       "description": "Official SoL-Pi code repository and project documentation.",

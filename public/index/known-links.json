@@ -1936,6 +1936,15 @@
       "title_hash": "27a0bdc78a0df9375924b47efb8d508b48e1220e1e91f01fa3db5db25885b65e"
     },
     {
+      "canonical_url": "https://github.com/NVIDIA-NeMo/Guardrails/commit/21ec4f4d3390c35b1508267a822f79db00e943c9",
+      "category_id": "ai-safety",
+      "content_hash": "f8f58ad8b42aff486e98386af22895de940a7ddca15eb91db27c7c68ba23863f",
+      "external_id": "21ec4f4d3390c35b1508267a822f79db00e943c9",
+      "first_seen_at": "2026-10-14T20:40:13Z",
+      "item_id": "itm_6a55adb84bf3612b",
+      "title_hash": "55854fc72be4a53058941f9f0969b6c24b092eac5bc1a510fc687111e6c09842"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.20243v1",
       "category_id": "llm-agent",
       "content_hash": "62a90fe745f4af676083bceef1c82eab3e75a4ab19a14f7080e02ad7d78d5d98",
@@ -4627,6 +4636,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-14T20:34:55Z",
+  "updated_at": "2026-10-14T20:40:13Z",
   "version": 1
 }

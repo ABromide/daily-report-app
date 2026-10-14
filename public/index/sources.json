@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T08:39:32Z",
+  "generated_at": "2026-10-14T08:44:32Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,9 +90,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Primary source for current-week AI research papers.",
+      "description": "Primary paper source for current-week AI research candidates.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org",
+      "homepage_url": "https://arxiv.org/",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"
@@ -672,6 +672,14 @@
       "id": "github-thudm-slime",
       "kind": "manual",
       "name": "GitHub: THUDM/slime"
+    },
+    {
+      "description": "Official artifact repository with Kairos implementation, run records, policies and evaluation scripts.",
+      "enabled": true,
+      "homepage_url": "https://github.com/UzL-ITS/Kairos",
+      "id": "github-uzl-its-kairos",
+      "kind": "manual",
+      "name": "UzL-ITS/Kairos"
     },
     {
       "description": "Official repository, commit, PR, issue and documentation for the selected post-training code change.",

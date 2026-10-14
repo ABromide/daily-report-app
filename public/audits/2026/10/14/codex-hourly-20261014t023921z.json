@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/10/09/itm_650fe433e6349b82/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-14T02:39:21Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5089,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 4
+  },
+  "run_id": "codex-hourly-20261014t023921z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 覆盖三类方向，推荐 X-AgentRed，未发现已发布重复。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 深读 arXiv HTML、abstract 和项目页，完成中文长文。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "代码标注为 coming soon；正文聚焦论文方法、实验和项目页公开证据。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确模拟环境、LLM judge、图维护成本和结构多样性局限。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文比较 STAC、TRACE、AgentHarm 与工具型 Agent 红队位置。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文使用 TL;DR、表格、公式、Mermaid 和分点组织。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_650fe433e6349b82"
+  ]
+}

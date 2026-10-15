@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T20:40:13Z",
+  "generated_at": "2026-10-15T02:45:01Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,9 +90,9 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "Official abstract, PDF and TeX source for OpenMobile-2.",
+      "description": "WildTrace official paper record and full text.",
       "enabled": true,
-      "homepage_url": "https://arxiv.org/abs/2610.14157",
+      "homepage_url": "https://arxiv.org",
       "id": "arxiv",
       "kind": "manual",
       "name": "arXiv"

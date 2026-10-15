@@ -1,15 +1,16 @@
 {
   "date": "2026-10-15",
-  "generated_at": "2026-10-15T14:53:41Z",
-  "item_count": 3,
+  "generated_at": "2026-10-15T09:30:00Z",
+  "item_count": 4,
   "sections": [
     {
       "heading": "AI 安全相关",
       "item_ids": [
         "itm_afcb311863187516",
-        "itm_1ae4079228cce30a"
+        "itm_1ae4079228cce30a",
+        "itm_0f7dfcfdc1f9f405"
       ],
-      "summary": "AI 安全相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "AI 安全相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     },
     {
       "heading": "大模型后训练相关",
@@ -21,13 +22,14 @@
   ],
   "source_counts": {
     "anthropic-research": 1,
-    "arxiv": 2
+    "arxiv": 3
   },
-  "summary": "2026-10-15 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
+  "summary": "2026-10-15 public data 已由 finalize-public-run 统一重建索引和报告，共 4 条内容。",
   "top_item_ids": [
     "itm_afcb311863187516",
     "itm_9b99dac7607853de",
-    "itm_1ae4079228cce30a"
+    "itm_1ae4079228cce30a",
+    "itm_0f7dfcfdc1f9f405"
   ],
   "version": 1
 }

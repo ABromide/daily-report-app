@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T14:53:41Z",
+  "generated_at": "2026-10-15T09:30:00Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -98,7 +98,7 @@
       "name": "Anthropic Research"
     },
     {
-      "description": "Official arXiv metadata and full-text source for P2Patch.",
+      "description": "Open research paper archive",
       "enabled": true,
       "homepage_url": "https://arxiv.org",
       "id": "arxiv",

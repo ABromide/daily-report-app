@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T02:45:01Z",
+  "generated_at": "2026-10-15T02:50:00Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -90,7 +90,7 @@
       "name": "Anthropic Frontier Red Team"
     },
     {
-      "description": "WildTrace official paper record and full text.",
+      "description": "Official arXiv metadata and full-text source for P2Patch.",
       "enabled": true,
       "homepage_url": "https://arxiv.org",
       "id": "arxiv",

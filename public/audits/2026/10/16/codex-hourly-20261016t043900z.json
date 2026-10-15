@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/10/16/itm_e47342c1f32a4cef/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-16T04:39:00Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261016t043900z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一 Scout 合并检索三类方向；候选均核验在 2026-10-12 UTC 起的当前周内，CIPR 为首选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读 arXiv HTML 正文与附录，提取目标、训练、评测、消融、错误分析与局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文拆解 canonicalization、对应动作、rescoring/rollout KL、GRPO 与推理 adapter 的边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确单轮、至多 9B、单次 run、已知动作映射、成本与 no-call 副作用，未把自报实验外推为一般安全结论。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "检索第三方索引页作题名日期交叉核对；方法、数值和引用均以论文全文为准。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "写入纯 Markdown，使用小节、表格、公式、伪代码式流程和 Mermaid；无必要关键图片，未下载图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_e47342c1f32a4cef"
+  ]
+}

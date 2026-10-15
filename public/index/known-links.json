@@ -523,6 +523,15 @@
       "title_hash": "961ea02aa540d72bea56653624429402d86b3605cc460c3959be968328b8076c"
     },
     {
+      "canonical_url": "https://www.anthropic.com/research/distillation-defenses",
+      "category_id": "ai-safety",
+      "content_hash": "068941b529076f1f103f5a75f65b24b55943ab02e38a0e3de382990b8b4ec49c",
+      "external_id": "Anthropic-distillation-defenses-2026-10-12",
+      "first_seen_at": "2026-10-15T14:53:41Z",
+      "item_id": "itm_1ae4079228cce30a",
+      "title_hash": "6a32ac08faa8c9d739586eaf729b30ab49ac0acfa5b7e94d08eac2de1ae8d004"
+    },
+    {
       "canonical_url": "https://github.com/microsoft/PyRIT/pull/2051",
       "category_id": "ai-safety",
       "content_hash": "f3832cab625d1640ef938ce6c6c14463ef6c14ee94aa48173e3ca12ae172ef5e",
@@ -4654,6 +4663,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-15T02:50:00Z",
+  "updated_at": "2026-10-15T14:53:41Z",
   "version": 1
 }

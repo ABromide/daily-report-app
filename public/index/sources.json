@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T02:50:00Z",
+  "generated_at": "2026-10-15T14:53:41Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -88,6 +88,14 @@
       "id": "anthropic-red-team",
       "kind": "manual",
       "name": "Anthropic Frontier Red Team"
+    },
+    {
+      "description": "Anthropic 官方研究与政策报告。",
+      "enabled": true,
+      "homepage_url": "https://www.anthropic.com/research",
+      "id": "anthropic-research",
+      "kind": "manual",
+      "name": "Anthropic Research"
     },
     {
       "description": "Official arXiv metadata and full-text source for P2Patch.",

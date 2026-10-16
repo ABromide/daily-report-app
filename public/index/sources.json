@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T04:39:00Z",
+  "generated_at": "2026-10-16T02:44:26Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -310,6 +310,14 @@
       "enabled": true,
       "homepage_url": "https://arxiv.org/abs/2606.19887",
       "id": "arxiv-ffinred-2606",
+      "kind": "manual",
+      "name": "arXiv"
+    },
+    {
+      "description": "Primary paper record for Scaling Discovery Requires Forgetting.",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2610.20563",
+      "id": "arxiv-forgetting-2026",
       "kind": "manual",
       "name": "arXiv"
     },

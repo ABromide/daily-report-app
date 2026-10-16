@@ -262,3 +262,21 @@ SWE-Verified 的 500 task、每题 3 rollout 给出 1,500 次尝试；SWE-Pro �
 作者公开论文与 TeX 是透明度进步，但不是可一键重训的 release。尤其它所需的 500B 中训、超过百万轨迹与 GB300 集群，把可复现性分成“机制复现”（小规模验证 mask、图排序、短 SFT gate）和“数值复现”（同 token、同 SFT、同 harness 达到表中绝对分数）。报告两者的差别比宣称“开源配方已复现”更诚实。
 
 最后，跨语言证据值得谨慎乐观。SWE-bench Multilingual 是 Nano 中最持续的增益，但论文没有把增益拆成语言、repo graph 质量和 scaffold 交互三项。一个真正有诊断力的后续实验，应在未参与中训的语言/构建系统上预注册评测，同时固定 token 与 wall-clock budget。只有那时我们才能判断它学到的是通用 agentic software prior，还是对当前 GitHub/Java/Python 工件分布的高质量拟合。
+
+## 额外诊断：配比、harness 与成本三者不能分开优化
+
+论文的混合权重还可以用一个受约束优化问题来理解，而不是把每一类数据当作独立的“加分项”。设 \(w_d,w_t,w_r\) 分别为自然软件工件、轨迹与 replay 的 token 权重，则目标更接近：
+
+\[
+\max_w\;J_{\text{agent}}(w)\quad
+\text{s.t.}\quad J_{\text{general}}(w)\geq J_0-\epsilon,\quad
+C_{\text{train}}(w)\leq B,\quad \sum_i w_i=1.
+\]
+
+其中 \(J_{\text{agent}}\) 不能只取一个 SWE 分数，至少应包含成功率、context-filled、turn cap 与跨 harness 方差；\(J_{\text{general}}\) 是 replay 所保护的通识、数学、代码与常识能力；\(C\) 同时包含 256K packing、数据重建和 rollout 成本。作者的 75/20/5 大结构与 10% trajectory 子配比，是对这组约束的一次可审计选择，而非数学最优解的证明。
+
+跨 harness 的观察尤其重要。一个模型若只在训练轨迹出现的 scaffold 上提高，可能只是模仿系统提示、工具名字或 action 序列；作者因此混入十余 scaffold，并报告两个模型在所测 harness 上均提升。可是论文没有给出每个未见 harness 的完整误差条，也没有用工具 schema 重命名、参数顺序扰动或同语义不同 API 做严格的 interface shift。因此“鲁棒性提升”目前应读作**在作者选定 harness 集上的一致现象**，还不是对任意 Agent 框架的保证。
+
+对于后续复现，一个低成本但信息量高的最小实验可以是：固定模型、SFT token 和总中训 token，只在三组间切换 \(w_t=0\)、小比例多 scaffold 轨迹、单一 scaffold 轨迹；随后在训练 scaffold、未见 scaffold、以及 schema 扰动 scaffold 上各跑同预算 rollout，并记录成功、总 token、重复读文件次数和工具格式错误。若小比例多 scaffold 只提高训练 scaffold，论文的解释要收缩为接口适配；若三组外推均改善，才有更强证据说中训学习到了可迁移的交互先验。
+
+同样，数据合规不能作为附录中的静态检查。issue、commit 与日志会携带历史凭据、个人信息、内部路径和被 benchmark 收录的补丁；作者虽描述 secret redaction 与去污染，却没有把误报/漏报率或数据版本清单完全量化。研究者在采用这一路线时，应把每次过滤的拒绝率、来源许可、去污命中和重建失败率写入数据卡，并把这些数字与最终 benchmark 一同报告。这样才能区分“模型因看过答案而高分”和“模型因学到可泛化的仓库状态表征而高分”。

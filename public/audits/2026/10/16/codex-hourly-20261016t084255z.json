@@ -1,0 +1,47 @@
+{
+  "article_paths": [
+    "articles/2026/10/16/itm_eabdba3d0ecd0e18/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-16T08:42:55Z",
+  "quality_gate": {
+    "evidence_points": 2,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261016t084255z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一 Scout 已合并核验 Agent、后训练与 AI 安全候选的官方日期；AgentSafeEvo 为本周 v1，且未在当前 data 项目文件中命中相同 canonical URL。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_eabdba3d0ecd0e18"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/10/15/itm_b828a308c17e39f5/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-16T14:42:20Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 3
+  },
+  "run_id": "codex-hourly-20261016t144220z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "一个合并 Scout 覆盖 Agent、后训练与 AI 安全；仅保留 UTC 2026-10-12 后、日期可核验的候选，首选 arXiv:2610.22019v1。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 阅读 arXiv 公开 TeX 正文及附录，核对数据混合、训练、评测、消融、失败与边界。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_b828a308c17e39f5"
+  ]
+}

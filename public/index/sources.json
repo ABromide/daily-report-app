@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T08:42:55Z",
+  "generated_at": "2026-10-16T14:42:20Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -168,6 +168,14 @@
       "id": "arxiv-2609-04148",
       "kind": "manual",
       "name": "arXiv"
+    },
+    {
+      "description": "论文官方 arXiv 页面、PDF 与公开 TeX 源码。",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2610.22019",
+      "id": "arxiv-2610-22019",
+      "kind": "manual",
+      "name": "arXiv: Priming Base Models for Agentic Post-Training"
     },
     {
       "description": "Manual current-week arXiv paper selected by the hourly Chinese Daily Report automation.",

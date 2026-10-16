@@ -1,0 +1,52 @@
+{
+  "article_paths": [
+    "articles/2026/10/17/itm_5217696b929d2edc/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-16T21:08:36Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 1,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261016t210836z-knowgpo",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一合并 Scout 覆盖 llm-agent、llm-post-training 与 ai-safety；确认 KnowGPO 的 arXiv v1 为 2026-10-15 17:52:33 UTC，处于本周窗口。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读 arXiv HTML 正文与附录，核对方法公式、四张主表、Figure 1-4、核验器指标和失败边界。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_5217696b929d2edc"
+  ]
+}

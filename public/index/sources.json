@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T02:44:26Z",
+  "generated_at": "2026-10-16T08:48:42Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -98,7 +98,7 @@
       "name": "Anthropic Research"
     },
     {
-      "description": "公开预印本与作者链接的原始来源。",
+      "description": "Official paper record and full-text source.",
       "enabled": true,
       "homepage_url": "https://arxiv.org",
       "id": "arxiv",

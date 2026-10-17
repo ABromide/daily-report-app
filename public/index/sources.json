@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T20:56:00Z",
+  "generated_at": "2026-10-17T21:22:56Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -72,6 +72,14 @@
       "id": "anthropic",
       "kind": "manual",
       "name": "Anthropic"
+    },
+    {
+      "description": "Official current-week research release and full methodological write-up.",
+      "enabled": true,
+      "homepage_url": "https://alignment.anthropic.com/2026/training-alignment-auditors/",
+      "id": "anthropic-alignment",
+      "kind": "manual",
+      "name": "Anthropic Alignment Science"
     },
     {
       "description": "Primary official incident review for Claude cybersecurity evaluation incidents.",

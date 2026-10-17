@@ -1,23 +1,26 @@
 {
   "date": "2026-10-17",
-  "generated_at": "2026-10-17T20:56:00Z",
-  "item_count": 2,
+  "generated_at": "2026-10-17T21:22:56Z",
+  "item_count": 3,
   "sections": [
     {
       "heading": "大模型后训练相关",
       "item_ids": [
+        "itm_9f0c7cedcc882235",
         "itm_1b53ffa20545983f",
         "itm_e26e68f0fd27bf94"
       ],
-      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
+    "anthropic-alignment": 1,
     "arxiv": 1,
     "arxiv-mlexpert": 1
   },
-  "summary": "2026-10-17 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
+  "summary": "2026-10-17 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
   "top_item_ids": [
+    "itm_9f0c7cedcc882235",
     "itm_1b53ffa20545983f",
     "itm_e26e68f0fd27bf94"
   ],

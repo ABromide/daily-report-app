@@ -2926,6 +2926,15 @@
       "title_hash": "f62310ac46ce55412caeec7143d2880b0f7f016c5a2e1d44fd73d0fb1c5646b4"
     },
     {
+      "canonical_url": "https://alignment.anthropic.com/2026/training-alignment-auditors/",
+      "category_id": "llm-post-training",
+      "content_hash": "d01a5b25c45ab3313e292adaf9a3f8298505b5dd0dc5ac849eeca238dccebce2",
+      "external_id": "anthropic-training-alignment-auditors-2026-10-15",
+      "first_seen_at": "2026-10-17T21:22:56Z",
+      "item_id": "itm_9f0c7cedcc882235",
+      "title_hash": "ad3f1be1f893a551e44d84c772825b3da34be94d675a6b8b950f5dcd3e17a83d"
+    },
+    {
       "canonical_url": "https://github.com/RL-Align/RL-Kernel",
       "category_id": "llm-post-training",
       "content_hash": "9a5d653f20ee1f8b04c50b94a97ce0b0b929193728404cfc94c87369615b81f6",
@@ -4753,6 +4762,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-17T20:56:00Z",
+  "updated_at": "2026-10-17T21:22:56Z",
   "version": 1
 }

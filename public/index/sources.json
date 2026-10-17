@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T21:08:36Z",
+  "generated_at": "2026-10-17T03:11:45Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -360,6 +360,14 @@
       "id": "arxiv-manual",
       "kind": "manual",
       "name": "arXiv manual deep read"
+    },
+    {
+      "description": "MLExpert 论文公开页与作者提供的研究链接。",
+      "enabled": true,
+      "homepage_url": "https://arxiv.org/abs/2610.22344",
+      "id": "arxiv-mlexpert",
+      "kind": "manual",
+      "name": "arXiv"
     },
     {
       "description": "Manual source for the NRT-Bench arXiv paper and linked dataset.",

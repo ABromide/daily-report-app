@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/10/17/itm_1b53ffa20545983f/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 2
+  },
+  "generated_at": "2026-10-17T03:11:45Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5347,
+    "passed": true,
+    "skeptical_review": 1,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261017t031145z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 Agent、后训练与 AI 安全三类；MLExpert 的 arXiv v1 时间为 2026-10-15 17:56:32 UTC，并推荐其作为证据最完整的主选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读论文 HTML、附录与基准参考资料，提取任务构造、SFT 数据、WIRL 公式、消融、跨任务结果及其适用边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "核对 MLE-Bench 的 ICLR 2025 公开论文；它包含 75 个 Kaggle 竞赛且强调资源尺度与污染问题，作为解释 22-task Lite 结果边界的外部基准参考。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "文章使用分点、小节、公式、伪代码、7 张表与 Mermaid；正文 5,347 个汉字，TL;DR 与卡片摘要均包含方法、数字和局限。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1b53ffa20545983f"
+  ]
+}

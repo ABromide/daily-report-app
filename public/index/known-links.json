@@ -1288,6 +1288,15 @@
       "title_hash": "936acf2b723c257b4e37cd1e0f3a5f4731d4b262739145fbaabc03a6e2381db6"
     },
     {
+      "canonical_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "category_id": "llm-post-training",
+      "content_hash": "53681d9952bf14e7fd9ec2a13f25f8b07337861e2aa0357c6f84bee80690363f",
+      "external_id": "deepmind-govtech-gemma-scam-2026-10-14",
+      "first_seen_at": "2026-10-18T03:24:22Z",
+      "item_id": "itm_42be9b2e4646f390",
+      "title_hash": "0a581fcab9a52a73050d605c5ce6a43cd0df893c56a1d29faa7ad9a383172727"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.20759",
       "category_id": "ai-safety",
       "content_hash": "cbf86dc01727cde5d111d133fd3af58c840e622e2f01a9f32fa7c9ee119934fd",
@@ -4762,6 +4771,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-17T21:22:56Z",
+  "updated_at": "2026-10-18T03:24:22Z",
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T21:22:56Z",
+  "generated_at": "2026-10-18T03:24:22Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -752,6 +752,14 @@
       "id": "github-zabahana-rlhf-failure-modes-diagnostics",
       "kind": "manual",
       "name": "GitHub: zabahana/rlhf-failure-modes-diagnostics"
+    },
+    {
+      "description": "Official Google DeepMind research and technical publication site.",
+      "enabled": true,
+      "homepage_url": "https://deepmind.google/",
+      "id": "google-deepmind",
+      "kind": "manual",
+      "name": "Google DeepMind"
     },
     {
       "description": "Google Mantis Skills repository for coding-agent security review harnesses.",

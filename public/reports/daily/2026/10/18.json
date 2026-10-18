@@ -1,8 +1,15 @@
 {
   "date": "2026-10-18",
-  "generated_at": "2026-10-18T03:24:22Z",
-  "item_count": 1,
+  "generated_at": "2026-10-18T20:51:37Z",
+  "item_count": 2,
   "sections": [
+    {
+      "heading": "AI 安全相关",
+      "item_ids": [
+        "itm_a9e7d60afd9b78f8"
+      ],
+      "summary": "AI 安全相关 本次共有 1 条内容进入公开数据，详见对应 Markdown 深读稿。"
+    },
     {
       "heading": "大模型后训练相关",
       "item_ids": [
@@ -12,11 +19,13 @@
     }
   ],
   "source_counts": {
+    "anthropic-news": 1,
     "google-deepmind": 1
   },
-  "summary": "2026-10-18 public data 已由 finalize-public-run 统一重建索引和报告，共 1 条内容。",
+  "summary": "2026-10-18 public data 已由 finalize-public-run 统一重建索引和报告，共 2 条内容。",
   "top_item_ids": [
-    "itm_42be9b2e4646f390"
+    "itm_42be9b2e4646f390",
+    "itm_a9e7d60afd9b78f8"
   ],
   "version": 1
 }

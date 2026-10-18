@@ -3115,6 +3115,15 @@
       "title_hash": "8b74b4a42199a30379e20c8b8d27d5d362ad1cf444c813ffee9d19278d37d5de"
     },
     {
+      "canonical_url": "https://www.anthropic.com/news/investigating-unintended-model-actions",
+      "category_id": "ai-safety",
+      "content_hash": "8b45be29abbe95e5810ecb3c6aaa77f0dd55cf6393fac643e46d00a7c6036fc6",
+      "external_id": "anthropic-unintended-actions-2026-10-09",
+      "first_seen_at": "2026-10-18T20:51:37Z",
+      "item_id": "itm_a9e7d60afd9b78f8",
+      "title_hash": "a90df56d54b9ccfee1594b32b5611301c1cc3038edd9efa6504fad347c981f95"
+    },
+    {
       "canonical_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
       "category_id": "ai-safety",
       "content_hash": "622c16b455296feea5613d0dfd1a43c176d8690581b2f751710c65d972f13168",
@@ -4771,6 +4780,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-18T03:24:22Z",
+  "updated_at": "2026-10-18T20:51:37Z",
   "version": 1
 }

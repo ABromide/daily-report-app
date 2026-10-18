@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T03:24:22Z",
+  "generated_at": "2026-10-18T20:51:37Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -82,9 +82,9 @@
       "name": "Anthropic Alignment Science"
     },
     {
-      "description": "Primary official incident review for Claude cybersecurity evaluation incidents.",
+      "description": "Anthropic 官方研究与安全公告。",
       "enabled": true,
-      "homepage_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "homepage_url": "https://www.anthropic.com/news",
       "id": "anthropic-news",
       "kind": "manual",
       "name": "Anthropic News"

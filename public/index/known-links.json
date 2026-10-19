@@ -2305,6 +2305,15 @@
       "title_hash": "676d5d80be961e3abe3e6f53ac6cecf269dddf56d9c0c37f53e0a41392619402"
     },
     {
+      "canonical_url": "https://github.github.com/gh-aw/blog/2026-10-19-weekly-update/",
+      "category_id": "llm-agent",
+      "content_hash": "450d60b4e47ffcb88f324d81f84b436d8a83b9eb6218d2f699c402cd83fafcf4",
+      "external_id": "github/gh-aw@v0.92.5",
+      "first_seen_at": "2026-10-19T08:54:47Z",
+      "item_id": "itm_7c9f38a42572371b",
+      "title_hash": "37cfee154899160920e8c9893bf779d7660a751eb67562c3733d6c25ad3e447e"
+    },
+    {
       "canonical_url": "https://github.com/modelscope/ms-swift/releases/tag/v4.4.1",
       "category_id": "llm-post-training",
       "content_hash": "8d862e64d1358bfe6d7883d5ea4602cfbea551b61e8f36a57ac6a708875422d3",
@@ -4780,6 +4789,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-18T20:51:37Z",
+  "updated_at": "2026-10-19T08:54:47Z",
   "version": 1
 }

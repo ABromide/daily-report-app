@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T20:51:37Z",
+  "generated_at": "2026-10-19T08:54:47Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -562,9 +562,9 @@
       "name": "GitHub R-Suresh/EntityBindingFailures"
     },
     {
-      "description": "Manual source for the current-week GitHub Agentic Workflows weekly update and linked GitHub PR evidence.",
+      "description": "github/gh-aw 的官方博客与发布周报。",
       "enabled": true,
-      "homepage_url": "https://github.github.com/gh-aw/blog/2026-06-29-weekly-update/",
+      "homepage_url": "https://github.github.com/gh-aw/blog/",
       "id": "github-gh-aw-blog",
       "kind": "manual",
       "name": "GitHub Agentic Workflows Blog"

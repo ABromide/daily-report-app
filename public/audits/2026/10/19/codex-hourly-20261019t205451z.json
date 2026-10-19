@@ -1,0 +1,57 @@
+{
+  "article_paths": [
+    "articles/2026/10/19/itm_6c01edcf309998fe/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-19T20:54:51Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5269,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20261019t205451z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 llm-agent、llm-post-training、ai-safety；仅 Microsoft 2026-10-19 官方文章满足新 UTC 周与可深读条件。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "完整阅读 10 月原文及 Project Perception 和 Microsoft Security 配套说明；架构主张、可核验数量和未公开实验边界已在 Markdown 区分。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "未将厂商架构叙述当作实证结论；正文明确无公开风险模型、基线、误报、延迟、成本或攻击拦截指标。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_6c01edcf309998fe"
+  ]
+}

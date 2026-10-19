@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T15:47:11Z",
+  "generated_at": "2026-10-19T20:54:51Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -912,6 +912,14 @@
       "id": "metr",
       "kind": "manual",
       "name": "METR"
+    },
+    {
+      "description": "Microsoft 官方博客中关于 Agent 内部人安全与 Project Perception 的技术架构材料。",
+      "enabled": true,
+      "homepage_url": "https://blogs.microsoft.com/",
+      "id": "microsoft-agentic-insider-security",
+      "kind": "manual",
+      "name": "Microsoft Blog"
     },
     {
       "description": "Project code repository linked from the paper.",

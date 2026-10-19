@@ -2035,6 +2035,15 @@
       "title_hash": "7266da1d6c475d1ed018ee746ef987c85b7382e80fca25815ef510c4c4c5d471"
     },
     {
+      "canonical_url": "https://blogs.microsoft.com/blog/2026/10/19/securing-the-agentic-insider/",
+      "category_id": "ai-safety",
+      "content_hash": "9e8623f7acd8a295427d90e73f1796f09c43f82be588b96bdf4c3d3e5c06812b",
+      "external_id": "microsoft-securing-the-agentic-insider-2026-10-19",
+      "first_seen_at": "2026-10-19T20:54:51Z",
+      "item_id": "itm_6c01edcf309998fe",
+      "title_hash": "45db540a699c8937f169b45029a4e38a65d873de26f855223a5f54dcaffb4e86"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.24855",
       "category_id": "llm-post-training",
       "content_hash": "06dd2f847a22b0caf8e9524beff9440b0adf9f8ac57555ba6a7bcc6ee483baa9",
@@ -4807,6 +4816,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-19T15:47:11Z",
+  "updated_at": "2026-10-19T20:54:51Z",
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T08:54:47Z",
+  "generated_at": "2026-10-19T14:50:06Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -104,6 +104,14 @@
       "id": "anthropic-research",
       "kind": "manual",
       "name": "Anthropic Research"
+    },
+    {
+      "description": "Anthropic 官方安全研究与部署技术报告。",
+      "enabled": true,
+      "homepage_url": "https://safeguards.anthropic.com/",
+      "id": "anthropic-safeguards",
+      "kind": "manual",
+      "name": "Anthropic Safeguards Blog"
     },
     {
       "description": "Open-access research preprint archive.",

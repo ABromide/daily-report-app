@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/10/16/itm_1fe488d0221a2f8d/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 3
+  },
+  "generated_at": "2026-10-19T15:47:11Z",
+  "quality_gate": {
+    "evidence_points": 16,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5298,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261019t154711z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 llm-agent、llm-post-training、ai-safety；首选 Anthropic self-assessment 与账本重复后，选择未重复的 Google Research 候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已完整阅读 Google 原文，提取 VERID、三轮适体闭环、FAP binder、数字、失败模式与安全边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分官方博客主张与可复现证据，保留样本量、统计、对照和任务外推缺口。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "中文正文超过 5000 字，含 TL;DR、表格、公式、伪代码、Mermaid、失败案例与局限。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_1fe488d0221a2f8d"
+  ]
+}

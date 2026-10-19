@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T14:50:06Z",
+  "generated_at": "2026-10-19T15:47:11Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -776,6 +776,14 @@
       "id": "google-mantis",
       "kind": "manual",
       "name": "google/mantis"
+    },
+    {
+      "description": "Current-week official Google Research deep-read source.",
+      "enabled": true,
+      "homepage_url": "https://research.google/",
+      "id": "google-research",
+      "kind": "manual",
+      "name": "Google Research"
     },
     {
       "description": "Official project page and repository for Harness Handbook.",

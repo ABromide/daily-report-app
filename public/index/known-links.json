@@ -640,6 +640,15 @@
       "title_hash": "d7dff08ebbbe20e50fadf7e5dc92b10a757f370d7b1dda7c8b135ac38d145b49"
     },
     {
+      "canonical_url": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/",
+      "category_id": "llm-agent",
+      "content_hash": "b7925da56c60439c0a0ed51bae0138a80ef111153792ca8882b1a2ce9df38b54",
+      "external_id": "google-research-verid-autonomous-wet-labs-2026",
+      "first_seen_at": "2026-10-19T15:47:11Z",
+      "item_id": "itm_1fe488d0221a2f8d",
+      "title_hash": "09d8448e8ce18fa6b8b7aac03ed9f84c53c5fef33c5a196c0658cbaf09546bcc"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.26791",
       "category_id": "ai-safety",
       "content_hash": "2dd8d609a9260055449419e3f603eee7157cca0dde9e2a3f7313d89138620285",
@@ -4798,6 +4807,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-19T14:50:06Z",
+  "updated_at": "2026-10-19T15:47:11Z",
   "version": 1
 }

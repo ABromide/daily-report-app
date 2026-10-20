@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/10/20/itm_635317a18802f073/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-10-20T09:04:02Z",
+  "quality_gate": {
+    "evidence_points": 6,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5050,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20261020t090402z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "One merged Scout covered llm-agent, llm-post-training, and ai-safety; GRAFT was first-choice but current remote data already contained it, so the dated non-duplicate roadmap was selected."
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "The complete official roadmap page was read, including October 19 updates, goals, acceptance thresholds, and stated expectations."
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "The writeup separates company-reported progress from independently verifiable results and records missing protocols, redactions, and non-generalization boundaries."
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "Chinese analysis exceeds 5,000 Han characters and uses structured sections, tables, formulas, and Mermaid without nonessential images."
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_635317a18802f073"
+  ]
+}

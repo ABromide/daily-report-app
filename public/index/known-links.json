@@ -1891,6 +1891,15 @@
       "title_hash": "9cf521dc7e4b2832cd2f372d2d19dde20d0aca685f022260f0791358f54f5cc6"
     },
     {
+      "canonical_url": "https://www.anthropic.com/responsible-scaling-policy/roadmap",
+      "category_id": "ai-safety",
+      "content_hash": "599da8fa2e21c06aefe638dee3296ac9f85c25c1514885c5bb40136cbfec2d17",
+      "external_id": "anthropic:frontier-safety-roadmap:2026-10-19",
+      "first_seen_at": "2026-10-20T09:04:02Z",
+      "item_id": "itm_635317a18802f073",
+      "title_hash": "3b5cb7165f58a722deb9c9d24b4d58d3df7ab2e961494e1ce3bb56e3280ca70d"
+    },
+    {
       "canonical_url": "https://aclanthology.org/2026.findings-acl.2028/",
       "category_id": "llm-agent",
       "content_hash": "308c78c5c24629c4fcfaa8c27b44430215a6c25a295c8e62d50ddbc45cc40f0d",
@@ -4834,6 +4843,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-20T03:46:00Z",
+  "updated_at": "2026-10-20T09:04:02Z",
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T20:54:51Z",
+  "generated_at": "2026-10-20T02:55:18Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -1144,6 +1144,14 @@
       "id": "tencent-aig",
       "kind": "manual",
       "name": "Tencent AI-Infra-Guard"
+    },
+    {
+      "description": "Official Together AI research and product publication source.",
+      "enabled": true,
+      "homepage_url": "https://www.together.ai/",
+      "id": "together-ai",
+      "kind": "manual",
+      "name": "Together AI"
     },
     {
       "description": "Official project website and GitHub materials for Qwen-UI-Agent demos and benchmark summaries.",

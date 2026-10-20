@@ -1225,6 +1225,15 @@
       "title_hash": "a61682d844688573031eb41ee80a06a67fdce034f41745fe8920005abae3d5de"
     },
     {
+      "canonical_url": "https://www.together.ai/blog/together-post-training",
+      "category_id": "llm-post-training",
+      "content_hash": "2bfca89f5964f199912ab5b45ab230012a83b45ccecba85207bd192a33041a03",
+      "external_id": "together:together-post-training:2026-10-19",
+      "first_seen_at": "2026-10-20T02:55:18Z",
+      "item_id": "itm_3dcda26864e58703",
+      "title_hash": "2c0fc06635a78137db09b44ef66834e34608a8e0f9fda38f0480a8065d62b99b"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.00440",
       "category_id": "ai-safety",
       "content_hash": "b3d43348303a0b848cd27f8698f87adaf8afa7e6f9838e9407dcbf7f6746dcfe",
@@ -4816,6 +4825,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-19T20:54:51Z",
+  "updated_at": "2026-10-20T02:55:18Z",
   "version": 1
 }

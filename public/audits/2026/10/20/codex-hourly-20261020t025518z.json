@@ -1,0 +1,62 @@
+{
+  "article_paths": [
+    "articles/2026/10/20/itm_3dcda26864e58703/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 2,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-10-20T02:55:18Z",
+  "quality_gate": {
+    "evidence_points": 14,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5112,
+    "passed": true,
+    "skeptical_review": 9,
+    "third_party_references": 0
+  },
+  "run_id": "codex-hourly-20261020t025518z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 Agent、后训练与 AI 安全；Together 官方文章在本周窗口且未命中远端基线。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 核读官方发布文与产品页，提取训练循环、同步/异步、MoE 路由、资源和部署边界。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "将系统设计声明与可核对数字分开；明确其缺少统一 benchmark、消融、方差与独立复现。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为 5112 个汉字，含表格、公式、伪代码和 Mermaid，未使用非必要图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_3dcda26864e58703"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T21:23:17Z",
+  "generated_at": "2026-10-20T22:19:18Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -130,7 +130,7 @@
       "name": "Anthropic Safeguards Blog"
     },
     {
-      "description": "Open-access research preprint archive.",
+      "description": "公开预印本主来源。",
       "enabled": true,
       "homepage_url": "https://arxiv.org/",
       "id": "arxiv",

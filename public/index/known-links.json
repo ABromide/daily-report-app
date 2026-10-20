@@ -919,6 +919,15 @@
       "title_hash": "b80ef74f0af9a77599dc290cc7849236dd2a1fdb558e12287b4483d62c1fa3b2"
     },
     {
+      "canonical_url": "https://alignment.anthropic.com/2026/graft/",
+      "category_id": "llm-post-training",
+      "content_hash": "73951c4869ae3810901bcba33539dd2c2b47c9aa3d2f727eab182a03ffd360fd",
+      "external_id": "graft",
+      "first_seen_at": "2026-10-20T03:46:00Z",
+      "item_id": "itm_2f94c9f69b29c358",
+      "title_hash": "ef34c4714b0003e7d0f3b8d0f70086ad4a52c270718f603b290ecc3822a346b1"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.28573",
       "category_id": "llm-agent",
       "content_hash": "11196c79326118ab0e6d297ef977630831350ff6446a55f2fe4c7e4e54ab89bb",
@@ -4825,6 +4834,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-20T02:55:18Z",
+  "updated_at": "2026-10-20T03:46:00Z",
   "version": 1
 }

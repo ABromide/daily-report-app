@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/10/19/itm_2f94c9f69b29c358/index.md"
+  ],
+  "category_counts": {
+    "llm-post-training": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-20T03:46:00Z",
+  "quality_gate": {
+    "evidence_points": 3,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 3,
+    "third_party_references": 2
+  },
+  "run_id": "codex-hourly-20261020t034600z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖 Agent、后训练与 AI 安全；GRAFT 是本窗口内确认日期的非重复官方候选。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "已完整阅读官方解读与 arXiv HTML，提取方法、主实验、附录失败案例、32B SFT 和限制。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "正文解释双 MLP adapter、梯度掩码、锚定环境、消融部署及参数规模。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "明确区分受控监控器盲点的机制证据与对 LLM judge、多轮 RL、前沿模型的未证实外推。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "将 GRAFT 与奖励惩罚、过滤、inoculation prompting、preventative steering 和模型编辑定位比较。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含公式、伪代码、表格与 Mermaid，未使用非必要图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_2f94c9f69b29c358"
+  ]
+}

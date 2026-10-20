@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T02:55:18Z",
+  "generated_at": "2026-10-20T03:46:00Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -80,6 +80,14 @@
       "id": "anthropic-alignment",
       "kind": "manual",
       "name": "Anthropic Alignment Science"
+    },
+    {
+      "description": "官方 Alignment Science Blog 研究发布。",
+      "enabled": true,
+      "homepage_url": "https://alignment.anthropic.com/",
+      "id": "anthropic-alignment-science",
+      "kind": "manual",
+      "name": "Anthropic Alignment Science Blog"
     },
     {
       "description": "Anthropic 官方研究与安全公告。",

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
-  "generated_at": "2026-10-20T09:04:02Z",
-  "item_count": 3,
+  "generated_at": "2026-10-20T21:23:17Z",
+  "item_count": 4,
   "sections": [
     {
       "heading": "AI 安全相关",
@@ -13,19 +13,22 @@
     {
       "heading": "大模型后训练相关",
       "item_ids": [
+        "itm_c1b934ead88a0b42",
         "itm_3dcda26864e58703",
         "itm_2f94c9f69b29c358"
       ],
-      "summary": "大模型后训练相关 本次共有 2 条内容进入公开数据，详见对应 Markdown 深读稿。"
+      "summary": "大模型后训练相关 本次共有 3 条内容进入公开数据，详见对应 Markdown 深读稿。"
     }
   ],
   "source_counts": {
     "anthropic-alignment-science": 1,
     "anthropic-roadmap": 1,
+    "huggingface-blog": 1,
     "together-ai": 1
   },
-  "summary": "2026-10-20 public data 已由 finalize-public-run 统一重建索引和报告，共 3 条内容。",
+  "summary": "2026-10-20 public data 已由 finalize-public-run 统一重建索引和报告，共 4 条内容。",
   "top_item_ids": [
+    "itm_c1b934ead88a0b42",
     "itm_3dcda26864e58703",
     "itm_635317a18802f073",
     "itm_2f94c9f69b29c358"

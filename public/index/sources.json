@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T09:04:02Z",
+  "generated_at": "2026-10-20T21:23:17Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -858,7 +858,7 @@
       "name": "Hugging Face"
     },
     {
-      "description": "Hugging Face official blog and technical incident writeups.",
+      "description": "Manual deep-read source for current-week agent post-training material.",
       "enabled": true,
       "homepage_url": "https://huggingface.co/blog",
       "id": "huggingface-blog",

@@ -3655,6 +3655,15 @@
       "title_hash": "20e9ef6df48c1960894e7bb924cfe987ae73c2cde83fb85b37bf0be1bb7a8690"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/huggingface/train-agents",
+      "category_id": "llm-post-training",
+      "content_hash": "48e28f75930fadddc49da208ce51287755a345ebdbcc1782e466d436d1a24063",
+      "external_id": "hf-blog-train-agents-2026-10-20",
+      "first_seen_at": "2026-10-20T21:23:17Z",
+      "item_id": "itm_c1b934ead88a0b42",
+      "title_hash": "fc6a7be5664008a94b873cfaef1cafc1ba6ae215f659ffff5fa1a80e20f01a58"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.27210",
       "category_id": "ai-safety",
       "content_hash": "ab8f26af252a1311229d214fdd13e3b46e843e3a9b0a0fbb02fa505956f7bcb7",
@@ -4843,6 +4852,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-20T09:04:02Z",
+  "updated_at": "2026-10-20T21:23:17Z",
   "version": 1
 }

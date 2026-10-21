@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/10/20/itm_dc3dfdd3b0a12cd3/index.md"
+  ],
+  "category_counts": {
+    "ai-safety": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 0,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 0
+  },
+  "generated_at": "2026-10-21T16:39:30Z",
+  "quality_gate": {
+    "evidence_points": 4,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5000,
+    "passed": true,
+    "skeptical_review": 4,
+    "third_party_references": 0
+  },
+  "run_id": "20261021t163930z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "唯一合并 Scout 覆盖三类主题，核验官方发布日期与候选范围。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 通读 70 页技术报告，提取基准、指标、实验、缓解与局限。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已核对指标条件化、九种事后干预、Core 子集与训练数据审计设计。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "正文明确区分 equality 基线、相关性证据与因果结论，并列出部署外推边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "正文对照 BBQ 的概率评分与生成式评测协议差异，并链接官方报告、数据与代码。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "正文为纯 Markdown，包含表格、公式、伪代码与 Figure/Table 解读；无必要图片。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_dc3dfdd3b0a12cd3"
+  ]
+}

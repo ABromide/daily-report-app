@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T22:19:18Z",
+  "generated_at": "2026-10-21T16:39:30Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -56,6 +56,14 @@
       "id": "agentvigil-paper",
       "kind": "manual",
       "name": "AgentVigil paper"
+    },
+    {
+      "description": "Ai2 的 FairStress 官方技术报告与公告。",
+      "enabled": true,
+      "homepage_url": "https://allenai.org/blog/fairstress",
+      "id": "ai2-fairstress",
+      "kind": "manual",
+      "name": "Ai2 FairStress"
     },
     {
       "description": "UK AI Security Institute official incident reports and technical publications.",

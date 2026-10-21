@@ -4168,6 +4168,15 @@
       "title_hash": "6059264165df01267a31526da6a1ff43d3c85db70246c52b0a71f8a77f93129b"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/allenai/fairstress",
+      "category_id": "ai-safety",
+      "content_hash": "c65f854dd9b1cf8ed55a030515180680a21bbd72ca6aac5644cab7d87d55ce7b",
+      "external_id": "allenai/fairstress",
+      "first_seen_at": "2026-10-21T16:39:30Z",
+      "item_id": "itm_dc3dfdd3b0a12cd3",
+      "title_hash": "d21bf3cd287b09c4302cf770fbd6da0fd6656b9d3192d75cc5681b8d61c8422a"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.16420",
       "category_id": "ai-safety",
       "content_hash": "91ac53ce0ea62afaf9c85ac157888483b259e95071ed31054a5f2ad223722593",
@@ -4861,6 +4870,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-20T22:19:18Z",
+  "updated_at": "2026-10-21T16:39:30Z",
   "version": 1
 }

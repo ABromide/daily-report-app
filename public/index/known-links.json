@@ -3223,6 +3223,15 @@
       "title_hash": "f670b59b86c121cbaf0647389ffb627d4f26d2c031502f9329afb16d8fef0289"
     },
     {
+      "canonical_url": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
+      "category_id": "llm-agent",
+      "content_hash": "76d29bf2f20cb042b3bb88bf332ca37259e069ea54a632cc28dc6bfa5e6205d6",
+      "external_id": "hf:ibm-research:altk-evolve-bc",
+      "first_seen_at": "2026-10-22T16:13:46Z",
+      "item_id": "itm_acec482c223d10ac",
+      "title_hash": "8b84c55234425dc42e383b20c933b335cfda279ef2b776b91b30a82b1a85b51f"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.22186",
       "category_id": "llm-post-training",
       "content_hash": "28f53504233581973bc00813d803bbdf06a4ebee11c75ec0d72c3f2a324c2462",
@@ -4879,6 +4888,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-22T09:11:17Z",
+  "updated_at": "2026-10-22T16:13:46Z",
   "version": 1
 }

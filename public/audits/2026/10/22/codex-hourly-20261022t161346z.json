@@ -1,0 +1,72 @@
+{
+  "article_paths": [
+    "articles/2026/10/20/itm_acec482c223d10ac/index.md"
+  ],
+  "category_counts": {
+    "llm-agent": 1
+  },
+  "config_path": "config/automation/codex-hourly.zh.json",
+  "date_window": {
+    "max_age_days": 7,
+    "mode": "today_or_current_week",
+    "timezone": "Asia/Shanghai"
+  },
+  "dedupe": {
+    "checked_keys": [
+      "canonical_url",
+      "external_id",
+      "title_hash",
+      "content_hash"
+    ],
+    "duplicate_candidates": 1,
+    "ledger_path": "public/index/known-links.json",
+    "replacement_candidates": 1
+  },
+  "generated_at": "2026-10-22T16:13:46Z",
+  "quality_gate": {
+    "evidence_points": 12,
+    "image_notes": 0,
+    "minimum_chinese_chars": 5020,
+    "passed": true,
+    "skeptical_review": 5,
+    "third_party_references": 1
+  },
+  "run_id": "codex-hourly-20261022t161346z",
+  "status": "complete",
+  "sub_agent_reviews": [
+    {
+      "agent_id": "scout",
+      "status": "passed",
+      "summary": "单一 Scout 覆盖 Agent、后训练与 AI 安全，确认官方 2026-10-20 日期并给出统一候选表。"
+    },
+    {
+      "agent_id": "deep_reader",
+      "status": "passed",
+      "summary": "主 Agent 完整阅读官方报告，提取协议、五个表格、成本、可靠性与强模型对照。"
+    },
+    {
+      "agent_id": "method_or_code_analyst",
+      "status": "passed",
+      "summary": "已拆解轨迹归纳、support 阈值、提示注入与四次重复评测机制。"
+    },
+    {
+      "agent_id": "skeptic",
+      "status": "passed",
+      "summary": "已保留自报、双模拟域、小样本、无置信区间、成本及线上安全不可外推等边界。"
+    },
+    {
+      "agent_id": "related_work",
+      "status": "passed",
+      "summary": "关联 τ²-bench 公开仓库，正文将权重后训练、RAG、手写提示与轨迹规则记忆区分。"
+    },
+    {
+      "agent_id": "markdown_editor",
+      "status": "passed",
+      "summary": "已写入 5000 以上中文字符的结构化 Markdown，含公式、伪代码、表格和 Mermaid。"
+    }
+  ],
+  "version": 1,
+  "written_item_ids": [
+    "itm_acec482c223d10ac"
+  ]
+}

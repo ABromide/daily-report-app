@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T16:39:30Z",
+  "generated_at": "2026-10-22T09:11:17Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -930,9 +930,9 @@
       "name": "Mask-Aware Policy Gradients GitHub"
     },
     {
-      "description": "Independent evaluator background and current discussion of AI incident investigations.",
+      "description": "模型评估与风险研究机构；本轮使用其官方外部复核原文。",
       "enabled": true,
-      "homepage_url": "https://metr.org/risk-assessment/",
+      "homepage_url": "https://metr.org/",
       "id": "metr",
       "kind": "manual",
       "name": "METR"

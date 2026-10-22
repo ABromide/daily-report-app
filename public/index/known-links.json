@@ -4276,6 +4276,15 @@
       "title_hash": "2a4d519d339d6d6d13060e14bd9e083806cfe151000f26f763a469eb52a60e4f"
     },
     {
+      "canonical_url": "https://metr.org/blog/2026-10-20-misalignment-risk-report-august-2026-review/",
+      "category_id": "ai-safety",
+      "content_hash": "7d7151438af4544311ec2a4e4a6f40c2cf0435d811f7387e6f9ece0ab00df96a",
+      "external_id": "metr-2026-misalignment-risk-report-august-2026-review",
+      "first_seen_at": "2026-10-22T09:11:17Z",
+      "item_id": "itm_e2fea1ae9436c34b",
+      "title_hash": "38b04cdbc6f3a042b62a6fc6a5da70429786705f8b48e0c794ed1b24780630a7"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2606.13669",
       "category_id": "llm-agent",
       "content_hash": "83222a91d80369877f462f4a9771d844188200dbbee0a894723d58116329b3a7",
@@ -4870,6 +4879,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-21T16:39:30Z",
+  "updated_at": "2026-10-22T09:11:17Z",
   "version": 1
 }

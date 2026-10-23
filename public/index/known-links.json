@@ -1882,6 +1882,15 @@
       "title_hash": "d266d6fa0df8fa33584e12063ca4129e240a616bd1bbb25e7b9aedb115dc9655"
     },
     {
+      "canonical_url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+      "category_id": "llm-agent",
+      "content_hash": "09aa5dba55868531761f8d67efc447d042457076970cc7ced77192b576842f20",
+      "external_id": "scaling-ai-research-for-complex-biological-data",
+      "first_seen_at": "2026-10-23T09:45:00Z",
+      "item_id": "itm_5fe8d089ae987bad",
+      "title_hash": "a4e1919cf6bfddbdabc0765caca5487e6d7355828d9a00a834ed13f78ad73466"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.11185",
       "category_id": "llm-agent",
       "content_hash": "94220d5554ff219abfc0157bdf663e78403836f7bc7ac11f9972f47fcb0c5919",
@@ -4897,6 +4906,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-22T22:31:49Z",
+  "updated_at": "2026-10-23T09:45:00Z",
   "version": 1
 }

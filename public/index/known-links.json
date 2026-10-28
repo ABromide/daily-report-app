@@ -2458,6 +2458,15 @@
       "title_hash": "c6671b0633b4e798d7575c332f7fd621b0e49d3f05d30bc586caa4631bd09597"
     },
     {
+      "canonical_url": "https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/",
+      "category_id": "llm-post-training",
+      "content_hash": "70c9da594af77c3f7c69d0507526defe2bfb28e1181fa9dc648e005769841982",
+      "external_id": "google-research:sleep-framework-continual-learning",
+      "first_seen_at": "2026-10-28T00:00:00Z",
+      "item_id": "itm_81b4d1f2550db13b",
+      "title_hash": "200b5df5ad6cdb25c46c786605609e7f51add1e7af32f54cfc96206ad35aa294"
+    },
+    {
       "canonical_url": "https://arxiv.org/abs/2607.09474",
       "category_id": "llm-agent",
       "content_hash": "c676a388be734b7233f3344de108bd32d9e8587b2aaa876ce82a320b329c65a8",
@@ -4906,6 +4915,6 @@
       "title_hash": "6e68e156c541494925f438442ad78121e52016699116be2063d45c18871e6b23"
     }
   ],
-  "updated_at": "2026-10-23T09:45:00Z",
+  "updated_at": "2026-10-28T00:00:00Z",
   "version": 1
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T09:45:00Z",
+  "generated_at": "2026-10-28T00:00:00Z",
   "sources": [
     {
       "description": "Related work source for Red Queen and AEGIS2.0 safety context.",
@@ -802,7 +802,7 @@
       "name": "google/mantis"
     },
     {
-      "description": "Current-week official Google Research deep-read source.",
+      "description": "Google Research 官方研究发布。",
       "enabled": true,
       "homepage_url": "https://research.google/",
       "id": "google-research",
